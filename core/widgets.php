@@ -2881,7 +2881,7 @@ function theme_wizard_intro_box($data, $options)
     if (file_exists(clearos_app_base($data['basename']) . "htdocs/" . $data['basename'] . '.svg'))
         $img = clearos_app_base($data['basename']) . "htdocs/" . $data['basename'] . '.svg';
     else
-        $img = clearos_theme_path('AdminLTE') . '/img/placeholder.svg';
+        $img = clearos_theme_path('ClearOS-Admin') . '/img/placeholder.svg';
     return theme_container("
         <div class='theme-wizard-intro-title'>" . $data['wizard_name'] . "</div><div style='float: right; margin-right: 15px;'>" . $action . "</div>
         <div class='theme-wizard-intro-icon-container'><div class='theme-wizard-intro-icon'>" . file_get_contents($img) . "</div></div>
@@ -3165,7 +3165,7 @@ function theme_image($name, $options = NULL)
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $size = (isset($options['size'])) ? " " . $options['size'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
-    $filename = clearos_theme_path('AdminLTE') . "/img/$name";
+    $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
     return "<div $id class='$class'>" . file_get_contents($filename) . "</div>";
 }
 
@@ -3191,7 +3191,7 @@ function theme_app_logo($basename, $options = NULL)
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $size = (isset($options['size'])) ? " " . $options['size'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
-    $filename = clearos_theme_path('AdminLTE') . '/img/placeholder.svg';
+    $filename = clearos_theme_path('ClearOS-Admin') . '/img/placeholder.svg';
     if (file_exists(clearos_app_base($basename) . "htdocs/$basename.svg"))
         $filename = clearos_app_base($basename) . "htdocs/$basename.svg";
     else if (file_exists(CLEAROS_CACHE_DIR . "/mp-logo-$basename.svg"))

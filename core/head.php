@@ -37,7 +37,7 @@
 
 function theme_page_head($settings)
 {
-    $theme_url = clearos_theme_url('AdminLTE');
+    $theme_url = clearos_theme_url('ClearOS-Admin');
 	$basepath = preg_replace('/\/core\/.*/', '', realpath(__FILE__));
 
     // The version is used to avoid upgrade/caching issues.  Bump when required.

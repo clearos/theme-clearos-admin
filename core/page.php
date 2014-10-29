@@ -758,7 +758,7 @@ function _get_main_content($page)
 
 function _get_header($page, $menus = array())
 {
-    $theme_url = clearos_theme_url('AdminLTE');
+    $theme_url = clearos_theme_url('ClearOS-Admin');
 
     $my_account = '';
     $framework =& get_instance();
@@ -1013,7 +1013,7 @@ function _get_wizard_menu($page)
 function _get_left_menu($page)
 {
     // Default is Menu 1 (long sidebar)
-    if (isset($page['theme_AdminLTE']['menu']) && $page['theme_AdminLTE']['menu'] == 2)
+    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2)
         return _get_left_menu_2($page);
     else
         return _get_left_menu_1($page);
@@ -1032,7 +1032,7 @@ function _get_left_menu_1($page)
     $menu_data = $page['menus'];
     $main_apps = '';
     $spotlights = '';
-    $img_path = clearos_theme_path('AdminLTE') . '/img/';
+    $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -1247,7 +1247,7 @@ function _get_left_menu_2($page)
     if (!array_filter($active_category))
         $active_category['cloud'] = ' checked';
 
-    $img_path = clearos_theme_path('AdminLTE') . '/img/';
+    $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
 
     return "
 <aside class='left-side sidebar-offcanvas'>
