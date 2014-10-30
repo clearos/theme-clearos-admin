@@ -795,8 +795,8 @@ function _theme_field_common($name, $value, $label, $error, $input_id, $options 
 
     return "
         <div id='$field_id_html' class='form-group theme-field-$type" . $hide_field . "'>
-            <label class='control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='theme-field-right" . $div_class . "'>
+            <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
+            <div class='col-sm-7 theme-field-right" . $div_class . "'>
                 <div" . ((isset($options['color-picker']) && $options['color-picker']) ? " class='input-group' " : "") . ">
                     <input type='$type' name='$name' value='$value' id='$input_id' style='$style' class='form-control'> $error_html
                 " . ((isset($options['color-picker']) && $options['color-picker']) ? "
