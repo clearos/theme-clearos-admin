@@ -1460,8 +1460,8 @@ function theme_chart_container($title, $chart_id, $options)
     $size = 'theme-chart-medium';
     $override_size = '';
     if (isset($options['chart-size'])) {
-        if (preg_match('/\(\d+\)x\(\d+\)/', $options['chart-size'], $match)) {
-            $override_size = "style='width: " . $match[0] . "; height: " . $match[1] . ";'";
+        if (preg_match('/^(\d+)x(\d+)$/', $options['chart-size'], $match)) {
+            $override_size = "style='width: " . $match[1] . "px; height: " . $match[2] . "px;'";
             $size = '';
         } else if ($options['chart-size'] == 'tiny')
             $size = 'theme-chart-xs';
@@ -3160,13 +3160,25 @@ function theme_summary_box($data)
 
 function theme_image($name, $options = NULL)
 {
+    $override_size = "";
     $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
+    $class = array();
+    if ((isset($options['class']))) {
+        // Additional classes
+        $class = explode(' ', $class);
+    }
+    if (isset($options['size'])) {
+        if (preg_match('/^(\d+)x(\d+)$/', $options['size'], $match)) {
+            $override_size = "style='width: " . $match[1] . "px; height: " . $match[2] . "px;'";
+            $size = '';
+        } else {
+            $class[] = $options['size'];
+        }
+    }
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
-    $size = (isset($options['size'])) ? " " . $options['size'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
     $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
-    return "<div $id class='$class'>" . file_get_contents($filename) . "</div>";
+    return "<div $id class='" . implode(' ' , $class) . "' $override_size>" . file_get_contents($filename) . "</div>";
 }
 
 /**
