@@ -50,6 +50,7 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/bootstrap.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery.sticky.js'></script>
 <script type='text/javascript' src='$theme_url/js/script.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/colorpicker/bootstrap-colorpicker.min.js'></script>
 
 
 <script type='text/javascript' src='$theme_url/old_js/jquery.cookie.js'></script>
@@ -58,7 +59,6 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/old_js/jquery.dotdotdot.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/bootstrap-dialog/bootstrap-dialog.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/metisMenu/jquery.metisMenu.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/colorpicker/bootstrap-colorpicker.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/datatables/jquery.dataTables.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/datatables/dataTables.bootstrap.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/datatables/jquery.dataTables.rowReordering.js'></script>

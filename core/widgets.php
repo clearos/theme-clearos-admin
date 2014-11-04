@@ -1291,7 +1291,6 @@ function theme_form_footer($options)
 
 function theme_form_header($title, $options)
 {
-
     $id_html = (isset($options['id'])) ? $options['id'] : 'options_' . rand(0, 1000);
     $status_id_html = (isset($options['id'])) ? "status_" . $options['id'] : 'status_options_' . rand(0, 1000);
 
