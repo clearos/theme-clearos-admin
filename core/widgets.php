@@ -1183,13 +1183,13 @@ function theme_progress_bar($id, $options)
 function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL)
 {
     // We use Bootstrap row/column grids here to make responsive layout possible
-    echo login_box_open(array('class'=>'login_box'));
-    echo login_left_logo_open(array('class'=>'login_logo'));
-    echo login_left_logo_close();
-    echo login_right_close();
-    echo login_right_open(array('class'=>'login_right'));
-    echo login_header_open(array('class'=>'title'));
-    echo login_header_close();
+    echo theme_login_box_open(array('class'=>'login_box'));
+    echo theme_login_left_logo_open(array('class'=>'login_logo'));
+    echo theme_login_left_logo_close();
+    echo theme_login_right_close();
+    echo theme_login_right_open(array('class'=>'login_right'));
+    echo theme_login_header_open(array('class'=>'title'));
+    echo theme_login_header_close();
     echo form_open('base/session/login/' . $redirect);
        // echo form_header(lang('base_login'), array('id' => 'theme-login-form-header','class'=>'login_box'));
     //echo login_label_open(array(),"<i class='fa fa-user'></i>");
@@ -1216,13 +1216,51 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
        // echo form_footer(array('id' => 'theme-login-form-footer'));
         echo form_close();
     //echo column_close();
-    echo login_right_close();    
-    echo login_box_close();
+    echo theme_login_right_close();    
+    echo theme_login_box_close();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // F O R M S
 ///////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Set class in form for custom styling.
+ *
+ * @param array  $options    options
+ *
+ * @return string HTML
+ */
+
+function theme_form_classes($options = array())
+{
+    $classes = array();
+    if (empty($options)) {
+        $classes[] = 'form-horizontal';
+    } else if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $classes = $options['class'];
+        else
+            $classes = preg_split('/\s+/', $options['class']);
+    }
+    return $classes;
+}
+
+/**
+ * Form Open.
+ *
+ * @param string $action     action
+ * @param string $attributes attributes
+ * @param array  $hidden     hidden
+ * @param array  $options    options
+ *
+ * @return string HTML
+ */
+
+function theme_form_open($action = '', $attributes = '', $hidden = array(), $options = array())
+{
+    return my_form_open($action, $attributes, $hidden, $options);
+}
 
 /**
  * Form banner.

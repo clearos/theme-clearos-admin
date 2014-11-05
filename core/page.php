@@ -133,35 +133,12 @@ function theme_page_close($page)
 
 function _configuration_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-        "<div class='main-wrapper ".$class."'>" .
-        _get_header($page).
-        "<div class='marketPlaceSection form-horizontal'>".
+        "<div class='main-wrapper $page_class'>" .
+        _get_header($page) .
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -181,38 +158,15 @@ function _configuration_page($page)
 
 function _wide_configuration_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-        "<div class='main-wrapper ".$class."'>" .
-        _get_header($page).
-        "<div class='marketPlaceSection form-horizontal'>".
+        "<div class='main-wrapper $page_class'>" .
+        _get_header($page) .
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
-        "</div></div>" .
+        "</div>" .
         _get_footer($page)
     ;
 
@@ -229,39 +183,15 @@ function _wide_configuration_page($page)
 
 function _report_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-       
-        "<div class='main-wrapper ".$class."'>" .
-         _get_header($page) .
-         "<div class='marketPlaceSection form-horizontal'>".
+        "<div class='main-wrapper $page_class'>" .
+        _get_header($page) .
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
-        "</div></div>" .
+        "</div>" .
         _get_footer($page)
     ;
 
@@ -278,36 +208,12 @@ function _report_page($page)
 
 function _report_overview_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-       
-        "<div class='main-wrapper".$class."'>" .
-         _get_header($page) .
-         "<div class='marketPlaceSection form-horizontal'>".
+        "<div class='main-wrapper $page_class'>" .
+        _get_header($page) .
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -327,36 +233,12 @@ function _report_overview_page($page)
 
 function _dashboard_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-        
-        "<div class='main-wrapper ".$class."'>" .
+        "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-         "<div class='marketPlaceSection form-horizontal'>".
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -376,36 +258,12 @@ function _dashboard_page($page)
 
 function _spotlight_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-        
-        "<div class='main-wrapper ".$class."'>" .
+        "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='marketPlaceSection form-horizontal'>". 
+        "<div class='main-content'>". 
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -479,36 +337,12 @@ function _splash_page($page)
 
 function _exception_page($page)
 {
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout =
-        
-        "<div class='main-wrapper ".$class."'>" .
+        "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='marketPlaceSection'>".
+        "<div class='main-content'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -528,36 +362,13 @@ function _exception_page($page)
 
 function _wizard_page($page)
 {   
-    switch($page['current_basename']){
-        case 'home' : 
-        $class  = 'clearos_page';   
-        break;      
-        case 'dashboard' : 
-        $class  = 'dashboard_page'; 
-        break;
-        
-        case 'marketplace' : 
-        $class  = 'marketplace_page';   
-        break;
-        
-        case 'support' : 
-        $class  = 'support_page';   
-        break;
-        
-        case 'root' : 
-        $class  = 'root_page';  
-        break;
-        
-        default : 
-        $class  = 'clearos_page';   
-        break;
-        
-    }
+    $page_class = _get_page_class($page['current_basename']);
+
     $layout = _get_header($page);
-    $layout .= "<div class='main-wrapper ".$class."'>";
+    $layout .= "<div class='main-wrapper $page_class'>";
     $layout .= _get_wizard_menu($page);
     $layout .= "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header() . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
@@ -657,13 +468,13 @@ function _get_main_content($page)
     exit; */
     if ($page['type'] == MY_Page::TYPE_DASHBOARD || $page['type'] == MY_Page::TYPE_EXCEPTION || $page['type'] == MY_Page::TYPE_SPOTLIGHT || $page['type'] == MY_Page::TYPE_WIZARD) {
         return "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 " . _get_message().$page['app_view']." 
             </section>  
         ";
     } else if ($page['type'] == MY_Page::TYPE_REPORT_OVERVIEW) {    
         return "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header() . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
@@ -688,7 +499,7 @@ function _get_main_content($page)
         ";
     } else if ($page['type'] == MY_Page::TYPE_REPORTS) {
         return "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header() . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
@@ -711,7 +522,7 @@ function _get_main_content($page)
         ";
     } else if ($page['type'] == MY_Page::TYPE_WIDE_CONFIGURATION) {
         return "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header() . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
@@ -726,12 +537,12 @@ function _get_main_content($page)
         ";
     } else {
         return "
-            <section class='marketplaceright'>
+            <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header() . "
                 </section>
                 <section class='content clearfix'>
-                    <div class='col-lg-7 theme-content form-horizontal'>
+                    <div class='col-lg-7 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
@@ -924,9 +735,10 @@ function _get_content_header()
 function _get_footer($page)
 {
     return "
-    <!-- Footer -->
-    <div class='clearfix'></div>
-    <footer>Copyright &copy; 2009 - 2014 ClearCenter</footer>
+      <!-- Footer -->
+      <div class='clearfix'></div>
+      <footer>Copyright &copy; 2009 - 2014 ClearCenter</footer>
+    <!-- Close main-wrapper -->
     </div>
     ";
 }
@@ -1370,3 +1182,39 @@ function _get_breadcrumb_links($links)
     }
     return "<span class='theme-breadcrumb-links $button_grp'>" . $link_html . "</span>";
 };
+
+/**
+ * Returns specific class for page loaded.
+ *
+ * @param string $basename basename
+ *
+ * @return string class
+ */
+
+function _get_page_class($basename)
+{
+    switch($basename) {
+        case 'dashboard' : 
+        $class  = 'dashboard_page'; 
+        break;
+        
+        case 'marketplace' : 
+        $class  = 'marketplace_page';   
+        break;
+        
+        case 'support' : 
+        $class  = 'support_page';   
+        break;
+        
+        case 'TODO My Account Pages' : 
+        $class  = 'my_account_page';  
+        break;
+        
+        default : 
+        $class  = 'clearos_page';   
+        break;
+        
+    }
+
+    return $class;
+}
