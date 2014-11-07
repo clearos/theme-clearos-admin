@@ -1153,6 +1153,11 @@ function _get_breadcrumb_links($links)
             else
                 $button_class = 'btn';
         }
+
+        $target = '';
+        if (isset($link['target']))
+            $target = " target='" . $link['target'] . "'";
+
         $id = 'bcrumb-' . rand(0 , 100);
         if (isset($link['id']))
             $id = $link['id'];
@@ -1181,7 +1186,7 @@ function _get_breadcrumb_links($links)
         else if ($type == 'app-documentation')
             $icon = 'fa fa-life-ring';
 
-        $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'>
+        $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'$target>
             $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . "'></i>$text_right</a>";
     }
     return "<span class='theme-breadcrumb-links $button_grp'>" . $link_html . "</span>";
