@@ -636,6 +636,7 @@ function _get_header($page, $menus = array())
         ";
     }
 
+    // TODO Idenify 'My Account Page
     return "
              <header class='mainheader'>
 			 <div class='navbar-header'>
@@ -652,16 +653,16 @@ function _get_header($page, $menus = array())
                         <a href='/' class='ci-ClearOS'>&nbsp;</a>
                     </li> 
                 " . (! isset($framework->session->userdata['wizard']) ? "
-                        <li class='dashboard ".(($page['current_basename'] == 'dashboard') ? "active":"")."'>
+                        <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "")."'>
                             <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
                         </li>
-                        <li class='marketplace ".(($page['current_basename'] == 'marketplace') ? "active":"")."'>
+                        <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active" : "")."'>
                             <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
                         </li>
-                        <li class='support ".(($page['current_basename'] == 'support') ? "active":"")."'>
+                        <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                             <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                         </li> 
-                        <li class='root dropdown ".(($page['current_basename'] == 'root') ? "active":"")."'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-root'></i> <span>Root</span></a>
+                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
                             <ul class='dropdown-menu' role='menu'>                              
                               <li>
                                     <a role='menuitem' href='#'>My Profile</a>
@@ -682,16 +683,16 @@ function _get_header($page, $menus = array())
 						
 						<ul>
 						" . (! isset($framework->session->userdata['wizard']) ? "
-								<li class='dashboard ".(($page['current_basename'] == 'dashboard') ? "active":"")."'>
+								<li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
 									<a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
 								</li>
-								<li class='marketplace ".(($page['current_basename'] == 'marketplace') ? "active":"")."'>
+								<li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active":"") . "'>
 									<a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
 								</li>
-								<li class='support ".(($page['current_basename'] == 'support') ? "active":"")."'>
+								<li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
 									<a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
 								</li> 
-								<li class='root dropdown ".(($page['current_basename'] == 'root') ? "active":"")."'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-root'></i> <span>Root</span></a>
+								<li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
 									<ul class='dropdown-menu' role='menu'>                              
 									  <li>
 											<a role='menuitem' href='#'>My Profile</a>

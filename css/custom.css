@@ -73,7 +73,7 @@
 .ci-Clear_CARE:before {
 	content: "\e600";
 }
-.ci-root:before {
+.ci-my-account:before {
 	content: "\e603";
 }
 .ci-cloud:before {
@@ -179,7 +179,7 @@ h1.page-title{ font-family: "RobotoThin", sans-serif; font-weight: normal;}
 .main-wrapper header > ul > li.dashboard.active > a:after, .main-wrapper header > ul > li.dashboard.open > a:after{border-bottom-color:#608921; }
 .main-wrapper header > ul > li.marketplace.active > a:after, .main-wrapper header > ul > li.marketplace.open > a:after{border-bottom-color:#c2510f; }
 .main-wrapper header > ul > li.support.active > a:after, .main-wrapper header > ul > li.support.open > a:after{border-bottom-color:#3d85c6; }
-.main-wrapper header > ul > li.root.active > a:after, .main-wrapper header > ul > li.root.open > a:after{border-bottom-color:#999999; }
+.main-wrapper header > ul > li.my-account.active > a:after, .main-wrapper header > ul > li.my-account.open > a:after{border-bottom-color:#999999; }
 
 input[type="checkbox"].form-control{width: auto;}
 input[type="radio"].form-control{width: auto;}
@@ -350,7 +350,7 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .small_menu ul li.dashboard a:hover, .small_menu ul li.dashboard a:hover i{color:#608921;}
 .small_menu ul li.marketplace a:hover, .small_menu ul li.marketplace a:hover i{color:#c2510f;}
 .small_menu ul li.support a:hover, .small_menu ul li.support a:hover i{color:#3d85c6;}
-.small_menu ul li.root a:hover, .small_menu ul li.root a:hover i{color:#999;}
+.small_menu ul li.my-account a:hover, .small_menu ul li.my-account a:hover i{color:#999;}
 
 
 

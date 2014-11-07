@@ -100,7 +100,7 @@ a.highlight-link:hover {
 .main-wrapper.support_page header {
   border-bottom-color:#3d85c6;
 }
-.main-wrapper.root_page header {
+.main-wrapper.my_account_page header {
   border-bottom-color:#999999;
 }
 .main-wrapper header > ul {
@@ -196,7 +196,7 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li.support {
   border-top-color: #3d85c6;
 }
-.main-wrapper header > ul > li.root {
+.main-wrapper header > ul > li.my-account {
   border-top-color: #999999;
 }
 .main-wrapper header > ul > li.ClearOS > a.ci-ClearOS:before {
@@ -221,9 +221,9 @@ a.highlight-link:hover {
   background: #3d85c6;
   border-color: #3d85c6;
 }
-.main-wrapper header > ul > li.active.root > a i:before,
-.main-wrapper header > ul > li.open.root > a i:before,
-.main-wrapper header > ul > li.root:hover > a i:before {
+.main-wrapper header > ul > li.active.my-account > a i:before,
+.main-wrapper header > ul > li.open.my-account > a i:before,
+.main-wrapper header > ul > li.my-account:hover > a i:before {
   color: #fff;
   background: #999999;
   border-color: #999999;
@@ -240,9 +240,9 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li.support:hover > a {
   color: #3d85c6;
 }
-.main-wrapper header > ul > li.active.root > a,
-.main-wrapper header > ul > li.open.root > a,
-.main-wrapper header > ul > li.root:hover > a {
+.main-wrapper header > ul > li.active.my-account > a,
+.main-wrapper header > ul > li.open.my-account > a,
+.main-wrapper header > ul > li.my-account:hover > a {
   color: #999999;
 }
 .main-wrapper header > ul > li.dashboard > a i:before {
