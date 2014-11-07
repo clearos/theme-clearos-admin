@@ -262,14 +262,19 @@ a.highlight-link:hover {
   border:none;
   border-top: 2px solid #999;
 }
-h1.page-title {
+.page-title {
   background: #404040;
+  margin: 0;
+  padding: 20px 0 20px 30px;
+}
+.page-title h1 {
   margin: 0;
   font-family: "Roboto Light", sans-serif;
   font-weight: 100;
   font-size: 36px;
-  padding: 20px 0 20px 30px;
   color: #fff;
+  width: 60%;
+  float: left;
 }
 .main-content {
   display: table;
@@ -753,10 +758,11 @@ header:hover #magic-arrow {
 .theme-breadcrumb-links {
   float: right;
   font-size: 1.7em;
-  padding-right: 10px;
+  padding-right: 15px;
 }
 .theme-breadcrumb-links a {
   padding-left: 12px;
+  color: #fff;
 }
 /* ----------------------- */
 /* Tables                  */

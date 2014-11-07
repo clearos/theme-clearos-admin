@@ -371,7 +371,6 @@ function _wizard_page($page)
             <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                    <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
     ";
     $layout .= "<section class='content clearfix'>";
@@ -477,7 +476,6 @@ function _get_main_content($page)
             <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                    <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
                     <div class='col-lg-8 theme-content'>
@@ -502,7 +500,6 @@ function _get_main_content($page)
             <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                    <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
                     <div class='col-lg-8 theme-content'>
@@ -525,7 +522,6 @@ function _get_main_content($page)
             <section class='content-container'>
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                    <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
                     <div class='theme-content'>
@@ -711,7 +707,10 @@ function _get_header($page, $menus = array())
 					</div>
 					<div class='clearfix'></div>
             </header>
-            <h1 class='page-title'>".$page['title']."</h1>";
+            <div class='page-title'><h1>" . $page['title'] . "</h1>" . 
+            (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
+            </div>"
+        ;
 }
 
 /**
@@ -1177,6 +1176,10 @@ function _get_breadcrumb_links($links)
             $icon = 'fa fa-arrow-circle-right';
         else if ($type == 'wizard_previous')
             $icon = 'fa fa-arrow-circle-left';
+        else if ($type == 'app-info')
+            continue;  //$icon = 'fa fa-info-circle';
+        else if ($type == 'app-documentation')
+            $icon = 'fa fa-life-ring';
 
         $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'>
             $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . "'></i>$text_right</a>";
