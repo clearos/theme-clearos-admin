@@ -636,7 +636,8 @@ function _get_header($page, $menus = array())
         ";
     }
 
-    // TODO Idenify 'My Account Page
+    // TODO Identify 'My Account Page
+    // TODO Hard coded text below
     return "
              <header class='mainheader'>
 			 <div class='navbar-header'>
