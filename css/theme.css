@@ -1267,7 +1267,7 @@ header:hover #magic-arrow {
   content: ' ';
 }
 .block-title {
-  margin: 0px 0 15px;
+  margin: 7px 0px 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
   color: #c2510f;

@@ -215,29 +215,6 @@ input[type="radio"].form-control{width: auto;}
 .marketplace-app-info .col-md-3:after { background: #eee; content: " "; height: 120px; position: absolute; right: 0; top: 0; width: 1px;}
 .marketplace-app-info .col-md-3:last-child:after { display: none;}
 
-.appInfo {
-    display: block;
-    list-style: outside none none;
-    margin: 0;
-    padding: 0;
-}
-.appInfo dt {
-    clear: both;
-    color: #c2510f;
-    font-size: 14px;
-    font-weight: normal;
-    margin: 0;
-    padding: 10px 0 2px;
-    text-transform: uppercase;
-}
-.appInfo dd {
-    color: #666;
-    font-size: 14px;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-}
-
 .alert-warning .fa-exclamation-triangle{float: left; margin:3px 10px 0 0;}
 
 .about-app { color: #a3591a; display: block; font-size: 18px; font-weight: normal; margin: 0; padding: 5px 0 10px; text-transform: uppercase;}
@@ -264,20 +241,6 @@ input[type="radio"].form-control{width: auto;}
   font-weight: normal;
   margin: 0;
   padding: 20px 0 10px;
-}
-
-#ci_users-users_dashboard-summary .box-header h3,
-#ci_base-dashboard_widgets-shutdown .box-header h3 {
-  background: none repeat scroll 0 0 #f5f5f5;
-  border-bottom: 1px solid #dddddd;
-  line-height: 40px;
-  margin: -15px -15px 20px;
-  padding: 0 10px 0 32px;
-}
-
-#ci_users-users_dashboard-summary .box-header h3:before ,
-#ci_base-dashboard_widgets-shutdown .box-header h3:before {
-border-bottom:0px solid #c2510f;
 }
 
 .theme-app-logo-container.box{background: #ffffff; /* Old browsers */
