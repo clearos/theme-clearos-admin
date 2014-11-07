@@ -542,11 +542,11 @@ function _get_main_content($page)
                     " . _get_content_header() . "
                 </section>
                 <section class='content clearfix'>
-                    <div class='col-lg-7 theme-content'>
+                    <div class='col-lg-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
-                    <div class='col-lg-5'>
+                    <div class='col-lg-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_summary'] . "
