@@ -574,6 +574,40 @@ header:hover #magic-arrow {
 /* ============================================= */
 
 /* ----------------------- */
+/* App Help Box            */
+/* ----------------------- */
+
+.theme-help-box-container {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  padding-top: 5px;
+  border-top: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 10px 5px;
+}
+.theme-help-box-content {
+  padding-bottom: 15px;
+  clear: both;
+}
+.theme-help-box-icon {
+  height: 50px;
+  width: 50px;
+  margin: 5px 15px;
+  float: left;
+}
+.theme-help-box-description {
+  display: inline;
+  margin-top: 2px;
+}
+
+/* ----------------------- */
 /* Anchors and buttons     */
 /* ----------------------- */
 

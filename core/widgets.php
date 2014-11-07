@@ -3004,16 +3004,13 @@ function theme_help_box($data)
             $data['action']['js']
         );
 
-    return theme_infobox(
-        'info',
-        'TODO',
-        "<div class='theme-help-box-breadcrumb' >" . $data['name'] . "</div><div style='float: right; margin-right: 15px;'>" . $action . "</div>
-        <div class='theme-help-box-content'>
-          <div class='theme-help-box-icon'><img src='" . $data['icon_path'] . "' alt=''></div>
-          <div class='theme-help-box-assets'>$help_box_assets</div>
-          <div class='theme-help-box-description'>" . $data['description'] . "</div>
-        </div>"
-    );
+    return 
+        "<div class='theme-help-box-container'>
+           <div class='theme-help-box-content'>
+             <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
+             <div class='theme-help-box-description'>" . $data['description'] . "</div>
+           </div>
+        </div>";
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3240,19 +3237,23 @@ function theme_app_logo($basename, $options = NULL)
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $size = (isset($options['size'])) ? " " . $options['size'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
+    $no_container = (isset($options['no_container'])) ? TRUE : FALSE;
     $filename = clearos_theme_path('ClearOS-Admin') . '/img/placeholder.svg';
     if (file_exists(clearos_app_base($basename) . "htdocs/$basename.svg"))
         $filename = clearos_app_base($basename) . "htdocs/$basename.svg";
     else if (file_exists(CLEAROS_CACHE_DIR . "/mp-logo-$basename.svg"))
         $filename = CLEAROS_CACHE_DIR . "/mp-logo-$basename.svg";
 
-    return "
-        <div class='theme-app-logo-container box'>
-            <div class='theme-app-logo box-body$class'>
-                " . file_get_contents($filename) . "
+    if ($no_container)
+        return file_get_contents($filename);
+    else
+        return "
+            <div class='theme-app-logo-container box'>
+                <div class='theme-app-logo box-body$class'>
+                    " . file_get_contents($filename) . "
+                </div>
             </div>
-        </div>
-    ";
+        ";
 }
 
 /**

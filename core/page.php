@@ -370,7 +370,7 @@ function _wizard_page($page)
     $layout .= "
             <section class='content-container'>
                 <section class='content-header clearfix'>
-                    " . _get_content_header() . "
+                    " . _get_content_header($page) . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
     ";
@@ -476,7 +476,7 @@ function _get_main_content($page)
         return "
             <section class='content-container'>
                 <section class='content-header clearfix'>
-                    " . _get_content_header() . "
+                    " . _get_content_header($page) . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
@@ -501,7 +501,7 @@ function _get_main_content($page)
         return "
             <section class='content-container'>
                 <section class='content-header clearfix'>
-                    " . _get_content_header() . "
+                    " . _get_content_header($page) . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
@@ -524,7 +524,7 @@ function _get_main_content($page)
         return "
             <section class='content-container'>
                 <section class='content-header clearfix'>
-                    " . _get_content_header() . "
+                    " . _get_content_header($page) . "
                     <h1 class='theme-breadcrumb'>" . $page['title'] . "</h1>" . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "
                 </section>
                 <section class='content clearfix'>
@@ -539,7 +539,7 @@ function _get_main_content($page)
         return "
             <section class='content-container'>
                 <section class='content-header clearfix'>
-                    " . _get_content_header() . "
+                    " . _get_content_header($page) . "
                 </section>
                 <section class='content clearfix'>
                     <div class='col-lg-8 theme-content'>
@@ -720,10 +720,9 @@ function _get_header($page, $menus = array())
  * @return string menu HTML output
  */
 
-function _get_content_header()
+function _get_content_header($page)
 {
-    // TODO
-    return "";
+    return $page['page_help'];
 }
 
 /**
