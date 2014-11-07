@@ -800,8 +800,8 @@ function _get_app_tile(app, options)
     }
 
     var buttons = '<div class="btn-group">' +
-        '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>' +
-        '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>' +
+        '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>' +
+        '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default btn-xs ' + disable_buttons + '">' + lang_uninstall + '</a>' +
         '</div>'
     ;
 
@@ -824,7 +824,7 @@ function _get_app_tile(app, options)
     return '\
        <div class="col-md-3">\
           <div class="app_box" id="box-' + app.basename + '">\
-            <h4 class="block-title' + font_size + '">' + app.name + '</h4>\
+            <h4 class="block-title marketplace-tile-title' + font_size + '">' + app.name + '</h4>\
             <figure id="app-logo-' + app.basename + '">\
               ' + get_placeholder("svg") + '\
             </figure>\
@@ -833,7 +833,7 @@ function _get_app_tile(app, options)
             </div>\
             <div class="app_footer">\
               '+ buttons +'<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>\
-              <a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-default  pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>\
+              <a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-default btn-xs pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>\
             </div>\
             </div>\
           </div>\
