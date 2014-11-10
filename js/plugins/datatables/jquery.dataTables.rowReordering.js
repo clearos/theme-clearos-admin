@@ -202,7 +202,7 @@
             $("tbody", oTable).disableSelection().sortable({
                 cursor: "move",
                 helper: tableFixHelper,
-                update: function (event, ui) {
+                sortchange: function (event, ui) {
                     var $dataTable = oTable;
                     var tbody = $(this);
                     var sSelector = "tbody tr";
