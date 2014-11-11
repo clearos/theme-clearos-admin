@@ -26,6 +26,16 @@ $package['settings'] = array(
         'required' => TRUE,
         'default' => 0,
     ),
+    'hide_app_description' => array(
+        'lang_tag' => 'base_hide_app_description',
+        'type' => 'dropdown',
+        'options' => array(
+            0 => lang('base_no'),
+            1 => lang('base_yes'),
+        ),
+        'required' => TRUE,
+        'default' => 1,
+    ),
     'css' => array(
         'lang_tag' => 'base_css_style',
         'type' => 'dropdown',
