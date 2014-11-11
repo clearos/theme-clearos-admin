@@ -3,6 +3,10 @@
 /* ============================================= */
 
 
+/* =================================== */
+/* Add Required Fonts                  */
+/* =================================== */
+
 
 @font-face {
     font-family: 'equiplight';
@@ -14,7 +18,6 @@
          url('../fonts/EquipLig-webfont.svg#equiplight') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
@@ -317,6 +320,10 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li.support.active > a:after, .main-wrapper header > ul > li.support.open > a:after{border-bottom-color:#3d85c6; }
 .main-wrapper header > ul > li.my-account.active > a:after, .main-wrapper header > ul > li.my-account.open > a:after{border-bottom-color:#999999; }
 
+/* ================================*/
+/* Root Menu Dropdown Css          */
+/* ================================*/
+
 .main-wrapper header > ul > li .dropdown-menu {
   width: 100%;
   border-radius: 0;
@@ -324,6 +331,12 @@ a.highlight-link:hover {
   border:none;
   border-top: 2px solid #999;
 }
+
+
+/* ========================*/
+/* Page Title Css          */
+/* ========================*/
+
 .page-title {
   background: #404040;
   margin: 0;
@@ -338,6 +351,11 @@ a.highlight-link:hover {
   width: 60%;
   float: left;
 }
+
+/* ========================*/
+/* Main Content Css       */
+/* ========================*/
+
 .main-content {
   display: table;
   width: 100%;
@@ -353,7 +371,7 @@ a.highlight-link:hover {
 
 
 /* ============================*/
-/* Sidebar Css                 */
+/* Sidebar Menu Css                 */
 /* ============================*/
 
 .main-content aside {
@@ -475,8 +493,10 @@ section.content-container {
   vertical-align: top;
 }
 
+
+
 /* ============================================= */
-/* H E A D E R                                   */
+/* Stickey Header Css                            */
 /* ============================================= */
 
 #mainheader_sticky.is-sticky header {
