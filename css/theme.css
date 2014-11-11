@@ -45,6 +45,7 @@ body {
   background: #f5f5f5;
   padding-top: 20px;
 }
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Roboto Light", sans-serif;
   font-weight: normal;
@@ -111,6 +112,10 @@ a.highlight-link:hover {
   pointer-events: none;
 }
 
+
+/* ================================*/
+/* Main Header Css                 */
+/* ================================*/
 
 .main-wrapper {
   background: #fff;
@@ -301,6 +306,11 @@ a.highlight-link:hover {
   padding-left: 1px;
 }
 
+
+/* ================================*/
+/* Main Header Css                 */
+/* ================================*/
+
 .main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after{border-bottom-color:#686868; }
 .main-wrapper header > ul > li.dashboard.active > a:after, .main-wrapper header > ul > li.dashboard.open > a:after{border-bottom-color:#608921; }
 .main-wrapper header > ul > li.marketplace.active > a:after, .main-wrapper header > ul > li.marketplace.open > a:after{border-bottom-color:#c2510f; }
@@ -338,6 +348,14 @@ a.highlight-link:hover {
   font-size: 15px;
   line-height: 26px;
 }
+
+
+
+
+/* ============================*/
+/* Sidebar Css                 */
+/* ============================*/
+
 .main-content aside {
   display: table-cell;
   margin: 0;
@@ -1709,40 +1727,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .marketplace-app-info .col-md-3:after { background: #eee; content: " "; height: 120px; position: absolute; right: 0; top: 0; width: 1px;}
 .marketplace-app-info .col-md-3:last-child:after { display: none;}
-
-
 .about-app { color: #a3591a; display: block; font-size: 18px; font-weight: normal; margin: 0; padding: 5px 0 10px; text-transform: uppercase;}
-
 #server_services_filter input[type="text"]{width: 100%;}
-
 #marketplace_tools_container .btn-secondary, #marketplace_tools_container .btn-secondary:hover, #marketplace_tools_container .btn-secondary:focus{background: none; border:none;}
-
 #marketplace-localization h4{color:#a3591a; border:none; font-size: 18px;}
 #marketplace-localization h4:before{display:none;}
-
 #marketplace-developer .marketplace-devel-field{color:#666;  font-size: 16px;}
 #marketplace-developer .fa{color:#c2510f;  font-size: 18px;}
 #marketplace-developer .marketplace-devel-container{clear:both;}
 #marketplace-review #add_review{margin-bottom:10px;}
 
 
+
+/*
+#app-details-container #marketplace-screenshot h3:before,
+#app-details-container #marketplace-developer h3,
+#app-details-container #marketplace-developer h3:before,
+#app-details-container #marketplace-overview h3,
+#app-details-container #marketplace-overview h3:before { border-bottom:0 none;} 
+*/
+
+
+
 /* ----------------------- */
 /* Box CSS                 */
 /* ----------------------- */
 
-.box{border: 1px solid #ddd;
-  border-radius: 3px;
-  background: #fff;
-  padding: 15px;
-  margin-bottom: 30px;
-  position: relative;
-}
-
-
-.box:hover {
-  box-shadow: 0 0 10px #ddd;
-}
-
+.box{border: 1px solid #ddd; border-radius: 3px; background: #fff; padding: 15px; margin-bottom: 30px; position: relative;}
+.box:hover { box-shadow: 0 0 10px #ddd;}
 .box-title{ font-family: "Roboto Light", sans-serif; font-weight: normal; font-size: 18px;}
 
 
@@ -1796,17 +1808,24 @@ input[type="radio"].form-control{width: auto;}
 
 
 .alert-warning .fa-exclamation-triangle{float: left; margin:3px 10px 0 0;}
+
+
+
+/* ----------------------------- */
+/* Table Fix Css                */
+/* ------------------------------*/
 .table > thead > tr > th { border-bottom-width: 1px;}
 
-/*#app-details-container #marketplace-screenshot h3:before,
-#app-details-container #marketplace-developer h3,
-#app-details-container #marketplace-developer h3:before,
-#app-details-container #marketplace-overview h3,
-#app-details-container #marketplace-overview h3:before { border-bottom:0 none;} */
 
+
+
+
+/* ----------------------*/
+/* Login Box Css         */
+/* ----------------------*/
 
 .login_box{ width: 666px; margin: 185px auto 0; background: #fff; border-radius: 5px;}
-  .login_box .login_left{ width: 49.6%; float: left; border-radius: 5px 0 0 0; border-top: 4px #686868 solid; min-height: 314px;
+.login_box .login_left{ width: 49.6%; float: left; border-radius: 5px 0 0 0; border-top: 4px #686868 solid; min-height: 314px;
   background: #ffffff; /* Old browsers */
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI4NiUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjdmN2Y3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -1828,13 +1847,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .login_box .login_right input[type="checkbox"]{ height: auto; width: auto;}
 .login_box .login_right input[type="submit"]{ border: 1px #bbb solid; background: #e2e2e2; padding: 10px 23px; font-size: 14px; font-weight: 400; margin: 10px 0 20px; color: #989494; width: auto; line-height: inherit; height: auto; border-radius: 3px; box-shadow: inset 0 1px 0 #e8e8e8;}
 
-#pseudonym_field{ margin:0px;}
-#confirm_id_field{ margin:0px; margin-bottom:10px;}
-#confirm_id_field input{ width:248px; float:right; clear:right;}
 
+/* ----------------------*/
+/* Device Logo Css       */
+/* ----------------------*/
 
-.qsf_file .form-group{ margin:0;}
-.qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
 .logo1{display:none;color: #686868;font-family: "ci";font-size: 70px;line-height: 50px; padding:10px 0 10px 20px; float:left;
 background: linear-gradient(to right, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -1845,10 +1862,11 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 
 
+
+
 /* ----------------------------- */
 /* Responsive Menu Css           */
 /* ------------------------------*/
-
 
 .small_menu ul{ margin: 0 20px; padding:0; list-style:none; width:96%; float:right;}
 .small_menu ul li{  border-top:1px #ddd solid;}
@@ -1863,7 +1881,28 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 
 
-/*responsive css*/
+
+
+
+
+/* ---------------------------------*/
+/* Additional Current Style Fixes   */
+/* ---------------------------------*/
+
+#pseudonym_field{ margin:0px;}
+#confirm_id_field{ margin:0px; margin-bottom:10px;}
+#confirm_id_field input{ width:248px; float:right; clear:right;}
+
+.qsf_file .form-group{ margin:0;}
+.qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
+
+
+
+
+/* ----------------------------- */
+/* Responsive Css                */
+/* ------------------------------*/
+
 @media (max-width: 1024px) {
 .main-wrapper{ max-width:100%;}
 .main-wrapper header{ width:100%!important;}
