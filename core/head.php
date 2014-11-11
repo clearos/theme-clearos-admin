@@ -66,6 +66,7 @@ function theme_page_head($settings)
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/custom.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/colorpicker/bootstrap-colorpicker.min.css'>
+<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/lightbox.css'>
 
 
 <!-- FAVICONS -->

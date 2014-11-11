@@ -597,14 +597,10 @@ header:hover #magic-arrow {
   margin-right: 15px;
   padding: 10px 5px;
 }
-.theme-help-box-content {
-  padding-bottom: 15px;
-  clear: both;
-}
 .theme-help-box-icon {
   height: 50px;
   width: 50px;
-  margin: 5px 15px;
+  margin: 0px 15px;
   float: left;
 }
 .theme-help-box-description {
