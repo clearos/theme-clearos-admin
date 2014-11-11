@@ -3250,7 +3250,7 @@ function theme_app_logo($basename, $options = NULL)
     else
         return "
             <div class='theme-app-logo-container box'>
-                <div class='theme-app-logo box-body$class'>
+                <div id='app-logo-$basename' class='theme-app-logo box-body$class'>
                     " . file_get_contents($filename) . "
                 </div>
             </div>
