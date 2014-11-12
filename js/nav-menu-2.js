@@ -55,6 +55,9 @@ $(function() {
 $(document).ready(function() {
 
     var menu_category = $('input[name=options]:checked', '#category-select').attr('id');
+    // Hacks below keep style the same even though we're hiding li elements
+    $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
+    $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
     $('.' + menu_category).show();
     $('#' + menu_category).parent().addClass('active');
     $(".sidebar .treeview").navmenu();
@@ -68,6 +71,9 @@ $(document).ready(function() {
 
     $('#category-select label.btn').on('click', function (e) {
         menu_category = $('input[name=options]:checked', '#category-select').attr('id');
+        // Hacks below keep style the same even though we're hiding li elements
+        $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
+        $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
         // If user clicked on button that was already selected, toggle the sliders
         if (menu_category == $(this).children('input[type=\'radio\']:first').attr('id')) {
             if ($('.sidebar-menu-2').hasClass('all-active')) {
