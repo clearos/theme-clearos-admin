@@ -51,18 +51,18 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/jquery.sticky.js'></script>
 <script type='text/javascript' src='$theme_url/js/script.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery-ui.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/lightbox.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.cookie.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.base64.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.dotdotdot.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/colorpicker/bootstrap-colorpicker.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/dateFormat/dateFormat.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/dataTables.bootstrap.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.rowReordering.js'></script>
-<script type='text/javascript' src='$theme_url/js/lightbox.min.js'></script>
-<script type='text/javascript' src='$theme_url/js/jquery.cookie.js'></script>
-<script type='text/javascript' src='$theme_url/js/jquery.base64.min.js'></script>
-<script type='text/javascript' src='$theme_url/js/jquery.dotdotdot.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/bootstrap-slider/bootstrap-slider.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/sparkline/jquery.sparkline.min.js'></script>
 
-<script type='text/javascript' src='$theme_url/old_js/plugins/sparkline/jquery.sparkline.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.resize.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.pie.min.js'></script>
