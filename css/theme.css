@@ -569,7 +569,61 @@ header:hover #magic-arrow {
 /* M E N U                                       */
 /* ============================================= */
 
-/* TODO - Move to menu-1.js */
+/* Common */
+.sidebar-form {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  margin: 10px 10px;
+}
+.sidebar-form input[type="text"],
+.sidebar-form .btn {
+  box-shadow: none;
+  background-color: #fafafa;
+  border: 1px solid #fafafa;
+  height: 35px;
+}
+.sidebar-form input[type="text"] {
+  color: #666;
+  -webkit-border-top-left-radius: 2px !important;
+  -webkit-border-top-right-radius: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -webkit-border-bottom-left-radius: 2px !important;
+  -moz-border-radius-topleft: 2px !important;
+  -moz-border-radius-topright: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -moz-border-radius-bottomleft: 2px !important;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 2px !important;
+}
+.sidebar-form input[type="text"]:focus,
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.sidebar-form .btn {
+  color: #999;
+  -webkit-border-top-left-radius: 0 !important;
+  -webkit-border-top-right-radius: 2px !important;
+  -webkit-border-bottom-right-radius: 2px !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  -moz-border-radius-topleft: 0 !important;
+  -moz-border-radius-topright: 2px !important;
+  -moz-border-radius-bottomright: 2px !important;
+  -moz-border-radius-bottomleft: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 2px !important;
+  border-bottom-right-radius: 2px !important;
+  border-bottom-left-radius: 0 !important;
+}
+/* Type 1 (default)
+/* ============================================= */
 
 .sub_menu {
   position: relative;
@@ -667,6 +721,85 @@ header:hover #magic-arrow {
   text-decoration: none;
 }
 
+/* Type 2 (compact)
+/* ============================================= */
+
+.theme-menu-2-list {
+  text-align: center;
+  margin: 10px;
+}
+.theme-menu-2-category {
+  padding: 2px 4px 4px 4px;
+  height: 38px;
+  text-align: center;
+}
+.theme-menu-2-list div.btn-group {
+  background: #fafafa;
+}
+.sidebar {
+  margin-bottom: 5px;
+}
+.sidebar .sidebar-menu-2 > li > a {
+  padding: 5px;
+  margin-left: 15px;
+  display: block;
+  font-size: 10pt;
+}
+.sidebar .sidebar-form input:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-color: transparent!important;
+}
+.sidebar .sidebar-menu-2 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .sidebar-menu-2 > li {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #dbdbdb;
+}
+.sidebar .sidebar-menu > li > a {
+  padding: 12px 5px 12px 15px;
+  display: block;
+}
+.sidebar .sidebar-menu-2 > li > a > .fa,
+.sidebar .sidebar-menu-2 > li > a > .glyphicon,
+.sidebar .sidebar-menu-2 > li > a > .ion {
+  width: 20px;
+}
+.sidebar .sidebar-menu-2 .treeview-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li {
+  margin: 0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li > a {
+  padding: 5px 5px 5px 40px;
+  display: block;
+  font-size: 10pt;
+  margin: 0px 0px;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .fa,
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .ion {
+  width: 20px;
+}
+.theme-menu-2-category:hover {
+  background-color: #f0f0f0 !important;
+}
+.theme-menu-2-category.active {
+  background-color: #7a7474 !important;
+}
+.theme-menu-2-category.active path {
+  fill: white;
+}
 /* ============================================= */
 /* W I D G E T S                                 */
 /* ============================================= */

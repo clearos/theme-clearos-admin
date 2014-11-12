@@ -957,6 +957,7 @@ function _get_left_menu_2($page)
 {
     $menu_data = $page['menus'];
     $spotlights = '';
+    $no_of_categories = 0;
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -990,9 +991,6 @@ function _get_left_menu_2($page)
             continue;
         }
 
-        // Close out menus on transitions
-        //-------------------------------
-
         $new_category = ($page_meta['category'] == $current_category) ? FALSE : TRUE;
         $new_subcategory = ($page_meta['subcategory'] == $current_subcategory) ? FALSE : TRUE;
 
@@ -1007,8 +1005,10 @@ function _get_left_menu_2($page)
             $main_apps .= "\t\t\t\t</li>\n";
         }
 
-        if ($page_meta['category'] != $current_category)
+        if ($page_meta['category'] != $current_category) {
+            $no_of_categories++;
             $current_category = $page_meta['category'];
+        }
 
         // Subcategory transition
         //-----------------------
@@ -1061,6 +1061,8 @@ function _get_left_menu_2($page)
 
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
 
+    $percent_width = round(100 / $no_of_categories, 0, PHP_ROUND_HALF_UP);
+
     return "
 <aside class='left-side sidebar-offcanvas'>
     <section class='sidebar'>
@@ -1072,49 +1074,49 @@ function _get_left_menu_2($page)
                 </span>
             </div>
         " . form_close() . "
-        <form action='#' method='get' id='category-select'>
-            <div class='btn-toolbar theme-menu-1-list'>
+        <div class='btn-toolbar theme-menu-2-list'>
+            <form action='#' method='get' id='category-select'>
                 <div class='btn-group' data-toggle='buttons'>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-cloud'" . $active_category['cloud'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_cloud') . "'>
                         " . file_get_contents($img_path . 'cloud.svg') . "
                         </div>
                     </label>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-network'" . $active_category['network'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_network') . "'>
                         " . file_get_contents($img_path . 'network.svg') . "
                         </div>
                     </label>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-gateway'" . $active_category['gateway'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_gateway') . "'>
                         " . file_get_contents($img_path . 'gateway.svg') . "
                         </div>
                     </label>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-server'" . $active_category['server'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_server') . "'>
                         " . file_get_contents($img_path . 'server.svg') . "
                         </div>
                     </label>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-system'" . $active_category['system'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_system') . "'>
                         " . file_get_contents($img_path . 'system.svg') . "
                         </div>
                     </label>
-                    <label class='btn btn-default theme-menu-1-category'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
                         <input type='radio' name='options' id='category-report'" . $active_category['report'] . ">
                         <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_reports') . "'>
                         " . file_get_contents($img_path . 'reports.svg') . "
                         </div>
                     </label>
                 </div>
-            </div>
-        </form>
-        <ul class='sidebar-menu'>
+            </form>
+        </div>
+        <ul class='sidebar-menu-2'>
 $main_apps
         </ul>
     </section>
