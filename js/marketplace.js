@@ -825,8 +825,8 @@ function _get_app_tile(app, options)
        <div class="col-md-3">\
           <div class="app_box" id="box-' + app.basename + '">\
             <h4 class="block-title marketplace-tile-title' + font_size + '">' + app.name + '</h4>\
-            <figure id="app-logo-' + app.basename + '">\
-              ' + get_placeholder("svg") + '\
+            <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
+                ' + get_placeholder("svg") + '\
             </figure>\
             <div class="app_title">' + theme_price(UNIT, app.pricing) + '\
               <div class="app_rating">' + theme_star_rating(app.rating) + '</div>\

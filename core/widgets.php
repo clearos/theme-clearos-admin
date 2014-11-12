@@ -3006,11 +3006,11 @@ function theme_help_box($data)
 
     return 
         "<div class='theme-help-box-container'>
-            <button type='button' class='close'>&times;</button>
-               <div class='theme-help-box-content'>
+             <button type='button' class='close'>&times;</button>
+             <div class='theme-help-box-content'>
                  <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
                  <div class='theme-help-box-description'>" . $data['description'] . "</div>
-               </div>
+             </div>
         </div>";
 }
 
@@ -3250,7 +3250,7 @@ function theme_app_logo($basename, $options = NULL)
     else
         return "
             <div class='theme-app-logo-container box'>
-                <div class='theme-app-logo box-body$class'>
+                <div id='app-logo-$basename' class='theme-app-logo box-body$class'>
                     " . file_get_contents($filename) . "
                 </div>
             </div>

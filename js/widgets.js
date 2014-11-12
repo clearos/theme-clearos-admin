@@ -91,6 +91,18 @@ function theme_dialog_close(obj)
 }
 
 /**
+ *  * Format a date.
+ *   */
+
+function theme_format_date(value, format)
+{
+    // Uses lightweight jquery plugin 
+    // https://github.com/phstc/jquery-dateFormat
+    $.format = DateFormat.format;
+    return $.format.date(value, format);
+}
+    
+/**
  * Infobox.
  */
 
