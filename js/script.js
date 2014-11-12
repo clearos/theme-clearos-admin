@@ -79,6 +79,7 @@
 
 
 		// open first menu by-default 
+
 		if(!jQuery('.left_nav li').hasClass("active")){
 			jQuery('.left_nav li:first a:first').trigger('click');
 		}else{
@@ -86,7 +87,7 @@
 			jQuery('.left_nav li.active').find('>ul.sub_menu').slideDown('slow');
 
 		}
-		
+				
 		var asidewidth = jQuery(".marketPlaceSection aside").width();
 		jQuery(".left_nav").css('width', asidewidth);
 		//jQuery(".marketplace_page .left_nav").sticky({topSpacing:64});
