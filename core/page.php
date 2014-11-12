@@ -924,7 +924,7 @@ function _get_left_menu_1($page)
 
         // App page
         //---------
-
+       // echo "<pre>";print_r($page_meta);
         $main_apps .= "<li><a href='" . $url . "'>" . htmlspecialchars($page_meta['title']) . " </a></li>";
     }
 
@@ -1184,7 +1184,7 @@ function _get_breadcrumb_links($links)
         else if ($type == 'app-info')
             continue;  //$icon = 'fa fa-info-circle';
         else if ($type == 'app-documentation')
-            $icon = 'fa fa-life-ring';
+            $icon = 'fa fa-book';
 
         $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'$target>
             $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . "'></i>$text_right</a>";
