@@ -62,9 +62,9 @@ function theme_page_head($settings)
     return "
 <!-- Basic Styles -->
 <!-- Theme Styles -->
-<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/bootstrap.css'>
+<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/bootstrap.css?v=3.0'>
+<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/fontawesome.css?v=4.2.0'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme.css'>
-<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/custom.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/colorpicker/bootstrap-colorpicker.min.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/lightbox.css'>
 

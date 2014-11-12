@@ -534,7 +534,7 @@ function theme_field_info($id, $label, $text, $options = NULL)
     return "
         <div id='$field_id_html' class='form-group theme-field-info" . $hide_field . "'>
             <label class='col-sm-5 control-label' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'><div class='form-control' style='border: none; padding-left: 0px;'>$text</div></div>
+            <div class='col-sm-7 theme-field-right'><div class='form-control'>$text</div></div>
         </div>
     ";
 }
@@ -750,7 +750,7 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
         return "
             <div id='$field_id_html' class='form-group theme-fieldview" . $hide_field . "'>
                 <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-                <div class='col-sm-7 theme-field-right'><span class='form-control' style='border: none; box-shadow: none; padding-left: 0px; padding-top: 7px;' id='$text_id_html'>$text</span>$input_html</div>
+                <div class='col-sm-7 theme-field-right'><span class='form-control' id='$text_id_html'>$text</span>$input_html</div>
             </div>
         ";
     }
@@ -3006,11 +3006,11 @@ function theme_help_box($data)
 
     return 
         "<div class='theme-help-box-container'>
-           <div class='theme-help-box-content'>
-             <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
-             <div class='theme-help-box-description'>" . $data['description'] . "</div>
-             <div class='clearfix'></div>
-           </div>
+             <button type='button' class='close'>&times;</button>
+             <div class='theme-help-box-content'>
+                 <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
+                 <div class='theme-help-box-description'>" . $data['description'] . "</div>
+             </div>
         </div>";
 }
 
