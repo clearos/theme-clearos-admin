@@ -61,7 +61,6 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/jquery.base64.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery.dotdotdot.min.js'></script>
 
-<script type='text/javascript' src='$theme_url/old_js/plugins/bootstrap-dialog/bootstrap-dialog.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/metisMenu/jquery.metisMenu.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/bootstrap-slider/bootstrap-slider.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/sparkline/jquery.sparkline.min.js'></script>
