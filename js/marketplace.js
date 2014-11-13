@@ -126,7 +126,7 @@ function theme_app(type, list, options)
     $('#marketplace-app-container').append('\
         <div class="clearfix"></div>\
         <script type="text/javascript">\
-            $(".marketplace-app-info-description").dotdotdot({\
+            $(".app-description").dotdotdot({\
                 ellipsis: "..."\
             });\
         </script>\

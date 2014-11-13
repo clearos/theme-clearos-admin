@@ -791,6 +791,15 @@ header:hover #magic-arrow {
 .sidebar .sidebar-menu-2 .treeview-menu > li > a > .ion {
   width: 20px;
 }
+.sidebar .sidebar-menu-2 .treeview-menu li.active {
+  background-color: #f0f0f0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu li.active a {
+  color: #7a7474;
+}
+.sidebar .sidebar-menu-2 .treeview-menu li a:hover {
+  text-decoration: none;
+}
 .theme-menu-2-category:hover {
   background-color: #f0f0f0 !important;
 }
@@ -939,6 +948,9 @@ header:hover #magic-arrow {
 /* Progress bars           */
 /* ----------------------- */
 
+.progress {
+}
+
 /* ----------------------- */
 /* Login form              */
 /* ----------------------- */
@@ -1013,12 +1025,8 @@ header:hover #magic-arrow {
 /* Tables                  */
 /* ----------------------- */
 
-.theme-summary-table-action {
-  float: right; padding: 10px 10px 0px 0px
-}
 .theme-box-tools {
-  float: right;
-  padding: 10px 10px;
+  margin-top: -15px;
 }
 
 /* ----------------------- */
@@ -1238,9 +1246,6 @@ header:hover #magic-arrow {
   margin: 10px;
   overflow: hidden;
   display: inline-block;
-}
-#marketplace-app-container, #content-marketplace-apps {
-  text-align: center;
 }
 .marketplace-app.marketplace-tile {
   width: 150px;
@@ -1743,15 +1748,9 @@ footer {
   font-size: 12px;
 }
 
-
-
-
-
-
 /* ----------------------- */
-/* Clear Icons CSS              */
+/* Clear Icons CSS         */
 /* ----------------------- */
-
 
 @font-face {
   font-family: 'ci';
@@ -1832,20 +1831,32 @@ footer {
   content: "\e60f";
 }
 
-
-
 /* ----------------------- */
 /* App Detailpage CSS      */
 /* ----------------------- */
 
-
-.listsvg_cont{float: left; margin-right: 15px;}
-.listsvg_cont figure{margin-bottom: 5px; margin-right: 0;}
-.listsvg_cont .app_title{clear: both; text-align: center; padding-top: 0;}
-.app-description{overflow: hidden;  max-height: 140px;}
-.app-description p{font-size: 14px; line-height: 23px;}
-#app-search-load{text-align: center;}
-
+.listsvg_cont {
+  float: left;
+   margin-right: 15px;
+}
+.listsvg_cont figure {
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+.listsvg_cont .app_title {
+  clear: both; text-align: center;
+  padding-top: 0;
+}
+.app-description {
+  height: 140px;
+}
+.app-description p {
+  font-size: 14px;
+  line-height: 23px;
+}
+#app-search-load {
+  text-align: center;
+}
 #app-details-container h4, #app-details-container h3, .box-title {
   margin: 7px 0 15px;
   padding-bottom: 10px;
@@ -1863,18 +1874,27 @@ footer {
   left: 0;
   content: ' ';
 }
+.marketplace-devel-icon {
+  float: left; margin: 3px 10px 0 0;
+}
 
-
-.marketplace-devel-icon{float: left; margin: 3px 10px 0 0;}
-
-#app-details-container > div.row{margin: 0;}
-h1.page-title{ font-family: "RobotoThin", sans-serif; font-weight: normal;}
-
-#theme_app_sidebar > div{margin-bottom: 10px;}
-
-
-#app-details-container .row h3{border:none; font-size: 18px; color:#a3591a; }
-#app-details-container .row h3:before{display:none;}
+#app-details-container > div.row {
+  margin: 0;
+}
+h1.page-title {
+  font-family: "RobotoThin", sans-serif;
+  font-weight: normal;
+}
+#theme_app_sidebar > div {
+  margin-bottom: 10px;
+}
+#app-details-container .row h3i {
+  border:none;
+  font-size: 18px; color:#a3591a;
+}
+#app-details-container .row h3:before {
+  display:none;
+}
 
 #marketplace-localization #marketplace-localization h3,
 #app-details-container #marketplace-screenshot h3,
@@ -1884,7 +1904,6 @@ h1.page-title{ font-family: "RobotoThin", sans-serif; font-weight: normal;}
   display: block;
   font-size: 18px;
   font-weight: normal;
-  margin: 0;
   padding: 20px 0 10px;
 }
 

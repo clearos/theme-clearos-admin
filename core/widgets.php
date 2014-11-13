@@ -1973,8 +1973,8 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     return "
 <div class='box'>
   <div class='box-header'>
+    <div class='theme-box-tools pull-right'>$add_html</div>
     <h3 class='box-title'>$title</h3>
-    <div class='theme-box-tools'>$add_html</div>
   </div>
   <div class='box-body'>
     <table class='table table-striped $size_class' id='$dom_id'>
@@ -2145,8 +2145,8 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
 
 <div class='box'>
   <div class='box-header'>
+    <div class='theme-box-tools pull-right'>$add_html</div>
     <h3 class='box-title'>$title</h3>
-    <div class='theme-summary-table-action'>$add_html</div>
   </div>
   <div class='box-body'>
     <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table table-striped' id='$dom_id'>
