@@ -80,7 +80,7 @@ function theme_sdn_account_setup(landing_url, username, device_id) {
               </div>\
               <div class="modal-footer">\
                 <div class="btn-group">\
-                  <a href="' + landing_url + '?username=' + username + '&device_id=' + device_id + '" target="_blank" class="btn btn-primary theme-anchor-edit">' + lang_marketplace_setup_payment_on_clear + '</a>\
+                  <a href="' + landing_url + '?username=' + username + '&device_id=' + device_id + '" target="_blank" class="btn btn-primary theme-anchor-edit">' + lang_marketplace_setup_payment_on_clear + '<i class="fa fa-external-link theme-text-icon-spacing"></i></a>\
                   <a href="#" id="account-setup-cancel" class="btn btn-link theme-anchor-cancel">' + lang_cancel + '</a>\
                 </div>\
               </div>\
