@@ -104,7 +104,7 @@ function theme_page($page)
 function theme_page_open($settings)
 {   
     
-    return "<body class='marketplace_page'>\n";
+    return "<body id='clearos-body-container' class='marketplace_page'>\n";
 }
 
 /**
