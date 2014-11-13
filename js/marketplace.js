@@ -22,6 +22,7 @@ var lang = new Object();
 $(document).ready(function() {
     $(".my-colorpicker").colorpicker();
     $('body').tooltip({
+      html: true,
       selector: '[data-toggle=tooltip]'
     });
     handle_marketplace_on_page_ready();

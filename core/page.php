@@ -1157,8 +1157,10 @@ function _get_breadcrumb_links($links)
         }
 
         $target = '';
-        if (isset($link['target']))
+        if (isset($link['target'])) {
             $target = " target='" . $link['target'] . "'";
+            $external_tip = "<i class=\"fa fa-external-link theme-text-icon-spacing\"></i>";
+        }
 
         $id = 'bcrumb-' . rand(0 , 100);
         if (isset($link['id']))
@@ -1189,7 +1191,7 @@ function _get_breadcrumb_links($links)
             $icon = 'fa fa-book';
 
         $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'$target>
-            $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . "'></i>$text_right</a>";
+            $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . $external_tip . "'></i>$text_right</a>";
     }
     return "<span class='theme-breadcrumb-links $button_grp'>" . $link_html . "</span>";
 };
