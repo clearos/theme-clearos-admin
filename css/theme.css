@@ -797,7 +797,7 @@ header:hover #magic-arrow {
 .sidebar .sidebar-menu-2 .treeview-menu li.active a {
   color: #7a7474;
 }
-.sidebar .sidebar-menu-2 .treeview-menu li a:hover {
+.sidebar .sidebar-menu-2 .treeview-menu li a:hover, .sidebar .sidebar-menu-2 li.treeview a:hover {
   text-decoration: none;
 }
 .theme-menu-2-category:hover {
