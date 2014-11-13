@@ -55,6 +55,7 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/jquery.cookie.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery.base64.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery.dotdotdot.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/bootstrap-dialog/bootstrap-dialog.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/colorpicker/bootstrap-colorpicker.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/dateFormat/dateFormat.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.min.js'></script>
