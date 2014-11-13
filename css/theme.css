@@ -1368,6 +1368,9 @@ header:hover #magic-arrow {
 .marketplace-filter {
   min-width: 100px;
 }
+#marketplace_filter_container div.row div {
+  padding-right: 0px;
+}
 .marketplace-search-filter {
   margin-bottom: 10px;
 }
@@ -2083,7 +2086,7 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 /* Additional Current Style Fixes   */
 /* ---------------------------------*/
 
-#pseudonym_field{ margin:0px;}
+/* TODO Discuss with BS */
 #confirm_id_field{ margin:0px; margin-bottom:10px;}
 #confirm_id_field input{ width:248px; float:right; clear:right;}
 

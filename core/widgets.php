@@ -3230,7 +3230,7 @@ function theme_marketplace_filter($name, $values, $selected = 'all', $options)
     $class = (isset($options['class'])) ? " " . $options['class'] : "";
 
     $html =  "<div class='col-md-3'>";
-    $html .= "    <select id='filter_$name' name='filter_$name' class='form-control'>";
+    $html .= "    <select id='filter_$name' name='filter_$name' class='marketplace-filter filter-event form-control'>";
     foreach ($values as $key => $readable)
         $html .= "        <option value='$key'" . ($selected === $key ? ' SELECTED' : '') . ">$readable</option>\n";
     $html .= "    </select>";
