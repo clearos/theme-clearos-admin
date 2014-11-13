@@ -740,8 +740,7 @@ header:hover #magic-arrow {
   margin-bottom: 5px;
 }
 .sidebar .sidebar-menu-2 > li > a {
-  padding: 5px;
-  margin-left: 15px;
+  padding: 5px 5px 5px 20px;
   display: block;
   font-size: 10pt;
 }
@@ -799,6 +798,7 @@ header:hover #magic-arrow {
 }
 .sidebar .sidebar-menu-2 .treeview-menu li a:hover, .sidebar .sidebar-menu-2 li.treeview a:hover {
   text-decoration: none;
+  background-color: #f0f0f0;
 }
 .theme-menu-2-category:hover {
   background-color: #f0f0f0 !important;
