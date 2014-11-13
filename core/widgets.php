@@ -3398,7 +3398,7 @@ function theme_marketplace_review($basename, $pseudonum)
 
 function theme_marketplace_layout()
 {
-    echo "<div id='marketplace-app-container'></div>";
+    echo "<div id='marketplace-app-container' class='row'></div>";
     echo "<div style='clear: both;'></div>";
 }
 
