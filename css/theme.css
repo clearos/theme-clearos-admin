@@ -1315,8 +1315,7 @@ header:hover #magic-arrow {
   text-align: center;
 }
 .marketplace-app-rhs {
-  float: left;
-  width: 380px; /* Don't change to percent...borks dotdotdot plugin */
+  width: 380px;
 }
 .marketplace-app-info-description {
   max-height: 100px;
@@ -1932,7 +1931,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .marketplace-app-info .col-md-3:last-child:after { display: none;}
 .about-app { color: #a3591a; display: block; font-size: 18px; font-weight: normal; margin: 0; padding: 5px 0 10px; text-transform: uppercase;}
 #server_services_filter input[type="text"]{width: 100%;}
-#marketplace_tools_container .btn-secondary, #marketplace_tools_container .btn-secondary:hover, #marketplace_tools_container .btn-secondary:focus{background: none; border:none;}
 #marketplace-localization h4{color:#a3591a; border:none; font-size: 18px;}
 #marketplace-localization h4:before{display:none;}
 #marketplace-developer .marketplace-devel-field{color:#666;  font-size: 16px;}
