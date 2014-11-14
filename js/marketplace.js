@@ -792,7 +792,7 @@ function _get_app_full(app, options)
             ' + (app.installed ? '<span class="installed_ribbon">' + lang_installed.toUpperCase() + '</span>' : '') + '\
             <h4 class="block-title">' + app.name + '</h4>\
             <div class="listsvg_cont">\
-                <figure id="app-logo-' + app.basename + '">\
+                <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
                     ' + get_placeholder("svg") + '\
                 </figure>\
                 <div class="app_title"><div class="app_rating">' + theme_star_rating(app.rating) + '</div>' + theme_price(UNIT, app.pricing) + '</div>\
