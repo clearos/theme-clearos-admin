@@ -1410,6 +1410,8 @@ h4.block-title {
 }
 .app_box h4.block-title {
   min-height: 42px;
+  font-size: 18px;
+  text-align: left;
 }
 .app_box.free_app .installed_ribbon {
   color: #608921;
@@ -1710,8 +1712,8 @@ footer {
 .listsvg_cont{float: left; margin-right: 15px;}
 .listsvg_cont figure{margin-bottom: 5px; margin-right: 0;}
 .listsvg_cont .app_title{clear: both; text-align: center; padding-top: 0;}
-.app-description{overflow: hidden;  max-height: 140px;}
-.app-description p{font-size: 14px; line-height: 23px;}
+.app-description{overflow: hidden;  height: 158px; text-align: left;}
+.app-description p{font-size: 14px; line-height: 23px; margin-bottom: 0;}
 #app-search-load{text-align: center;}
 
 #app-details-container h4, #app-details-container h3, .box-title {
