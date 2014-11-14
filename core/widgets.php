@@ -3127,7 +3127,10 @@ function theme_image($name, $options = NULL)
     $class = array();
     if ((isset($options['class']))) {
         // Additional classes
-        $class = explode(' ', $class);
+        if (is_array($options['class']))
+            $class = $options['class'];
+        else
+            $class = explode(' ', $options['class']);
     }
     if (isset($options['size'])) {
         if (preg_match('/^(\d+)x(\d+)$/', $options['size'], $match)) {
