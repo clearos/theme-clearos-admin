@@ -937,7 +937,15 @@ function _get_left_menu_1($page)
     $main_apps .= "</li>";
 
     return "
-        <aside>
+        <aside class='theme-menu-1'>
+       " . form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
+            <div class='input-group'>
+                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "...' />
+                <span class='input-group-btn'>
+                    <button type='submit' name='btn_search' class='btn btn-flat'><i class='fa fa-search'></i></button>
+                </span>
+            </div>
+        " . form_close() . "
             <ul class='left_nav'>   
                 $spotlights
                 $main_apps             

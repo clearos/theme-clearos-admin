@@ -625,6 +625,10 @@ header:hover #magic-arrow {
 /* Type 1 (default)
 /* ============================================= */
 
+.theme-menu-1 .sidebar-form {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
 .sub_menu {
   position: relative;
   padding: 6px 0;
