@@ -1254,21 +1254,18 @@ header:hover #magic-arrow {
 .marketplace-tile .theme-app-logo-container {
   height: 65px;
 }
-.marketplace-tile-title {
-  color: #444444;
+.app_box h4.block-title.marketplace-tile-title {
   padding: 5px 5px;
   text-align: center;
   width: 100%;
   min-height: 55px;
-}
-.marketplace-tile-title {
-  font-size: 0.85em;
+  font-size: 13pt;
   vertical-align: middle;
 }
-.marketplace-tile-title.theme-sm {
+.app_box h4.block-title.marketplace-tile-title.theme-sm {
   font-size: 0.80em;
 }
-.marketplace-tile-title.theme-xs {
+.app_box h4.block-title.marketplace-tile-title.theme-xs {
   font-size: 0.70em;
 }
 .marketplace-app.marketplace-tile .box-footer {
