@@ -146,79 +146,6 @@ function theme_anchor($url, $text, $importance, $class, $options)
     }
 }
 
-
-function theme_anchor_new($url, $text, $importance, $class, $options)
-{
-    // ID, target, tabindex
-    $id = isset($options['id']) ? ' id=' . $options['id'] : '';
-    $target = isset($options['target']) ? " target='" . $options['target'] . "'" : '';
-    $tabindex = isset($options['tabindex']) ? " tabindex='" . $options['tabindex'] . "'" : '';
-
-    // Do not escape HTML if requested
-    if (!isset($options['no_escape_html']) || $options['no_escape_html'] == FALSE)
-        $text = $text;
-
-    // Additional classes
-    $class = explode(' ', $class);
-
-
-    $target = '';
-    if (isset($options['target'])) {
-        $target = " target='" . $options['target'] . "'";
-        if ($options['target'] == '_blank')
-            $text .= "<i class='fa fa-external-link theme-text-icon-spacing'></i>";
-    }
-    $tabindex = isset($options['tabindex']) ? " tabindex='" . $options['tabindex'] . "'" : '';
-    if (isset($options['class']))
-        $class = array_merge($class, explode(' ', $options['class']));
-
-    // Hide and disabled options
-    if (isset($options['hide']))
-        $class[] = 'theme-hidden';
-
-    if (isset($options['disabled']))
-        $class[] = 'disabled';
-
-    // Button importance
-    if ($importance === 'high' || $importance === 'important')
-        $importance = 'btn-primary';
-    else if ($importance === 'low')
-        $importance = 'btn-secondary';
-    else
-        $importance = 'btn-link';
-
-    $class[] = $importance;
-
-    // TODO: do we ever use state = disabled?
-    if (isset($options['state']) && ($options['state'] === FALSE)) {
-        return  "<input disabled type='submit' name='' $id value='$text' class='" . implode(' ' , $class) . "' $tabindex />\n";
-    } else {
-
-        // Multi-select button
-        if (is_array($url)) {
-            $url_text = '';
-
-            // TODO: many of the options above are not yet implemented
-            foreach($url as $item_url => $item_text)
-                $url_text .= "<li><a href='$item_url'>$item_text</a></li>";
-
-            return "
-            <div class='btn-group'>
-              <button type='button' class='btn btn-primary'>$text</button>
-              <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
-                <span class='caret'></span>
-                <span class='sr-only'>Toggle Dropdown</span>
-              </button>
-              <ul class='dropdown-menu dropdown-menu-right' role='menu'>
-                $url_text
-              </ul>
-            </div>
-            ";
-        } else {
-            return "<a href='$url'$id class='btn " . implode(' ', $class) . "'$target$tabindex>$text</a>";
-        }
-    }
-}
 /**
  * Submit button widget.
  *
@@ -1973,8 +1900,8 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     return "
 <div class='box'>
   <div class='box-header'>
+    <div class='theme-box-tools pull-right'>$add_html</div>
     <h3 class='box-title'>$title</h3>
-    <div class='theme-box-tools'>$add_html</div>
   </div>
   <div class='box-body'>
     <table class='table table-striped $size_class' id='$dom_id'>
@@ -2145,8 +2072,8 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
 
 <div class='box'>
   <div class='box-header'>
+    <div class='theme-box-tools pull-right'>$add_html</div>
     <h3 class='box-title'>$title</h3>
-    <div class='theme-summary-table-action'>$add_html</div>
   </div>
   <div class='box-body'>
     <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table table-striped' id='$dom_id'>
@@ -3303,7 +3230,7 @@ function theme_marketplace_filter($name, $values, $selected = 'all', $options)
     $class = (isset($options['class'])) ? " " . $options['class'] : "";
 
     $html =  "<div class='col-md-3'>";
-    $html .= "    <select id='filter_$name' name='filter_$name' class='form-control'>";
+    $html .= "    <select id='filter_$name' name='filter_$name' class='marketplace-filter filter-event form-control'>";
     foreach ($values as $key => $readable)
         $html .= "        <option value='$key'" . ($selected === $key ? ' SELECTED' : '') . ">$readable</option>\n";
     $html .= "    </select>";
@@ -3471,7 +3398,7 @@ function theme_marketplace_review($basename, $pseudonum)
 
 function theme_marketplace_layout()
 {
-    echo "<div id='marketplace-app-container'></div>";
+    echo "<div id='marketplace-app-container' class='row'></div>";
     echo "<div style='clear: both;'></div>";
 }
 

@@ -47,24 +47,24 @@ function theme_page_javascript($custom_settings)
     return "
 
 <script type='text/javascript' src='$theme_url/js/jquery.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery-ui.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/bootstrap.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/jquery.sticky.js'></script>
 <script type='text/javascript' src='$theme_url/js/script.js'></script>
-<script type='text/javascript' src='$theme_url/js/jquery-ui.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/lightbox.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.cookie.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.base64.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/jquery.dotdotdot.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/bootstrap-dialog/bootstrap-dialog.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/colorpicker/bootstrap-colorpicker.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/dateFormat/dateFormat.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/dataTables.bootstrap.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.rowReordering.js'></script>
-<script type='text/javascript' src='$theme_url/js/lightbox.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/bootstrap-slider/bootstrap-slider.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/sparkline/jquery.sparkline.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/nav-menu-" . $custom_settings['menu'] . ".js'></script>
 
-<script type='text/javascript' src='$theme_url/old_js/jquery.cookie.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/jquery.base64.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/jquery.dotdotdot.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/bootstrap-dialog/bootstrap-dialog.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/metisMenu/jquery.metisMenu.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/bootstrap-slider/bootstrap-slider.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/sparkline/jquery.sparkline.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.resize.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.pie.min.js'></script>
@@ -72,7 +72,6 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.stack.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.categories.min.js'></script>
 <script type='text/javascript' src='$theme_url/old_js/jquery.flot.axislabels.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/nav-menu-" . $custom_settings['menu'] . ".js'></script>
 
 
 <!--[if IE 7]>

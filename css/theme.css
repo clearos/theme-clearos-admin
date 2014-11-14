@@ -569,7 +569,61 @@ header:hover #magic-arrow {
 /* M E N U                                       */
 /* ============================================= */
 
-/* TODO - Move to menu-1.js */
+/* Common */
+.sidebar-form {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #dbdbdb;
+  margin: 10px 10px;
+}
+.sidebar-form input[type="text"],
+.sidebar-form .btn {
+  box-shadow: none;
+  background-color: #fafafa;
+  border: 1px solid #fafafa;
+  height: 35px;
+}
+.sidebar-form input[type="text"] {
+  color: #666;
+  -webkit-border-top-left-radius: 2px !important;
+  -webkit-border-top-right-radius: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -webkit-border-bottom-left-radius: 2px !important;
+  -moz-border-radius-topleft: 2px !important;
+  -moz-border-radius-topright: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -moz-border-radius-bottomleft: 2px !important;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 2px !important;
+}
+.sidebar-form input[type="text"]:focus,
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.sidebar-form .btn {
+  color: #999;
+  -webkit-border-top-left-radius: 0 !important;
+  -webkit-border-top-right-radius: 2px !important;
+  -webkit-border-bottom-right-radius: 2px !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  -moz-border-radius-topleft: 0 !important;
+  -moz-border-radius-topright: 2px !important;
+  -moz-border-radius-bottomright: 2px !important;
+  -moz-border-radius-bottomleft: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 2px !important;
+  border-bottom-right-radius: 2px !important;
+  border-bottom-left-radius: 0 !important;
+}
+/* Type 1 (default)
+/* ============================================= */
 
 .sub_menu {
   position: relative;
@@ -667,6 +721,94 @@ header:hover #magic-arrow {
   text-decoration: none;
 }
 
+/* Type 2 (compact)
+/* ============================================= */
+
+.theme-menu-2-list {
+  text-align: center;
+  margin: 10px;
+}
+.theme-menu-2-category {
+  padding: 2px 4px 4px 4px;
+  height: 38px;
+  text-align: center;
+}
+.theme-menu-2-list div.btn-group {
+  background: #fafafa;
+}
+.sidebar {
+  margin-bottom: 5px;
+}
+.sidebar .sidebar-menu-2 > li > a {
+  padding: 5px 5px 5px 20px;
+  display: block;
+  font-size: 10pt;
+}
+.sidebar .sidebar-form input:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-color: transparent!important;
+}
+.sidebar .sidebar-menu-2 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .sidebar-menu-2 > li {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #dbdbdb;
+}
+.sidebar .sidebar-menu > li > a {
+  padding: 12px 5px 12px 15px;
+  display: block;
+}
+.sidebar .sidebar-menu-2 > li > a > .fa,
+.sidebar .sidebar-menu-2 > li > a > .glyphicon,
+.sidebar .sidebar-menu-2 > li > a > .ion {
+  width: 20px;
+}
+.sidebar .sidebar-menu-2 .treeview-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li {
+  margin: 0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li > a {
+  padding: 5px 5px 5px 40px;
+  display: block;
+  font-size: 10pt;
+  margin: 0px 0px;
+}
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .fa,
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu-2 .treeview-menu > li > a > .ion {
+  width: 20px;
+}
+.sidebar .sidebar-menu-2 .treeview-menu li.active {
+  background-color: #f0f0f0;
+}
+.sidebar .sidebar-menu-2 .treeview-menu li.active a {
+  color: #7a7474;
+}
+.sidebar .sidebar-menu-2 .treeview-menu li a:hover, .sidebar .sidebar-menu-2 li.treeview a:hover {
+  text-decoration: none;
+  background-color: #f0f0f0;
+}
+.theme-menu-2-category:hover {
+  background-color: #f0f0f0 !important;
+}
+.theme-menu-2-category.active {
+  background-color: #7a7474 !important;
+}
+.theme-menu-2-category.active path {
+  fill: white;
+}
 /* ============================================= */
 /* W I D G E T S                                 */
 /* ============================================= */
@@ -806,6 +948,9 @@ header:hover #magic-arrow {
 /* Progress bars           */
 /* ----------------------- */
 
+.progress {
+}
+
 /* ----------------------- */
 /* Login form              */
 /* ----------------------- */
@@ -881,12 +1026,8 @@ header:hover #magic-arrow {
 /* Tables                  */
 /* ----------------------- */
 
-.theme-summary-table-action {
-  float: right; padding: 10px 10px 0px 0px
-}
 .theme-box-tools {
-  float: right;
-  padding: 10px 10px;
+  margin-top: -15px;
 }
 
 /* ----------------------- */
@@ -1107,9 +1248,6 @@ header:hover #magic-arrow {
   overflow: hidden;
   display: inline-block;
 }
-#marketplace-app-container, #content-marketplace-apps {
-  text-align: center;
-}
 .marketplace-app.marketplace-tile {
   width: 150px;
 }
@@ -1230,6 +1368,9 @@ header:hover #magic-arrow {
 }
 .marketplace-filter {
   min-width: 100px;
+}
+#marketplace_filter_container div.row div {
+  padding-right: 0px;
 }
 .marketplace-search-filter {
   margin-bottom: 10px;
@@ -1613,15 +1754,9 @@ footer {
   font-size: 12px;
 }
 
-
-
-
-
-
 /* ----------------------- */
-/* Clear Icons CSS              */
+/* Clear Icons CSS         */
 /* ----------------------- */
-
 
 @font-face {
   font-family: 'ci';
@@ -1702,19 +1837,33 @@ footer {
   content: "\e60f";
 }
 
-
-
 /* ----------------------- */
 /* App Detailpage CSS      */
 /* ----------------------- */
 
 
-.listsvg_cont{float: left; margin-right: 15px;}
-.listsvg_cont figure{margin-bottom: 5px; margin-right: 0;}
-.listsvg_cont .app_title{clear: both; text-align: center; padding-top: 0;}
-.app-description{overflow: hidden;  height: 158px; text-align: left;}
-.app-description p{font-size: 14px; line-height: 23px; margin-bottom: 0;}
-#app-search-load{text-align: center;}
+.listsvg_cont {
+  float: left;
+   margin-right: 15px;
+}
+.listsvg_cont figure {
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+.listsvg_cont .app_title {
+  clear: both; text-align: center;
+  padding-top: 0;
+}
+.app-description {
+  height: 140px;
+}
+.app-description p {
+  font-size: 14px;
+  line-height: 23px;
+}
+#app-search-load {
+  text-align: center;
+}
 
 #app-details-container h4, #app-details-container h3, .box-title {
   margin: 7px 0 15px;
@@ -1733,18 +1882,27 @@ footer {
   left: 0;
   content: ' ';
 }
+.marketplace-devel-icon {
+  float: left; margin: 3px 10px 0 0;
+}
 
-
-.marketplace-devel-icon{float: left; margin: 3px 10px 0 0;}
-
-#app-details-container > div.row{margin: 0;}
-h1.page-title{ font-family: "RobotoThin", sans-serif; font-weight: normal;}
-
-#theme_app_sidebar > div{margin-bottom: 10px;}
-
-
-#app-details-container .row h3{border:none; font-size: 18px; color:#a3591a; }
-#app-details-container .row h3:before{display:none;}
+#app-details-container > div.row {
+  margin: 0;
+}
+h1.page-title {
+  font-family: "RobotoThin", sans-serif;
+  font-weight: normal;
+}
+#theme_app_sidebar > div {
+  margin-bottom: 10px;
+}
+#app-details-container .row h3i {
+  border:none;
+  font-size: 18px; color:#a3591a;
+}
+#app-details-container .row h3:before {
+  display:none;
+}
 
 #marketplace-localization #marketplace-localization h3,
 #app-details-container #marketplace-screenshot h3,
@@ -1754,7 +1912,6 @@ h1.page-title{ font-family: "RobotoThin", sans-serif; font-weight: normal;}
   display: block;
   font-size: 18px;
   font-weight: normal;
-  margin: 0;
   padding: 20px 0 10px;
 }
 
@@ -1934,7 +2091,7 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 /* Additional Current Style Fixes   */
 /* ---------------------------------*/
 
-#pseudonym_field{ margin:0px;}
+/* TODO Discuss with BS */
 #confirm_id_field{ margin:0px; margin-bottom:10px;}
 #confirm_id_field input{ width:248px; float:right; clear:right;}
 

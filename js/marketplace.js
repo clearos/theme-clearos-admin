@@ -18,19 +18,21 @@ var sdn_org = '';
 var internet_connection = false;
 var lang = new Object();
 
-// TODO: document
+// Document ready handler
 $(document).ready(function() {
     $(".my-colorpicker").colorpicker();
     $('body').tooltip({
+      html: true,
       selector: '[data-toggle=tooltip]'
     });
-});
-
-// Document ready handler
-$(document).ready(function() {
     handle_marketplace_on_page_ready();
 });
 
+// Listens for app rating click
+$(document).on('click', '.sidebar-review-app', function(e) {
+    e.preventDefault();
+    add_review();
+});
 
 function theme_paginate(url, total, active)
 {
@@ -78,8 +80,8 @@ function theme_sdn_account_setup(landing_url, username, device_id) {
               </div>\
               <div class="modal-footer">\
                 <div class="btn-group">\
-                  <a href="' + landing_url + '?username=' + username + '&device_id=' + device_id + '" target="_blank" class="btn  btn-primary theme-anchor-edit">' + lang_marketplace_setup_payment_on_clear + '</a>\
-                  <a href="#" id="account-setup-cancel" class="btn  btn-link theme-anchor-cancel">' + lang_cancel + '</a>\
+                  <a href="' + landing_url + '?username=' + username + '&device_id=' + device_id + '" target="_blank" class="btn btn-primary theme-anchor-edit">' + lang_marketplace_setup_payment_on_clear + '<i class="fa fa-external-link theme-text-icon-spacing"></i></a>\
+                  <a href="#" id="account-setup-cancel" class="btn btn-link theme-anchor-cancel">' + lang_cancel + '</a>\
                 </div>\
               </div>\
             </div>\
@@ -126,7 +128,7 @@ function theme_app(type, list, options)
     $('#marketplace-app-container').append('\
         <div class="clearfix"></div>\
         <script type="text/javascript">\
-            $(".marketplace-app-info-description").dotdotdot({\
+            $(".app-description").dotdotdot({\
                 ellipsis: "..."\
             });\
         </script>\
@@ -143,7 +145,7 @@ function handle_marketplace_on_page_ready(my_location)
 
     // Insert login dialog
     // TODO find a proper dom to hitch this to
-    $('.right-side').append(' \
+    $('#clearos-body-container').append(' \
         <div id="sdn-login-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"> \
           <div class="modal-dialog"> \
             <div class="modal-content"> \
@@ -161,7 +163,7 @@ function handle_marketplace_on_page_ready(my_location)
                     <label class="col-md-4 control-label" for="sdn_password">' + lang_password + '</label> \
                     <div class="col-md-8"> \
                       <input id="sdn_password" type="password" name="password" value="" class="form-control" /> \
-                      <a href="#" id="sdn_forgot_password" class="btn  btn-link">' + lang_forgot_password + '</a> \
+                      <a href="#" id="sdn_forgot_password" class="btn btn-link">' + lang_forgot_password + '</a> \
                     </div> \
                   </div> \
                   <div id="sdn_lost_password_group" class="form-group theme-hidden"> \
@@ -175,8 +177,8 @@ function handle_marketplace_on_page_ready(my_location)
               </div> \
               <div class="modal-footer"> \
                 <div class="btn-group"> \
-                  <a href="#" id="sdn_login_action" class="btn  btn-primary theme-anchor-edit">' + lang_login + '</a> \
-                  <a id="sdn_login_cancel" href="#" class="btn  btn-link theme-anchor-cancel">' + lang_cancel + '</a> \
+                  <a href="#" id="sdn_login_action" class="btn btn-primary theme-anchor-edit">' + lang_login + '</a> \
+                  <a id="sdn_login_cancel" href="#" class="btn btn-link theme-anchor-cancel">' + lang_cancel + '</a> \
                 </div> \
               </div> \
             </div> \
@@ -667,6 +669,38 @@ function clearos_is_authenticated() {
         }
     });
 }
+
+/**
+ * Prevent review.
+ */
+
+function prevent_review() {
+    clearos_dialog_box('review_error', lang_warning, lang_marketplace_no_install_no_review);
+}
+
+/**
+ * Add review.
+ */
+
+function add_review() {
+    auth_options.no_redirect_on_cancel = true;
+    auth_options.callback = 'display_review_form';
+    clearos_is_authenticated();
+}
+
+/**
+ * Display review form.
+ */
+
+function display_review_form() {
+    clearos_modal_infobox_open('review-form');
+    // Sometimes browser autocompletes this field
+    $('#review-comment').val('');
+}
+
+/**
+ * Submit review.
+ */
 
 function submit_review(update) {
     $.ajax({
