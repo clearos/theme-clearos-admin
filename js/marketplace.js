@@ -832,6 +832,9 @@ function _get_app_tile(app, options)
     } else {
         learn_more_url = '/app/marketplace/view/' + app.basename;
     }
+    col = 3;
+    if (options.columns)
+        col = 12 / options.columns;
 
     var buttons = '<div class="btn-group">' +
         '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>' +
@@ -856,7 +859,7 @@ function _get_app_tile(app, options)
         font_size = ' theme-sm';
 
     return '\
-       <div class="col-md-3">\
+       <div class="col-md-' + col + '">\
           <div class="app_box" id="box-' + app.basename + '">\
             <h4 class="block-title marketplace-tile-title' + font_size + '">' + app.name + '</h4>\
             <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
