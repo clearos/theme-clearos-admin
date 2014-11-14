@@ -870,7 +870,8 @@ header:hover #magic-arrow {
   color: #ffffff;
   display: inline-block;
   font-size: 30px;
-  padding: 6px 0x 0;
+  padding: 6px 0px 0;
+  margin-left: 10px;
 }
 
 
@@ -1942,7 +1943,33 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .alert{position: relative;}
 .theme-content .box-body > .btn-group{float: right;}
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
+
+
+
+/* ---------------------------------*/
+/* Login panel design Fixes   */
+/* ---------------------------------*/
+
 .login_right .control-label, .login_right .theme-field-right{width: 100%; padding:3px 15px !important; text-align: left}
+
+
+
+
+
+
+/* ---------------------------------*/
+/* AlertBox Close Button Fixes   */
+/* ---------------------------------*/
+
+.alert-success .fa-check-circle, .alert-danger .fa-times-circle, .alert-info .fa-info-circle, .alert-warning .fa-exclamation-triangle { border: 1px solid transparent;  background-color: transparent; border-radius: 50%; width: 28px; height: 28px; line-height: 26px; display: block; position: absolute; left: -15px; top: -15px; text-align: center;}
+.alert-success .fa-check-circle { background-color: #dff0d8; border-color: #d6e9c6; color: #3c763d;}
+.alert-info .fa-info-circle { background-color: #d9edf7; border-color: #bce8f1; color: #31708f;}
+.alert-warning .fa-exclamation-triangle { background-color: #fcf8e3; border-color: #faebcc; color: #8a6d3b;}
+.alert-danger .fa-times-circle { background-color: #f2dede; border-color: #ebccd1; color: #a94442;}
+
+
+
+
 
 /* ----------------------------- */
 /* Responsive Css                */
