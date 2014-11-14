@@ -250,6 +250,7 @@ function theme_screenshots(basename, screenshots) {
 
 function theme_related_app(type, list)
 {
+    html = '<div class="row">';
     for (index = 0 ; index < list.length; index++) {
         app = list[index];
         box_class = 'box-primary';
@@ -258,8 +259,8 @@ function theme_related_app(type, list)
             box_class = 'box-primary';
         else if (type == 'other_by_devel')
             box_class = 'box-warning';
-        html = '\
-            <div class="box ' + box_class + ' marketplace-related-app" id="box-' + app.basename + '">\
+        html += '\
+            <div class="col-md-6 box ' + box_class + ' marketplace-related-app" id="box-' + app.basename + '">\
                 <div class="box-header">\
                     <h3 class="box-title">' + app.name + '</h3>\
                 </div>\
@@ -284,12 +285,15 @@ function theme_related_app(type, list)
                     </div>\
                 </div>\
                 <div class="box-footer">\
-                    <div class="marketplace-app-info-more"><a href="/app/marketplace/view/' + app.basename + '">' + lang_marketplace_learn_more + '</a></div>\
+                    <div class="marketplace-app-info-more pull-right">\
+                        <a href="/app/marketplace/view/' + app.basename + '">' + lang_marketplace_learn_more + '</a>\
+                    </div>\
                 </div>\
             </div>\
         ';
-        $('#app_' + type).append(html);
     }
+    html += '</div>';
+    $('#app_' + type).append(html);
 
     // Make sure only to call this 'dotdotdot' once
     if (type == 'other_by_devel') {
