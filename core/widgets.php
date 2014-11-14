@@ -2933,7 +2933,7 @@ function theme_help_box($data)
 
     return 
         "<div class='theme-help-box-container'>
-             <button type='button' class='close'>&times;</button>
+             <i class='fa fa-info'></i>
              <div class='theme-help-box-content'>
                  <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
                  <div class='theme-help-box-description'>" . $data['description'] . "</div>

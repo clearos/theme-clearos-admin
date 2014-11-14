@@ -98,14 +98,5 @@
 		jQuery(".navbar-toggle").click(function(){
 		  jQuery(".small_menu").toggleClass('hide');
 		});
-
-		/*
-			Help box close button
-		*/
-		jQuery(".theme-help-box-container .close").click(function(){
-		  jQuery(this).parent().remove();
-		});
-
-
 	});	
 })(jQuery);	
