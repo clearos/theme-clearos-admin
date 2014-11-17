@@ -347,7 +347,7 @@ a.highlight-link:hover {
 }
 .page-title h1 {
   margin: 0;
-  font-family: "Roboto Light", sans-serif;
+  font-family: "RobotoThin", sans-serif;
   font-weight: 100;
   font-size: 36px;
   color: #fff;
@@ -926,7 +926,7 @@ header:hover #magic-arrow {
   font-size: 11px;
 }
 
-span.form-control { background: none; border-color:transparent; box-shadow: none; color: #666666; padding-left: 0;}
+span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 
 
 /* ----------------------- */
