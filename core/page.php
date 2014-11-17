@@ -584,43 +584,26 @@ function _get_header($page, $menus = array())
                         <ul class='dropdown-menu'>
                             <li class='header'>You have " . count($page['devel_alerts']) . " notification" . (count($page['devel_alerts']) >  1 ? "s" : "") . "</li>
         ";
+         $alert_text = '';
         if (isset($page['devel_alerts']['framework']))
             $alert_text .= "
                 <li>
-                    <div>
-                        <ul class='menu'>
-                            <li>
-                                <a href='#'><i class='fa fa-gears warning'></i>Framework is in development mode</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href='#'><i class='fa fa-gears warning'></i> Framework is in development mode</a>
                 </li>
             ";
         if (isset($page['devel_alerts']['app']))
             $alert_text .= "
                 <li>
-                    <div>
-                        <ul class='menu'>
-                            <li>
-                                <a href='#'><i class='fa fa-cubes warning'></i>This app is using development code</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href='#'><i class='fa fa-cubes warning'></i> This app is using development code</a>
                 </li>
             ";
         if (isset($page['devel_alerts']['theme']))
             $alert_text .= "
                 <li>
-                    <div>
-                        <ul class='menu'>
-                            <li>
-                                <a href='#'><i class='fa fa-image warning'></i>Theme is in development mode</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
                 </li>
             ";
-        $alert_text .= "</ul>";
+        //$alert_text .= "</ul>";
         $devel_alerts = "
                 <li class='dropdown notifications-menu'>
                     <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
@@ -659,8 +642,10 @@ function _get_header($page, $menus = array())
                         <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                             <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                         </li> 
-                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
+                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span> <big>".((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '')."</big>" . $page['username'] . "</span></a>
                             <ul class='dropdown-menu' role='menu'>
+                                 ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."
+                              <li class='divider'></li>
                               <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
                               <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
                               <li class='divider'></li>
@@ -685,16 +670,14 @@ function _get_header($page, $menus = array())
                                 <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                                     <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                                 </li> 
-                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
-                                    <ul class='dropdown-menu' role='menu'>                              
-                                      <li>
-                                            <a role='menuitem' href='#'>My Profile</a>
-                                      </li>
+                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span> <big>".((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '')."</big>" . $page['username'] . "</span></a>
+                                    <ul class='dropdown-menu' role='menu'>
+                                      ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."                       
+                                      <li class='divider'></li>
+                                      <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
                                       <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
                                       <li class='divider'></li>
-                                      <li>
-                                         <a role='menuitem' href='/app/base/session/logout'>Sign out</a>
-                                     </li>
+                                      <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                                     </ul>
                                   </li>                         
                                     " : "") . "                 

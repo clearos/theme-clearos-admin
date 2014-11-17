@@ -896,6 +896,8 @@ header:hover #magic-arrow {
 .dropdown-menu >li > a {
   font-size: 12px;
 }
+.dropdown-menu >li > a .fa{margin-right: 3px;}
+
 .theme-icon-text-spacing {
   padding-right: 5px;
 }
@@ -2129,6 +2131,19 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .alert-danger .fa-times-circle { background-color: #f2dede; border-color: #ebccd1; color: #a94442;}
 
 
+
+
+
+
+
+/* ----------------------------- */
+/* Notification  Bubble          */
+/* ------------------------------*/
+
+ul.full_menu li.my-account a big{ background: #dd0000;  border-radius: 50%;  color: #ffffff;  font-size: 16px;  font-weight: bold;  height: 26px;  line-height: 26px;  position: relative;  text-align: center; margin: 0 10px 0 -20px;  width: 26px; display: inline-block;
+vertical-align: top;
+zoom: 1; /* Fix for IE7 */
+*display: inline; /* Fix for IE7 */}
 
 
 
