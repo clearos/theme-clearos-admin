@@ -1047,8 +1047,8 @@ header:hover #magic-arrow {
 /* ----------------------- */
 
 .theme-infobox {
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 20px 0 10px 15px;
+/*  margin-bottom: 10px;*/
 }
 .theme-infobox-title {
   margin-bottom: 10px;
@@ -2098,7 +2098,7 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
 .col-lg-8.theme-content .box{background: #f7f7f7; overflow: hidden;}
 .col-lg-8.theme-content .theme-infobox{margin: 0 0 30px;}
-.alert{position: relative;}
+.alert{position: relative; margin: 20px 0 10px 15px;}
 .theme-content .box-body > .btn-group{float: right;}
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
 
@@ -2165,12 +2165,4 @@ header:hover #magic-arrow{ display:none;}
 .main-content aside{ width:94%; display:inherit; border-bottom:1px #e5e5e5 solid;}
 section.content-container { display:inherit; width:100%;}
 }
-
-
-
-
-
-
-
-
 
