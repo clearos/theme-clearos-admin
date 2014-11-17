@@ -636,15 +636,15 @@ function _get_header($page, $menus = array())
     // TODO Hard coded text below
     return "
              <header class='mainheader'>
-			 <div class='navbar-header'>
-			  <button data-target='.bs-navbar-collapse' data-toggle='collapse' type='button' class='navbar-toggle'>
-				<span class='sr-only'>Toggle navigation</span>
-				<span class='icon-bar'></span>
-				<span class='icon-bar'></span>
-				<span class='icon-bar'></span>
-			  </button>
-			</div>
-			
+             <div class='navbar-header'>
+              <button data-target='.bs-navbar-collapse' data-toggle='collapse' type='button' class='navbar-toggle'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+              </button>
+            </div>
+            
                 <ul class='full_menu'>
                     <li class='ClearOS ".(($page['current_basename'] == '') ? "active":"")."'>
                         <a href='/' class='ci-ClearOS'>&nbsp;</a>
@@ -660,52 +660,48 @@ function _get_header($page, $menus = array())
                             <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                         </li> 
                         <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
-                            <ul class='dropdown-menu' role='menu'>                              
-                              <li>
-                                    <a role='menuitem' href='#'>My Profile</a>
-                              </li>
+                            <ul class='dropdown-menu' role='menu'>
+                              <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
                               <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
                               <li class='divider'></li>
-                              <li>
-                                 <a role='menuitem' href='/app/base/session/logout'>Sign out</a>
-                             </li>
+                              <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
                           </li>                         
                             " : "") . "                 
                     </ul>
-					<div class='ClearOS logo1 ".(($page['current_basename'] == '') ? "active":"")."'>
-						<a href='app/' class='ci-ClearOS'>&nbsp;</a>
-					</div> 
-					<div class='small_menu hide'>
-						
-						<ul>
-						" . (! isset($framework->session->userdata['wizard']) ? "
-								<li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
-									<a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
-								</li>
-								<li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active":"") . "'>
-									<a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
-								</li>
-								<li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
-									<a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
-								</li> 
-								<li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
-									<ul class='dropdown-menu' role='menu'>                              
-									  <li>
-											<a role='menuitem' href='#'>My Profile</a>
-									  </li>
-									  <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
-									  <li class='divider'></li>
-									  <li>
-										 <a role='menuitem' href='/app/base/session/logout'>Sign out</a>
-									 </li>
-									</ul>
-								  </li>                         
-									" : "") . "                 
-							</ul>
-							
-					</div>
-					<div class='clearfix'></div>
+                    <div class='ClearOS logo1 ".(($page['current_basename'] == '') ? "active":"")."'>
+                        <a href='app/' class='ci-ClearOS'>&nbsp;</a>
+                    </div> 
+                    <div class='small_menu hide'>
+                        
+                        <ul>
+                        " . (! isset($framework->session->userdata['wizard']) ? "
+                                <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
+                                    <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
+                                </li>
+                                <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active":"") . "'>
+                                    <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
+                                </li>
+                                <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
+                                    <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
+                                </li> 
+                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span>" . $page['username'] . "</span></a>
+                                    <ul class='dropdown-menu' role='menu'>                              
+                                      <li>
+                                            <a role='menuitem' href='#'>My Profile</a>
+                                      </li>
+                                      <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
+                                      <li class='divider'></li>
+                                      <li>
+                                         <a role='menuitem' href='/app/base/session/logout'>Sign out</a>
+                                     </li>
+                                    </ul>
+                                  </li>                         
+                                    " : "") . "                 
+                            </ul>
+                            
+                    </div>
+                    <div class='clearfix'></div>
             </header>
             <div class='page-title'><h1>" . $page['title'] . "</h1>" . 
             (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
