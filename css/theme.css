@@ -926,6 +926,9 @@ header:hover #magic-arrow {
   font-size: 11px;
 }
 
+span.form-control { background: none; border-color:transparent; box-shadow: none; color: #666666; padding-left: 0;}
+
+
 /* ----------------------- */
 /* Radio buttons and sets  */
 /* ----------------------- */
