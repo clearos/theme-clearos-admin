@@ -1402,6 +1402,12 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   padding-right: 80px;
   text-align: right;
 }
+.btn.btn-default.novice-select:hover {
+  background-color: #f0f0f0 !important;
+}
+.btn.btn-default.novice-select.active {
+  background-color: #d4d4d4 !important;
+}
 /* Overrides annoying overlap of buttons in group */
 #marketplace_tools_container .btn-group .btn + .btn {
   margin-left: 0px;
