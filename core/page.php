@@ -615,6 +615,9 @@ function _get_header($page, $menus = array())
         ";
     }
 
+    $title = $page['title']; 
+    if ($page['title'] != $page['current_name'])
+        $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i>" . "<span class='page-second-level'>" . $title . "</span>";
     // TODO Identify 'My Account Page
     // TODO Hard coded text below
     return "
@@ -686,7 +689,7 @@ function _get_header($page, $menus = array())
                     </div>
                     <div class='clearfix'></div>
             </header>
-            <div class='page-title'><h1>" . $page['title'] . "</h1>" . 
+            <div class='page-title'><h1>$title</h1>" . 
             (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
             </div>"
         ;

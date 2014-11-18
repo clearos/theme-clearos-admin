@@ -1912,6 +1912,14 @@ h1.page-title {
   font-family: "RobotoThin", sans-serif;
   font-weight: normal;
 }
+.page-title i.breadcrumb-separator.fa {
+  font-size: 0.4em;
+  padding: 0px 15px;
+  vertical-align: middle;
+}
+.page-title .page-second-level {
+  font-size: 0.6em;
+}
 #theme_app_sidebar > div {
   margin-bottom: 10px;
 }
