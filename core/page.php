@@ -647,7 +647,7 @@ function _get_header($page, $menus = array())
                                  ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
-                              <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
+                              <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
@@ -675,7 +675,7 @@ function _get_header($page, $menus = array())
                                       ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."                       
                                       <li class='divider'></li>
                                       <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
-                                      <li><a role='menuitem' href='javascript:void(0);'>Setting</a></li>
+                                      <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
                                       <li class='divider'></li>
                                       <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                                     </ul>
