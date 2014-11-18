@@ -2213,12 +2213,13 @@ function theme_box_open($title, $options)
 {
     $id_html = (isset($options['id'])) ? $options['id'] : 'options_' . rand(0, 1000);
     $classes = (isset($options['class'])) ? ' ' . $options['class'] : '';
-    $anchors = (isset($options['anchors'])) ? "<div style='float: right; padding-top: 10px; margin-right: 10px;'>" . $options['anchors'] . "</div>": '';
+    $anchors = (isset($options['anchors'])) ? "<div class='pull-right' style='margin-top: -14px;'>" . $options['anchors'] . "</div>": '';
     return "
         <div class='box $classes' id='$id_html'>
             " . ($title != NULL ? "
             <div class='box-header'>
-                <h3 class='box-title' id='" . $id_html . "_title'>$title</h3>$anchors
+                $anchors
+                <h3 class='box-title' id='" . $id_html . "_title'>$title</h3>
             </div>
             " : "")
     ;
@@ -2540,7 +2541,7 @@ function theme_infobox($type, $title, $message, $options = NULL)
 
     return "
         <div class='" . implode(' ', $class) . "' $id>
-            <i class='$iconclass'></i>
+            <div class='theme-infobox-icon'><i class='$iconclass'></i></div>
             <div class='theme-infobox-title'>$title</div>
             <div class='theme-infobox-content'>$message</div>
             $buttons

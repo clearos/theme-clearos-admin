@@ -1052,16 +1052,24 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* ----------------------- */
 
 .theme-infobox {
-  margin: 20px 0 10px 15px;
-/*  margin-bottom: 10px;*/
+  margin: 10px 30px;
+  position: relative;
+}
+.theme-infobox-icon {
+  padding-right: 15px;
+  font-size: 1.5em;
+  width: 30px;
+  float: left;
 }
 .theme-infobox-title {
   margin-bottom: 10px;
+  margin-top: 5px;
   font-weight: bold;
   text-align: left;
 }
 .theme-infobox-content {
   text-align: left;
+  clear: both;
 }
 .theme-infobox-anchor {
   padding-top: 15px;
@@ -2013,10 +2021,6 @@ input[type="radio"].form-control{width: auto;}
 
 
 
-.alert-warning .fa-exclamation-triangle{float: left; margin:3px 10px 0 0;}
-
-
-
 /* ----------------------------- */
 /* Table Fix Css                */
 /* ------------------------------*/
@@ -2102,8 +2106,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .qsf_file .form-group{ margin:0;}
 .qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
 .col-lg-8.theme-content .box{background: #f7f7f7; overflow: hidden;}
-.col-lg-8.theme-content .theme-infobox{margin: 0 0 30px;}
-.alert{position: relative; margin: 20px 0 10px;}
 .theme-content .box-body > .btn-group{float: right;}
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
 
@@ -2124,17 +2126,9 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 /* AlertBox Close Button Fixes   */
 /* ---------------------------------*/
 
-.alert-success .fa-check-circle, .alert-danger .fa-times-circle, .alert-info .fa-info-circle, .alert-warning .fa-exclamation-triangle { border: 1px solid transparent;  background-color: transparent; border-radius: 50%; width: 24px; height: 24px; line-height: 22px; display: block; position: absolute; left: -5px; top: -5px; text-align: center;}
 .alert-success .fa-check-circle { background-color: #dff0d8; border-color: #d6e9c6; color: #3c763d;}
 .alert-info .fa-info-circle { background-color: #d9edf7; border-color: #bce8f1; color: #31708f;}
-.alert-warning .fa-exclamation-triangle { background-color: #fcf8e3; border-color: #faebcc; color: #8a6d3b; font-size: 12px; line-height: 20px; padding-left: 1px;}
 .alert-danger .fa-times-circle { background-color: #f2dede; border-color: #ebccd1; color: #a94442;}
-
-
-
-
-
-
 
 /* ----------------------------- */
 /* Notification  Bubble          */

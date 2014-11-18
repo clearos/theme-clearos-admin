@@ -114,6 +114,9 @@ function theme_infobox(type, title, message, options)
     } else if (type === 'warning') {
         box_class = 'alert-warning';
         icon_class = 'fa fa-exclamation-triangle';
+    } else if (type === 'info') {
+        box_class = 'alert-info';
+        icon_class = 'fa fa-info-circle';
     } else {
         box_class = 'alert-success';
         icon_class = 'fa fa-check-circle';
@@ -123,8 +126,9 @@ function theme_infobox(type, title, message, options)
 
     return ' \
         <div class="theme-infobox alert ' + box_class + '"' + id + '> \
-            <i class="' + icon_class + '"></i> \
-            <strong style="padding-right: 10px;">' + title + '</strong>' + message + ' \
+            <div class="theme-infobox-icon"><i class="' + icon_class + '"></i></div> \
+            <div class="theme-infobox-title">' + title + '</div> \
+            <div class="theme-infobox-content">' + message + '</div> \
         </div> \
     ';
 }
