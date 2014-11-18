@@ -461,7 +461,7 @@ function theme_field_info($id, $label, $text, $options = NULL)
     return "
         <div id='$field_id_html' class='form-group theme-field-info" . $hide_field . "'>
             <label class='col-sm-5 control-label' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'><div class='form-control'>$text</div></div>
+            <div class='col-sm-7 theme-field-right'><span class='form-control'>$text</span></div>
         </div>
     ";
 }
@@ -668,7 +668,7 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
             <div id='$field_id_html' class='form-group theme-fieldview" . $hide_field . "'>
                 <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
                 <div class='input-group my-colorpicker2 colorpicker-element col-sm-7 theme-field-right'>
-                    <span class='form-control' style='border: none; box-shadow: none; padding-top: 7px;' id='$text_id_html'>$text</span>$input_html
+                    <span class='form-control' id='$text_id_html'>$text</span>$input_html
                     <div class='input-group-addon'></div>
                 </div>
             </div>
