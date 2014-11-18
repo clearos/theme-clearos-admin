@@ -36,6 +36,7 @@ $package['settings'] = array(
         'required' => TRUE,
         'default' => 1,
     ),
+    /*
     'css' => array(
         'lang_tag' => 'base_css_style',
         'type' => 'dropdown',
@@ -64,6 +65,7 @@ $package['settings'] = array(
         'required' => FALSE,
         'default' => NULL,
     ),
+    */
 );
 
 // vim: ts=4 syntax=php
