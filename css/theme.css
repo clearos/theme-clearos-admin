@@ -2119,8 +2119,8 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 .qsf_file .form-group{ margin:0;}
 .qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
-.col-lg-8.theme-content .box{background: #f7f7f7; overflow: hidden;}
-.theme-content .box-body > .btn-group{float: right;}
+form .box{background: #f7f7f7; overflow: hidden;}
+form .box-body > .btn-group{float: right;}
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
 
 

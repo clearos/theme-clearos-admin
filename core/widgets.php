@@ -1228,7 +1228,7 @@ function theme_form_footer($options)
         $loading = "
             <div class='overlay clearos-loading-overlay'></div>
             <div class='theme-form-loading clearos-loading-overlay'>" .
-                theme_loading('1.8em', lang('base_loading...'), array('icon-below' => TRUE)) . "
+                theme_loading('1.4em', lang('base_loading...'), array('icon-below' => TRUE)) . "
             </div>
         ";
     if (isset($options['buttons']))
@@ -1442,7 +1442,7 @@ function theme_chart_container($title, $chart_id, $options)
         $loading = "
             <div class='overlay clearos-loading-overlay'></div>
             <div class='theme-form-loading clearos-loading-overlay'>" .
-                theme_loading('1.4em', lang('base_loading...'), array('icon-below' => TRUE)) . "
+                theme_loading('1.2em', lang('base_loading...'), array('icon-below' => TRUE)) . "
             </div>
         ";
 
@@ -2186,7 +2186,7 @@ function theme_box_footer($id = NULL, $footer = '', $options = NULL)
         $loading = "
             <div class='overlay clearos-loading-overlay'></div>
             <div class='theme-form-loading clearos-loading-overlay'>" .
-                theme_loading('1.8em', lang('base_loading...'), array('icon-below' => TRUE)) . "
+                theme_loading('1.4em', lang('base_loading...'), array('icon-below' => TRUE)) . "
             </div>
         ";
     return "
