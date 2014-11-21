@@ -1218,7 +1218,7 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 
 form .box {
   background: #f7f7f7;
-  /*overflow: hidden; TODO - Talk to Bharat...this breaks Dashboard delete widget */
+  overflow: hidden; /* TODO - Talk to Bharat...this breaks Dashboard delete widget */
 }
 form .box-body > .btn-group{
   float: right;
