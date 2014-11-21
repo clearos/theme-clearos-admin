@@ -466,8 +466,12 @@ function _get_main_content($page)
     echo "</pre>";
     exit; */
     if ($page['type'] == MY_Page::TYPE_DASHBOARD || $page['type'] == MY_Page::TYPE_EXCEPTION || $page['type'] == MY_Page::TYPE_SPOTLIGHT || $page['type'] == MY_Page::TYPE_WIZARD) {
+        // TODO  header (including help) section on spotlight?/
         return "
             <section class='content-container'>
+                <section class='content-header clearfix'>
+                    " . _get_content_header($page) . "
+                </section>
                 " . _get_message().$page['app_view']." 
             </section>  
         ";

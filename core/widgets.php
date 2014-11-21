@@ -2212,7 +2212,7 @@ function theme_box_footer($id = NULL, $footer = '', $options = NULL)
 function theme_box_open($title, $options)
 {
     $id_html = (isset($options['id'])) ? $options['id'] : 'options_' . rand(0, 1000);
-    $classes = (isset($options['class'])) ? ' ' . $options['class'] : '';
+    $classes = (isset($options['class'])) ? $options['class'] : '';
     $anchors = (isset($options['anchors'])) ? "<div class='pull-right' style='margin-top: -14px;'>" . $options['anchors'] . "</div>": '';
     return "
         <div class='box $classes' id='$id_html'>
@@ -2934,7 +2934,6 @@ function theme_help_box($data)
 
     return 
         "<div class='theme-help-box-container'>
-             <i class='fa fa-info'></i>
              <div class='theme-help-box-content'>
                  <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
                  <div class='theme-help-box-description'>" . $data['description'] . "</div>
@@ -3144,11 +3143,12 @@ function theme_image($name, $basename, $options = NULL)
     }
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
-    // First check app htdocs
 
+    // First check app htdocs
     $filename = clearos_app_base($basename) . '/htdocs/' . $name;
     if (!file_exists($filename))
         $filename = clearos_theme_path('ClearOS-Admin') . "/img/missing.svg";
+
     // Now check for theme override
     if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
         $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
