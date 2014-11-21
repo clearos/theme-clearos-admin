@@ -3109,8 +3109,9 @@ function theme_summary_box($data)
 /**
  * Get a image.
  *
- * @param string $name    name of image
- * @param array  $options options
+ * @param string $name     name of image
+ * @param string $basename basename where image request called from
+ * @param array  $options  options
  *
  * Options:
  *  id: DOM ID
@@ -3121,7 +3122,7 @@ function theme_summary_box($data)
  * @return string HTML
  */
 
-function theme_image($name, $options = NULL)
+function theme_image($name, $basename, $options = NULL)
 {
     $override_size = "";
     $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
@@ -3143,7 +3144,14 @@ function theme_image($name, $options = NULL)
     }
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
-    $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
+    // First check app htdocs
+
+    $filename = clearos_app_base($basename) . '/htdocs/' . $name;
+    if (!file_exists($filename))
+        $filename = clearos_theme_path('ClearOS-Admin') . "/img/missing.svg";
+    // Now check for theme override
+    if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
+        $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
     return "<div $id class='" . implode(' ' , $class) . "' $override_size>" . file_get_contents($filename) . "</div>";
 }
 
