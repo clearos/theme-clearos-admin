@@ -793,7 +793,7 @@ function _get_app_full(app, options)
             ' + (app.installed ? '<span class="installed_ribbon">' + lang_installed.toUpperCase() + '</span>' : '') + '\
             <h4 class="block-title">' + app.name + '</h4>\
             <div class="listsvg_cont">\
-                <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
+                <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder">\
                     ' + get_placeholder("svg") + '\
                 </figure>\
                 <div class="app_title"><div class="app_rating">' + theme_star_rating(app.rating) + '</div>' + theme_price(UNIT, app.pricing) + '</div>\
@@ -863,7 +863,7 @@ function _get_app_tile(app, options)
        <div class="col-md-' + col + '">\
           <div class="app_box" id="box-' + app.basename + '">\
             <h4 class="block-title marketplace-tile-title' + font_size + '">' + app.name + '</h4>\
-            <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
+            <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder">\
                 ' + get_placeholder("svg") + '\
             </figure>\
             <div class="app_title">' + theme_price(UNIT, app.pricing) + '\
