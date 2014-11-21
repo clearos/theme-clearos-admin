@@ -1216,6 +1216,14 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Forms                   */
 /* ----------------------- */
 
+form .box {
+  background: #f7f7f7;
+  /*overflow: hidden; TODO - Talk to Bharat...this breaks Dashboard delete widget */
+}
+form .box-body > .btn-group{
+  float: right;
+}
+
 /* ----------------------- */
 /* Marketplace             */
 /* ----------------------- */
@@ -2125,8 +2133,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 .qsf_file .form-group{ margin:0;}
 .qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
-form .box{background: #f7f7f7; overflow: hidden;}
-form .box-body > .btn-group{float: right;}
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
 
 
