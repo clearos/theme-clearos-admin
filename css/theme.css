@@ -1250,6 +1250,12 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   padding-right: 15px;
   font-weight: bold;
 }
+.marketplace-indiv-logo div.box {
+  margin-bottom: 5px;
+}
+.marketplace-indiv-rating {
+  text-align: center;
+}
 .marketplace-comment-box {
   width: 100%;
   min-height: 80px;
