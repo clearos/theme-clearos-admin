@@ -97,6 +97,16 @@
 		*/
 		jQuery(".navbar-toggle").click(function(){
 		  jQuery(".small_menu").toggleClass('hide');
+
 		});
+
+		
 	});	
+	jQuery(window).load(function(){
+		window.setTimeout(function(){
+			jQuery('.support-box-container').find('.support-upgrade-required-banner').each(function(){
+				jQuery(this).parents('.support-box-container').addClass('upgradable');
+			});
+		},1000);
+	});
 })(jQuery);	

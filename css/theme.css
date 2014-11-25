@@ -7,6 +7,10 @@
 /* Add Required Fonts                  */
 /* =================================== */
 
+*{  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 @font-face {
     font-family: 'equiplight';
@@ -1747,7 +1751,7 @@ h4.block-title {
 /* ----------------------- */
 
 .support-box-container {
-  height: 200px;
+  height: 260px;
   overflow: hidden;
 }
 
@@ -1762,14 +1766,13 @@ h4.block-title {
   transform:         rotate(315deg);
   text-transform: uppercase;
   font-size: 1.2em;
-  font-weight: 700;
   color: white;
   background-color: red;
   border: none;
   padding: 10px 80px 100px 80px;
   z-index: 500;
-  top: 120px;
-  left: 160px;
+  /*top: 120px;*/ bottom: -35px;
+  /*left: 160px;*/ right: -100px;
   height: 32px;
   line-height: 32px;
 }
@@ -2205,6 +2208,7 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .alert-info .fa-info-circle { background-color: #d9edf7; border-color: #bce8f1; color: #31708f;}
 .alert-danger .fa-times-circle { background-color: #f2dede; border-color: #ebccd1; color: #a94442;}
 
+
 /* ----------------------------- */
 /* Notification  Bubble          */
 /* ------------------------------*/
@@ -2215,6 +2219,28 @@ zoom: 1; /* Fix for IE7 */
 *display: inline; /* Fix for IE7 */}
 
 
+
+/* ----------------------------- */
+/* Support SVG Holder            */
+/* ------------------------------*/
+.support-item{  
+  border-radius: 50%;
+  background: #3d85c6;
+  width: 128px;
+  height: 128px;
+  display: block;
+  margin: 20px auto 10px;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+}
+
+.support-box-container.upgradable .support-item svg{opacity: 0.5; filter:alpha(opacity=50);}
+.support-box-container.upgradable .support-item{background: #9ec2e3;}
+
+.support_page h3.box-title{color: #3d85c6;}
+.support_page .box-header h3.box-title:before{border-bottom-color: #3d85c6;}
+.support_page .box .btn-group .btn-primary{background-color: #3d85c6; border-color: #3471a8;}
 
 /* ----------------------------- */
 /* Responsive Css                */
@@ -2252,4 +2278,6 @@ header:hover #magic-arrow{ display:none;}
 .main-content aside{ width:94%; display:inherit; border-bottom:1px #e5e5e5 solid;}
 section.content-container { display:inherit; width:100%;}
 }
+
+
 
