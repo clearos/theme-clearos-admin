@@ -3112,6 +3112,8 @@ function theme_summary_box($data)
  * @param string $basename basename where image request called from
  * @param array  $options  options
  *
+ * Supported types: svg, png and gif
+ *
  * Options:
  *  id: DOM ID
  *  size: DOM ID
@@ -3144,15 +3146,28 @@ function theme_image($name, $basename, $options = NULL)
     $alt = (isset($options['alt'])) ? " " . $options['alt'] : "";
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
 
-    // First check app htdocs
-    $filename = clearos_app_base($basename) . '/htdocs/' . $name;
-    if (!file_exists($filename))
-        $filename = clearos_theme_path('ClearOS-Admin') . "/img/missing.svg";
+    if (preg_match('/\.svg$/', $name)) {
+        // First check app htdocs
+        $filename = clearos_app_base($basename) . '/htdocs/' . $name;
+        if (!file_exists($filename))
+            $filename = clearos_theme_path('ClearOS-Admin') . "/img/missing.svg";
 
-    // Now check for theme override
-    if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
-        $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
-    return "<div $id class='" . implode(' ' , $class) . "' $override_size>" . file_get_contents($filename) . "</div>";
+        // Now check for theme override
+        if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
+            $filename = clearos_theme_path('ClearOS-Admin') . "/img/$name";
+        return "<div $id class='" . implode(' ' , $class) . "' $override_size>" . file_get_contents($filename) . "</div>";
+    } else {
+        // First check app htdocs
+        $src = clearos_app_htdocs($basename) . '/' . $name;
+        $filename = clearos_app_base($basename) . '/htdocs/' . $name;
+        if (!file_exists($filename))
+            $src = clearos_theme_url('ClearOS-Admin') . "/img/missing.svg";
+        // Now check for theme override
+        if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
+            $src = clearos_theme_url('ClearOS-Admin') . "/img/$name";
+            
+        return "<img src='" . $src . "' $id class='" . implode(' ' , $class) . "' $override_size>";
+    }
 }
 
 /**

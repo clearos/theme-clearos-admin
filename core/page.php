@@ -103,7 +103,6 @@ function theme_page($page)
 
 function theme_page_open($settings)
 {   
-    
     return "<body id='clearos-body-container' class='marketplace_page'>\n";
 }
 
@@ -361,19 +360,17 @@ function _exception_page($page)
  */
 
 function _wizard_page($page)
-{   
+{
     $page_class = _get_page_class($page['current_basename']);
 
-    $layout = _get_header($page);
-    $layout .= "<div class='main-wrapper $page_class'>";
-    $layout .= _get_wizard_menu($page);
-    $layout .= "
-            <section class='content-container'>
-                <section class='content-header clearfix'>
-                    " . _get_content_header($page) . "
-                </section>
-    ";
-    $layout .= "<section class='content clearfix'>";
+    $layout =
+        "<div class='main-wrapper $page_class'>" .
+        _get_header($page) .
+        "<div class='main-content'>" .
+        _get_wizard_menu($page) .
+        "<section class='content-container'>"
+    ;
+
     // For Wizard pages with help boxes, split page up into 8/4 col
     if ($page['page_inline_help'])
         $layout .= "<div class='col-lg-8 theme-content'>";
@@ -392,12 +389,13 @@ function _wizard_page($page)
 
     // Add inline help
     if ($page['page_inline_help']) {
-        // Close of 8 column main view
+        // Close out 8 column main view
         $layout .= "</div>";
         $layout .= "<div class='col-lg-4 theme-inline-help'>";
         $layout .= $page['page_inline_help'];
         $layout .= "</div>";
     } else {
+        // Close out 12 column main view
         $layout .= "</div>";
     }
     // Close out section
@@ -405,6 +403,7 @@ function _wizard_page($page)
                 </section>
             </section>
     ";
+    $layout .= "  </div>";
     $layout .= "</div>";
     $layout .= _get_footer($page);
 
@@ -459,12 +458,7 @@ function _get_message()
  */
 
 function _get_main_content($page)
-{   
-    
-    /* echo "<pre>";
-    print_r($page);
-    echo "</pre>";
-    exit; */
+{
     if ($page['type'] == MY_Page::TYPE_DASHBOARD || $page['type'] == MY_Page::TYPE_EXCEPTION || $page['type'] == MY_Page::TYPE_SPOTLIGHT || $page['type'] == MY_Page::TYPE_WIZARD) {
         // TODO  header (including help) section on spotlight?/
         return "
@@ -473,9 +467,9 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </section>
                 " . _get_message().$page['app_view']." 
-            </section>  
+            </section>
         ";
-    } else if ($page['type'] == MY_Page::TYPE_REPORT_OVERVIEW) {    
+    } else if ($page['type'] == MY_Page::TYPE_REPORT_OVERVIEW) {
         return "
             <section class='content-container'>
                 <section class='content-header clearfix'>
@@ -620,8 +614,12 @@ function _get_header($page, $menus = array())
     }
 
     $title = $page['title']; 
-    if ($page['title'] != $page['current_name'])
-        $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i>" . "<span class='page-second-level'>" . $title . "</span>";
+    if (isset($framework->session->userdata['wizard'])) {
+        $title = lang('base_wizard') . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i><span class='page-second-level'>" . $page['title'] . "</span>";
+    } else {
+        if ($page['title'] != $page['current_name'])
+            $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i><span class='page-second-level'>" . $title . "</span>";
+    }
     // TODO Identify 'My Account Page
     // TODO Hard coded text below
     return "
@@ -636,36 +634,35 @@ function _get_header($page, $menus = array())
             </div>
             
                 <ul class='full_menu'>
-                    <li class='ClearOS ".(($page['current_basename'] == '') ? "active":"")."'>
-                        <a href='/' class='ci-ClearOS'>&nbsp;</a>
+                    <li class='ClearOS " . (($page['current_basename'] == '') ? "active" : "") . "'>
+                        <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
                     </li> 
                 " . (! isset($framework->session->userdata['wizard']) ? "
-                        <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "")."'>
+                        <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
                             <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
                         </li>
-                        <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active" : "")."'>
+                        <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active" : "") . "'>
                             <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
                         </li>
                         <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                             <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                         </li> 
-                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>".((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '')."</big><span data-toggle='tooltip' data-placement='top' title='".$page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10).'..' :$page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
-                                 ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."
+                                 " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
                               <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
-                          </li>                         
-                            " : "") . "                 
+                          </li>
+                            " : "<li></li><li></li><li></li><li></li>") . "
                     </ul>
-                    <div class='ClearOS logo1 ".(($page['current_basename'] == '') ? "active":"")."'>
-                        <a href='app/' class='ci-ClearOS'>&nbsp;</a>
+                    <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
+                        <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
                     </div> 
                     <div class='small_menu hide'>
-                        
                         <ul>
                         " . (! isset($framework->session->userdata['wizard']) ? "
                                 <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
@@ -677,19 +674,18 @@ function _get_header($page, $menus = array())
                                 <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                                     <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
                                 </li> 
-                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>".((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '')."</big><span data-toggle='tooltip' data-placement='top' title='".$page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10).'..' :$page['username']) .  "</span></a>
+                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
                                     <ul class='dropdown-menu' role='menu'>
-                                      ".((count($page['devel_alerts'])) > 0 ?  $alert_text : '')."                       
+                                      " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                                       <li class='divider'></li>
                                       <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
                                       <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
                                       <li class='divider'></li>
                                       <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                                     </ul>
-                                  </li>                         
-                                    " : "") . "                 
+                                  </li>
+                                    " : "") . "
                             </ul>
-                            
                     </div>
                     <div class='clearfix'></div>
             </header>
@@ -768,7 +764,7 @@ function _get_wizard_menu($page)
             $current_subcategory = $menu['subcategory'];
             $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
             $steps .= "\t<a href='#'><i class='$sub_class'></i><span>" . $menu['subcategory'] . "</span></a>\n";
-            $steps .= "\t<ul class='treeview-menu'>\n";
+            $steps .= "\t<ul class='treeview-menu' style='display: block;'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory == $menu['subcategory']) {
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
@@ -778,7 +774,7 @@ function _get_wizard_menu($page)
             $steps .= "</li>\n";
             $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
             $steps .= "\t<a href='#'><i class='$sub_class'></i><span>" . $menu['subcategory'] . "</span></a>\n";
-            $steps .= "\t<ul class='treeview-menu'>\n";
+            $steps .= "\t<ul class='treeview-menu' style='display: block;'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         }
     }
@@ -789,15 +785,25 @@ function _get_wizard_menu($page)
     $steps .= "\t\t</ul>\n";
     $steps .= "</li>\n";
 
-    return "
-<aside class='left-side sidebar-offcanvas'>
-    <section class='sidebar'>
-        <ul class='sidebar-menu'>
-            $steps
-        </ul>
-    </section>
-</aside>
-";
+    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2) {
+        return "
+            <aside class='left-side sidebar-offcanvas'>
+                <section class='sidebar'>
+                    <ul class='sidebar-menu-2'>
+                        $steps
+                    </ul>
+                </section>
+            </aside>
+        ";
+    } else {
+        return "
+            <aside class='theme-menu-1'>
+                <ul class='wizard-progress'>
+                    $steps
+                </ul>
+            </aside>
+        ";
+    }
 }
 
 /**
@@ -932,9 +938,9 @@ function _get_left_menu_1($page)
                 </span>
             </div>
         " . form_close() . "
-            <ul class='left_nav'>   
+            <ul class='left_nav'>
                 $spotlights
-                $main_apps             
+                $main_apps
             </ul>
         </aside>";
 }
@@ -1206,19 +1212,19 @@ function _get_page_class($basename)
         break;
         
         case 'marketplace' : 
-        $class  = 'marketplace_page';   
+        $class  = 'marketplace_page';
         break;
         
         case 'support' : 
-        $class  = 'support_page';   
+        $class  = 'support_page';
         break;
         
         case 'TODO My Account Pages' : 
-        $class  = 'my_account_page';  
+        $class  = 'my_account_page';
         break;
         
         default : 
-        $class  = 'clearos_page';   
+        $class  = 'clearos_page';
         break;
         
     }

@@ -1022,9 +1022,6 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   margin-left: 10px;
 }
 
-
-
-
 /* ----------------------- */
 /* Tables                  */
 /* ----------------------- */
@@ -1129,6 +1126,31 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   background: -ms-linear-gradient(top,  #ffffff 0%,#e7eaed 50%,#ffffff 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #ffffff 0%,#e7eaed 50%,#ffffff 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
+}
+a#wizard_nav_next, a#wizard_nav_previous {
+  font-size: 14px;
+  padding: 6px;
+}
+a#wizard_nav_next:hover {
+  -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=90)';
+  filter:alpha(Opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+}
+a#wizard_nav_previous:hover, a#wizard_nav_previous:focus {
+ color: #c7c7c7;
+}
+.wizard-progress {
+  padding-top:20px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+.wizard-progress ul.treeview-menu {
+  padding-left: 30px;
+  list-style-type: none;
+}
+.wizard-progress li.treeview a span {
+  padding-left: 5px;
 }
 
 /* ----------------------- */
