@@ -1755,26 +1755,37 @@ h4.block-title {
   overflow: hidden;
 }
 
-.support-upgrade-required-banner {
+.support-banner {
   display: block;
   position: absolute;
   text-align: center;
   opacity: 0.9;
-  -webkit-transform: rotate(315deg);
-  -moz-transform:    rotate(315deg);
-  -ms-transform:     rotate(315deg);
-  transform:         rotate(315deg);
-  text-transform: uppercase;
   font-size: 1.2em;
   color: white;
-  background-color: red;
   border: none;
-  padding: 10px 80px 100px 80px;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
   z-index: 500;
-  /*top: 120px;*/ bottom: -35px;
-  /*left: 160px;*/ right: -100px;
+  padding: 10px;
+  height: 80px;
+}
+.support-title {
+  text-transform: uppercase;
+}
+.support-additional-info {
+  font-size: 0.8em;
+}
+.support-additional-info a {
+  color: #3d85c6;
+}
+.support-upgrade-required {
   height: 32px;
   line-height: 32px;
+  background-color: red;
+}
+.support-not-available, .support-no-open-tickets {
+  background-color: red;
 }
 .support-item {
   width: 80px;
@@ -1783,13 +1794,43 @@ h4.block-title {
   margin-top: -10px;
   margin: auto;
 }
-
 .support-upgrade-days-remaining {
   font-weight: 700;
   text-align: center;
   padding: 20px;
   font-size: 1.2em;
 }
+.support-item {
+  border-radius: 50%;
+  background: #3d85c6;
+  width: 128px;
+  height: 128px;
+  display: block;
+  margin: 20px auto 10px;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+}
+
+.support-box-container.upgradable .support-item svg {
+  opacity: 0.5; filter:alpha(opacity=50);
+}
+.support-box-container.upgradable .support-item{
+  background: #9ec2e3;
+}
+.support_page h3.box-title {
+  color: #3d85c6;
+}
+.support_page .box-header h3.box-title:before {
+  border-bottom-color: #3d85c6;
+}
+.support_page .box .btn-group .btn-primary {
+  background-color: #3d85c6; border-color: #3471a8;
+}
+.support-box-container path, .support-box-container polygon, .support-box-container ellipse {
+  fill: white;
+}
+
 /* ----------------------- */
 /* Dashboard               */
 /* ----------------------- */
@@ -2218,30 +2259,6 @@ vertical-align: top;
 zoom: 1; /* Fix for IE7 */
 *display: inline; /* Fix for IE7 */}
 
-
-
-/* ----------------------------- */
-/* Support SVG Holder            */
-/* ------------------------------*/
-.support-item{  
-  border-radius: 50%;
-  background: #3d85c6;
-  width: 128px;
-  height: 128px;
-  display: block;
-  margin: 20px auto 10px;
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-}
-
-.support-box-container.upgradable .support-item svg{opacity: 0.5; filter:alpha(opacity=50);}
-.support-box-container.upgradable .support-item{background: #9ec2e3;}
-
-.support_page h3.box-title{color: #3d85c6;}
-.support_page .box-header h3.box-title:before{border-bottom-color: #3d85c6;}
-.support_page .box .btn-group .btn-primary{background-color: #3d85c6; border-color: #3471a8;}
-
 /* ----------------------------- */
 /* Responsive Css                */
 /* ------------------------------*/
@@ -2278,6 +2295,5 @@ header:hover #magic-arrow{ display:none;}
 .main-content aside{ width:94%; display:inherit; border-bottom:1px #e5e5e5 solid;}
 section.content-container { display:inherit; width:100%;}
 }
-
 
 
