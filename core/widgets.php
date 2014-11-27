@@ -1118,31 +1118,23 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
     echo theme_login_header_open(array('class'=>'title'));
     echo theme_login_header_close();
     echo form_open('base/session/login/' . $redirect);
-       // echo form_header(lang('base_login'), array('id' => 'theme-login-form-header','class'=>'login_box'));
-    //echo login_label_open(array(),"<i class='fa fa-user'></i>");
-    //echo login_label_open(array(),"<i class='fa fa-user'></i>"); 
     echo field_input('clearos_username', '', "<i class='fa fa-user'></i> ".lang('base_username'));
-  //  echo login_label_close();  
-   // echo login_label_open(array(),"<i class='fa fa-lock'></i>"); 
     echo field_password('clearos_password', '', "<i class='fa fa-lock'></i> ".lang('base_password'));
-   // echo login_label_close();
 
-        // if (count($languages) > 1)
-        //     echo field_dropdown('code', $languages, $code, lang('base_language'));
+    // if (count($languages) > 1)
+    //     echo field_dropdown('code', $languages, $code, lang('base_language'));
 
-        // if (isset($options) && $options['ip_extras'])
-        //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
+    // if (isset($options) && $options['ip_extras'])
+    //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
+    if ($errmsg)
+        echo "<div class='theme-validation-error'>$errmsg</div>";
 
 
-        echo theme_field_button_set(
-            array(form_submit_custom('submit', lang('base_login'), 'high'))
-        );
+    echo theme_field_button_set(
+        array(form_submit_custom('submit', lang('base_login'), 'high'))
+    );
 
-        if ($errmsg)
-        echo infobox_critical(lang('base_error'), $errmsg);
-       // echo form_footer(array('id' => 'theme-login-form-footer'));
-        echo form_close();
-    //echo column_close();
+    echo form_close();
     echo theme_login_right_close();    
     echo theme_login_box_close();
 }
