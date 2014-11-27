@@ -2829,21 +2829,11 @@ function theme_confirm_delete($title, $confirm_uri, $cancel_uri, $items, $messag
 
 function theme_wizard_intro_box($data, $options)
 {
-    $action = '';
-    if (isset($options['action']))
-        $action = anchor_custom(
-            $options['action']['url'],
-            $options['action']['text'],
-            $options['action']['priority'],
-            $options['action']['js']
-        );
-    if (file_exists(clearos_app_base($data['basename']) . "htdocs/" . $data['basename'] . '.svg'))
-        $img = clearos_app_base($data['basename']) . "htdocs/" . $data['basename'] . '.svg';
-    else
-        $img = clearos_theme_path('ClearOS-Admin') . '/img/placeholder.svg';
     return theme_container("
-        <div class='theme-wizard-intro-title'>" . $data['wizard_name'] . "</div><div style='float: right; margin-right: 15px;'>" . $action . "</div>
-        <div class='theme-wizard-intro-icon-container'><div class='theme-wizard-intro-icon'>" . file_get_contents($img) . "</div></div>
+        <div class='theme-wizard-intro-title'>" . $data['wizard_name'] . "</div>
+        <div class='theme-wizard-intro-icon-container'>
+          <div class='theme-wizard-intro-icon'>" .  theme_app_logo($data['basename']) . "</div>
+        </div>
         <div class='theme-wizard-intro-description clearfix'>" . $data['wizard_description'] . "</div>
     ");
 }
