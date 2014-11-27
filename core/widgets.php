@@ -107,11 +107,13 @@ function theme_anchor($url, $text, $importance, $class, $options)
 
     // Button importance
     if ($importance === 'high' || $importance === 'important')
-        $importance = 'btn-primary';
+        $importance = 'btn btn-primary';
     else if ($importance === 'low')
-        $importance = 'btn-secondary';
+        $importance = 'btn btn-secondary';
+    else if ($importance === 'link-only')
+        $importance = '';
     else
-        $importance = 'btn-link';
+        $importance = 'btn btn-link';
 
     $class[] = $importance;
 
@@ -141,7 +143,7 @@ function theme_anchor($url, $text, $importance, $class, $options)
             </div>
             ";
         } else {
-            return "<a href='$url'$id class='btn " . implode(' ', $class) . "'$target$tabindex>$text</a>";
+            return "<a href='$url'$id class='" . implode(' ', $class) . "'$target$tabindex>$text</a>";
         }
     }
 }
