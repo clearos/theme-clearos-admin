@@ -1422,7 +1422,7 @@ form .box-body > .btn-group{
 .btn.btn-default.novice-select:hover {
   background-color: #f0f0f0 !important;
 }
-.btn.btn-default.novice-select.active {
+.btn.btn-default.active {
   background-color: #d4d4d4 !important;
 }
 /* Overrides annoying overlap of buttons in group */
@@ -1840,6 +1840,16 @@ h4.block-title {
 #action-selected {
   font-weight: bold;
   font-style: italic;
+}
+
+/* ----------------------- */
+/* Edition App             */
+/* ----------------------- */
+
+.edition-option-footer { 
+  text-align: center;
+  padding-top: 10px;
+  height: 40px;
 }
 
 /* ----------------------- */
