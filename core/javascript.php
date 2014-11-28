@@ -63,16 +63,14 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/plugins/datatables/jquery.dataTables.rowReordering.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/bootstrap-slider/bootstrap-slider.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/sparkline/jquery.sparkline.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.resize.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.pie.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.time.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.stack.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.categories.min.js'></script>
+<script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.axislabels.js'></script>
 <script type='text/javascript' src='$theme_url/js/nav-menu-" . $custom_settings['menu'] . ".js'></script>
-
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.resize.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.pie.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.time.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.stack.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/plugins/flot/jquery.flot.categories.min.js'></script>
-<script type='text/javascript' src='$theme_url/old_js/jquery.flot.axislabels.js'></script>
-
 
 <!--[if IE 7]>
 <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
@@ -80,8 +78,8 @@ function theme_page_javascript($custom_settings)
 <![endif]-->
 
 <!--[if IE 9]>
-	<script type='text/javascript' src='$theme_url/old_js/html5shiv.min.js'></script>
-	<script type='text/javascript' src='$theme_url/old_js/respond.min.js'></script>
+	<script type='text/javascript' src='$theme_url/js/html5shiv.min.js'></script>
+	<script type='text/javascript' src='$theme_url/js/respond.min.js'></script>
 <![endif]-->
 
 <!-- Theme Javascript -->
