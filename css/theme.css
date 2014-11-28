@@ -73,6 +73,11 @@ a.highlight-link {
 a.highlight-link:hover {
   color: #62799A;
 }
+.theme-clear:after {
+  content:'';
+  display:block;
+  clear: both;
+}
 .theme-center-text {
   margin-left: auto;
   margin-right: auto;
@@ -1850,6 +1855,12 @@ h4.block-title {
   text-align: center;
   padding-top: 10px;
   height: 40px;
+}
+p.edition-info { 
+  line-height: 20px;
+}
+.edition-label { 
+  padding-top: 5px;
 }
 
 /* ----------------------- */

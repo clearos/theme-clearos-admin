@@ -2122,7 +2122,7 @@ function theme_box_content($content, $options = NULL)
 {
     $id = (isset($options['id'])) ? "id='" . $options['id'] . "'" : "";
     $classes = (isset($options['class'])) ? $options['class'] : "";
-    return "<div $id class='box-body $classes'>$content</div>";
+    return "<div $id class='box-body theme-clear $classes'>$content</div>";
 }
 
 /**
@@ -2146,7 +2146,7 @@ function theme_box_close()
 
 function theme_box_content_open($options = NULL)
 {
-    return "<div class='box-body'>";
+    return "<div class='box-body theme-clear'>";
 }
 
 /**
@@ -3046,7 +3046,7 @@ function theme_summary_box($data)
 
     $html = theme_container("
         <div class='box-header'><h3 class='box-title'>" . $data['name'] . "</h3></div>
-        <div class='box-body' id='theme_app_sidebar'>
+        <div class='box-body theme-clear' id='theme_app_sidebar'>
             <div class='row'>
                 <div class='col-lg-6 theme-field'>" . lang('base_vendor') . "</div>
                 <div class='col-lg-6'>" . $data['vendor'] . "</div>
