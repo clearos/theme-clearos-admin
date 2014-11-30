@@ -475,7 +475,7 @@ function _get_main_content($page)
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
                 </section>
-                <section class='content clearfix'>
+                <section class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
@@ -499,7 +499,7 @@ function _get_main_content($page)
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
                 </section>
-                <section class='content clearfix'>
+                <section class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                     " . _get_message() . "
                     " . $page['page_report_chart'] . "
@@ -521,7 +521,7 @@ function _get_main_content($page)
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
                 </section>
-                <section class='content clearfix'>
+                <section class='row content clearfix'>
                     <div class='theme-content'>
                     " . _get_message() . "
                     " . $page['app_view'] . "
@@ -535,7 +535,7 @@ function _get_main_content($page)
                 <section class='content-header clearfix'>
                     " . _get_content_header($page) . "
                 </section>
-                <section class='content clearfix'>
+                <section class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
