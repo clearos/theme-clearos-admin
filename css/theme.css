@@ -999,6 +999,9 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .theme-chart-large {
   height: 350px;
 }
+.theme-chart-container .legend td.legendLabel {
+  padding-left: 5px;
+}
 
 /* ----------------------- */
 /* Daemons                 */
