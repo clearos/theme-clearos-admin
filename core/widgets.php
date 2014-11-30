@@ -407,7 +407,7 @@ function theme_field_dropdown($name, $value, $label, $error, $values, $input_id,
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
     if (isset($options['no-field']))
-        return form_dropdown($name, $values, $value, "class='form-control theme-dropdown$add_classes'$input_id_html") . " $error_html";
+        return form_dropdown($name, $values, $value, "class='form-control theme-no-field theme-dropdown$add_classes'$input_id_html") . " $error_html";
     else
         return "
             <div id='$field_id_html' class='form-group theme-field-dropdown'>
@@ -1415,6 +1415,7 @@ function theme_chart_container($title, $chart_id, $options)
     $id_html = (isset($options['id'])) ? " id='" . $options['id'] . "'" : '';
 
     $action = ($options['action']) ? $options['action'] : '';
+    $footer_content = ($options['footer']) ? $options['footer'] : '';
     $size = 'theme-chart-medium';
     $override_size = '';
     if (isset($options['chart-size'])) {
@@ -1441,13 +1442,13 @@ function theme_chart_container($title, $chart_id, $options)
         ";
 
     return "
-        <div class='box'$id_html>
+        <div class='box theme-clear'$id_html>
           <div class='box-header'>
             <h3 class='box-title'>$title</h3>
             <div class='theme-summary-table-action'>$action</div>
           </div>
           <div class='box-body'><div class='theme-chart-container $size' id='$chart_id' $override_size></div></div>
-          <div class='box-footer'></div>
+          <div class='box-footer pull-right '>$footer_content</div>
           $loading
         </div>
     ";

@@ -1047,6 +1047,10 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Boxes (bootstrap-like)  */
 /* ----------------------- */
 
+.box-footer {
+  margin-top: 10px;
+}
+
 /* ----------------------- */
 /* Infoboxes               */
 /* ----------------------- */
@@ -1230,6 +1234,9 @@ form .box {
 }
 form .box-body > .btn-group{
   float: right;
+}
+.theme-no-field {
+  width: auto;
 }
 
 /* ----------------------- */
