@@ -740,8 +740,8 @@ function _get_wizard_menu($page)
 
     foreach ($menu_data as $step_no => $menu) {
         // Determine sub-category icon to use
-        if ($menu['subcategory'] == lang('base_network'))
-            $sub_class = 'fa fa-fire';
+        if ($menu['subcategory'] == lang('base_network_settings'))
+            $sub_class = 'fa fa-share-alt';
         else if ($menu['subcategory'] == lang('base_registration'))
             $sub_class = 'fa fa-pencil';
         else if ($menu['subcategory'] == lang('base_configuration'))
