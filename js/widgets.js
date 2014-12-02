@@ -91,6 +91,20 @@ function theme_dialog_close(obj)
 }
 
 /**
+ * Add key/value pair to sidebar widget.
+ */
+
+function theme_add_sidebar_pair(key, value)
+{
+    $('#sidebar_additional_info_row').after(
+        '<div class="row">' +
+        '<div class="col-lg-6 theme-field" valign="top">' + key + '</div>' +
+        '<div class="col-lg-6">' + value + '</div>' +
+        '</div>'
+    );
+}
+
+/**
  * Format a date.
  */
 
@@ -158,7 +172,7 @@ function theme_modal_infobox_close(id, options)
 function theme_progress_bar(value, options)
 {
 
-    id = (options != undefined && options.id != undefined) ? ' id="' . options.id + '"' : '';
+    id = (options != undefined && options.id != undefined) ? ' id="' + options.id + '"' : '';
 
     return ' \
         <div class="progress sm " ' + id + '>\
