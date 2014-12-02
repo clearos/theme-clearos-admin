@@ -1109,6 +1109,9 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Wizard                  */
 /* ----------------------- */
 
+#wizard_nav_previous, #wizard_nav_next {
+  min-width: 100px;
+}
 .theme-wizard-intro-title {
   font-weight: bold;
   padding-bottom: 10px;
@@ -1451,6 +1454,9 @@ form .box-body > .btn-group{
 #marketplace-feature-select {
   padding-top: 20px;
   text-align: center;
+}
+.marketplace-wizard-select div.box-body {
+  min-height: 80px;
 }
 .theme-star {
   color: #cccccc;
