@@ -639,13 +639,13 @@ function _get_header($page, $menus = array())
                     </li> 
                 " . (! isset($framework->session->userdata['wizard']) ? "
                         <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
-                            <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
+                            <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
                         </li>
                         <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active" : "") . "'>
-                            <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
+                            <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
                         </li>
                         <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
-                            <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
+                            <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
                         </li> 
                         <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
@@ -666,13 +666,13 @@ function _get_header($page, $menus = array())
                         <ul>
                         " . (! isset($framework->session->userdata['wizard']) ? "
                                 <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
-                                    <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</span></a>
+                                    <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
                                 </li>
                                 <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active":"") . "'>
-                                    <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> <span>" . lang('base_marketplace') . "</span></a>
+                                    <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
                                 </li>
                                 <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
-                                    <a href='/app/support'><i class='ci-Clear_CARE'></i><span>" . lang('base_support') . "</span></a>
+                                    <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
                                 </li> 
                                 <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
                                     <ul class='dropdown-menu' role='menu'>
