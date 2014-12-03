@@ -659,7 +659,7 @@ function _get_header($page, $menus = array())
                               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
                           </li>
-                            " : "<li></li><li></li><li></li>") . "
+                            " : "") . "
                     </ul>
                     <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
                         <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
