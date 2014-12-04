@@ -23,7 +23,7 @@
 				.data("origLeft", $magicLine.position().left)
 				.data("origWidth", $magicLine.width());
 		} */
-		jQuery("header").find("ul li").hover(function() {
+		jQuery("header").find("ul li a").hover(function() {
 			$el = jQuery(this);
 			$current_index = $el.index();
 			leftPos = $el.position().left;
