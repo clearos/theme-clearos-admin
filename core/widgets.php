@@ -1418,6 +1418,13 @@ function theme_chart_container($title, $chart_id, $options)
     $footer_content = ($options['footer']) ? $options['footer'] : '';
     $size = 'theme-chart-medium';
     $override_size = '';
+    if ((isset($options['class']))) {
+        // Additional classes
+        if (is_array($options['class']))
+            $class = $options['class'];
+        else
+            $class = explode(' ', $options['class']);
+    }
     if (isset($options['chart-size'])) {
         if (preg_match('/^(\d+)x(\d+)$/', $options['chart-size'], $match)) {
             $override_size = "style='width: " . $match[1] . "px; height: " . $match[2] . "px;'";
@@ -1447,7 +1454,7 @@ function theme_chart_container($title, $chart_id, $options)
             <h3 class='box-title'>$title</h3>
             <div class='theme-summary-table-action'>$action</div>
           </div>
-          <div class='box-body'><div class='theme-chart-container $size' id='$chart_id' $override_size></div></div>
+          <div class='box-body'><div class='theme-chart-container $size " . implode(' ', $class) . "' id='$chart_id' $override_size></div></div>
           <div class='box-footer pull-right '>$footer_content</div>
           $loading
         </div>

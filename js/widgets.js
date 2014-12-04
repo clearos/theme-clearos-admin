@@ -172,11 +172,18 @@ function theme_modal_infobox_close(id, options)
 function theme_progress_bar(value, options)
 {
 
-    id = (options != undefined && options.id != undefined) ? ' id="' + options.id + '"' : '';
-
+    var id = '';
+    var classes = [];
+    if (typeof options != undefined) {
+        if (options.id != undefined)
+            id = 'id="' + options.id + '"';
+        if (options.no_animation != undefined)
+            classes.push('theme-progress-bar-no-animation');
+    }
+    
     return ' \
-        <div class="progress sm " ' + id + '>\
-            <div class="progress-bar progress-bar-primary sm" role="progressbar" valuenow="' + value + '" aria-valuemin="0" aria-valuemax="100" style="width:' + value + '%">\
+        <div class="progress sm">\
+            <div ' + id + ' class="progress-bar progress-bar-primary sm ' + classes.join(' ') + '" role="progressbar" valuenow="' + value + '" aria-valuemin="0" aria-valuemax="100" style="width:' + value + '%">\
                 <span class="sr-only">' + value + '%</span>\
             </div>\
         </div>\

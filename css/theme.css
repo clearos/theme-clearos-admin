@@ -960,7 +960,12 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Progress bars           */
 /* ----------------------- */
 
-.progress {
+.theme-progress-bar-no-animation {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 
 /* ----------------------- */
