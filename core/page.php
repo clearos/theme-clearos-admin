@@ -636,10 +636,10 @@ function _get_header($page, $menus = array())
             </div>
             
                 <ul class='full_menu'>
-                    <li class='ClearOS " . (($page['current_basename'] == '') ? "active" : "") . "'>
-                        <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
-                    </li> 
                 " . (! isset($framework->session->userdata['wizard']) ? "
+                        <li class='ClearOS " . (($page['current_basename'] == '') ? "active" : "") . "'>
+                            <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
+                        </li> 
                         <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
                             <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
                         </li>
@@ -658,8 +658,12 @@ function _get_header($page, $menus = array())
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
-                          </li>
-                            " : "") . "
+                        </li>
+                        " : "
+                        <li class='ClearOS theme-wizard-active'>
+                            <a href='#' class='ci-ClearOS'>&nbsp;</a>
+                        </li> 
+                        ") . "
                     </ul>
                     <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
                         <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>

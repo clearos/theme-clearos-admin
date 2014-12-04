@@ -1114,6 +1114,12 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Wizard                  */
 /* ----------------------- */
 
+li.theme-wizard-active {
+  border-radius: 5px 5px 0px 0px !important;
+}
+.theme-wizard-active a {
+  width: 20%;
+}
 .theme-wizard-intro-title {
   font-weight: bold;
   padding-bottom: 10px;
@@ -1937,7 +1943,7 @@ footer {
 .ci-ClearSymbol:before {
   content: "\e611";
 }
-.ci-ClearOS:before {
+.ci-ClearOS:before, .ci-Wizard:before  {
   content: "\e601";
 }
 .ci-dashboard:before {
