@@ -23,9 +23,9 @@
 }
 
 .btn-link, a {
-  color: #608921;
+  color: #3d85c6;
 }
-a:hover, a:focus {
+a:hover, a:focus, .btn-link:hover {
   color: #3471a8;
 }
 .btn-primary {
