@@ -1,0 +1,74 @@
+.main-content aside ul.left_nav > li > a:hover {
+  color: #c2510f;
+}
+.main-content aside ul.left_nav > li > a:focus {
+  color: #c2510f;
+}
+.main-content aside ul.left_nav > li.active > a {
+  color: #c2510f;
+}
+.sub_menu li.active {
+  border-left-color: #c2510f;
+}
+.sub_menu li.active > a,
+.sub_menu li:hover > a {
+  color: #c2510f;
+}
+.sub_menu li > ul li.active {
+  border-left-color: #c2510f;
+}
+.sub_menu li > ul li.active a,
+.sub_menu li > ul li:hover a {
+  color: #c2510f;
+}
+
+.btn-link, a {
+  color: #608921;
+}
+a:hover, a:focus {
+  color: #aa470d;
+}
+.btn-primary {
+  background-color: #c2510f;
+  border-color: #aa470d;
+}                          
+
+.app_title {
+  color: #c2510f;
+}
+.installed_ribbon {
+  background: #e9ecef;
+  border: 1px solid #c2510f;
+  color: #c2510f;
+}
+.block-title {
+  color: #c2510f;
+}
+.block-title:before {
+  border-bottom: 1px solid #c2510f;
+}
+.filter_links a.btn-link:hover {
+  color: #c2510f;
+}
+
+#app-details-container h4, #app-details-container h3, .box-title {
+  color: #c2510f;
+}
+#app-details-container h4:before, #app-details-container h3:before, .box-title:before {
+  border-bottom: 1px solid #c2510f;
+}
+.modal-content .modal-header {
+  color: #c2510f;
+}
+.modal-content .modal-header:before {
+  border-bottom: 1px solid #c2510f;
+}
+.modal-content .modal-body h4 {
+  color: #c2510f;
+}
+.modal-content .modal-body h4:before {
+  border-bottom: 1px solid #c2510f;
+}
+.small_menu ul li a:hover, .small_menu ul li a:hover i {
+  color:#c2510f;
+}
