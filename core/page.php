@@ -622,6 +622,18 @@ function _get_header($page, $menus = array())
     }
     
     
+    $active_header = array();
+    if ($page['current_basename'] == 'dashboard')
+        $active_header['dashboard'] = "active";
+    else if ($page['current_basename'] == 'marketplace')
+        $active_header['marketplace'] = "active";
+    else if ($page['current_basename'] == 'support')
+        $active_header['support'] = "active";
+    else if ($page['current_basename'] == 'my-account') // TODO
+        $active_header['my-account'] = "active";
+    else 
+        $active_header['home'] = "active";
+        
     // TODO Identify 'My Account Page
     // TODO Hard coded text below
     return "
@@ -637,19 +649,19 @@ function _get_header($page, $menus = array())
             
                 <ul class='full_menu'>
                 " . (! isset($framework->session->userdata['wizard']) ? "
-                        <li class='ClearOS " . (($page['current_basename'] == '') ? "active" : "") . "'>
-                            <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
+                        <li class='ClearOS " . $active_header['home'] . "'>
+                            <a href='/app/base/system_info' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
                         </li> 
-                        <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
+                        <li class='dashboard " . $active_header['dashboard'] . "'>
                             <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
                         </li>
-                        <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active" : "") . "'>
+                        <li class='marketplace " . $active_header['marketplace'] . "'>
                             <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
                         </li>
-                        <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
+                        <li class='support " . $active_header['support'] . "'>
                             <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
                         </li> 
-                        <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . $active_header['my_account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
                                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
