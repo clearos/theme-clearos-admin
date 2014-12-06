@@ -33,6 +33,13 @@ a:hover, a:focus, .btn-link:hover {
   border-color: #3471a8;
 }                          
 
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #3d85c6;
+  border-color: #3471a8;
+}
+.pagination > li > a, .pagination > li > span {
+  color: #3d85c6;
+}
 .app_title {
   color: #3d85c6;
 }

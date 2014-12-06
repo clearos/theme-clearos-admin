@@ -943,6 +943,16 @@ a:hover, a:focus {
 
 span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 
+/* ----------------------- */
+/* Pagination              */
+/* ----------------------- */
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #608921;
+  border-color: #487419;
+}
+.pagination > li > a, .pagination > li > span {
+  color: #608921;
+}
 
 /* ----------------------- */
 /* Radio buttons and sets  */
