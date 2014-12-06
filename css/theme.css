@@ -980,6 +980,9 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* Progress bars           */
 /* ----------------------- */
 
+.progress-bar {
+  background-color: #608921;
+}
 .theme-progress-bar-no-animation {
   -webkit-transition: none;
   -moz-transition: none;

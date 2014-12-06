@@ -28,6 +28,9 @@
 a:hover, a:focus, .btn-link:hover {
   color: #aa470d;
 }
+.progress-bar {
+  background-color: #c2510f;
+}
 .btn-primary {
   background-color: #c2510f;
   border-color: #aa470d;
