@@ -763,7 +763,7 @@ function _get_wizard_menu($page)
         else if ($menu['subcategory'] == lang('base_registration'))
             $sub_class = 'fa fa-pencil';
         else if ($menu['subcategory'] == lang('base_configuration'))
-            $sub_class = 'fa fa-gear';
+            $sub_class = 'fa fa-gears';
         else if ($menu['subcategory'] == lang('base_marketplace'))
             $sub_class = 'fa fa-cloud-download';
         else if ($menu['subcategory'] == lang('base_finish'))
@@ -781,8 +781,8 @@ function _get_wizard_menu($page)
         if ($current_subcategory == NULL) {
             $current_subcategory = $menu['subcategory'];
             $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
-            $steps .= "\t<a href='#'><i class='$sub_class'></i><span>" . $menu['subcategory'] . "</span></a>\n";
-            $steps .= "\t<ul class='treeview-menu' style='display: block;'>\n";
+            $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
+            $steps .= "\t<ul class='sub_menu' style='display: block;'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory == $menu['subcategory']) {
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
@@ -791,8 +791,8 @@ function _get_wizard_menu($page)
             $steps .= "\t</ul>\n";
             $steps .= "</li>\n";
             $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
-            $steps .= "\t<a href='#'><i class='$sub_class'></i><span>" . $menu['subcategory'] . "</span></a>\n";
-            $steps .= "\t<ul class='treeview-menu' style='display: block;'>\n";
+            $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
+            $steps .= "\t<ul class='sub_menu'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         }
     }
@@ -816,7 +816,7 @@ function _get_wizard_menu($page)
     } else {
         return "
             <aside class='theme-menu-1'>
-                <ul class='wizard-progress'>
+                <ul class='left_nav'>
                     $steps
                 </ul>
             </aside>
@@ -934,8 +934,12 @@ function _get_left_menu_1($page)
 
         // App page
         //---------
-       // echo "<pre>";print_r($page_meta);
-        $main_apps .= "<li><a href='" . $url . "'>" . htmlspecialchars($page_meta['title']) . " </a></li>";
+        echo $page_meta['title'].'<br>';
+       $current_sub_category  = (isset($page['current_basename'])) ? $page['current_basename'] : '';
+       $title_sub_category    = (isset($page_meta['title'])) ? strtolower(str_replace(' ','_', $page_meta['title'])) : '0'; 
+       //echo $title_sub_category;exit;
+       // echo $current_subcategory.'<br>';
+        $main_apps .= "<li ".(($current_sub_category == $title_sub_category) ? 'class="active"' : '')."><a href='" . $url . "'>" . htmlspecialchars($page_meta['title']) . " </a></li>";
     }
 
     // Close out open HTML tags
@@ -1036,7 +1040,7 @@ function _get_left_menu_2($page)
 
             $main_apps .= "\t\t\t\t<li class='theme-hidden category-" . $category_id . " treeview" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " active" : "") . "'>\n";
             $main_apps .= "\t\t\t\t\t<a href='#'><i class='fa fa-angle-double-right'></i>" . $page_meta['subcategory'] . "</a>\n";
-            $main_apps .= "\t\t\t\t\t<ul class='treeview-menu'" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " style='display: block;'" : "") . ">\n";
+            $main_apps .= "\t\t\t\t\t<ul class='sub_menu'" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " style='display: block;'" : "") . ">\n";
         }
 
         // App page
