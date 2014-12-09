@@ -1099,8 +1099,10 @@ function theme_field_progress_bar($label, $id, $options = array())
 function theme_progress_bar($id, $options)
 {
     $value = (isset($options['value'])) ? $options['value'] : 0;
-    return "<div id='$id-container' class='progress progress-sm'>
-              <div id='$id' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='$value' aria-valuemin='0' aria-valuemax='100' style='width: $value%;'></div>
+    $height = (isset($options['height'])) ? "style='height: " . $options['height'] . "px; margin-bottom: 5px'" : "";
+    $no_animation = (isset($options['no_animation']) && $options['no_animation']) ? ' theme-progress-bar-no-animation' : '';
+    return "<div id='$id-container' class='progress progress-sm' $height>
+              <div id='$id' class='progress-bar progress-bar-success$no_animation' role='progressbar' aria-valuenow='$value' aria-valuemin='0' aria-valuemax='100' style='width: $value%;'></div>
             </div>
     ";
 }
@@ -1418,12 +1420,18 @@ function theme_chart_container($title, $chart_id, $options)
     $footer_content = ($options['footer']) ? $options['footer'] : '';
     $size = 'theme-chart-medium';
     $override_size = '';
+    $data = '';
     if ((isset($options['class']))) {
         // Additional classes
         if (is_array($options['class']))
             $class = $options['class'];
         else
             $class = explode(' ', $options['class']);
+    }
+    if ((isset($options['data']))) {
+        foreach ($options['data'] as $key => $value)
+            $data .= "data-$key='$value' ";
+        $data = trim($data);
     }
     if (isset($options['chart-size'])) {
         if (preg_match('/^(\d+)x(\d+)$/', $options['chart-size'], $match)) {
@@ -1454,8 +1462,8 @@ function theme_chart_container($title, $chart_id, $options)
             <h3 class='box-title'>$title</h3>
             <div class='theme-summary-table-action'>$action</div>
           </div>
-          <div class='box-body'><div class='theme-chart-container $size " . implode(' ', $class) . "' id='$chart_id' $override_size></div></div>
-          <div class='box-footer pull-right '>$footer_content</div>
+          <div class='box-body'><div class='theme-chart-container $size " . implode(' ', $class) . "' id='$chart_id' $override_size $data></div></div>
+          <div class='box-footer'>$footer_content</div>
           $loading
         </div>
     ";
