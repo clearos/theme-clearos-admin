@@ -82,3 +82,6 @@ a:hover, a:focus, .btn-link:hover {
 .small_menu ul li a:hover, .small_menu ul li a:hover i {
   color:#3d85c6;
 }
+.main-content aside ul.left_nav > li > a i {
+  background-image: url(../img/cube_sprite_pro.png);
+}
