@@ -932,11 +932,14 @@ function _get_left_menu_1($page)
             $main_apps .= "<ul class='nav nav-third-level'>";
         }
 
+
         // App page
         //---------
-        echo $page_meta['title'].'<br>';
+      //echo "<pre>";print_r($page['current_subcategory']);echo "</pre>";
        $current_sub_category  = (isset($page['current_basename'])) ? $page['current_basename'] : '';
-       $title_sub_category    = (isset($page_meta['title'])) ? strtolower(str_replace(' ','_', $page_meta['title'])) : '0'; 
+       $title_sub_category    = (isset($url)) ? strtolower(str_replace('/app/','', $url)) : '0'; 
+       //echo $title_sub_category.'<br>';
+
        //echo $title_sub_category;exit;
        // echo $current_subcategory.'<br>';
         $main_apps .= "<li ".(($current_sub_category == $title_sub_category) ? 'class="active"' : '')."><a href='" . $url . "'>" . htmlspecialchars($page_meta['title']) . " </a></li>";
