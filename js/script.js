@@ -81,11 +81,11 @@
 
 
 		// open first menu by-default 
-
 		if(!jQuery('.left_nav li').hasClass("active")){
 			jQuery('.left_nav li:first a:first').trigger('click');
 		}else{
 			//show active sub menu
+			jQuery('.left_nav li').find('>ul.sub_menu').slideUp('slow');
 			jQuery('.left_nav li.active').find('>ul.sub_menu').slideDown('slow');
 
 		}

@@ -753,11 +753,14 @@ function _get_footer($page)
 
 function _get_wizard_menu($page)
 {
+
     $menu_data = $page['wizard_menu'];
     $current_subcategory = NULL;
 
     foreach ($menu_data as $step_no => $menu) {
+        
         // Determine sub-category icon to use
+
         if ($menu['subcategory'] == lang('base_network_settings'))
             $sub_class = 'fa fa-share-alt';
         else if ($menu['subcategory'] == lang('base_registration'))
@@ -770,21 +773,26 @@ function _get_wizard_menu($page)
             $sub_class = 'fa fa-tasks';
         else
             $sub_class = 'fa fa-angle-double-right';
+        
 
         $disabled = '';
         if ($step_no > $page['wizard_current'])
             $disabled = 'theme-link-disabled';
         $active = '';
+
+
         if ($step_no == $page['wizard_current'])
             $active = 'active';
+        
+        if ($current_subcategory == NULL) {    
 
-        if ($current_subcategory == NULL) {
             $current_subcategory = $menu['subcategory'];
-            $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
+            $steps .= "<li class='treeview" . ((in_array($page['wizard_current'],array(0,1,2,3))) ? " active" : "") . "'>\n";
             $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
             $steps .= "\t<ul class='sub_menu' style='display: block;'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory == $menu['subcategory']) {
+            
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory != $menu['subcategory']) {
             $current_subcategory = $menu['subcategory'];
@@ -814,6 +822,7 @@ function _get_wizard_menu($page)
             </aside>
         ";
     } else {
+
         return "
             <aside class='theme-menu-1'>
                 <ul class='left_nav'>
@@ -834,6 +843,7 @@ function _get_wizard_menu($page)
 
 function _get_left_menu($page)
 {
+
     // Default is Menu 1 (long sidebar)
     if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2)
         return _get_left_menu_2($page);
@@ -914,7 +924,7 @@ function _get_left_menu_1($page)
 
         if ($page_meta['category'] != $current_category) {
             $current_category = $page_meta['category'];
-            $main_apps .= "<li class='"  . ($page_meta['category'] == $page['current_category'] ? " active" : "") . "'>";
+            $main_apps .= "<li class='". ($page_meta['category'] == $page['current_category'] ? " active" : "") . "'>";
             $main_apps .= "<a href='javascript:void(0);'><i class='coi-".strtolower($page_meta['category'])."'></i>";
             $main_apps .= $page_meta['category'];
             $main_apps .= "</a>";
@@ -927,7 +937,7 @@ function _get_left_menu_1($page)
         if ($current_subcategory != $page_meta['subcategory']) {
             $current_subcategory = $page_meta['subcategory'];
 
-            $main_apps .= "<li class='"  . ($page_meta['subcategory'] == $page['current_subcategory'] ? " active" : "") . "'>";
+            $main_apps .= "<li class='". ($page_meta['subcategory'] == $page['current_subcategory'] ? "active" : "") . "'>";
             $main_apps .= "<a href='#'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
             $main_apps .= "<ul class='nav nav-third-level'>";
         }
@@ -980,6 +990,7 @@ function _get_left_menu_1($page)
 
 function _get_left_menu_2($page)
 {
+
     $menu_data = $page['menus'];
     $spotlights = '';
     $no_of_categories = 0;
