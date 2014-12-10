@@ -1101,10 +1101,11 @@ function theme_progress_bar($id, $options)
     $value = (isset($options['value'])) ? $options['value'] : 0;
     $height = (isset($options['height'])) ? "style='height: " . $options['height'] . "px; margin-bottom: 5px'" : "";
     $no_animation = (isset($options['no_animation']) && $options['no_animation']) ? ' theme-progress-bar-no-animation' : '';
-    return "<div id='$id-container' class='progress progress-sm' $height>
-              <div id='$id' class='progress-bar progress-bar-success$no_animation' role='progressbar' aria-valuenow='$value' aria-valuemin='0' aria-valuemax='100' style='width: $value%;'></div>
-            </div>
-    ";
+    return "<div id='$id-container' class='progress progress-sm' $height>\n" .
+           "   <div id='$id' class='progress-bar progress-bar-success$no_animation' " .
+           " role='progressbar' aria-valuenow='$value' aria-valuemin='0' aria-valuemax='100' style='width: $value%;'></div>" .
+           "</div>\n"
+    ;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1113,14 +1114,11 @@ function theme_progress_bar($id, $options)
 
 function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL)
 {
-    // We use Bootstrap row/column grids here to make responsive layout possible
-    echo theme_login_box_open(array('class'=>'login_box'));
-    echo theme_login_left_logo_open(array('class'=>'login_logo'));
-    echo theme_login_left_logo_close();
-    echo theme_login_right_close();
-    echo theme_login_right_open(array('class'=>'login_right'));
-    echo theme_login_header_open(array('class'=>'title'));
-    echo theme_login_header_close();
+    echo "<div class='login_box'>";
+    echo "  <div class='login_left'><div class='login_logo'> <i class='ci-ClearOS'></i></div>";
+    echo "</div>";
+    echo "<div class='login_right'>";
+    echo "  <div class='title'>" . lang('base_authorized_login') . "</div>";
     echo form_open('base/session/login/' . $redirect);
     echo field_input('clearos_username', '', "<i class='fa fa-user'></i> ".lang('base_username'));
     echo field_password('clearos_password', '', "<i class='fa fa-lock'></i> ".lang('base_password'));
@@ -1130,17 +1128,17 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
 
     // if (isset($options) && $options['ip_extras'])
     //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
+
     if ($errmsg)
         echo "<div class='theme-validation-error'>$errmsg</div>";
-
 
     echo theme_field_button_set(
         array(form_submit_custom('submit', lang('base_login'), 'high'))
     );
 
     echo form_close();
-    echo theme_login_right_close();    
-    echo theme_login_box_close();
+    echo "  </div>";
+    echo "</div>";
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2278,168 +2276,6 @@ function theme_row_open($options = NULL)
 
     return "<div" . $id . " class='row" . $class . "'>";
 }
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * login box open
- * @return string HTML
- */
-function theme_login_box_open($options = NULL)
-{
-    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
-
-    return "<div" . $id . " class='" . $class . "'>";
-}
-
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * login box close
- * @return string HTML
- */
-function theme_login_box_close($options = NULL)
-{
-    return "<div class='clearfix'></div></div>";
-}
-
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * login left logo open
- * @return string HTML
- */
-
-function theme_login_left_logo_open($options = NULL)
-{
-    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
-
-    return "<div class='login_left'><div" . $id . " class='" . $class . "'> <i class='ci-ClearOS'></i> ";
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * theme login left logo close
- * @return string HTML
- */
-
-function theme_login_left_logo_close()
-{
-    return "</div>";
-}
-
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * theme login right open
- * @return string HTML
- */
-function theme_login_right_open($options = NULL)
-{
-    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
-
-    return "<div" . $id . " class='" . $class . "'>";
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * login right close
- * @return string HTML
- */
-function theme_login_right_close($options = NULL)
-{
-    return "</div>";
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- * login header open
- * @return string HTML
- */
-
-function theme_login_header_open($options = NULL)
-{
-    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
-
-    return "<div" . $id . " class='" . $class . "'> Authorized Login ";
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- *login header close
- * @return string HTML
- */
-function theme_login_header_close($options = NULL)
-{
-    return "</div>";
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- *login label open
- * @return string HTML
- */
-function theme_login_label_open($options = NULL,$icon = '')
-{
-    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
-    $class = (isset($options['class'])) ? " " . $options['class'] : "";
-
-    return "<label" . $id . " class='" . $class . "'> ".$icon;
-}
-
-/**
- * Close a row (eg. Bootstrap grid).
- *
- * @param array  $options options
- *
- * Options:
- *
- * @return string HTML
- */
-function theme_login_label_close($options = NULL)
-{
-    return "</label>";
-}
-
 
 /**
  * Close a row (eg. Bootstrap grid).
