@@ -1132,6 +1132,9 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .theme-modal-info.warning {
   color: #F90;
 }
+.modal-header .close {
+  margin-top: -20px;
+}
 
 /* ----------------------- */
 /* Wizard                  */

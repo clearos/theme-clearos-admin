@@ -50,6 +50,9 @@ function theme_dialog_box(id, title, message, options)
 {
     var dialog_type = BootstrapDialog.TYPE_INFO;
 
+    if (title == lang_warning)
+        dialog_type = BootstrapDialog.TYPE_WARNING;
+
     if (typeof options != 'undefined') {
         if (options.type == 'success')
             dialog_type = BootstrapDialog.TYPE_SUCCESS;
