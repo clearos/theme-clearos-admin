@@ -2309,6 +2309,31 @@ vertical-align: top;
 zoom: 1; /* Fix for IE7 */
 *display: inline; /* Fix for IE7 */}
 
+
+
+
+
+/* ----------------------------- */
+/* Wizard                        */
+/* ------------------------------*/
+.main-wrapper header > ul > li.ClearOS.theme-wizard-active {
+  border-top-color: #999;
+}
+
+li.theme-wizard-active a:after {
+  border-radius: 5px 0 0;
+  border-top: 2px solid #686868;
+  content: " ";
+  height: 20px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+
+
+
+
 /* ----------------------------- */
 /* Responsive Css                */
 /* ------------------------------*/
