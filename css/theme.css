@@ -167,6 +167,7 @@ a.highlight-link:hover {
   padding: 0;
   display: table;
   width: 100%;
+  background: #f9f9f9;
 }
 .main-wrapper header > ul > li {
   width: 20%;
@@ -236,14 +237,7 @@ a.highlight-link:hover {
   border-radius: 0 5px 0 0;
 }
 .main-wrapper header > ul > li.ClearOS > a {
-  border-right: 1px solid #ddd;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1);
-  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(67%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.03)));
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
-  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
+  background: url("../img/shade.png") repeat-y right 0 #ffffff;
   font-size: 70px;
   line-height: 50px;
   font-family: 'ci';
@@ -390,6 +384,7 @@ a.highlight-link:hover {
   display: table-cell;
   margin: 0;
   padding: 0;
+  height: 800px;
   width: 20%;
   border-right: 1px solid #ddd;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -2317,6 +2312,31 @@ vertical-align: top;
 zoom: 1; /* Fix for IE7 */
 *display: inline; /* Fix for IE7 */}
 
+
+
+
+
+/* ----------------------------- */
+/* Wizard                        */
+/* ------------------------------*/
+.main-wrapper header > ul > li.ClearOS.theme-wizard-active {
+  border-top-color: #999;
+}
+
+li.theme-wizard-active a:after {
+  border-radius: 5px 0 0;
+  border-top: 2px solid #686868;
+  content: " ";
+  height: 20px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+
+
+
+
 /* ----------------------------- */
 /* Responsive Css                */
 /* ------------------------------*/
@@ -2354,8 +2374,13 @@ header:hover #magic-arrow{ display:none;}
 section.content-container { display:inherit; width:100%;}
 }
 
-
-
-
 .main-content aside ul.left_nav > li.treeview > a{padding-left: 20px;}
 .main-content aside ul.left_nav > li.treeview > a small{margin-right: 5px;}
+
+li.treeview ul.sub_menu {
+ display:none!important;
+} 
+
+li.treeview.active ul.sub_menu {
+ display:block!important;
+} 
