@@ -18,13 +18,7 @@
 
 		/* Cache it */
 		var $magicLine = jQuery("#magic-arrow");
-		/* if(typeof (jQuery("#menu li.current")) !="undefined"){
-			$magicLine
-				.width(jQuery("#menu li.current").parent().width())
-				.css("left", jQuery("#menu li.current").parent().position().left)
-				.data("origLeft", $magicLine.position().left)
-				.data("origWidth", $magicLine.width());
-		} */
+		
 	 	jQuery("header").find("ul li").hover(function() {
 			$el = jQuery(this);
 			$current_index = $el.index();
@@ -68,13 +62,12 @@
 			Left sidebar Start
 		*/
 
-
-
 		jQuery('.left_nav a').click(function(){
 			if(!jQuery(this).parent().hasClass("active")){
 				jQuery(this).parent().siblings('li').removeClass('active').find('.sub_menu').slideUp('slow').find('li').removeClass('active');
 				jQuery(this).parent().addClass('active').find('>ul.sub_menu').slideDown('slow');
 			}else{
+
 				jQuery(this).parent().removeClass('active').find('.sub_menu').slideUp('slow').find('li').removeClass('active');
 			}
 		});
@@ -83,16 +76,16 @@
 		// open first menu by-default 
 		if(!jQuery('.left_nav li').hasClass("active")){
 			jQuery('.left_nav li:first a:first').trigger('click');
-		}else{
-			//show active sub menu
-			jQuery('.left_nav li').find('>ul.sub_menu').slideUp('slow');
+		}else{	
+			
 			jQuery('.left_nav li.active').find('>ul.sub_menu').slideDown('slow');
 
 		}
+
+		
 				
 		var asidewidth = jQuery(".marketPlaceSection aside").width();
 		jQuery(".left_nav").css('width', asidewidth);
-		//jQuery(".marketplace_page .left_nav").sticky({topSpacing:64});
 		
 		/*
 			Left sidebar End

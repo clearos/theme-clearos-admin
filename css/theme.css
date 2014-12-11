@@ -2348,3 +2348,11 @@ section.content-container { display:inherit; width:100%;}
 
 .main-content aside ul.left_nav > li.treeview > a{padding-left: 20px;}
 .main-content aside ul.left_nav > li.treeview > a small{margin-right: 5px;}
+
+li.treeview ul.sub_menu {
+ display:none!important;
+} 
+
+li.treeview.active ul.sub_menu {
+ display:block!important;
+} 

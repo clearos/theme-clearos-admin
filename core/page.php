@@ -753,10 +753,15 @@ function _get_footer($page)
 
 function _get_wizard_menu($page)
 {
+     $framework =& get_instance();
 
-    $menu_data = $page['wizard_menu'];
-    $current_subcategory = NULL;
-
+    $menu_data				= 	$page['wizard_menu'];
+    $current_subcategory 	= 	NULL;
+	$category_list			=	array();
+	foreach ($menu_data as $step_no => $menu) {
+		$category_list[$menu['subcategory']][]	=	$step_no;	
+	}
+	
     foreach ($menu_data as $step_no => $menu) {
         
         // Determine sub-category icon to use
@@ -778,27 +783,32 @@ function _get_wizard_menu($page)
         $disabled = '';
         if ($step_no > $page['wizard_current'])
             $disabled = 'theme-link-disabled';
-        $active = '';
-
-
+        $active         =   '';
+        $sub_active         =   '';
+		if(isset($category_list[$menu['subcategory']]) && in_array($page['wizard_current'],$category_list[$menu['subcategory']])){
+			$sub_active         =   'active';
+		}
+     
         if ($step_no == $page['wizard_current'])
             $active = 'active';
         
         if ($current_subcategory == NULL) {    
 
             $current_subcategory = $menu['subcategory'];
-            $steps .= "<li class='treeview" . ((in_array($page['wizard_current'],array(0,1,2,3))) ? " active" : "") . "'>\n";
+            $steps .= "<li class='treeview  $sub_active'>\n";
             $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
             $steps .= "\t<ul class='sub_menu' style='display: block;'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
-        } else if ($current_subcategory == $menu['subcategory']) {
+        } else if ($current_subcategory == $menu['subcategory']) { 
             
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory != $menu['subcategory']) {
-            $current_subcategory = $menu['subcategory'];
+            
+            
+            $current_subcategory = $menu['subcategory'];  
             $steps .= "\t</ul>\n";
             $steps .= "</li>\n";
-            $steps .= "<li class='treeview" . ($step_no <= $page['wizard_current'] ? " active" : "") . "'>\n";
+            $steps .= "<li class='treeview $sub_active'>\n";
             $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
             $steps .= "\t<ul class='sub_menu'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
