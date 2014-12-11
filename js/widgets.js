@@ -473,7 +473,8 @@ function theme_chart(
                 label = clearos_human_readable(data[i][0], 'ip');
             data_set[i] = {
                 label: label,
-                data: data[i][1]
+                data: data[i][1],
+                color: get_option_key(custom, 'series.color.' + i) != null ? get_option_key(custom, 'series.color.' + i) : i
             }
         }
 
@@ -540,6 +541,7 @@ function theme_chart(
             series: {
                 pie: {
                     show: true,
+                    innerRadius: (get_option_key(custom, 'pie.inner_radius') != null ? get_option_key(custom, 'pie.inner_radius') : 0.0),
                     label: {
                         show: (get_option_key(custom, 'pie.label.show') != null ? true: false),
                     }
