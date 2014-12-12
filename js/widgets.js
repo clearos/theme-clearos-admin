@@ -541,17 +541,25 @@ function theme_chart(
             series: {
                 pie: {
                     show: true,
-                    innerRadius: (get_option_key(custom, 'pie.inner_radius') != null ? get_option_key(custom, 'pie.inner_radius') : 0.0),
+                    innerRadius: (get_option_key(custom, 'pie.inner_radius') != null ? custom.pie.inner_radius : 0.0),
                     label: {
-                        show: (get_option_key(custom, 'pie.label.show') != null ? true: false),
+                        show: (get_option_key(custom, 'pie.label.show') != null ? true: true),
+                        radius: .5,
+                        color: '#ffffff'
                     }
                 }
             },
+            legend: {},
             grid: {
-                hoverable: true,
-                clickable: true,
+                hoverable: false,
+                clickable: false,
             },
         };
+
+        if (get_option_key(custom, 'pie.label_format') != null)
+            options.series.pie.label['formatter'] = window[custom.pie.label_format];
+        if (get_option_key(custom, 'pie.legend.show') != null)
+            options['legend']['show'] = custom.pie.legend.show;
 
     // Timeline
     //---------
