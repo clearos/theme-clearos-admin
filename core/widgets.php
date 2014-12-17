@@ -2699,7 +2699,7 @@ function theme_wizard_intro_box($data, $options)
  *
  */
 
-function theme_container($content, $options)
+function theme_container($content, $options = array())
 {
     return "
         <div class='theme-container'>

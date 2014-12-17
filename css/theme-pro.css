@@ -21,6 +21,9 @@
 .sub_menu li > ul li:hover a {
   color: #c2510f;
 }
+.theme-menu-2-category.btn.btn-default.active {
+  background-color: #c2510f!important;
+}
 
 .btn-link, a {
   color: #c2510f;

@@ -808,14 +808,18 @@ header:hover #magic-arrow {
   text-decoration: none;
   background-color: #f0f0f0;
 }
-.theme-menu-2-category:hover {
-  background-color: #f0f0f0 !important;
+.theme-menu-2-category.btn.btn-default:hover {
+  background-color: #ffffff !important;
 }
-.theme-menu-2-category.active {
-  background-color: #7a7474 !important;
+}
+.theme-menu-2-category.btn.btn-default {
+  background-color: #fafafa !important;
+}
+.theme-menu-2-category.btn.btn-default.active {
+  background-color: #487419!important;
 }
 .theme-menu-2-category.active path {
-  fill: white;
+  fill: #f0f0f0;
 }
 /* ============================================= */
 /* W I D G E T S                                 */
