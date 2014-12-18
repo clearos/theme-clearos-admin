@@ -62,7 +62,6 @@
 			Left sidebar Start
 		*/
 
-/*
 		jQuery('.left_nav a').click(function(){
 			if(!jQuery(this).parent().hasClass("active")){
 				jQuery(this).parent().siblings('li').removeClass('active').find('.sub_menu').slideUp('slow').find('li').removeClass('active');
@@ -88,16 +87,13 @@
 		var asidewidth = jQuery(".marketPlaceSection aside").width();
 		jQuery(".left_nav").css('width', asidewidth);
 		
-*/
 		/*
 			Left sidebar End
 		*/
-		/*
 		jQuery(".navbar-toggle").click(function(){
 		  jQuery(".small_menu").toggleClass('hide');
 
 		});
-		*/
 
 		
 	});	
