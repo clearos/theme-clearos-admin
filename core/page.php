@@ -1062,9 +1062,9 @@ function _get_left_menu_2($page)
         if ($current_subcategory != $page_meta['subcategory']) {
             $current_subcategory = $page_meta['subcategory'];
 
-            $main_apps .= "\t\t\t\t<li class='theme-hidden category-" . $category_id . " treeview" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " active" : "") . "'>\n";
+            $main_apps .= "\t\t\t\t<li class='category category-" . $category_id . " treeview" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " active" : "") . "'>\n";
             $main_apps .= "\t\t\t\t\t<a href='#'><i class='fa fa-angle-double-right'></i>" . $page_meta['subcategory'] . "</a>\n";
-            $main_apps .= "\t\t\t\t\t<ul class='sub_menu'" . ($page['current_subcategory'] == $page_meta['subcategory'] ? " style='display: block;'" : "") . ">\n";
+            $main_apps .= "\t\t\t\t\t<ul class='sub_menu'>\n";
         }
 
         // App page
