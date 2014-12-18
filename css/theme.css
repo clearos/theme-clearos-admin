@@ -359,7 +359,7 @@ a.highlight-link:hover {
 }
 
 /* ========================*/
-/* Main Content Css       */
+/* Main Content Css        */
 /* ========================*/
 
 .main-content {
@@ -373,11 +373,16 @@ a.highlight-link:hover {
   line-height: 26px;
 }
 
+/* ============================*/
+/* Loading whirly              */
+/* ============================*/
 
-
+.theme-loading-wrapper > div {
+  margin: 5px;
+}
 
 /* ============================*/
-/* Sidebar Menu Css                 */
+/* Sidebar Menu Css            */
 /* ============================*/
 
 .main-content aside {
