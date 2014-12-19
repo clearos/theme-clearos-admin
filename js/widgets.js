@@ -101,7 +101,7 @@ function theme_add_sidebar_pair(key, value)
 {
     $('#sidebar_additional_info_row').after(
         '<div class="row">' +
-        '<div class="col-lg-6 theme-field" valign="top">' + key + '</div>' +
+        '<div class="col-lg-6 theme-field">' + key + '</div>' +
         '<div class="col-lg-6">' + value + '</div>' +
         '</div>'
     );

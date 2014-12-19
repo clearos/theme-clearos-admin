@@ -463,19 +463,19 @@ function _get_main_content($page)
         // TODO  header (including help) section on spotlight?/
         return "
             <section class='content-container'>
-                <section class='content-header clearfix'>
+                <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                </section>
+                </div>
                 " . _get_message().$page['app_view']." 
             </section>
         ";
     } else if ($page['type'] == MY_Page::TYPE_REPORT_OVERVIEW) {
         return "
             <section class='content-container'>
-                <section class='content-header clearfix'>
+                <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                </section>
-                <section class='row content clearfix'>
+                </div>
+                <div class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
@@ -490,16 +490,16 @@ function _get_main_content($page)
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
         ";
     } else if ($page['type'] == MY_Page::TYPE_REPORTS) {
         return "
             <section class='content-container'>
-                <section class='content-header clearfix'>
+                <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                </section>
-                <section class='row content clearfix'>
+                </div>
+                <div class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                     " . _get_message() . "
                     " . $page['page_report_chart'] . "
@@ -512,30 +512,30 @@ function _get_main_content($page)
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
         ";
     } else if ($page['type'] == MY_Page::TYPE_WIDE_CONFIGURATION) {
         return "
             <section class='content-container'>
-                <section class='content-header clearfix'>
+                <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                </section>
-                <section class='row content clearfix'>
+                </div>
+                <div class='row content clearfix'>
                     <div class='theme-content'>
                     " . _get_message() . "
                     " . $page['app_view'] . "
                     </div>
-                </section>
+                </div>
             </section>
         ";
     } else {
         return "
             <section class='content-container'>
-                <section class='content-header clearfix'>
+                <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
-                </section>
-                <section class='row content clearfix'>
+                </div>
+                <div class='row content clearfix'>
                     <div class='col-lg-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
@@ -547,7 +547,7 @@ function _get_main_content($page)
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </section>
         ";
     }
@@ -650,7 +650,7 @@ function _get_header($page, $menus = array())
                 <ul class='full_menu'>
                 " . (! isset($framework->session->userdata['wizard']) ? "
                         <li class='ClearOS " . $active_header['home'] . "'>
-                            <a href='/app/base/system_info' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
+                            <a href='/app/base/system_info' class='ci-ClearOS'>&nbsp;</a>
                         </li> 
                         <li class='dashboard " . $active_header['dashboard'] . "'>
                             <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
@@ -678,7 +678,7 @@ function _get_header($page, $menus = array())
                         ") . "
                     </ul>
                     <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
-                        <a href='#' id='clearos-home' class='ci-ClearOS'>&nbsp;</a>
+                        <a href='#' class='ci-ClearOS'>&nbsp;</a>
                     </div> 
                     <div class='small_menu hide'>
                         <ul>
@@ -824,11 +824,11 @@ function _get_wizard_menu($page)
     if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2) {
         return "
             <aside class='left-side sidebar-offcanvas'>
-                <section class='sidebar'>
+                <div class='sidebar'>
                     <ul class='sidebar-menu-2'>
                         $steps
                     </ul>
-                </section>
+                </div>
             </aside>
         ";
     } else {
@@ -1123,41 +1123,29 @@ function _get_left_menu_2($page)
         <div class='btn-toolbar theme-menu-2-list'>
             <form action='#' method='get' id='category-select'>
                 <div class='btn-group' data-toggle='buttons'>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_cloud') . "'>
                         <input type='radio' name='options' id='category-cloud'" . $active_category['cloud'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_cloud') . "'>
                         " . file_get_contents($img_path . 'cloud.svg') . "
-                        </div>
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_network') . "'>
                         <input type='radio' name='options' id='category-network'" . $active_category['network'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_network') . "'>
                         " . file_get_contents($img_path . 'network.svg') . "
-                        </div>
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_gateway') . "'>
                         <input type='radio' name='options' id='category-gateway'" . $active_category['gateway'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_gateway') . "'>
                         " . file_get_contents($img_path . 'gateway.svg') . "
-                        </div>
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_server') . "'>
                         <input type='radio' name='options' id='category-server'" . $active_category['server'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_server') . "'>
                         " . file_get_contents($img_path . 'server.svg') . "
-                        </div>
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_system') . "'>
                         <input type='radio' name='options' id='category-system'" . $active_category['system'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_system') . "'>
                         " . file_get_contents($img_path . 'system.svg') . "
-                        </div>
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%'>
+                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_reports') . "'>
                         <input type='radio' name='options' id='category-report'" . $active_category['report'] . ">
-                        <div data-toggle='tooltip' data-container='body' title='" . lang('base_category_reports') . "'>
                         " . file_get_contents($img_path . 'reports.svg') . "
-                        </div>
                     </label>
                 </div>
             </form>

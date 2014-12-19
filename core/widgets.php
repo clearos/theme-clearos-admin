@@ -459,7 +459,6 @@ function theme_field_info($id, $label, $text, $options = NULL)
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $id . '_label';
     $hide_field = (isset($options['hide_field'])) ? ' theme-hidden' : '';
 
-    // Style hack on border below...move to css. TODO
     return "
         <div id='$field_id_html' class='form-group theme-field-info" . $hide_field . "'>
             <label class='col-sm-5 control-label' id='$label_id_html'>$label</label>
@@ -713,7 +712,7 @@ function _theme_field_common($name, $value, $label, $error, $input_id, $options 
     $style = '';
 
     if (isset($options['width']))
-        $style .= 'width: ' . $options['width'] . '; ';
+        $style .= "style='width: " . $options['width'] . ";'";
 
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
@@ -727,7 +726,7 @@ function _theme_field_common($name, $value, $label, $error, $input_id, $options 
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
             <div class='col-sm-7 theme-field-right" . $div_class . "'>
                 <div" . ((isset($options['color-picker']) && $options['color-picker']) ? " class='input-group' " : "") . ">
-                    <input type='$type' name='$name' value='$value' id='$input_id' style='$style' class='form-control'> $error_html
+                    <input type='$type' name='$name' " . ($type == 'file' ? "" : "value='$value'") . " id='$input_id' $style class='form-control'> $error_html
                 " . ((isset($options['color-picker']) && $options['color-picker']) ? "
                     <div class='input-group-addon'>
                         <i></i>
@@ -2474,7 +2473,7 @@ function theme_modal_info($id, $title, $message, $options = NULL)
         $on_close = "window.location = '" . $options['redirect_on_close'] . "';";
 
     return "
-            <div id='$id' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true' style='z-index: 9999;'>
+            <div id='$id' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='$id' aria-hidden='true' style='z-index: 9999;'>
               <div class='modal-dialog'>
                 <div class='modal-content'>
                   <div class='modal-header'>
@@ -2534,7 +2533,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
             $js_lines .= $line . "\n";
     }
     return "
-            <div id='" . $id . "' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true' style='z-index: 9999;'>
+            <div id='" . $id . "' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='$id' aria-hidden='true' style='z-index: 9999;'>
               <div class='modal-dialog'>
                 <div class='modal-content'>
                   <div class='modal-header'>
@@ -2600,7 +2599,7 @@ function theme_modal_input($title, $message, $trigger, $input_id, $id = NULL, $o
 
     $js_lines = "";
     return "
-            <div id='" . $id . "' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true' style='z-index: 9999;'>
+            <div id='" . $id . "' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='$id' aria-hidden='true' style='z-index: 9999;'>
               <div class='modal-dialog'>
                 <div class='modal-content'>
                   <div class='modal-header'>
@@ -2916,7 +2915,7 @@ function theme_summary_box($data)
                 <div class='col-lg-6' id='sidebar_daemon_action_controls'>" . anchor_custom('#', '---', 'high', array('id' => 'clearos_daemon_action')) . "</div>
             </div>
             <div id='sidebar_additional_info_row' class='row theme-hidden'>
-                <div class='col-lg-6 theme-field' valign='top'>" . lang('base_additional_info') . "</div>
+                <div class='col-lg-6 theme-field'>" . lang('base_additional_info') . "</div>
                 <div class='col-lg-6' id='sidebar_additional_info'>" . theme_loading('small') . "</div>
             </div>
             <div class='marketplace-links'>" .
@@ -3176,7 +3175,7 @@ function theme_marketplace_review($basename, $pseudonum)
     );
 
     return "
-        <div id='review-form' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='basicModal' aria-hidden='true'>
+        <div id='review-form' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='review-form' aria-hidden='true'>
           <div class='modal-dialog'>
             <div class='modal-content'>
               <div class='modal-header'>
