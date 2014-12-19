@@ -420,7 +420,20 @@ function _wizard_page($page)
 
 function _console_page($page)
 {
-    echo "todo - console";
+    $page_class = _get_page_class($page['current_basename']);
+
+    $layout =
+        "<div class='main-wrapper $page_class'>
+            <div class='page-title'><h1>$page[title]</h1>
+                <div class='clearfix'></div>
+            </div>
+            <div class='main-content'>".
+                _get_main_content($page) . "
+            </div>
+        </div>"
+    ;
+
+    return $layout;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -511,6 +524,17 @@ function _get_main_content($page)
                             " . $page['page_report_helper'] . "
                             </div>
                         </div>
+                    </div>
+                </section>
+            </section>
+        ";
+    } else if ($page['type'] == MY_Page::TYPE_CONSOLE) {
+        return "
+            <section class='content-container'>
+                <section class='row content clearfix'>
+                    <div class='theme-content'>
+                    " . _get_message() . "
+                    " . $page['app_view'] . "
                     </div>
                 </section>
             </section>
