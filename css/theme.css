@@ -264,6 +264,9 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li.my-account {
   border-top-color: #999999;
 }
+.main-wrapper header > ul > li.placeholder {
+  border-top-color: #999999;
+}
 .main-wrapper header > ul > li.ClearOS > a.ci-ClearOS:before {
   margin-left: 35px;
   position: relative;
@@ -1086,7 +1089,7 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 /* ----------------------- */
 
 .theme-infobox {
-  margin: 10px 30px;
+  margin: 10px 10px;
   position: relative;
 }
 .theme-infobox-icon {

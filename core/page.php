@@ -591,11 +591,13 @@ function _get_header($page, $menus = array())
 
     $my_account = '';
     $framework =& get_instance();
+    $my_account_collection = array();
 
     if (! isset($framework->session->userdata['wizard'])) {
         foreach ($page['menus'] as $route => $details) {
             if ($details['category'] == lang('base_category_my_account')) {
-                $my_account .= "<div class='theme-banner-my-account-links'><a href='$route'>" . $details['title'] . "</a></div>\n";
+                $my_account .= "<li><a role='menuitem' href='$route'>" . $details['title'] . "</a></li>\n";
+                $my_account_collection[] = basename($route);
             }
         }
     }
@@ -625,7 +627,6 @@ function _get_header($page, $menus = array())
                     <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
                 </li>
             ";
-        //$alert_text .= "</ul>";
         $devel_alerts = "
                 <li class='dropdown notifications-menu'>
                     <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
@@ -645,7 +646,6 @@ function _get_header($page, $menus = array())
             $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i><span class='page-second-level'>" . $title . "</span>";
     }
     
-    
     $active_header = array();
     if ($page['current_basename'] == 'dashboard')
         $active_header['dashboard'] = "active";
@@ -653,13 +653,37 @@ function _get_header($page, $menus = array())
         $active_header['marketplace'] = "active";
     else if ($page['current_basename'] == 'support')
         $active_header['support'] = "active";
-    else if ($page['current_basename'] == 'my-account') // TODO
+    else if (in_array($page['current_basename'], $my_account_collection))
         $active_header['my-account'] = "active";
     else 
         $active_header['home'] = "active";
         
     // TODO Identify 'My Account Page
     // TODO Hard coded text below
+    $main_menu = array(
+        'dashboard' => "<li class='placeholder'></li>",
+        'marketplace' => "<li class='placeholder'></li>",
+        'support' => "<li class='placeholder'></li>"
+    );
+    if ($framework->session->userdata['nav_acl']['dashboard'])
+        $main_menu['dashboard'] = "
+            <li class='dashboard " . $active_header['dashboard'] . "'>
+                <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
+            </li>
+        ";
+    if ($framework->session->userdata['nav_acl']['marketplace'])
+        $main_menu['marketplace'] = "
+            <li class='marketplace " . $active_header['marketplace'] . "'>
+                <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
+            </li>
+        ";
+    if ($framework->session->userdata['nav_acl']['support'])
+        $main_menu['support'] = "
+            <li class='support " . $active_header['support'] . "'>
+                <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
+            </li> 
+        ";
+    
     return "
              <header class='mainheader'>
              <div class='navbar-header'>
@@ -675,22 +699,15 @@ function _get_header($page, $menus = array())
                 " . (! isset($framework->session->userdata['wizard']) ? "
                         <li class='ClearOS " . $active_header['home'] . "'>
                             <a href='/app/base/system_info' class='ci-ClearOS'>&nbsp;</a>
-                        </li> 
-                        <li class='dashboard " . $active_header['dashboard'] . "'>
-                            <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
                         </li>
-                        <li class='marketplace " . $active_header['marketplace'] . "'>
-                            <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
-                        </li>
-                        <li class='support " . $active_header['support'] . "'>
-                            <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
-                        </li> 
-                        <li class='my-account dropdown " . $active_header['my_account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        " . $main_menu['dashboard'] . "
+                        " . $main_menu['marketplace'] . "
+                        " . $main_menu['support'] . "
+                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' style='$my_account_margin' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
                                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
-                              <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
-                              <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
+                              $my_account
                               <li class='divider'></li>
                               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
                             </ul>
@@ -707,15 +724,9 @@ function _get_header($page, $menus = array())
                     <div class='small_menu hide'>
                         <ul>
                         " . (! isset($framework->session->userdata['wizard']) ? "
-                                <li class='dashboard " . (($page['current_basename'] == 'dashboard') ? "active" : "") . "'>
-                                    <a href='/app/dashboard'><i class='ci-dashboard'></i>" . lang('base_dashboard') . "</a>
-                                </li>
-                                <li class='marketplace " . (($page['current_basename'] == 'marketplace') ? "active":"") . "'>
-                                    <a href='/app/marketplace'><i class='fa fa-cloud-download'></i> " . lang('base_marketplace') . "</a>
-                                </li>
-                                <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
-                                    <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
-                                </li> 
+                                " . $main_menu['dashboard'] . "
+                                " . $main_menu['marketplace'] . "
+                                " . $main_menu['support'] . "
                                 <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
                                     <ul class='dropdown-menu' role='menu'>
                                       " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
@@ -1027,7 +1038,6 @@ function _get_left_menu_2($page)
 
     $menu_data = $page['menus'];
     $spotlights = '';
-    $no_of_categories = 0;
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -1058,7 +1068,7 @@ function _get_left_menu_2($page)
             continue;
         }
         if ($page_meta['category'] === lang('base_category_my_account')) {
-            continue;
+        //    continue;
         }
 
         $new_category = ($page_meta['category'] == $current_category) ? FALSE : TRUE;
@@ -1075,10 +1085,8 @@ function _get_left_menu_2($page)
             $main_apps .= "\t\t\t\t</li>\n";
         }
 
-        if ($page_meta['category'] != $current_category) {
-            $no_of_categories++;
+        if ($page_meta['category'] != $current_category)
             $current_category = $page_meta['category'];
-        }
 
         // Subcategory transition
         //-----------------------
@@ -1131,6 +1139,7 @@ function _get_left_menu_2($page)
 
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
 
+    $no_of_categories = 6;
     $percent_width = round(100 / $no_of_categories, 0, PHP_ROUND_HALF_UP);
 
     return "

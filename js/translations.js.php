@@ -113,6 +113,7 @@ var lang_marketplace_sdn_account_setup = '" . lang('marketplace_sdn_account_setu
 var lang_marketplace_setup_payment_on_clear = '" . lang('marketplace_setup_payment_on_clear') . "';
 var lang_warning = '" . lang("base_warning") . "';
 var lang_information = '" . lang("base_information") . "';
+var lang_menu_no_access = '" . lang("base_menu_no_access") . "';
 
 ";
 // vim: syntax=javascript ts=4

@@ -13,7 +13,7 @@
 
 		/* Add Magic arrow markup via JavaScript, because it ain't gonna work without */
         /* But don't do this on wizard mode */
-        if (jQuery(".theme-wizard-active").length == 0)
+        if (jQuery(".theme-wizard-active").length == 0 && jQuery(".main-wrapper header > ul > li.placeholder").length == 0)
             jQuery("header").append("<span id='magic-arrow'>Arrow</span>");
 
 		/* Cache it */

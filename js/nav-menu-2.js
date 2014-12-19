@@ -34,6 +34,13 @@ $(document).ready(function() {
         }
         $('#category-select').find('input[name=options]').attr('checked', false);
         $(this).find('input[name=options]:first').attr('checked', true);
+        $('.left-side').find('div#menu-no-access').remove();
+        if ($('.' + menu_category).length == 0) {
+            var options = {
+                id: 'menu-no-access'
+            };
+            $('.sidebar').after(theme_infobox('info', lang_menu_no_access, '', options));
+        }
     });
 
     $('li.category > a').on('click', function (e) {
