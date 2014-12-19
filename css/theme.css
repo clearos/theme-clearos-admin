@@ -132,6 +132,12 @@ a.highlight-link:hover {
 /* Main Header Css                 */
 /* ================================*/
 
+.main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after{ border-bottom-color:#686868; }
+.main-wrapper header > ul > li.dashboard.active > a:after, .main-wrapper header > ul > li.dashboard.open > a:after{ border-bottom-color:#608921; }
+.main-wrapper header > ul > li.marketplace.active > a:after, .main-wrapper header > ul > li.marketplace.open > a:after{ border-bottom-color:#c2510f; }
+.main-wrapper header > ul > li.support.active > a:after, .main-wrapper header > ul > li.support.open > a:after{ border-bottom-color:#3d85c6; }
+.main-wrapper header > ul > li.my-account.active > a:after, .main-wrapper header > ul > li.my-account.open > a:after{ border-bottom-color:#999999; }
+
 .main-wrapper {
   background: #fff;
   max-width: 1280px;
@@ -315,17 +321,6 @@ a.highlight-link:hover {
   padding-left: 1px;
 }
 
-
-/* ================================*/
-/* Main Header Css                 */
-/* ================================*/
-
-.main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after{border-bottom-color:#686868; }
-.main-wrapper header > ul > li.dashboard.active > a:after, .main-wrapper header > ul > li.dashboard.open > a:after{border-bottom-color:#608921; }
-.main-wrapper header > ul > li.marketplace.active > a:after, .main-wrapper header > ul > li.marketplace.open > a:after{border-bottom-color:#c2510f; }
-.main-wrapper header > ul > li.support.active > a:after, .main-wrapper header > ul > li.support.open > a:after{border-bottom-color:#3d85c6; }
-.main-wrapper header > ul > li.my-account.active > a:after, .main-wrapper header > ul > li.my-account.open > a:after{border-bottom-color:#999999; }
-
 /* ================================*/
 /* Root Menu Dropdown Css          */
 /* ================================*/
@@ -359,7 +354,7 @@ a.highlight-link:hover {
 }
 
 /* ========================*/
-/* Main Content Css       */
+/* Main Content Css        */
 /* ========================*/
 
 .main-content {
@@ -373,11 +368,16 @@ a.highlight-link:hover {
   line-height: 26px;
 }
 
+/* ============================*/
+/* Loading whirly              */
+/* ============================*/
 
-
+.theme-loading-wrapper > div {
+  margin: 5px;
+}
 
 /* ============================*/
-/* Sidebar Menu Css                 */
+/* Sidebar Menu Css            */
 /* ============================*/
 
 .main-content aside {
@@ -1344,18 +1344,34 @@ form .box-body > .btn-group{
   height: 65px;
 }
 .app_box h4.block-title.marketplace-tile-title {
+  margin-top: 0px;
   padding: 5px 5px;
-  text-align: center;
+  min-height: 38pt;
+  line-height: 15pt;
+  display: block;
   width: 100%;
-  min-height: 55px;
   font-size: 13pt;
-  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.app_box h4.block-title.marketplace-tile-title.theme-sm {
-  font-size: 0.80em;
+.app_title_fade {
+  background-image: -webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,rgba(255,255,255,1)));
+  /* background-image: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)); */
+  background-image: -moz-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1));
+  background-image: -ms-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1));
+  background-image: -o-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1));
+  /* background: linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1)); */
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#00ffffff',EndColorStr='#ffffff');
+  bottom: 0;
+  height: 45px;
+  max-height: 100%;
+  position: absolute;
+  right: 0;
+  width: 60px;
 }
-.app_box h4.block-title.marketplace-tile-title.theme-xs {
-  font-size: 0.70em;
+.app_box h4.block-title.marketplace-full-title .app_vendor,
+.app_box h4.block-title.marketplace-tile-title .app_vendor {
+  color: #aaa;  
 }
 .marketplace-app.marketplace-tile .box-footer {
   padding: 5px;
@@ -1559,18 +1575,18 @@ form .box-body > .btn-group{
   padding-right: 10px;
 }
 
-/* TODO Singh Start Review */
-
-.app_title {
+.app_tile_info {
   padding-top: 25px;
-  color: #608921;
   overflow: hidden;
   font-size: 12px;
-  font-weight: 300;
-  text-transform: uppercase;
 }
-.app_title.free_app {
+.app_tile_info .app_price {
+  text-transform: uppercase;
   color: #608921;
+  font-weight: 400;
+}
+.app_vendor {
+  font-size: 10pt;
 }
 .app_rating {
   clear: both;
@@ -1585,9 +1601,6 @@ form .box-body > .btn-group{
   border-top: 1px solid #ddd;
   margin: 15px -15px -15px;
 }
-/*.app_footer .btn {
- *   border: none;
- *   }*/
 .installed_ribbon {
   position: absolute;
   right: 15px;
@@ -1644,9 +1657,12 @@ h4.block-title {
   box-shadow: 0 0 10px #ddd;
 }
 .app_box h4.block-title {
-  min-height: 42px;
-  font-size: 14px;
-  text-align: left;
+  min-height: 48px;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 0px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .app_box.free_app .installed_ribbon {
   color: #608921;
@@ -2293,11 +2309,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 .login_right .control-label, .login_right .theme-field-right{width: 100%; padding:3px 15px !important; text-align: left}
 
-
-
-
-
-
 /* ---------------------------------*/
 /* AlertBox Close Button Fixes   */
 /* ---------------------------------*/
@@ -2311,14 +2322,23 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 /* Notification  Bubble          */
 /* ------------------------------*/
 
-ul.full_menu li.my-account a big{ background: #dd0000;  border-radius: 50%;  color: #ffffff;  font-size: 16px;  font-weight: bold;  height: 26px;  line-height: 26px;  position: relative;  text-align: center; margin: 0 10px 0 -20px;  width: 26px; display: inline-block;
-vertical-align: top;
-zoom: 1; /* Fix for IE7 */
-*display: inline; /* Fix for IE7 */}
-
-
-
-
+ul.full_menu li.my-account a span.theme-alert-header {
+  background: #dd0000;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  height: 26px;
+  line-height: 26px;
+  position: relative;
+  text-align: center;
+  margin: 0 10px 0 -20px;
+  width: 26px;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1; /* Fix for IE7 */
+  *display: inline; /* Fix for IE7 */
+}
 
 /* ----------------------------- */
 /* Wizard                        */
@@ -2388,3 +2408,10 @@ li.treeview ul.sub_menu {
 li.treeview.active ul.sub_menu {
  display:block!important;
 } 
+
+.clearos-svg.clearfoundation path,
+.clearos-svg.clearfoundation circle,
+.clearos-svg.clearfoundation polygon,
+.clearos-svg.clearfoundation rect {
+  fill: #608921!important;
+}

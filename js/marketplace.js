@@ -495,13 +495,7 @@ function get_support_policy(json) {
 function get_placeholder(type) {
     if (type == 'svg')
         return '\
-        <?xml version="1.0" encoding="utf-8"?>\
-        <!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\
-        <svg version="1.1"\
-             id="Layer_1" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg"\
-             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" preserveAspectRatio="xMinYMin" \
-             viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">\
+        <svg version="1.1" class="clearos-svg clearfoundation placeholder" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin">\
         <g id="Layer_7" transform="translate(0,1.3329999)" display="none">\
             <g id="g4" display="inline">\
                 <path id="path6" d="M81.984,71.004h33.076l42.445,165.935c5.829,23.278,10.082,44.354,12.758,63.213\
@@ -791,7 +785,7 @@ function _get_app_full(app, options)
             <div class="app_box" id="box-' + app.basename + '">\
                 <div id="active-select-' + app.basename + '" class="' + (app.incart ? '' : 'theme-hidden ') + 'marketplace-selected"><i class="ff-check-square-o"></i></div>\
             ' + (app.installed ? '<span class="installed_ribbon">' + lang_installed.toUpperCase() + '</span>' : '') + '\
-            <h4 class="block-title">' + app.name + '</h4>\
+            <h4 class="block-title marketplace-full-title">' + app.name + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
             <div class="listsvg_cont">\
                 <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder">\
                     ' + get_placeholder("svg") + '\
@@ -852,21 +846,15 @@ function _get_app_tile(app, options)
     else if (options.wizard)
         buttons = '<a href="#" class="btn btn-warning btn-xs disabled">' + lang_installed + '</a>';
 
-    var font_size = '';
-
-    if (app.name.length > 60)
-        font_size = ' theme-xs';
-    else if (app.name.length > 45)
-        font_size = ' theme-sm';
-
     return '\
        <div class="col-md-' + col + '">\
           <div class="app_box" id="box-' + app.basename + '">\
-            <h4 class="block-title marketplace-tile-title' + font_size + '">' + app.name + '</h4>\
+            <h4 class="block-title marketplace-tile-title" data-toggle="tooltip" data-container="body" title="' + app.name + '">' + app.name + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
             <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder">\
                 ' + get_placeholder("svg") + '\
             </figure>\
-            <div class="app_title">' + theme_price(UNIT, app.pricing) + '\
+            <div class="app_tile_info">\
+              <div class="app_price">' + theme_price(UNIT, app.pricing) + '</div>\
               <div class="app_rating">' + theme_star_rating(app.rating) + '</div>\
             </div>\
             <div class="app_footer">\

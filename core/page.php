@@ -685,7 +685,7 @@ function _get_header($page, $menus = array())
                         <li class='support " . $active_header['support'] . "'>
                             <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
                         </li> 
-                        <li class='my-account dropdown " . $active_header['my_account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . $active_header['my_account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
                                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
@@ -716,7 +716,7 @@ function _get_header($page, $menus = array())
                                 <li class='support " . (($page['current_basename'] == 'support') ? "active" : "") . "'>
                                     <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
                                 </li> 
-                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <big>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</big><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
+                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
                                     <ul class='dropdown-menu' role='menu'>
                                       " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                                       <li class='divider'></li>
