@@ -2382,7 +2382,7 @@ function theme_infobox($type, $title, $message, $options = NULL)
         $class[] = 'theme-hidden';
     $buttons = "";
     if (isset($options['buttons']))
-        $buttons = "<div class='text-center'>" . theme_button_set($options['buttons']) . '</div>';
+        $buttons = "<div class='text-center' style='padding: 15px;'>" . theme_button_set($options['buttons']) . '</div>';
 
     return "
         <div class='" . implode(' ', $class) . "' $id>
