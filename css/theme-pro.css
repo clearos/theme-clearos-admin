@@ -1,91 +1,64 @@
-.main-content aside ul.left_nav > li > a:hover {
-  color: #c2510f;
-}
-.main-content aside ul.left_nav > li > a:focus {
-  color: #c2510f;
-}
-.main-content aside ul.left_nav > li.active > a {
-  color: #c2510f;
-}
-.sub_menu li.active {
-  border-left-color: #c2510f;
-}
+a,
+.main-content aside ul.left_nav > li > a:hover,
+.main-content aside ul.left_nav > li > a:focus,
+.main-content aside ul.left_nav > li.active > a,
 .sub_menu li.active > a,
-.sub_menu li:hover > a {
-  color: #c2510f;
-}
-.sub_menu li > ul li.active {
-  border-left-color: #c2510f;
-}
+.sub_menu li:hover > a,
 .sub_menu li > ul li.active a,
-.sub_menu li > ul li:hover a {
-  color: #c2510f;
-}
-.theme-menu-2-category.btn.btn-default.active {
-  background-color: #c2510f!important;
-}
-
-.btn-link, a {
-  color: #c2510f;
-}
-a:hover, a:focus, .btn-link:hover {
-  color: #aa470d;
-}
-.progress-bar {
-  background-color: #c2510f;
-}
-.btn-primary {
-  background-color: #c2510f;
-  border-color: #aa470d;
-}                          
-
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-  background-color: #c2510f;
-  border-color: #aa470d;
-}
+.sub_menu li > ul li:hover a,
+.btn-link,
+.app_tile_info .app_price,
+.app_title,
+.block-title,
+#app-details-container h4, #app-details-container h3, .box-title,
+.modal-content .modal-header,
+.modal-content .modal-body h4,
+.small_menu ul li a:hover, .small_menu ul li a:hover i,
+.filter_links a.btn-link:hover,
 .pagination > li > a, .pagination > li > span {
   color: #c2510f;
 }
 
-.app_title {
-  color: #c2510f;
+.sub_menu li.active,
+.sub_menu li > ul li.active {
+  border-left-color: #c2510f;
 }
+
+.theme-menu-2-category.btn.btn-default.active,
+.btn-success,
+.progress-bar,
+.btn-primary, .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #c2510f!important;
+  border-color: #aa470d;
+}
+
+a:hover, a:focus, .btn-link:hover {
+  color: #aa470d;
+}
+
 .installed_ribbon {
   background: #e9ecef;
   border: 1px solid #c2510f;
   color: #c2510f;
 }
-.block-title {
-  color: #c2510f;
-}
+
 .block-title:before {
   border-bottom: 1px solid #c2510f;
 }
-.filter_links a.btn-link:hover {
-  color: #c2510f;
-}
 
-#app-details-container h4, #app-details-container h3, .box-title {
-  color: #c2510f;
-}
-#app-details-container h4:before, #app-details-container h3:before, .box-title:before {
-  border-bottom: 1px solid #c2510f;
-}
-.modal-content .modal-header {
-  color: #c2510f;
-}
-.modal-content .modal-header:before {
-  border-bottom: 1px solid #c2510f;
-}
-.modal-content .modal-body h4 {
-  color: #c2510f;
-}
+#app-details-container h4:before, #app-details-container h3:before, .box-title:before,
+.modal-content .modal-header:before,
 .modal-content .modal-body h4:before {
   border-bottom: 1px solid #c2510f;
 }
-.small_menu ul li a:hover, .small_menu ul li a:hover i {
-  color:#c2510f;
-}
+
 .main-content aside ul.left_nav > li > a i {
   background-image: url(../img/cube_sprite_pro.png);
+}
+
+.clearos-svg.clearfoundation path,
+.clearos-svg.clearfoundation circle,
+.clearos-svg.clearfoundation polygon,
+.clearos-svg.clearfoundation rect {
+  fill: #c2510f!important;
 }

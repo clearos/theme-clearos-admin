@@ -37,34 +37,30 @@
 
 function theme_page_head($settings)
 {
+    $framework =& get_instance();
     $theme_url = clearos_theme_url('ClearOS-Admin');
 	$basepath = preg_replace('/\/core\/.*/', '', realpath(__FILE__));
 
     // The version is used to avoid upgrade/caching issues.  Bump when required.
     $version = '7.0.0';
 
-    $theme_extras = '';
-
-    // FIXME: review if statements below
-	if (file_exists("$basepath/css/theme-extras.css"))
-		$theme_extras .= "<link type='text/css' href='$theme_url/css/theme-extras.css?v=$version' rel='stylesheet'>\n";
-
-	if (file_exists("$basepath/css/theme-organization.css"))
-		$theme_extras .= "<link type='text/css' href='$theme_url/css/theme-organization.css?v=$version' rel='stylesheet'>\n";
-
-	if (file_exists("$basepath/images/favicon-orange.ico"))
-		$color = "orange";
-	else
-		$color = "green";
-
     // Note: <meta> tags are in the meta.php file
 
+    $version_theme_override = '';
+    if (preg_match('/professional/i', $framework->session->userdata['os_name']))
+        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-pro.css'>";
+    else if (preg_match('/home/i', $framework->session->userdata['os_name']))
+        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-home.css'>";
+    else if (preg_match('/hosted/i', $framework->session->userdata['os_name']))
+        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-hosted.css'>";
+    
     return "
 <!-- Basic Styles -->
 <!-- Theme Styles -->
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/bootstrap.css?v=3.0'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/fontawesome.css?v=4.2.0'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme.css'>
+$version_theme_override
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/colorpicker/bootstrap-colorpicker.min.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/lightbox.css'>
 

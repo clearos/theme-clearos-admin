@@ -1,4 +1,4 @@
-a,
+a
 .main-content aside ul.left_nav > li > a:hover,
 .main-content aside ul.left_nav > li > a:focus,
 .main-content aside ul.left_nav > li.active > a,
@@ -16,49 +16,49 @@ a,
 .small_menu ul li a:hover, .small_menu ul li a:hover i,
 .filter_links a.btn-link:hover,
 .pagination > li > a, .pagination > li > span {
-  color: #3d85c6;
+  color: #7A7474;
 }
 
 .sub_menu li.active,
 .sub_menu li > ul li.active {
-  border-left-color: #3d85c6;
+  border-left-color: #7A7474;
 }
 
 .theme-menu-2-category.btn.btn-default.active,
 .btn-success,
 .progress-bar,
 .btn-primary, .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-  background-color: #3d85c6!important;
-  border-color: #3471a8;
+  background-color: #7A7474!important;
+  border-color: #767676;
 }
 
 a:hover, a:focus, .btn-link:hover {
-  color: #3471a8;
+  color: #767676;
 }
 
 .installed_ribbon {
   background: #e9ecef;
-  border: 1px solid #3d85c6;
-  color: #3d85c6;
+  border: 1px solid #7A7474;
+  color: #7A7474;
 }
 
 .block-title:before {
-  border-bottom: 1px solid #3d85c6;
+  border-bottom: 1px solid #7A7474;
 }
 
 #app-details-container h4:before, #app-details-container h3:before, .box-title:before,
 .modal-content .modal-header:before,
 .modal-content .modal-body h4:before {
-  border-bottom: 1px solid #3d85c6;
+  border-bottom: 1px solid #7A7474;
 }
 
 .main-content aside ul.left_nav > li > a i {
-  background-image: url(../img/cube_sprite_hosted.png);
+  background-image: url(../img/cube_sprite_home.png);
 }
 
 .clearos-svg.clearfoundation path,
 .clearos-svg.clearfoundation circle,
 .clearos-svg.clearfoundation polygon,
 .clearos-svg.clearfoundation rect {
-  fill: #3d85c6!important;
+  fill: #7A7474!important;
 }
