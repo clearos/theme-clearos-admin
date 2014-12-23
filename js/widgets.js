@@ -139,7 +139,6 @@ function theme_infobox(type, title, message, options)
         icon_class = 'fa fa-check-circle';
     }
 
-    console.log(options.id);
     id = (options != undefined && options.id != undefined) ? ' id="' + options.id + '"' : '';
 
     return ' \
