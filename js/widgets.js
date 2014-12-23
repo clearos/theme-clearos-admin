@@ -297,9 +297,9 @@ function theme_related_app(type, list)
                         <div class="marketplace-app-lhs">\
                             <div class="marketplace-app-info-icon">\
                                 <div class="theme-app-logo-container">\
-                                    <div  id="app-logo-' + app.basename + '" class="theme-app-logo box-body theme-placeholder">\
+                                    <figure id="app-logo-' + app.basename + '" class="theme-app-logo theme-placeholder">\
                                         ' + get_placeholder("svg") + '\
-                                    </div>\
+                                    </figure>\
                                 </div>\
                             </div>\
                             <div class="marketplace-app-info-rating">' + theme_star_rating(app.rating) + '</div>\
