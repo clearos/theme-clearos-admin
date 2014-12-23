@@ -177,7 +177,7 @@ function theme_progress_bar(value, options)
 
     var id = '';
     var classes = [];
-    if (typeof options != undefined) {
+    if (typeof options != undefined && options != null) {
         if (options.id != undefined)
             id = 'id="' + options.id + '"';
         if (options.no_animation != undefined)
