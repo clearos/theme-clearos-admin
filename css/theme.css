@@ -2118,10 +2118,6 @@ h1.page-title {
 #app-details-container #marketplace-screenshot h3,
 #app-details-container #marketplace-developer h3,
 #app-details-container #marketplace-overview h3 {
-  color: #a3591a;
-  display: block;
-  font-size: 18px;
-  font-weight: normal;
   padding: 20px 0 10px;
 }
 
