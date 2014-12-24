@@ -15,6 +15,7 @@ a,
 .modal-content .modal-body h4,
 .small_menu ul li a:hover, .small_menu ul li a:hover i,
 .filter_links a.btn-link:hover,
+.main-wrapper header > ul > li.ClearOS > a.ci-ClearOS:before,
 .pagination > li > a, .pagination > li > span {
   color: #c2510f;
 }
@@ -61,4 +62,13 @@ a:hover, a:focus, .btn-link:hover {
 .clearos-svg.clearfoundation polygon,
 .clearos-svg.clearfoundation rect {
   fill: #c2510f!important;
+}
+.page-title {
+  background: none repeat scroll 0 0 #c2510f;
+}
+.main-wrapper.clearos_page header,
+.main-wrapper header > ul > li.ClearOS.active > a:after,
+.main-wrapper header > ul > li.ClearOS.open > a:after,
+#magic-arrow.magic_arrow_0 {
+  border-bottom-color: #c2510f;
 }

@@ -602,6 +602,8 @@ function _get_header($page, $menus = array())
         }
     }
 
+    $os_name = preg_replace('/ClearOS\s*/', '', $page['os_name']);
+
     if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
         // TODO - Translate
         $alert_text = "
@@ -640,10 +642,10 @@ function _get_header($page, $menus = array())
 
     $title = $page['title']; 
     if (isset($framework->session->userdata['wizard'])) {
-        $title = lang('base_wizard') . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i><span class='page-second-level'>" . $page['title'] . "</span>";
+        $title = lang('base_wizard') . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i>" . $page['title'];
     } else {
         if ($page['title'] != $page['current_name'])
-            $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i><span class='page-second-level'>" . $title . "</span>";
+            $title = $page['current_name'] . "<i class='breadcrumb-separator fa fa-arrow-circle-right'></i>" . $title;
     }
     
     $active_header = array();
@@ -742,8 +744,8 @@ function _get_header($page, $menus = array())
                     </div>
                     <div class='clearfix'></div>
             </header>
-            <div class='page-title'><h1>$title</h1>" . 
-            (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
+            <div class='page-title'><h1>$os_name</h1><div class='sitepath'>$title</div>
+            " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
             </div>"
         ;
 }
