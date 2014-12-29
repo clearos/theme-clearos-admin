@@ -47,7 +47,9 @@ function theme_page_head($settings)
     // Note: <meta> tags are in the meta.php file
 
     $version_theme_override = '';
-    if (preg_match('/professional/i', $framework->session->userdata['os_name']))
+    if (preg_match('/community/i', $framework->session->userdata['os_name']))
+        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-community.css'>";
+    else if (preg_match('/professional/i', $framework->session->userdata['os_name']))
         $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-pro.css'>";
     else if (preg_match('/home/i', $framework->session->userdata['os_name']))
         $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-home.css'>";

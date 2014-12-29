@@ -66,9 +66,41 @@ a:hover, a:focus, .btn-link:hover {
 .page-title {
   background: none repeat scroll 0 0 #c2510f;
 }
-.main-wrapper.clearos_page header,
-.main-wrapper header > ul > li.ClearOS.active > a:after,
-.main-wrapper header > ul > li.ClearOS.open > a:after,
+.main-wrapper header > ul > li.ClearOS {
+  border-top-color: #686868;
+  border-bottom: 2px solid #C86327;
+}
+.main-wrapper header > ul > li.dashboard {
+  border-top-color: #608921;
+  border-bottom: 2px solid #C2510F;
+}
+.main-wrapper header > ul > li.marketplace {
+  border-top-color: #c2510f;
+  border-bottom: 2px solid #C2510F;
+}
+.main-wrapper header > ul > li.support {
+  border-top-color: #3d85c6;
+  border-bottom: 2px solid #C2510F;
+}
+.main-wrapper header > ul > li.my-account {
+  border-top-color: #999999;
+  border-bottom: 2px solid #C2510F;
+}
+.main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after{
+	border-bottom-color: #C86327;
+}
 #magic-arrow.magic_arrow_0 {
-  border-bottom-color: #c2510f;
+  border-bottom-color: #C86327;
+}
+#magic-arrow.magic_arrow_1 {
+  border-bottom-color: #C2510F;
+}
+#magic-arrow.magic_arrow_2 {
+  border-bottom-color: #C2510F;
+}
+#magic-arrow.magic_arrow_3 {
+  border-bottom-color: #C2510F;
+}
+#magic-arrow.magic_arrow_4 {
+  border-bottom-color: #C2510F;
 }
