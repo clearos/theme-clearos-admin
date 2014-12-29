@@ -459,27 +459,28 @@ function get_support_policy(json) {
         '<h2>' + lang_marketplace_support_legend + '</h2>' +
         '</div>' +
         '<div class=\'modal-body\'>' +
-        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-1\' style=\'margin-right: 5px;\'></i>' + lang_marketplace_support_1_title + '</h4></div>' +
+        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-1\' style=\'margin-right: 5px;\'></i>' +
+        lang_marketplace_support_1_title + '</h4></div>' +
         '<p>' +
         lang_marketplace_support_1_description +
         '</p>' +
-        '<i class=\'fa fa-circle theme-support theme-support-2\' style=\'margin-right: 5px;\'></i>' +
-        '<div class=\'theme-support-type\'><h4>' + lang_marketplace_support_2_title + '</h4></div>' +
+        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-2\' style=\'margin-right: 5px;\'></i>' +
+        lang_marketplace_support_2_title + '</h4></div>' +
         '<p>' +
         lang_marketplace_support_2_description +
         '</p>' +
-        '<i class=\'fa fa-circle theme-support theme-support-4\' style=\'margin-right: 5px;\'></i>' +
-        '<div class=\'theme-support-type\'><h4>' + lang_marketplace_support_4_title + '</h4></div>' +
+        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-4\' style=\'margin-right: 5px;\'></i>' +
+        lang_marketplace_support_4_title + '</h4></div>' +
         '<p>' +
         lang_marketplace_support_4_description +
         '</p>' +
-        '<i class=\'fa fa-circle theme-support theme-support-8\' style=\'margin-right: 5px;\'></i>' +
-        '<div class=\'theme-support-type\'><h4>' + lang_marketplace_support_8_title + '</h4></div>' +
+        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-8\' style=\'margin-right: 5px;\'></i>' +
+        lang_marketplace_support_8_title + '</h4></div>' +
         '<p>' +
         lang_marketplace_support_8_description +
         '</p>' +
-        '<i class=\'fa fa-circle theme-support theme-support-16\' style=\'margin-right: 5px;\'></i>' +
-        '<div class=\'theme-support-type\'><h4>' + lang_marketplace_support_16_title + '</h4></div>' +
+        '<div class=\'theme-support-type\'><h4><i class=\'fa fa-circle theme-support theme-support-16\' style=\'margin-right: 5px;\'></i>' +
+        lang_marketplace_support_16_title + '</h4></div>' +
         '<p>' +
         lang_marketplace_support_16_description +
         '</p>' +
