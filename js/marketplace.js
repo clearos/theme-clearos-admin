@@ -494,7 +494,7 @@ function get_support_policy(json) {
 function get_placeholder(type) {
     if (type == 'svg')
         return '\
-        <svg version="1.1" class="clearos-svg clearfoundation placeholder" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin">\
+        <svg version="1.1" class="clearos-svg clearfoundation placeholder" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">\
         <g id="Layer_7" transform="translate(0,1.3329999)" display="none">\
             <g id="g4" display="inline">\
                 <path id="path6" d="M81.984,71.004h33.076l42.445,165.935c5.829,23.278,10.082,44.354,12.758,63.213\

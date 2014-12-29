@@ -771,10 +771,14 @@ function _get_content_header($page)
 
 function _get_footer($page)
 {
+    $vendor = "ClearCenter";
+    if ($page['os_name'] == "ClearOS Community")
+        $vendor = "ClearFoundation";
+
     return "
       <!-- Footer -->
       <div class='clearfix'></div>
-      <footer>Copyright &copy; 2009 - 2014 ClearCenter</footer>
+      <footer>Copyright &copy; 2009 - 2014 $vendor</footer>
     <!-- Close main-wrapper -->
     </div>
     ";

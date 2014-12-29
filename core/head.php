@@ -68,6 +68,5 @@ $version_theme_override
 <!-- FAVICONS -->
 <link rel='shortcut icon' href='$theme_url/img/favicon.ico' type='image/x-icon'>
 <link rel='icon' href='$theme_url/img/favicon.ico' type='image/x-icon'>
-
 ";
 }
