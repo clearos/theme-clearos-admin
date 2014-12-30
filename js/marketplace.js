@@ -720,6 +720,14 @@ function display_review_form() {
     clearos_modal_infobox_open('review-form');
     // Sometimes browser autocompletes this field
     $('#review-comment').val('');
+    $.ajax({
+        url: '/app/marketplace/ajax/get_pseudonym',
+        method: 'GET',
+        dataType: 'json',
+        success : function(name) {
+            $('#review-pseudonym').val(name);
+        }
+    });
 }
 
 /**
@@ -866,14 +874,18 @@ function _get_app_tile(app, options)
         '</div>'
     ;
 
-    if (!app.installed)
-        buttons = '<input type="submit" name="install" value="' +
-            (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) +
-            '" id="' + app.basename + '" class="btn btn-primary btn-xs marketplace-app-event" data-appname="' +
-            app.name + '"/>'
-        ;
-    else if (options.wizard)
+    if (!app.installed) {
+        if (options.search_only)
+            buttons = '<a href="/app/marketplace/view/' + app.basename + '" class="btn btn-primary btn-xs">' + lang_install + '</a>';
+        else
+            buttons = '<input type="submit" name="install" value="' +
+                (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) +
+                '" id="' + app.basename + '" class="btn btn-primary btn-xs marketplace-app-event" data-appname="' +
+                app.name + '"/>'
+            ;
+    } else if (options.wizard) {
         buttons = '<a href="#" class="btn btn-warning btn-xs disabled">' + lang_installed + '</a>';
+    }
 
     return '\
        <div class="col-md-' + col + '">\

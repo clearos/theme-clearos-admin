@@ -2085,6 +2085,10 @@ footer {
   left: 0;
   content: ' ';
 }
+#app-review-form div.row {
+  min-height: 32px;
+}
+
 .marketplace-devel-icon {
   float: left; margin: 3px 10px 0 0;
 }

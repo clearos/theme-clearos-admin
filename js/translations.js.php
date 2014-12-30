@@ -69,6 +69,7 @@ var lang_sdn_email_invalid = '" . lang("base_sdn_email_invalid") . "';
 var lang_sdn_email_mismatch = '" . lang("base_sdn_email_mismatch") . "';
 var lang_sdn_password_reset = '" . lang("base_sdn_password_reset") . "';
 var lang_status = '" . lang('base_status') . "';
+var lang_install = '" . lang('base_install') . "';
 var lang_uninstall = '" . lang('base_uninstall') . "';
 var lang_configure = '" . lang('base_configure') . "';
 var lang_internet_down = '" . lang('base_check_internet_connection') . "';

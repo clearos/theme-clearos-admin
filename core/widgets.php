@@ -2927,9 +2927,9 @@ function theme_summary_box($data)
                     )
                 ) . "
             </div>
-            " . theme_marketplace_review($data['basename'], $data['sdn_username']) . "
             " . (isset($data['show_recommended_apps']) ? "<div id='sidebar-recommended-apps'></div>" : "") . "
         </div>
+        " . theme_marketplace_review($data['basename']) . "
         <div class='box-footer'></div>"
     );
 
@@ -3161,12 +3161,11 @@ function theme_marketplace_developer_field($id, $field, $options = NULL)
  * Get marketplace developer field metadata.
  *
  * @param string $basename  basename
- * @param string $pseudonym pseudonym
  *
  * @return string HTML
  */
 
-function theme_marketplace_review($basename, $pseudonum)
+function theme_marketplace_review($basename)
 {
     clearos_load_language('marketplace');
     $buttons = array(
@@ -3209,7 +3208,7 @@ function theme_marketplace_review($basename, $pseudonum)
                 theme_row_open() .
                 theme_column_open(3) . lang('marketplace_submitted_by') . theme_column_close() .
                 theme_column_open(9) . "
-                    <input type='text' class='theme-full-width' id='review-pseudonym' name='review-pseudonym' value='$pseudonym' />" .
+                    <input type='text' class='theme-full-width' id='review-pseudonym' name='review-pseudonym' value='' />" .
                 theme_column_close() .
                 theme_row_close() .
                 theme_row_open() . "
