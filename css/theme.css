@@ -1143,6 +1143,13 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 }
 
 /* ----------------------- */
+/* Tips and hints          */
+/* ----------------------- */
+.theme-tooltips li {
+  margin-bottom: 15px;
+}
+
+/* ----------------------- */
 /* Wizard                  */
 /* ----------------------- */
 

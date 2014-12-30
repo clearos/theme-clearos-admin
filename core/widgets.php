@@ -2930,10 +2930,31 @@ function theme_summary_box($data)
             " . (isset($data['show_recommended_apps']) ? "<div id='sidebar-recommended-apps'></div>" : "") . "
         </div>
         " . theme_marketplace_review($data['basename']) . "
+        " . theme_tips_and_hints($data['tooltip']) . "
         <div class='box-footer'></div>"
     );
 
     return $html;
+}
+
+/**
+ * Returns tips and hints modal.
+ *
+ * @return string menu HTML output
+ */
+
+function theme_tips_and_hints($tooltips)
+{
+    if (is_array($tooltips)) {
+        $tips = "<ul class='theme-tooltips'>";
+        foreach ($tooltips as $tip)
+            $tips .= "<li>$tip</li>";
+        $tips .= "</ul>";
+    } else {
+        $tips = $tooltips;
+    }
+
+    return theme_modal_info('app-tips-content', lang('base_tips_and_hints'), $tips);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
