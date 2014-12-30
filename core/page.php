@@ -531,7 +531,7 @@ function _get_main_content($page)
     } else if ($page['type'] == MY_Page::TYPE_CONSOLE) {
         return "
             <section class='content-container'>
-                <section class='row content clearfix'>
+                <section class='content clearfix'>
                     <div class='theme-content'>
                     " . _get_message() . "
                     " . $page['app_view'] . "
@@ -545,7 +545,7 @@ function _get_main_content($page)
                 <div class='content-header clearfix'>
                     " . _get_content_header($page) . "
                 </div>
-                <div class='row content clearfix'>
+                <div class='content clearfix'>
                     <div class='theme-content'>
                     " . _get_message() . "
                     " . $page['app_view'] . "
