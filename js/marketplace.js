@@ -440,6 +440,35 @@ function get_marketplace_data(basename) {
     });
 }
 
+/**
+ * Returns app logos via ajax.
+ *
+ */
+
+function get_app_logos(basenames) {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/app/marketplace/ajax/get_app_logos',
+        success: function(data) {
+            // Success..pass data to theme to update HTML.
+            if (data.code == 0) {
+                $.each(basenames, function(index, basename) {
+                    if (data.list[basename] != undefined) {
+                        $('#app-logo-' + basename).html($.base64.decode(data.list[basename].base64));
+                    } else {
+                        get_app_logo(basename, 'app-logo-' + basename);
+                    }
+                });
+                return;
+            }
+        },
+        error: function(xhr, text, err) {
+            get_app_logo(basename, 'app-logo-' + basename);
+            return;
+        }
+    });
+}
 
 // FIXME: create generic theme widget
 
