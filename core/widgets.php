@@ -289,7 +289,7 @@ function theme_fieldset_header($title, $options)
 {
     $id = isset($options['id']) ? ' id=' . $options['id'] : '';
 
-    return "<h4 $id>$title</h4>";
+    return "<div $id class='theme-form-header'>$title</div>";
 }
 
 /**

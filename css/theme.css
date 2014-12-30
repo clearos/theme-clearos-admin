@@ -1288,6 +1288,12 @@ form .box-body > .btn-group{
 .theme-no-field {
   width: auto;
 }
+.theme-form-header {
+  margin: 10px 0px;
+  background-color: #808080;
+  color: #fff;
+  padding: 10px;
+}
 
 /* ----------------------- */
 /* Marketplace             */
