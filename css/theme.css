@@ -1850,8 +1850,7 @@ h4.block-title {
   color: #3d85c6;
 }
 .support-upgrade-required {
-  height: 32px;
-  line-height: 32px;
+  line-height: 50px;
   background-color: red;
 }
 .support-not-available, .support-no-open-tickets {
