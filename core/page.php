@@ -629,15 +629,6 @@ function _get_header($page, $menus = array())
                     <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
                 </li>
             ";
-        $devel_alerts = "
-                <li class='dropdown notifications-menu'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
-                        <i class='fa fa-warning'></i>
-                        <span class='label label-warning'>" . count($page['devel_alerts']) . "</span>
-                    </a>
-                    $alert_text
-                </li>
-        ";
     }
 
     $title = $page['title']; 
@@ -660,7 +651,6 @@ function _get_header($page, $menus = array())
     else 
         $active_header['home'] = "active";
         
-    // TODO Identify 'My Account Page
     // TODO Hard coded text below
     $main_menu = array(
         'dashboard' => "<li class='placeholder'></li>",
@@ -705,7 +695,7 @@ function _get_header($page, $menus = array())
                         " . $main_menu['dashboard'] . "
                         " . $main_menu['marketplace'] . "
                         " . $main_menu['support'] . "
-                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' style='$my_account_margin' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' style='$my_account_margin' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
                                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
