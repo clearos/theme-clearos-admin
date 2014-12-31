@@ -903,7 +903,7 @@ header:hover #magic-arrow {
 a:hover, a:focus {
   color: #999999;
 }
-.btn-primary {
+.btn-primary, .btn-primary.disabled {
   background-color: #999999;
   border-color: #868686;
 }
@@ -1641,7 +1641,7 @@ figure.theme-app-selected > svg.clearos-svg.clearfoundation rect {
 .installed_ribbon {
   position: absolute;
   right: 15px;
-  top: -8px;
+  top: -12px;
   background: #e9ecef;
   border: 1px solid #999999;
   color: #999999;
@@ -1650,18 +1650,18 @@ figure.theme-app-selected > svg.clearos-svg.clearfoundation rect {
 }
 .installed_ribbon:before {
   position: absolute;
-  left: -8px;
-  top: 0;
-  border-right: 7px solid #7e7e7e;
-  border-top: 7px solid transparent;
+  left: -12px;
+  top: -1px;
+  border-right: 12px solid #7e7e7e;
+  border-top: 12px solid transparent;
   content: ' ';
 }
 .installed_ribbon:after {
   position: absolute;
-  right: -8px;
-  top: 0;
-  border-left: 7px solid #7e7e7e;
-  border-top: 7px solid transparent;
+  right: -12px;
+  top: -1px;
+  border-left: 12px solid #7e7e7e;
+  border-top: 12px solid transparent;
   content: ' ';
 }
 .block-title {
