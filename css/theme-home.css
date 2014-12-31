@@ -28,6 +28,7 @@ a,
 .theme-menu-2-category.btn.btn-default.active,
 .btn-success,
 .progress-bar,
+.theme-app-selected,
 .btn-primary, .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
   background-color: #7A7474!important;
   border-color: #767676;
@@ -86,21 +87,21 @@ a:hover, a:focus, .btn-link:hover {
   border-top-color: #999999;
   border-bottom: 2px solid #7A7474;
 }
-.main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after{
+.main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after {
 	border-bottom-color: #888282;
 }
 #magic-arrow.magic_arrow_0 {
   border-bottom-color: #888282;
 }
-#magic-arrow.magic_arrow_1 {
-  border-bottom-color: #7A7474;
-}
-#magic-arrow.magic_arrow_2 {
-  border-bottom-color: #7A7474;
-}
-#magic-arrow.magic_arrow_3 {
-  border-bottom-color: #7A7474;
-}
+#magic-arrow.magic_arrow_1,
+#magic-arrow.magic_arrow_2,
+#magic-arrow.magic_arrow_3,
 #magic-arrow.magic_arrow_4 {
   border-bottom-color: #7A7474;
+}
+.clearos-svg.clearfoundation path,
+.clearos-svg.clearfoundation circle,
+.clearos-svg.clearfoundation polygon,
+.clearos-svg.clearfoundation rect {
+  fill: #7A7474 !important;
 }
