@@ -1123,7 +1123,7 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
     echo field_password('clearos_password', '', "<i class='fa fa-lock'></i> " . lang('base_password'));
 
     if (count($languages) > 1)
-        echo field_dropdown('code', $languages, $lang, lang('base_language'));
+        echo field_dropdown('code', $languages, $lang, "<i class='fa fa-language'></i> " . lang('base_language'));
 
     // if (isset($options) && $options['ip_extras'])
     //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
