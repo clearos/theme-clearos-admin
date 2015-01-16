@@ -1119,8 +1119,8 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
     echo "<div class='login_right'>";
     echo "  <div class='title'>" . lang('base_login') . "</div>";
     echo form_open('base/session/login/' . $redirect);
-    echo field_input('clearos_username', '', "<i class='fa fa-user'></i> ".lang('base_username'));
-    echo field_password('clearos_password', '', "<i class='fa fa-lock'></i> ".lang('base_password'));
+    echo field_input('clearos_username', '', "<i class='fa fa-user'></i> " . lang('base_username'));
+    echo field_password('clearos_password', '', "<i class='fa fa-lock'></i> " . lang('base_password'));
 
     if (count($languages) > 1)
         echo field_dropdown('code', $languages, $lang, lang('base_language'));
