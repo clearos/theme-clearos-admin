@@ -602,7 +602,11 @@ function _get_header($page, $menus = array())
         }
     }
 
-    $os_name = preg_replace('/ClearOS\s*/', '', $page['os_name']);
+    // If OS == ClearOS, leave as is...if the version is present, strip from variable
+    if ($page['os_name'] == "ClearOS")
+        $os_name = $page['os_name'];
+    else
+        $os_name = preg_replace('/ClearOS\s*/', '', $page['os_name']);
 
     if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
         // TODO - Translate
