@@ -822,7 +822,7 @@ function _get_app_full(app, options)
             <div class="app_box" id="box-' + app.basename + '">\
                 <div id="active-select-' + app.basename + '" class="' + (app.incart ? '' : 'theme-hidden ') + 'marketplace-selected"><i class="ff-check-square-o"></i></div>\
             ' + (app.installed ? '<span class="installed_ribbon">' + lang_installed.toUpperCase() + '</span>' : '') + '\
-            <h4 class="block-title marketplace-full-title">' + app.name + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
+            <h4 class="block-title marketplace-full-title">' + app.pricing.description + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
             <div class="listsvg_cont">\
                 <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder' + (app.incart ? ' theme-app-selected' : '') + '">\
                     ' + get_placeholder("svg") + '\
@@ -837,7 +837,7 @@ function _get_app_full(app, options)
                 (app.installed ?
                     '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>' +
                     '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>'
-                    : '<input type="submit" name="install" value="' + (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) + '" id="' + app.basename + '" class="btn btn-primary  marketplace-app-event" data-appname="' + app.name + '"/>' +
+                    : '<input type="submit" name="install" value="' + (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) + '" id="' + app.basename + '" class="btn btn-primary  marketplace-app-event" data-appname="' + app.pricing.description + '"/>' +
                     '<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>'
                 ) +
                 '<a href="/app/marketplace/view/' + app.basename + '"' + learn_more_target + ' class="btn btn-default ">' + lang_marketplace_learn_more + '</a>\
@@ -890,7 +890,7 @@ function _get_app_tile(app, options)
     return '\
        <div class="col-md-' + col + '">\
           <div class="app_box" id="box-' + app.basename + '">\
-            <h4 class="block-title marketplace-tile-title" data-toggle="tooltip" data-container="body" title="' + app.name + '">' + app.name + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
+            <h4 class="block-title marketplace-tile-title" data-toggle="tooltip" data-container="body" title="' + app.pricing.description + '">' + app.pricing.description + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
             <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder' + (app.incart ? ' theme-app-selected' : '') + '">\
                 ' + get_placeholder("svg") + '\
             </figure>\

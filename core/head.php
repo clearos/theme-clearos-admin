@@ -48,13 +48,15 @@ function theme_page_head($settings)
 
     $version_theme_override = '';
     if (preg_match('/community/i', $framework->session->userdata['os_name']))
-        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-community.css'>";
-    else if (preg_match('/professional/i', $framework->session->userdata['os_name']))
-        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-pro.css'>";
+        $version_theme_override = "<link id='theme-os-css' rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-community.css'>";
+    else if (preg_match('/business/i', $framework->session->userdata['os_name']))
+        $version_theme_override = "<link id='theme-os-css' rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-business.css'>";
     else if (preg_match('/home/i', $framework->session->userdata['os_name']))
-        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-home.css'>";
+        $version_theme_override = "<link id='theme-os-css' rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-home.css'>";
     else if (preg_match('/hosted/i', $framework->session->userdata['os_name']))
-        $version_theme_override = "<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-hosted.css'>";
+        $version_theme_override = "<link id='theme-os-css' rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-hosted.css'>";
+    else
+        $version_theme_override = "<link id='theme-os-css' rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/theme-no-edition.css'>";
     
     return "
 <!-- Basic Styles -->

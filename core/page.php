@@ -734,7 +734,7 @@ function _get_header($page, $menus = array())
                     </div>
                     <div class='clearfix'></div>
             </header>
-            <div class='page-title'><h1>$os_name</h1><div class='sitepath'>$title</div>
+            <div class='page-title'><h1 id='theme-clearos-os-name'>$os_name</h1><div class='sitepath'>$title</div>
             " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
             </div>"
         ;

@@ -87,6 +87,13 @@ function theme_anchor($url, $text, $importance, $class, $options)
     // Additional classes
     $class = explode(' ', $class);
 
+    // Data
+    $data = '';
+    if ((isset($options['data']))) {
+        foreach ($options['data'] as $key => $value)
+            $data .= "data-$key='$value' ";
+        $data = trim($data);
+    }
 
     $target = '';
     if (isset($options['target'])) {
@@ -119,7 +126,7 @@ function theme_anchor($url, $text, $importance, $class, $options)
 
     // TODO: do we ever use state = disabled?
     if (isset($options['state']) && ($options['state'] === FALSE)) {
-        return  "<input disabled type='submit' name='' $id value='$text' class='" . implode(' ' , $class) . "' $tabindex />\n";
+        return  "<input disabled $data type='submit' name='' $id value='$text' class='" . implode(' ' , $class) . "' $tabindex />\n";
     } else {
 
         // Multi-select button
@@ -128,7 +135,7 @@ function theme_anchor($url, $text, $importance, $class, $options)
 
             // TODO: many of the options above are not yet implemented
             foreach($url as $item_url => $item_text)
-                $url_text .= "<li><a href='$item_url'>$item_text</a></li>";
+                $url_text .= "<li><a href='$item_url' $data>$item_text</a></li>";
 
             return "
             <div class='btn-group'>
@@ -143,7 +150,7 @@ function theme_anchor($url, $text, $importance, $class, $options)
             </div>
             ";
         } else {
-            return "<a href='$url'$id class='" . implode(' ', $class) . "'$target$tabindex>$text</a>";
+            return "<a href='$url'$id class='" . implode(' ', $class) . "'$target$tabindex $data>$text</a>";
         }
     }
 }
