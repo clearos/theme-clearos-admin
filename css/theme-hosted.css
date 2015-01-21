@@ -69,7 +69,7 @@ a:hover, a:focus, .btn-link:hover {
 }
 .main-wrapper header > ul > li.ClearOS {
   border-top-color: #686868;
-  border-bottom: 2px solid #5191CC;
+  border-bottom: 2px solid #3D85C6;
 }
 .main-wrapper header > ul > li.dashboard {
   border-top-color: #608921;
@@ -88,10 +88,10 @@ a:hover, a:focus, .btn-link:hover {
   border-bottom: 2px solid #3D85C6;
 }
 .main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after {
-	border-bottom-color: #5191CC;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 #magic-arrow.magic_arrow_0 {
-  border-bottom-color: #5191CC;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 #magic-arrow.magic_arrow_1,
 #magic-arrow.magic_arrow_2,
