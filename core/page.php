@@ -301,6 +301,7 @@ function _login_page($page)
 
 function _splash_page($page)
 {
+    // TODO - Find way to customize splash page.
     $org_css = preg_replace('/\/core\/.*/', '', realpath(__FILE__)) . '/css/theme-organization.css';
 
     if (!preg_match('/Community/', $page['os_name']) && ($page['type'] == MY_Page::TYPE_SPLASH_ORGANIZATION) && file_exists($org_css))
@@ -311,15 +312,22 @@ function _splash_page($page)
     return "
         <!-- Body -->
         <body>
-
-        <!-- Page Container -->
-        <div class='theme-page-splash-container'>
-            <div class='$class'></div>
-            <div class='theme-content-splash-container'>
-                " . _get_message() . "
-                " . $page['app_view'] . "
+            <!-- Page Container -->
+            <div class='theme-page-splash-container container'>
+                <div class='row'>
+                    <div class='col-lg-1'></div>
+                    <div class='col-lg-7'>
+                        <div class='theme-content-splash-container'>
+                            " . _get_message() . "
+                            " . $page['app_view'] . "
+                        </div>
+                    </div>
+                    <div class='col-lg-3' style='text-align: center;'>
+                        <div class='ci-ClearOS'></div>
+                    </div>
+                    <div class='col-lg-1'></div>
+                </div>
             </div>
-        </div>
         </body>
         </html>
     ";

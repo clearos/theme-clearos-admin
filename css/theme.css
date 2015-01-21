@@ -2370,6 +2370,22 @@ ul.full_menu li.my-account a span.theme-alert-header {
 }
 
 /* ----------------------------- */
+/* Proxy Block Page              */
+/* ------------------------------*/
+
+@media (min-width: 1024px) {
+   .theme-page-splash-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+}
+.theme-page-splash-container .ci-ClearOS {
+  font-size: 14em;
+}
+
+/* ----------------------------- */
 /* Wizard                        */
 /* ------------------------------*/
 .main-wrapper header > ul > li.ClearOS.theme-wizard-active {
