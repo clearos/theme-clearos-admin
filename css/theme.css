@@ -1085,6 +1085,15 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   margin-top: -15px;
 }
 
+.box-header > div.theme-box-tools.pull-right {
+  position: relative;
+  z-index: 20;
+}
+.box-header > h3.box-title {
+  position: relative;
+  z-index: 10;
+}
+
 /* ----------------------- */
 /* Tabs                    */
 /* ----------------------- */

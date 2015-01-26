@@ -267,32 +267,6 @@ function theme_price(UNIT, price) {
 
 function get_marketplace_data(basename) {
 
-    // Let's see if we have a connection to the Internet
-    // Block on this call (async set to false)
-    $.ajax({
-        url: '/app/network/get_internet_connection_status',
-        method: 'GET',
-        dataType: 'json',
-        async: false,
-        success : function(status) {
-            if (status != 'offline')
-                internet_connection = true;
-        },
-        error: function (xhr, text_status, error_thrown) {
-        }
-    });
-
-    // Avoid furter calls if target fields do not exist
-    if ($('#sidebar_additional_info').length == 0)
-        return;
-
-    // No connection to Internet...let's bail
-    if (!internet_connection) {
-        $('#sidebar_additional_info').html('<a href=\'/app/network\' class=\'highlight-link\'>' + lang_internet_down + '</a>');
-        $('#sidebar_additional_info_row').show(200);
-        return;
-    }
-
     $.ajax({
         url: '/app/marketplace/ajax/get_app_details/' + basename,
         method: 'GET',
@@ -435,7 +409,9 @@ function get_marketplace_data(basename) {
             }
         },
         error: function (xhr, text_status, error_thrown) {
-            console.log(xhr.responseText.toString());
+            // No connection to Internet...let's bail
+            $('#sidebar_additional_info').html('<a href=\'/app/network\' class=\'highlight-link\'>' + lang_internet_down + '</a>');
+            $('#sidebar_additional_info_row').show(200);
         }
     });
 }
