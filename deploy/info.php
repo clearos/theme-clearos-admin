@@ -36,6 +36,17 @@ $package['settings'] = array(
         'required' => TRUE,
         'default' => 1,
     ),
+    'marketplace' => array(
+        'apps_per_page' = array(
+            6 => 6,
+            10 => 10,
+            20 => 20,
+            30 => 30,
+            40 => 40,
+            50 => 50,
+            0 => lang('base_all')
+        );
+    ),
     /*
     'css' => array(
         'lang_tag' => 'base_css_style',
