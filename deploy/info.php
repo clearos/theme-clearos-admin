@@ -7,12 +7,12 @@ $package['name'] = 'theme-clearos-admin';
 $package['title'] = 'ClearOS Admin Theme';
 $package['description'] = 'The ClearOS Admin Theme';
 
-$package['version'] = '1.0';
+$package['version'] = '1.1';
 $package['release'] = '0.0';
 
 $package['vendor'] = 'ClearFoundation';
 $package['packager'] = 'ClearFoundation';
-$package['license'] = 'Copyright ClearFoundation 2014.  All rights reserved.';
+$package['license'] = 'Copyright ClearFoundation 2015.  All rights reserved.';
 $package['credits'] = array();
     
 $package['settings'] = array(
@@ -37,7 +37,7 @@ $package['settings'] = array(
         'default' => 1,
     ),
     'marketplace' => array(
-        'apps_per_page' = array(
+        'apps_per_page' => array(
             6 => 6,
             10 => 10,
             20 => 20,
@@ -45,7 +45,7 @@ $package['settings'] = array(
             40 => 40,
             50 => 50,
             0 => lang('base_all')
-        );
+        )
     ),
     /*
     'css' => array(
