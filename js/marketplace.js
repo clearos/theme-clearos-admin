@@ -794,7 +794,7 @@ function _get_app_full(app, options)
     }
 
     return '\
-        <div class="col-md-6">\
+        <div class="col-md-6 marketplace-list-layout">\
             <div class="app_box" id="box-' + app.basename + '">\
                 <div id="active-select-' + app.basename + '" class="' + (app.incart ? '' : 'theme-hidden ') + 'marketplace-selected"><i class="ff-check-square-o"></i></div>\
             ' + (app.installed ? '<span class="installed_ribbon">' + lang_installed.toUpperCase() + '</span>' : '') + '\
@@ -809,11 +809,13 @@ function _get_app_full(app, options)
                 <p>' + app.description.replace(/(\r\n|\n|\r)/g, '</p><p>') + '</p>\
             </div>\
             <div class="app_footer">' +
+                ((app.display_mask & 1) == 1 ? '<div class="pull-left marketplace-app-not-available">Requires Business Edition</div>' : '') + 
+                
                 '<div class="btn-group">' +
                 (app.installed ?
                     '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>' +
                     '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>'
-                    : '<input type="submit" name="install" value="' + (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) + '" id="' + app.basename + '" class="btn btn-primary  marketplace-app-event" data-appname="' + app.pricing.description + '"/>' +
+                    : ((app.display_mask & 1) == 1) ? '' : '<input type="submit" name="install" value="' + (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) + '" id="' + app.basename + '" class="btn btn-primary  marketplace-app-event" data-appname="' + app.pricing.description + '"/>' +
                     '<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>'
                 ) +
                 '<a href="/app/marketplace/view/' + app.basename + '"' + learn_more_target + ' class="btn btn-default ">' + lang_marketplace_learn_more + '</a>\
@@ -833,6 +835,8 @@ function _get_app_tile(app, options)
     disable_buttons = '';
     learn_more_target = '';
 
+if (app.basename == 'active_directory')
+console.log(app);
     if (options.wizard) {
         disable_buttons = ' disabled';
         learn_more_target = ' target="_blank"';
@@ -851,7 +855,9 @@ function _get_app_tile(app, options)
     ;
 
     if (!app.installed) {
-        if (options.search_only)
+        if ((app.display_mask & 1) == 1)
+            buttons = '<div class=\'theme-text-alert\' style=\'font-size:.9em; display: inline;\'>Requires Business Edition</div>';
+        else if (options.search_only)
             buttons = '<a href="/app/marketplace/view/' + app.basename + '" class="btn btn-primary btn-xs">' + lang_install + '</a>';
         else
             buttons = '<input type="submit" name="install" value="' +
@@ -864,7 +870,7 @@ function _get_app_tile(app, options)
     }
 
     return '\
-       <div class="col-md-' + col + '">\
+       <div class="col-md-' + col + ' marketplace-tile-layout">\
           <div class="app_box" id="box-' + app.basename + '">\
             <h4 class="block-title marketplace-tile-title" data-toggle="tooltip" data-container="body" title="' + app.pricing.description + '">' + app.pricing.description + '<div class="app_vendor">' + app.vendor + '</div><span class="app_title_fade"></span></h4>\
             <figure id="app-logo-' + app.basename + '" data-basename="' + app.basename + '" class="theme-app-logo theme-placeholder' + (app.incart ? ' theme-app-selected' : '') + '">\

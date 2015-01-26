@@ -1376,6 +1376,10 @@ form .box-body > .btn-group{
   overflow: hidden;
   display: inline-block;
 }
+.marketplace-list-layout div.marketplace-app-not-available {
+  line-height: 35px;
+  color: red;
+}
 .marketplace-app.marketplace-tile {
   width: 150px;
 }
@@ -2182,7 +2186,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #marketplace-developer .fa{color:#999999;  font-size: 18px;}
 #marketplace-developer .marketplace-devel-container{clear:both;}
 #marketplace-review #add_review{margin-bottom:10px;}
-
 
 
 /*
