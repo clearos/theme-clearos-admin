@@ -3057,8 +3057,8 @@ function theme_app_logo($basename, $options = NULL)
     $color = (isset($options['color'])) ? " " . $options['color'] : "";
     $no_container = (isset($options['no_container'])) ? TRUE : FALSE;
     $filename = clearos_theme_path('ClearOS-Admin') . '/img/placeholder.svg';
-    if (file_exists(clearos_app_base($basename) . "htdocs/$basename.svg"))
-        $filename = clearos_app_base($basename) . "htdocs/$basename.svg";
+    if (file_exists(clearos_app_base($basename) . "/htdocs/$basename.svg"))
+        $filename = clearos_app_base($basename) . "/htdocs/$basename.svg";
     else if (file_exists(CLEAROS_CACHE_DIR . "/mp-logo-$basename.svg"))
         $filename = CLEAROS_CACHE_DIR . "/mp-logo-$basename.svg";
 
