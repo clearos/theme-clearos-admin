@@ -931,6 +931,10 @@ a:hover, a:focus {
 .theme-text-icon-spacing {
   padding-left: 5px;
 }
+.table-buttonset-column > div.btn-group > a.btn {
+  font-size: 0.8em;
+  padding: 2px 10px;
+}
 
 /* ----------------------- */
 /* Fields                  */
@@ -2324,12 +2328,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .small_menu ul li.support a:hover, .small_menu ul li.support a:hover i{color:#3d85c6;}
 .small_menu ul li.my-account a:hover, .small_menu ul li.my-account a:hover i{color:#999;}
 
-
-
-
-
-
-
 /* ---------------------------------*/
 /* Additional Current Style Fixes   */
 /* ---------------------------------*/
@@ -2340,9 +2338,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 
 .qsf_file .form-group{ margin:0;}
 .qsf_file .form-control{ border:none; height:auto; margin-bottom:20px; box-shadow:none;}
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #f0f0f0;}
-
-
 
 /* ---------------------------------*/
 /* Login panel design Fixes   */
@@ -2357,7 +2352,6 @@ box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
 .alert-success .fa-check-circle { background-color: #dff0d8; border-color: #d6e9c6; color: #3c763d;}
 .alert-info .fa-info-circle { background-color: #d9edf7; border-color: #bce8f1; color: #31708f;}
 .alert-danger .fa-times-circle { background-color: #f2dede; border-color: #ebccd1; color: #a94442;}
-
 
 /* ----------------------------- */
 /* Notification  Bubble          */
