@@ -908,8 +908,8 @@ a:hover, a:focus {
   border-color: #868686;
 }
 .btn-secondary {
-  background-color: #efefef;
-  border-color: #efefef;
+  background-color: #e0e0e0;
+  border-color: #e0e0e0;
   color: #333333;
 }
 .btn-secondary:hover {
@@ -930,10 +930,6 @@ a:hover, a:focus {
 }
 .theme-text-icon-spacing {
   padding-left: 5px;
-}
-.table-buttonset-column > div.btn-group > a.btn {
-  font-size: 0.8em;
-  padding: 2px 10px;
 }
 
 /* ----------------------- */
@@ -1096,6 +1092,15 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .box-header > h3.box-title {
   position: relative;
   z-index: 10;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th { background-color: #ffffff;}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th { background-color: #f4f4f4;}
+
+/* Buttons in tables a little smaller for vertical alignment */
+table a.btn {
+  font-size: 0.8em;
+  padding: 2px 10px;
 }
 
 /* ----------------------- */
