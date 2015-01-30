@@ -273,16 +273,15 @@ function get_marketplace_data(basename) {
         dataType: 'json',
         success : function(json) {
             if (json.code != undefined && json.code != 0) {
-                $('#sidebar_additional_info').css('color', 'red');
                 $('#sidebar_additional_info_row').show(200);
                 if (json.code < 0) {
                     // Could put real message for codes < 0, but it gets a bit technical
-                    $('#sidebar_additional_info').html(lang_marketplace_connection_failure);
+                    $('#sidebar_additional_info').html('<span class=\"theme-text-bad-status\">' + lang_marketplace_connection_failure + '</span>');
                 } else {
                     if (json.code == 3)
-                        $('#sidebar_additional_info').html('<a href=\'/app/registration/register\'>' + json.errmsg + '</a>');
+                        $('#sidebar_additional_info').html('<a href=\'/app/registration/register\' class=\'theme-text-bad-status\'>' + json.errmsg + '</a>');
                     else
-                        $('#sidebar_additional_info').html(json.errmsg);
+                        $('#sidebar_additional_info').html('<span class=\"theme-text-bad-status\">' + json.errmsg + '</span>');
                 }
                 return;
             } else {
