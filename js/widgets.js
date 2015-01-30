@@ -30,22 +30,32 @@ function theme_anchor(url, text, options)
     id = 'anchor-' + Math.floor(Math.random() * 1000);
     button_class = 'btn btn-sm btn-primary';
     data_ref = '';
+    button_group_start = '<div class="btn-group">';
+    button_group_end = '</div>';
+    external_link = '';
 
     if (typeof options != 'undefined') {
         if (options.id)
             id = options.id;
 
-        if (options.buttons == 'extra-small')
+        if (options.external)
+            text += '<i class="fa fa-external-link theme-text-icon-spacing"></i>';
+        if (options.buttons == false) {
+            button_class = '';
+            button_group_start = '';
+            button_group_end = '';
+        } else if (options.buttons == 'extra-small') {
             button_class = 'btn btn-xs btn-primary';
-        else if (options.buttons)
+        } else if (options.buttons) {
             button_class = 'btn btn-sm btn-primary';
+        }
         if (typeof options.classes != 'undefined')
             button_class += ' ' + options.classes;
         if (typeof options.data_ref != 'undefined')
             data_ref = ' data-ref="' + options.data_ref + '"';
     }
 
-    return '<div class="btn-group"><a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + '>' + text + '</a></div>';
+    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + '>' + text + '</a>' + button_group_end;
 }
 
 /**
