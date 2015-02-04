@@ -668,7 +668,7 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
     $text_id_html = (isset($options['text_id'])) ? $options['text_id'] : $input_id . '_text';
     $hide_field = (isset($options['hide_field'])) ? ' theme-hidden' : '';
 
-    $input_html = "<input type='hidden' name='$name' value='$value' id='$input_id'>";
+    $input_html = "<input class='hidden' name='$name' value='$value' id='$input_id'>";
 
     // TODO - CSS hacks below for
     if (isset($options['color-picker']) && $options['color-picker']) {
