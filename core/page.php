@@ -603,7 +603,7 @@ function _get_header($page, $menus = array())
 
     if (! isset($framework->session->userdata['wizard'])) {
         foreach ($page['menus'] as $route => $details) {
-            if ($details['category'] == lang('base_category_my_account')) {
+            if ($details['subcategory'] == lang('base_subcategory_my_account')) {
                 $my_account .= "<li><a role='menuitem' href='$route'>" . $details['title'] . "</a></li>\n";
                 $my_account_collection[] = basename($route);
             }
@@ -921,7 +921,7 @@ function _get_left_menu_1($page)
 
     foreach ($menu_data as $url => $page_meta) {
 
-        if ($page_meta['category'] === lang('base_category_my_account')) {
+        if ($page_meta['subcategory'] === lang('base_subcategory_my_account')) {
             continue;
         }
 
@@ -1075,8 +1075,8 @@ function _get_left_menu_2($page)
             $spotlights .= "\t\t</li>\n";
             continue;
         }
-        if ($page_meta['category'] === lang('base_category_my_account')) {
-        //    continue;
+        if ($page_meta['subcategory'] === lang('base_subcategory_my_account')) {
+            continue;
         }
 
         $new_category = ($page_meta['category'] == $current_category) ? FALSE : TRUE;
