@@ -20,8 +20,6 @@
  *
  * @param string $url        URL
  * @param string $text       anchor text
- * @param string $importance importance of the button ('high' or 'low')
- * @param string $class      CSS class
  * @param array  $options    options
  */
 
@@ -30,10 +28,12 @@ function theme_anchor(url, text, options)
     id = 'anchor-' + Math.floor(Math.random() * 1000);
     button_class = 'btn btn-sm btn-primary';
     data_ref = '';
+    data_type = '';
     button_group_start = '<div class="btn-group">';
     button_group_end = '</div>';
     external_link = '';
 
+    // TODO - Rethink 'data-' passing
     if (typeof options != 'undefined') {
         if (options.id)
             id = options.id;
@@ -53,9 +53,54 @@ function theme_anchor(url, text, options)
             button_class += ' ' + options.classes;
         if (typeof options.data_ref != 'undefined')
             data_ref = ' data-ref="' + options.data_ref + '"';
+        if (typeof options.data_type != 'undefined')
+            data_type = ' data-type="' + options.data_type + '"';
     }
 
-    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + '>' + text + '</a>' + button_group_end;
+    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + text + '</a>' + button_group_end;
+}
+
+/**
+ * Anchors widget.
+ *
+ * @param object links   links
+ * @param array  options options
+ */
+
+function theme_anchors(links, options)
+{
+    var html = '';
+    button_group_start = '<div class="btn-group">';
+    button_group_end = '</div>';
+    $.each(links, function( index, value ) {
+        id = 'anchor-' + Math.floor(Math.random() * 1000);
+        button_class = 'btn btn-sm btn-primary';
+        data_ref = '';
+        data_type = '';
+        external_link = '';
+        if (typeof links[index].options != 'undefined') {
+            if (links[index].options.id)
+                id = links[index].options.id;
+
+            if (links[index].options.external)
+                text += '<i class="fa fa-external-link theme-text-icon-spacing"></i>';
+            if (links[index].options.buttons == false) {
+                button_class = '';
+            } else if (links[index].options.buttons == 'extra-small') {
+                button_class = 'btn btn-xs btn-primary';
+            } else if (links[index].options.buttons) {
+                button_class = 'btn btn-sm btn-primary';
+            }
+            if (typeof links[index].options.classes != 'undefined')
+                button_class += ' ' + links[index].options.classes;
+            if (typeof links[index].options.data_ref != 'undefined')
+                data_ref = ' data-ref="' + links[index].options.data_ref + '"';
+            if (typeof options.data_type != 'undefined')
+                data_type = ' data-type="' + options.data_type + '"';
+        }
+        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + links[index].text + '</a>';
+    });
+    return button_group_start + html + button_group_end;
 }
 
 /**
