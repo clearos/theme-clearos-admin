@@ -20,26 +20,87 @@
  *
  * @param string $url        URL
  * @param string $text       anchor text
- * @param string $importance importance of the button ('high' or 'low')
- * @param string $class      CSS class
  * @param array  $options    options
  */
 
 function theme_anchor(url, text, options)
 {
-    id = 'anchor-' + Math.random();
+    id = 'anchor-' + Math.floor(Math.random() * 1000);
+    button_class = 'btn btn-sm btn-primary';
+    data_ref = '';
+    data_type = '';
+    button_group_start = '<div class="btn-group">';
+    button_group_end = '</div>';
+    external_link = '';
 
+    // TODO - Rethink 'data-' passing
     if (typeof options != 'undefined') {
         if (options.id)
             id = options.id;
 
-        if (options.buttons == 'extra-small')
+        if (options.external)
+            text += '<i class="fa fa-external-link theme-text-icon-spacing"></i>';
+        if (options.buttons == false) {
+            button_class = '';
+            button_group_start = '';
+            button_group_end = '';
+        } else if (options.buttons == 'extra-small') {
             button_class = 'btn btn-xs btn-primary';
-        else if (options.buttons)
+        } else if (options.buttons) {
             button_class = 'btn btn-sm btn-primary';
+        }
+        if (typeof options.classes != 'undefined')
+            button_class += ' ' + options.classes;
+        if (typeof options.data_ref != 'undefined')
+            data_ref = ' data-ref="' + options.data_ref + '"';
+        if (typeof options.data_type != 'undefined')
+            data_type = ' data-type="' + options.data_type + '"';
     }
 
-    return '<a href="' + url + '" id="' + id + '" class="' + button_class + '">' + text + '</a>';
+    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + text + '</a>' + button_group_end;
+}
+
+/**
+ * Anchors widget.
+ *
+ * @param object links   links
+ * @param array  options options
+ */
+
+function theme_anchors(links, options)
+{
+    var html = '';
+    button_group_start = '<div class="btn-group">';
+    button_group_end = '</div>';
+    $.each(links, function( index, value ) {
+        id = 'anchor-' + Math.floor(Math.random() * 1000);
+        button_class = 'btn btn-sm btn-primary';
+        data_ref = '';
+        data_type = '';
+        external_link = '';
+        if (typeof links[index].options != 'undefined') {
+            if (links[index].options.id)
+                id = links[index].options.id;
+
+            if (links[index].options.external)
+                text += '<i class="fa fa-external-link theme-text-icon-spacing"></i>';
+            if (links[index].options.buttons == false) {
+                button_class = '';
+            } else if (links[index].options.buttons == 'extra-small') {
+                button_class = 'btn btn-xs btn-primary';
+            } else if (links[index].options.buttons) {
+                button_class = 'btn btn-sm btn-primary';
+            }
+            if (typeof links[index].options.classes != 'undefined')
+                button_class += ' ' + links[index].options.classes;
+            if (typeof links[index].options.data_ref != 'undefined')
+                data_ref = ' data-ref="' + links[index].options.data_ref + '"';
+            if (typeof options.data_type != 'undefined')
+                data_type = ' data-type="' + options.data_type + '"';
+        }
+        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + links[index].text + '</a>';
+    });
+    return button_group_start + html + button_group_end;
 }
 
 /**
@@ -95,14 +156,36 @@ function theme_dialog_close(obj)
 
 /**
  * Add key/value pair to sidebar widget.
+ * 
+ * @param string key     key
+ * @param string value   value
+ * @param object options options
  */
 
-function theme_add_sidebar_pair(key, value)
+function theme_add_sidebar_pair(key, value, options)
 {
+    var row_dom_id = 'row-' + Math.floor(Math.random() * 1000);
+    var key_dom_id = 'key-' + Math.floor(Math.random() * 1000);
+    var value_dom_id = 'value-' + Math.floor(Math.random() * 1000);
+
+    if (typeof options != 'undefined') {
+        if (typeof options.row != 'undefined') {
+            if (options.row.id != 'undefined')
+                row_dom_id = options.row.id;
+        }
+        if (typeof options.key != 'undefined') {
+            if (options.key.id != 'undefined')
+                key_dom_id = options.key.id;
+        }
+        if (typeof options.value != 'undefined') {
+            if (options.value.id != 'undefined')
+                value_dom_id = options.value.id;
+        }
+    }
     $('#sidebar_additional_info_row').after(
-        '<div class="row">' +
-        '<div class="col-lg-6 theme-field">' + key + '</div>' +
-        '<div class="col-lg-6">' + value + '</div>' +
+        '<div class="row" id="' + row_dom_id + '">' +
+        '  <div class="col-lg-6 theme-field" id="' + key_dom_id + '">' + key + '</div>' +
+        '  <div class="col-lg-6" id="' + value_dom_id + '">' + value + '</div>' +
         '</div>'
     );
 }

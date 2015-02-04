@@ -273,16 +273,15 @@ function get_marketplace_data(basename) {
         dataType: 'json',
         success : function(json) {
             if (json.code != undefined && json.code != 0) {
-                $('#sidebar_additional_info').css('color', 'red');
                 $('#sidebar_additional_info_row').show(200);
                 if (json.code < 0) {
                     // Could put real message for codes < 0, but it gets a bit technical
-                    $('#sidebar_additional_info').html(lang_marketplace_connection_failure);
+                    $('#sidebar_additional_info').html('<span class=\"theme-text-bad-status\">' + lang_marketplace_connection_failure + '</span>');
                 } else {
                     if (json.code == 3)
-                        $('#sidebar_additional_info').html('<a href=\'/app/registration/register\'>' + json.errmsg + '</a>');
+                        $('#sidebar_additional_info').html('<a href=\'/app/registration/register\' class=\'theme-text-bad-status\'>' + json.errmsg + '</a>');
                     else
-                        $('#sidebar_additional_info').html(json.errmsg);
+                        $('#sidebar_additional_info').html('<span class=\"theme-text-bad-status\">' + json.errmsg + '</span>');
                 }
                 return;
             } else {
@@ -501,51 +500,6 @@ function get_placeholder(type) {
     if (type == 'svg')
         return '\
         <svg version="1.1" class="clearos-svg clearfoundation placeholder" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">\
-        <g id="Layer_7" transform="translate(0,1.3329999)" display="none">\
-            <g id="g4" display="inline">\
-                <path id="path6" d="M81.984,71.004h33.076l42.445,165.935c5.829,23.278,10.082,44.354,12.758,63.213\
-                    c3.279-22.418,8.137-44.35,14.579-65.781l47.737-163.36h32.802l50.611,165.093c5.947,18.916,10.974,40.271,15.063,64.063\
-                    c2.355-17.393,6.816-38.59,13.393-63.578L387.213,71.01h33.076l-71.85,268.657h-30.874l-53.407-180.144\
-                    c-2.361-7.982-5.326-17.987-8.897-30.021c-3.565-12.034-5.424-19.282-5.536-21.74c-2.69,16.171-6.975,33.876-12.852,53.108\
-                    l-52.494,178.801h-30.834L81.984,71.004z"/>\
-            </g>\
-        </g>\
-        <g id="Layer_3" transform="translate(0,1.3329999)" display="none">\
-            <g id="g9" display="inline">\
-                <path id="path11" d="M150.803,339.665V71.004h35.279l146.442,224.558h1.449c-0.241-3.429-0.792-14.086-1.634-31.971\
-                    c-0.603-13.966-0.91-24.811-0.91-32.519c0-2.205,0-4.163,0-5.868V71.02h28.854v268.657H325L178.18,114.186h-1.471\
-                    c1.958,26.463,2.939,50.718,2.939,72.771v152.708H150.803L150.803,339.665z"/>\
-            </g>\
-        </g>\
-        <g id="Layer_4" transform="translate(0,1.3329999)" display="none">\
-            <g id="g14" display="inline">\
-                <path id="path16" d="M170.766,333.886v-29.961c11.024,4.66,23.029,8.348,36.019,11.037c12.984,2.693,25.847,4.05,38.593,4.05\
-                    c20.862,0,36.57-3.952,47.123-11.874c10.56-7.918,15.837-18.916,15.837-33.047c0-9.324-1.871-16.953-5.613-22.913\
-                    c-3.746-5.952-10.008-11.448-18.781-16.474c-8.773-5.026-22.115-10.742-40.039-17.121c-25.032-8.958-42.854-19.574-53.447-31.845\
-                    c-10.598-12.266-15.897-28.276-15.897-48.037c0-20.724,7.752-37.221,23.263-49.481c15.51-12.261,36.021-18.392,61.547-18.392\
-                    c26.635,0,51.132,4.9,73.483,14.7l-9.626,27.221c-22.146-9.329-43.68-13.989-64.598-13.989c-16.569,0-29.522,3.563-38.848,10.676\
-                    c-9.323,7.118-13.986,16.995-13.986,29.637c0,9.324,1.716,16.963,5.152,22.918c3.434,5.953,9.233,11.411,17.397,16.381\
-                    c8.155,4.971,20.646,10.46,37.452,16.474c28.229,10.065,47.579,20.863,58.061,32.397c10.475,11.539,15.714,26.511,15.714,44.91\
-                    c0,23.556-8.559,41.927-25.658,55.101c-17.104,13.173-40.321,19.772-69.645,19.772\
-                    C212.413,346.036,187.916,341.985,170.766,333.886L170.766,333.886z"/>\
-            </g>\
-        </g>\
-        <g id="Layer_5" transform="translate(0,1.3329999)" display="none">\
-            <g id="g19" display="inline">\
-                <path id="path21" d="M142.218,71.009h33.077l61.742,173.833c7.105,19.97,12.738,39.392,16.908,58.259\
-                    c4.41-19.851,10.156-39.632,17.271-59.354l61.374-172.74h33.623l-96.844,268.659h-30.861L142.218,71.009z"/>\
-            </g>\
-        </g>\
-        <g id="Layer_6" transform="translate(0,1.3329999)" display="none">\
-            <g id="g24" display="inline">\
-                <path id="path26" d="M154.708,208.841c0-27.668,5.116-51.908,15.355-72.721c10.24-20.811,25.124-36.85,44.653-48.113\
-                    c19.528-11.26,42.532-16.895,68.989-16.895c28.177,0,52.8,5.145,73.868,15.437l-13.229,26.816\
-                    c-20.339-9.547-40.676-14.321-61.016-14.321c-29.531,0-52.84,9.826-69.918,29.471c-17.09,19.645-25.634,46.542-25.634,80.698\
-                    c0,35.144,8.237,62.272,24.716,81.429c16.479,19.155,39.968,28.731,70.479,28.731c18.739,0,40.115-3.365,64.123-10.095v27.479\
-                    c-18.621,7.031-41.592,10.546-68.904,10.546c-39.582,0-70.045-12.015-91.421-36.036\
-                    C165.395,287.237,154.708,253.093,154.708,208.841z"/>\
-            </g>\
-        </g>\
         <path id="path28" fill="#AA0707" d="M91.666,184.647"/>\
         <path id="path30" fill="#AA0707" d="M123.245,247.805"/>\
         <path id="path32" fill="#AA0707" d="M91.666,184.647"/>\
@@ -599,7 +553,7 @@ function clearos_is_authenticated() {
                 // Might have pages where account is displayed (eg. Marketplace)
                 $('#display_sdn_username').html(data.sdn_username);
                 // Only case where authorized is true.
-                $('#sdn-login-dialog').modal('hide');
+                clearos_modal_infobox_close('sdn-login-dialog');
                 // If we're logged in and there is a 'check_sdn_edit' function defined on page, check to see if we need to get settings
                 if (auth_options.callback)
                     window[auth_options.callback](auth_options.callback_args);
@@ -619,6 +573,8 @@ function clearos_is_authenticated() {
                     else if (auth_options.use_full_path_on_redirect)
                         window.location = my_location.fullpath;
                     else if (!my_location.default_controller && auth_options.use_full_path_on_redirect)
+                        return;
+                    if (auth_options.action_type == 'login' && !auth_options.reload_after_auth)
                         return;
                     window.location = '/app/' + my_location.basename;
                 });

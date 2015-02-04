@@ -1267,7 +1267,11 @@ function _get_breadcrumb_links($links)
         else if ($type == 'app-tip')
             $icon = 'fa fa-lightbulb-o';
 
-        $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'$target>
+        if ($type == 'wizard_next' || $type == 'wizard_previous')
+            $disabled = ' disabled';
+        else
+            $disabled = '';
+        $link_html .= "<a href='" . $link['url'] . "' id='$id' class='$button_class " . (isset($link['class']) ? $link['class'] : "") . "'$target$disabled>
             $text_left<i class='$icon' data-toggle='tooltip' data-container='body' title='" . $link['tag'] . $external_tip . "'></i>$text_right</a>";
     }
     return "<span class='theme-breadcrumb-links $button_grp'>" . $link_html . "</span>";
