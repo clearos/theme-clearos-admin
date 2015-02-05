@@ -1016,16 +1016,29 @@ function _get_left_menu_1($page)
     $main_apps .= "</ul>";
     $main_apps .= "</li>";
 
-    return "
-        <aside class='theme-menu-1'>
-       " . form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
+    $framework =& get_instance();
+    $username = $framework->session->userdata('username');
+
+    // Search form
+    //-------------
+
+    if ($username === 'root') {
+        $search_html =
+            form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
             <div class='input-group'>
-                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "...' />
+                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "' />
                 <span class='input-group-btn'>
                     <button type='submit' name='btn_search' class='btn btn-flat'><i class='fa fa-search'></i></button>
                 </span>
             </div>
-        " . form_close() . "
+        " . form_close();
+    } else {
+        $search_html = '';
+    }
+
+    return "
+        <aside class='theme-menu-1'>
+            $search_html
             <ul class='left_nav'>
                 $spotlights
                 $main_apps
@@ -1150,17 +1163,30 @@ function _get_left_menu_2($page)
     $no_of_categories = 6;
     $percent_width = round(100 / $no_of_categories, 0, PHP_ROUND_HALF_UP);
 
-    return "
-<aside class='left-side sidebar-offcanvas'>
-    <section class='sidebar'>
-       " . form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
+    $framework =& get_instance();
+    $username = $framework->session->userdata('username');
+
+    // Search form
+    //-------------
+
+    if ($username === 'root') {
+        $search_html =
+            form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
             <div class='input-group'>
-                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "...' />
+                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "' />
                 <span class='input-group-btn'>
                     <button type='submit' name='btn_search' class='btn btn-flat'><i class='fa fa-search'></i></button>
                 </span>
             </div>
-        " . form_close() . "
+            " . form_close();
+    } else {
+        $search_html = "";
+    }
+
+    return "
+<aside class='left-side sidebar-offcanvas'>
+    <section class='sidebar'>
+        $search_html
         <div class='btn-toolbar theme-menu-2-list'>
             <form action='#' method='get' id='category-select'>
                 <div class='btn-group' data-toggle='buttons'>
