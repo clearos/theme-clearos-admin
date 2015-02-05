@@ -2902,6 +2902,26 @@ function theme_summary_box($data)
         ";
     }
 
+    if ($data['show_marketplace']) {
+        $marketplace_html = "
+            <div class='marketplace-links'>" .
+                theme_button_set(
+                    array(
+                        anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details')),
+                        anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')),
+                        anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'))
+                    )
+                ) . "
+            </div>
+        ";
+
+        if (isset($data['show_recommended_apps']))
+            $marketplace_html .=  "<div id='sidebar-recommended-apps'></div>";
+
+    } else {
+        $marketplace_html = '';
+    }
+
     $html = theme_container("
         <div class='box-header'><h3 class='box-title'>" . $data['name'] . "</h3></div>
         <div class='box-body theme-clear' id='theme_app_sidebar'>
@@ -2925,16 +2945,7 @@ function theme_summary_box($data)
                 <div class='col-lg-6 theme-field'>" . lang('base_additional_info') . "</div>
                 <div class='col-lg-6' id='sidebar_additional_info'>" . theme_loading('small') . "</div>
             </div>
-            <div class='marketplace-links'>" .
-                theme_button_set(
-                    array(
-                        anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details')),
-                        anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')),
-                        anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'))
-                    )
-                ) . "
-            </div>
-            " . (isset($data['show_recommended_apps']) ? "<div id='sidebar-recommended-apps'></div>" : "") . "
+            $marketplace_html
         </div>
         " . theme_marketplace_review($data['basename']) . "
         " . theme_tips_and_hints($data['tooltip']) . "
