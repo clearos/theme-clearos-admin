@@ -34,30 +34,6 @@ $(document).on('click', '.sidebar-review-app', function(e) {
     add_review();
 });
 
-function theme_paginate(url, total, active)
-{
-    var html = '';
-    var offset = 0;
-    var max = 5;
-    if (active > (max / 2))
-        offset = Math.floor(active - Math.floor(total / (max / 2)));
-    if (active > offset + max)
-        offset = total - max + 1;
-    else if (total <= active + max / 2)
-        offset = total - max + 1;
-
-    if (offset < 0)
-        offset = 0;
-
-    if (total < max)
-        max = total;
-
-    for (i = offset; i < max + offset; i++) {
-        html += '<a href="' + url + '/' + i + '" class="btn ' + (i == active ? 'btn-primary' : 'btn-secondary') + ' ">' + i + '</a>';
-    }
-    return html;
-}
-
 function theme_sdn_account_setup(landing_url, username, device_id) {
 
     return '\
@@ -707,13 +683,18 @@ function clearos_marketplace_app_list(type, list, limit, total, options) {
         if (isNaN(index))
             index = 0;
 
-        $('#paginate_next').before(theme_paginate('/app/marketplace/search/index', Math.ceil(total / limit) - 1, index));
+        upper = ((parseInt(index) * limit) + parseInt(limit));
+        if (upper > total)
+            upper = total;
+        $('#paginate_next').before('<a href="/app/marketplace/search/index/' + index + '" class="btn btn-secondary">' + lang_marketplace_displaying + ' ' +
+            (1 + (parseInt(index) * limit)) + ' - ' + upper + ' ' + lang_of + ' ' + total + '</a>');
 
         if ((Math.ceil(total / limit) - 1) > 1) {
             var prev = Math.max((index - 1), 0); 
             var next = Math.min((index + 1), (Math.ceil(total / limit) - 1)); 
             $('#paginate_prev').attr('href', '/app/marketplace/search/index/' + prev);
             $('#paginate_next').attr('href', '/app/marketplace/search/index/' + next);
+            $('#paginate_last').attr('href', '/app/marketplace/search/index/' + (Math.ceil(total / limit) - 1));
             $('#paginate').buttonset();
             $('#marketplace_paginate_container').show();
         }
@@ -792,7 +773,6 @@ function _get_app_tile(app, options)
     learn_more_target = '';
 
 if (app.basename == 'active_directory')
-console.log(app);
     if (options.wizard) {
         disable_buttons = ' disabled';
         learn_more_target = ' target="_blank"';

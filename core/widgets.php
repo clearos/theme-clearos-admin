@@ -2842,9 +2842,14 @@ function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL
 
     $buttons = array();
     $buttons[] = anchor_custom(
+        $url . '/0',
+        "&laquo;", 'high',
+        array('id' => 'paginate_first', 'no_escape_html' => TRUE, 'class' => 'theme-paginate-button')
+    );
+    $buttons[] = anchor_custom(
         $url . '/' . ($active > 0 ? $active - 1 : 0),
-        "<i class='fa fa-arrow-left'></i>", 'high',
-        array('id' => 'paginate_prev', 'no_escape_html' => TRUE)
+        "&lsaquo;", 'high',
+        array('id' => 'paginate_prev', 'no_escape_html' => TRUE, 'class' => 'theme-paginate-button')
     );
 
     for ($index = $offset; $index < $max + $offset; $index++)
@@ -2855,8 +2860,13 @@ function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL
 
     $buttons[] = anchor_custom(
         $url . '/' . ($pages > $active ? $active + 1 : $pages),
-        "<i class='fa fa-arrow-right'></i>", 'high',
-        array('id' => 'paginate_next', "no_escape_html" => TRUE)
+        "&rsaquo;", 'high',
+        array('id' => 'paginate_next', "no_escape_html" => TRUE, 'class' => 'theme-paginate-button')
+    );
+    $buttons[] = anchor_custom(
+        $url . '/' . $pages,
+        "&raquo;", 'high',
+        array('id' => 'paginate_last', "no_escape_html" => TRUE, 'class' => 'theme-paginate-button')
     );
 
     return theme_button_set($buttons, $options);

@@ -967,6 +967,10 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .pagination > li > a, .pagination > li > span {
   color: #999999;
 }
+.theme-paginate-button {
+  font-size: 1.6em;
+  line-height: 20px;
+}
 
 /* ----------------------- */
 /* Radio buttons and sets  */
@@ -1630,6 +1634,10 @@ figure.theme-app-selected > svg.clearos-svg.clearfoundation rect {
   font-size: 1.6em;
   margin-right: 5px;
 }
+.theme-paginate-counter {
+  font-size: .8em;
+}
+
 .theme-button-change {
   padding-left: 10px;
   padding-right: 10px;
