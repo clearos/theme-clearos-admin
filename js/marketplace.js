@@ -772,7 +772,6 @@ function _get_app_tile(app, options)
     disable_buttons = '';
     learn_more_target = '';
 
-if (app.basename == 'active_directory')
     if (options.wizard) {
         disable_buttons = ' disabled';
         learn_more_target = ' target="_blank"';
