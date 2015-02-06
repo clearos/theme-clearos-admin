@@ -38,12 +38,11 @@ $package['settings'] = array(
     ),
     'marketplace' => array(
         'apps_per_page' => array(
-            6 => 6,
-            10 => 10,
-            20 => 20,
-            30 => 30,
+            4 => 4,
+            8 => 8,
+            12 => 12,
             40 => 40,
-            50 => 50,
+            80 => 80,
             0 => lang('base_all')
         )
     ),
