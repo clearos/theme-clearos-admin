@@ -1008,6 +1008,10 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   -o-transition: none;
   transition: none;
 }
+.theme-field-right > div.progress {
+  margin-bottom: 0px;
+  height: 34px;
+}
 
 /* ----------------------- */
 /* Login form              */
