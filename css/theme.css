@@ -940,6 +940,10 @@ a:hover, a:focus {
   height: auto;
   min-height: 34px;
 }
+span.form-control.theme-control-no-border {
+  background: transparent;
+  border: none;
+}
 .form-control.theme-sidebar-search:focus {
   border-color: #fafafa !important;
 }
@@ -1804,7 +1808,8 @@ h4.block-title {
   padding-left: 5px;
   padding-right: 5px;
 }
-.app_filter .row > div .input-group .form-control {
+.app_filter .row > div .input-group .form-control,
+{
   border-radius: 0;
   box-shadow: none;
 }

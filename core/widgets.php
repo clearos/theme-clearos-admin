@@ -656,7 +656,9 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
     if (is_null($value))
         $value = '';
 
+    $is_bool = '';
     if (is_bool($text)) {
+        $is_bool = ' theme-control-no-border';
         // TODO FIXME
         if ($text)
             $text = "<label><i class='fa fa-check-circle'></i></label>";
@@ -685,7 +687,7 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
         return "
             <div id='$field_id_html' class='form-group theme-fieldview" . $hide_field . "'>
                 <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-                <div class='col-sm-7 theme-field-right'><span class='form-control' id='$text_id_html'>$text</span>$input_html</div>
+                <div class='col-sm-7 theme-field-right'><span class='form-control$is_bool' id='$text_id_html'>$text</span>$input_html</div>
             </div>
         ";
     }
