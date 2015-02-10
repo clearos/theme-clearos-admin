@@ -356,7 +356,7 @@ function theme_field_checkbox($name, $value, $label, $error, $input_id, $options
     return "
         <div id='$field_id_html' class='form-group theme-field-checkboxes'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'><input type='checkbox' name='$name' id='$input_id' class='form-control' $select_html></div>
+            <div class='col-sm-7 theme-field-right'><input type='checkbox' name='$name' id='$input_id' class='form-control theme-control-no-border' $select_html></div>
         </div>
     ";
 }

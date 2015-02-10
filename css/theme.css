@@ -940,9 +940,11 @@ a:hover, a:focus {
   height: auto;
   min-height: 34px;
 }
-span.form-control.theme-control-no-border {
+span.form-control.theme-control-no-border, input.form-control.theme-control-no-border {
   background: transparent;
   border: none;
+  webkit-box-shadow: none;
+  box-shadow: none;
 }
 .form-control.theme-sidebar-search:focus {
   border-color: #fafafa !important;
