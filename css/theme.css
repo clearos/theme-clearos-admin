@@ -1345,6 +1345,23 @@ form .box-body > .btn-group{
 }
 
 /* ----------------------- */
+/* File Browser            */
+/* ----------------------- */
+
+.theme-file-browser-parent:after {
+  font-family: FontAwesome;
+  content: "\f112";
+}
+.theme-file-browser-file:after {
+  font-family: FontAwesome;
+  content: "\f15b";
+}
+.theme-file-browser-folder:after {
+  font-family: FontAwesome;
+  content: "\f07b";
+}
+
+/* ----------------------- */
 /* Marketplace             */
 /* ----------------------- */
 
