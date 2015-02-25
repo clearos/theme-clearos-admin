@@ -148,6 +148,13 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li.support.active > a:after, .main-wrapper header > ul > li.support.open > a:after { border-bottom-color:#3d85c6; }
 .main-wrapper header > ul > li.my-account.active > a:after, .main-wrapper header > ul > li.my-account.open > a:after { border-bottom-color:#999999; }
 
+.main-wrapper header > ul > li.dashboard,
+.main-wrapper header > ul > li.marketplace,
+.main-wrapper header > ul > li.support,
+.main-wrapper header > ul > li.my-account {
+  white-space: nowrap;
+}
+
 .main-wrapper {
   background: #fff;
   max-width: 1280px;
@@ -183,8 +190,8 @@ a.highlight-link:hover {
 .main-wrapper header > ul > li > a {
   display: block;
   font-family: "Roboto Light", Arial;
-  line-height: 50px;
-  padding: 26px 20px;
+  /*line-height: 50px;*/
+  padding: 25px 10px 10px 5px;
   text-align: center;
   position: relative;
   font-size: 18px;
@@ -354,7 +361,7 @@ a.highlight-link:hover {
   float: left;
   width: 255px;
   text-align:center;
-  padding: 20px 0;
+  padding: 22px 0px;
   background: rgba(255, 255, 255, 0.1);
 }
 .sitepath{
@@ -373,7 +380,6 @@ a.highlight-link:hover {
 /* ========================*/
 
 .main-content {
-  display: table;
   width: 100%;
   min-height: 600px;
 }
@@ -396,7 +402,6 @@ a.highlight-link:hover {
 /* ============================*/
 
 .main-content aside {
-  display: table-cell;
   margin: 0;
   padding: 0;
   height: 800px;
@@ -509,13 +514,12 @@ a.highlight-link:hover {
   display: none;
 }
 section.content-container {
-  display: table-cell;
   padding: 20px;
   min-height: 500px;
   vertical-align: top;
+  float: left;
+  width: 80%;
 }
-
-
 
 /* ============================================= */
 /* Stickey Header Css                            */
@@ -749,12 +753,10 @@ header:hover #magic-arrow {
 
 .theme-menu-2-list {
   text-align: center;
-  margin: 10px;
+  margin: 10px 5px 10px 10px;
 }
 .theme-menu-2-category {
-  padding: 2px 4px 4px 4px;
-  height: 38px;
-  text-align: center;
+  padding: 2px 4px 0px 4px;
 }
 .theme-menu-2-list div.btn-group {
   background: #fafafa;
@@ -952,6 +954,7 @@ span.form-control.theme-control-no-border, input.form-control.theme-control-no-b
 .theme-field-right input[type=checkbox] {
   width: 34px;
   height: 24px;
+  margin-top: 0px;
 }
 .theme-errmsg-separator {
   margin: 20px 20px 0px 20px;
@@ -1134,7 +1137,6 @@ table a.btn {
 /* ----------------------- */
 
 .theme-infobox {
-  margin: 10px 10px;
   position: relative;
 }
 .theme-infobox-icon {
@@ -2306,10 +2308,6 @@ input[type="radio"].form-control{width: auto;}
 /* ------------------------------*/
 .table > thead > tr > th { border-bottom-width: 1px;}
 
-
-
-
-
 /* ----------------------*/
 /* Login Box Css         */
 /* ----------------------*/
@@ -2342,10 +2340,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 /* Device Logo Css       */
 /* ----------------------*/
 
-.logo1{display:none;color: #686868;font-family: "ci";font-size: 70px;line-height: 50px; padding:10px 0 10px 20px; float:left;
-background: linear-gradient(to right, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-border-right: 1px solid rgba(0, 0, 0, 0.1);
-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); width:150px;
+.logo1 {
+  display:none;
+  color: #686868;
+  font-family: "ci";
+  font-size: 70px;
+  line-height: 50px;
+  padding:10px 0 10px 20px;
+  float:left;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 .logo1 a{color: #686868; text-decoration:none;}
 .logo1 a:hover{ border:none;}
@@ -2478,7 +2483,19 @@ header:hover #magic-arrow{ display:none;}
 
 @media (max-width: 767px) {
 .main-wrapper header > ul > li > a{ padding:10px 13px;}
-
+  #theme-clearos-os-name {
+     font-size: 16px;
+  }
+  .sitepath, .theme-breadcrumb-links a {
+     font-size: 14px;
+  }
+  .main-wrapper div.page-title {
+    padding: 2px;
+    text-align: center;
+  }
+  .main-wrapper div.page-title h1 {
+    width: 110px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -2486,8 +2503,8 @@ header:hover #magic-arrow{ display:none;}
 }
 
 @media (max-width: 360px) {
-.main-content aside{ width:94%; display:inherit; border-bottom:1px #e5e5e5 solid;}
-section.content-container { display:inherit; width:100%;}
+  .main-content aside{ width:94%; display:inherit; border-bottom:1px #e5e5e5 solid;}
+  section.content-container { display:inherit; width:100%;}
 }
 
 .main-content aside ul.left_nav > li.treeview > a{padding-left: 20px;}

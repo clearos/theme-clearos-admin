@@ -1085,7 +1085,7 @@ function theme_field_progress_bar($label, $id, $options = array())
 
     return "
         <div id='$field_id_html' class='form-group theme-field-info'>
-            <label for='$id' id='$label_id_html' class='col-sm-5 control-label'>$label</label>
+            <label id='$label_id_html' class='col-sm-5 control-label'>$label</label>
             <div class='col-sm-7 theme-field-right'>
                 <div id='$id-container' class='progress progress-sm'>
                   <div id='$id' class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='$value' aria-valuemin='0' aria-valuemax='100' style='width: $value%;'></div>
@@ -1920,7 +1920,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     <h3 class='box-title'>$title</h3>
   </div>
   <div class='box-body'>
-    <table class='table table-striped $size_class' id='$dom_id'>
+    <table class='table responsive table-striped $size_class' id='$dom_id'>
       <thead>
         <tr>$header_html</tr>
       </thead>
@@ -1949,6 +1949,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', '" . $dom_id_var . "-row-' + iDataIndex)
         },
+        'responsive': true,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
         'aLengthMenu': [$row_options],
@@ -2777,7 +2778,7 @@ function theme_help_box($data)
         );
 
     return 
-        "<div class='theme-help-box-container'>
+        "<div class='theme-help-box-container hidden-xs'>
              <div class='theme-help-box-content'>
                  <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
                  <div class='theme-help-box-description'>" . $data['description'] . "</div>
