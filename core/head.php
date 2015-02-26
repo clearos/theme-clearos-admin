@@ -67,6 +67,7 @@ function theme_page_head($settings)
 $version_theme_override
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/colorpicker/bootstrap-colorpicker.min.css'>
 <link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/lightbox.css'>
+<link rel='stylesheet' type='text/css' media='screen' href='$theme_url/css/dataTables.responsive.css'>
 
 
 <!-- FAVICONS -->

@@ -137,7 +137,7 @@ function _configuration_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content' style='overflow: hidden;'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -489,6 +489,7 @@ function _get_main_content($page)
                 </div>
                 " . _get_message().$page['app_view']." 
             </section>
+            <div style='clear: both;'></div>
         ";
     } else if ($page['type'] == MY_Page::TYPE_REPORT_OVERVIEW) {
         return "
@@ -1192,33 +1193,33 @@ function _get_left_menu_2($page)
     }
 
     return "
-<aside class='left-side sidebar-offcanvas'>
-    <section class='sidebar'>
+<aside class='left-side sidebar-offcanvas clearfix' style='float: left;'>
+    <div class='sidebar'>
         $search_html
         <div class='btn-toolbar theme-menu-2-list'>
             <form action='#' method='get' id='category-select'>
                 <div class='btn-group' data-toggle='buttons'>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_cloud') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_cloud') . "'>
                         <input type='radio' name='options' id='category-cloud'" . $active_category['cloud'] . ">
                         " . file_get_contents($img_path . 'cloud.svg') . "
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_network') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_network') . "'>
                         <input type='radio' name='options' id='category-network'" . $active_category['network'] . ">
                         " . file_get_contents($img_path . 'network.svg') . "
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_gateway') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_gateway') . "'>
                         <input type='radio' name='options' id='category-gateway'" . $active_category['gateway'] . ">
                         " . file_get_contents($img_path . 'gateway.svg') . "
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_server') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_server') . "'>
                         <input type='radio' name='options' id='category-server'" . $active_category['server'] . ">
                         " . file_get_contents($img_path . 'server.svg') . "
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_system') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_system') . "'>
                         <input type='radio' name='options' id='category-system'" . $active_category['system'] . ">
                         " . file_get_contents($img_path . 'system.svg') . "
                     </label>
-                    <label class='btn btn-default theme-menu-2-category' style='width: $percent_width%' data-toggle='tooltip' data-container='body' title='" . lang('base_category_reports') . "'>
+                    <label class='btn btn-default theme-menu-2-category col-md-2 col-sm-4 col-xs-6' data-toggle='tooltip' data-container='body' title='" . lang('base_category_reports') . "'>
                         <input type='radio' name='options' id='category-report'" . $active_category['report'] . ">
                         " . file_get_contents($img_path . 'reports.svg') . "
                     </label>
@@ -1228,7 +1229,7 @@ function _get_left_menu_2($page)
         <ul class='sidebar-menu-2'>
 $main_apps
         </ul>
-    </section>
+    </div>
 </aside>
 ";
 }
