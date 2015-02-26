@@ -252,7 +252,7 @@ function theme_field_button_set($buttons, $options = array())
  * @return string HTML for button set
  */
 
-function _theme_button_set($buttons, $options, $type)
+function _theme_button_set($buttons, $options = NULL, $type = NULL)
 {
     $id = isset($options['id']) ? " id='" . $options['id'] . "'" : "";
     $class = isset($options['class']) ? " " . $options['class'] : "";
@@ -2901,19 +2901,8 @@ function theme_summary_box($data)
 {
     clearos_load_language('base');
 
-    $tooltip = empty($data['tooltip']) ? '' : '<p><b>' . lang('base_tooltip') . ' -- </b>' . $data['tooltip'] . '</p>';
-
-    if (empty($data['tooltip'])) {
-        $tooltip = '';
-    } else {
-        $tooltip = "
-            <table width='100%' id='sidebar_tooltip_table' class='table table-bordered'>
-                <tr>
-                    <td colspan='2'><b>" . lang('base_tooltip') . "</b> - " . $data['tooltip'] . "</td>
-                </tr>
-            </table>
-        ";
-    }
+    if (empty($data['tooltip']))
+        $data['tooltip'] = '';
 
     if ($data['show_marketplace']) {
         $marketplace_html = "
