@@ -873,7 +873,7 @@ function _get_wizard_menu($page)
 
     if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2) {
         return "
-            <aside class='left-side sidebar-offcanvas'>
+            <aside class='theme-menu-2'>
                 <div class='sidebar'>
                     <ul class='sidebar-menu-2'>
                         $steps
@@ -1193,7 +1193,7 @@ function _get_left_menu_2($page)
     }
 
     return "
-<aside class='left-side sidebar-offcanvas clearfix' style='float: left;'>
+<aside class='theme-menu-2 clearfix'>
     <div class='sidebar'>
         $search_html
         <div class='btn-toolbar theme-menu-2-list'>
