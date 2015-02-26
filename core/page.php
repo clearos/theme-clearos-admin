@@ -652,6 +652,12 @@ function _get_header($page, $menus = array())
     }
     
     $active_header = array();
+    $active_header['dashboard'] = '';
+    $active_header['marketplace'] = '';
+    $active_header['support'] = '';
+    $active_header['my-account'] = '';
+    $active_header['home'] = '';
+
     if ($page['current_basename'] == 'dashboard')
         $active_header['dashboard'] = "active";
     else if ($page['current_basename'] == 'marketplace')
@@ -687,7 +693,7 @@ function _get_header($page, $menus = array())
                 <a href='/app/support'><i class='ci-Clear_CARE'></i>" . lang('base_support') . "</a>
             </li> 
         ";
-    
+
     return "
              <header class='mainheader'>
              <div class='navbar-header'>
@@ -707,7 +713,7 @@ function _get_header($page, $menus = array())
                         " . $main_menu['dashboard'] . "
                         " . $main_menu['marketplace'] . "
                         " . $main_menu['support'] . "
-                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' style='$my_account_margin' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
                                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
@@ -731,7 +737,7 @@ function _get_header($page, $menus = array())
                                 " . $main_menu['dashboard'] . "
                                 " . $main_menu['marketplace'] . "
                                 " . $main_menu['support'] . "
-                                <li class='my-account dropdown " . ($page['my_account'] ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
+                                <li class='my-account dropdown " . ((isset($page['my_account']) && $page['my_account']) ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
                                     <ul class='dropdown-menu' role='menu'>
                                       " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
                                       <li class='divider'></li>
@@ -1056,9 +1062,11 @@ function _get_left_menu_1($page)
 
 function _get_left_menu_2($page)
 {
-
     $menu_data = $page['menus'];
     $spotlights = '';
+    $main_apps = '';
+    $current_category = '';
+    $current_subcategory = '';
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -1235,7 +1243,7 @@ $main_apps
 
 function _get_breadcrumb_links($links)
 {
-    $link_html;
+    $link_html = '';
     $button_grp = '';
 
     // Use buttons, images/icons or font
@@ -1257,10 +1265,12 @@ function _get_breadcrumb_links($links)
                 $button_class = 'btn';
         }
 
-        $target = '';
         if (isset($link['target'])) {
             $target = " target='" . $link['target'] . "'";
             $external_tip = "<i class=\"fa fa-external-link theme-text-icon-spacing\"></i>";
+        } else {
+            $target = '';
+            $external_tip = '';
         }
 
         $id = 'bcrumb-' . rand(0 , 100);
