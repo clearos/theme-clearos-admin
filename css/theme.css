@@ -1127,19 +1127,19 @@ table.dataTable.responsive.dtr-inline.collapsed tbody td:first-child:before, tab
   background-color: #686868;
   content: '\f065';
   font-family: 'FontAwesome';
-  border-radius: 0px;
   box-shadow: none;
   line-height: 16px;
   border: 2px solid #686868;
+  border-radius: 4px;
 }
 table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
   background-color: #686868;
   content: '\f066';
   font-family: 'FontAwesome';
-  border-radius: 0px;
   box-shadow: none;
   line-height: 16px;
   border: 2px solid #686868;
+  border-radius: 4px;
 }
 /* Buttons in tables a little smaller for vertical alignment */
 table a.btn {
