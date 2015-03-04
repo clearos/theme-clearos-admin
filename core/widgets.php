@@ -1671,8 +1671,11 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     $empty_row = (isset($options['row-enable-disable']) ? '<td></td>' : '');
     $no_container = (isset($options['no_container']) ? TRUE : FALSE);
 
-    foreach ($headers as $header) {
-        $header_html .= "\n\t\t" . trim("<th>$header</th>");
+    foreach ($headers as $index => $header) {
+        $responsive_class = '';
+        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+            $responsive_class = " class='" . $options['responsive'][$index] . "'";
+        $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
         $empty_row .= '<td>&nbsp; </td>';
     }
 
@@ -1683,7 +1686,10 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     // No title in the action header
     if ($action_col) {
-        $header_html .= "\n\t\t" . trim("<th>&nbsp; </th>");
+        $responsive_class = '';
+        if (isset($options['responsive']) && isset($options['responsive'][$columns]))
+            $responsive_class = " class='" . $options['responsive'][$columns] . "'";
+        $header_html .= "\n\t\t" . "<th$responsive_class>&nbsp; </th>";
         $empty_row .= "<td>&nbsp; </td>";
     }
 
@@ -1920,7 +1926,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     <h3 class='box-title'>$title</h3>
   </div>
   <div class='box-body'>
-    <table class='table responsive table-striped $size_class' id='$dom_id'>
+    <table class='table " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'responsive') . " table-striped $size_class' id='$dom_id'>
       <thead>
         <tr>$header_html</tr>
       </thead>
@@ -1949,7 +1955,6 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', '" . $dom_id_var . "-row-' + iDataIndex)
         },
-        'responsive': true,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
         'aLengthMenu': [$row_options],
@@ -1997,8 +2002,12 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
     // Tabs are just for clean indentation HTML output
     $header_html = '';
 
-    foreach ($headers as $header)
-        $header_html .= "\n\t\t" . trim("<th>$header</th>");
+    foreach ($headers as $index => $header) {
+        $responsive_class = '';
+        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+            $responsive_class = " class='" . $options['responsive'][$index] . "'";
+        $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
+    }
 
     // Action column?
     $action_col = TRUE;
@@ -2006,8 +2015,12 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
         $action_col = FALSE;
 
     // No title in the action header
-    if ($action_col)
-        $header_html .= "\n\t\t" . trim("<th>&nbsp; </th>");
+    if ($action_col) {
+        $responsive_class = '';
+        if (isset($options['responsive']) && isset($options['responsive'][$columns]))
+            $responsive_class = " class='" . $options['responsive'][$columns] . "'";
+        $header_html .= "\n\t\t" . "<th$responsive_class>&nbsp; </th>";
+    }
 
     // Add button
     //-----------
@@ -2093,7 +2106,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
     <h3 class='box-title'>$title</h3>
   </div>
   <div class='box-body'>
-    <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table table-striped' id='$dom_id'>
+    <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'responsive') . "table-striped' id='$dom_id'>
      <thead>
       <tr>$header_html
       </tr>

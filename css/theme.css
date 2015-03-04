@@ -1120,6 +1120,27 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th { background-color: #ffffff;}
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th { background-color: #f4f4f4;}
 
+table.dataTable tr.child span.dtr-title {
+  margin-right: 10px;
+}
+table.dataTable.responsive.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody th:first-child:before {
+  background-color: #686868;
+  content: '\f065';
+  font-family: 'FontAwesome';
+  border-radius: 0px;
+  box-shadow: none;
+  line-height: 16px;
+  border: 2px solid #686868;
+}
+table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
+  background-color: #686868;
+  content: '\f066';
+  font-family: 'FontAwesome';
+  border-radius: 0px;
+  box-shadow: none;
+  line-height: 16px;
+  border: 2px solid #686868;
+}
 /* Buttons in tables a little smaller for vertical alignment */
 table a.btn {
   font-size: 0.8em;
