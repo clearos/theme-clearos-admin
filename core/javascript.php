@@ -43,7 +43,11 @@ function theme_page_javascript($custom_settings)
     // The version is used to avoid upgrade/caching issues.  Bump when required.
     $version = '7.0.0';
 
-    // FIXME: review all of these
+    // Detault menu is 1
+    if (empty($custom_settings['menu']))
+        $custom_settings['menu'] = 1;
+
+    // TODO: review all of these
     return "
 
 <script type='text/javascript' src='$theme_url/js/jquery.min.js'></script>
