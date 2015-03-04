@@ -925,6 +925,8 @@ function _get_left_menu_1($page)
     $main_apps = '';
     $spotlights = '';
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
+    $current_category = '';
+    $current_subcategory = '';
 
     foreach ($menu_data as $url => $page_meta) {
 
