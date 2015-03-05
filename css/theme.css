@@ -381,7 +381,6 @@ a.highlight-link:hover {
 
 .main-content {
   width: 100%;
-  min-height: 600px;
 }
 .main-content p {
   color: #7a7474;
@@ -404,7 +403,6 @@ a.highlight-link:hover {
 .main-content aside {
   margin: 0;
   padding: 0;
-  height: 800px;
   width: 20%;
   border-right: 1px solid #ddd;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -514,7 +512,7 @@ a.highlight-link:hover {
   display: none;
 }
 section.content-container {
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   min-height: 500px;
   vertical-align: top;
   float: left;
@@ -766,9 +764,6 @@ header:hover #magic-arrow {
 }
 .theme-menu-2-list div.btn-group {
   background: #fafafa;
-}
-.sidebar {
-  margin-bottom: 5px;
 }
 .sidebar .sidebar-menu-2 > li > a {
   padding: 5px 5px 5px 20px;
