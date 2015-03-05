@@ -1717,7 +1717,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         $item_html = '';
 
         foreach ($items as $item) {
-            $item_html .= "\t<tr" . (isset($item['row_id']) ? " id='r-" . $item['row_id'] . "'" : '') . ">\n";
+            $item_html .= "\t<tr" . (isset($item['row_id']) ? " data-row-id='" . $item['row_id'] . "'" : '') . ">\n";
             if (isset($item['current_state']) && $item['current_state'] === TRUE) {
                 $item_html .= "
                     <td>
