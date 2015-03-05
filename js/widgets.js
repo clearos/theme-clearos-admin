@@ -203,6 +203,18 @@ function theme_format_date(value, format)
 }
 
 /**
+ * Enabled/Disabled display.
+ */
+
+function theme_enabled_disabled(state)
+{
+    if (state)
+        return '<i class="fa fa-check-circle"></i>';
+    else
+        return '-';
+}
+
+/**
  * Infobox.
  */
 
