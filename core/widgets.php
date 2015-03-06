@@ -2540,7 +2540,12 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
 
     $unique = rand(0, 100);
     if ($id == NULL)
-        $id = 'modal-confirm-' . $unique;
+        $id = 'modal-confirm-container' . $unique;
+    else
+        $unique = $id; 
+    $stay_open_on_confirm = FALSE;
+    if (isset($options['stay_open_on_confirm']))
+        $stay_open_on_confirm = TRUE;
 
     // May have more than one modal dialog...ensure confirm/close buttons have unique dom ID's
     $confirm_id = "modal-confirm-$unique";
@@ -2582,7 +2587,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
                     e.preventDefault();
                     $('#" . $id . "').modal('hide');
                 });
-                " . ($form_id != NULL ? "
+                " . ($stay_open_on_confirm ? "" : ($form_id != NULL ? "
                 $('#$confirm_id').click(function() {
                     $('#" . $id . "').modal('hide');
                     $('#$form_id').submit();
@@ -2592,7 +2597,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
                     $('#" . $id . "').modal('hide');
                     " . $js_lines . "
                 });
-                " : "")) . "
+                " : ""))) . "
             </script>
     ";
 }

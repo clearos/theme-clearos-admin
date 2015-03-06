@@ -1322,6 +1322,9 @@ a#wizard_nav_previous:hover, a#wizard_nav_next:hover {
 .theme-support-16 {
   color: #000000;
 }
+.theme-align-right {
+  text-align: right;
+}
 #theme_app_sidebar div.row {
   line-height: 1.5em;
 }

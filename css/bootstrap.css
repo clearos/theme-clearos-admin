@@ -2183,7 +2183,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
   background-color: #c2510f;
-  border-color: #aa470d;
+  border-color: #c8c8c8;
 }
 .btn-primary .badge {
   color: #c2510f;
