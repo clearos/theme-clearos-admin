@@ -1689,7 +1689,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         $responsive_class = '';
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
-        $header_html .= "\n\t\t" . "<th$responsive_class>&nbsp; </th>";
+        $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
         $empty_row .= "<td>&nbsp; </td>";
     }
 
@@ -2019,7 +2019,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
         $responsive_class = '';
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
-        $header_html .= "\n\t\t" . "<th$responsive_class>&nbsp; </th>";
+        $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
     }
 
     // Add button
