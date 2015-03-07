@@ -47,6 +47,11 @@ function theme_page_javascript($custom_settings)
     if (empty($custom_settings['menu']))
         $custom_settings['menu'] = 1;
 
+    // Menu System set?
+    $menu_js = '';
+    if (isset($custom_settings['menu']))
+        $menu_js = "<script type='text/javascript' src='$theme_url/js/nav-menu-" . $custom_settings['menu'] . ".js'></script>";
+
     // TODO: review all of these
     return "
 
@@ -75,7 +80,7 @@ function theme_page_javascript($custom_settings)
 <script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.stack.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.categories.min.js'></script>
 <script type='text/javascript' src='$theme_url/js/plugins/flot/jquery.flot.axislabels.js'></script>
-<script type='text/javascript' src='$theme_url/js/nav-menu-" . $custom_settings['menu'] . ".js'></script>
+$menu_js
 
 <!--[if IE 7]>
 <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
