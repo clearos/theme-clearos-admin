@@ -2928,7 +2928,7 @@ function theme_summary_box($data)
                 theme_button_set(
                     array(
                         anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details')),
-                        anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')),
+                        (isset($data['delete_dependency']) ? anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')) : NULL),
                         anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'))
                     )
                 ) . "
