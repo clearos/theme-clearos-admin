@@ -730,9 +730,9 @@ function _get_app_full(app, options)
         learn_more_target = ' target="_blank"';
     }
 
-    buttons = '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>' +
-              '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>'
-    ;
+    buttons = '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>';
+    if (app.can_uninstall)
+        buttons += '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>';
     if (!app.installed) {
         if ((app.display_mask & 1) == 1)
             buttons = '<div class=\'theme-text-alert\' style=\'font-size:.9em; display: inline;\'>Requires Business Edition</div>';
@@ -797,10 +797,10 @@ function _get_app_tile(app, options)
         col = 12 / options.columns;
 
     var buttons = '<div class="btn-group">' +
-        '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>' +
-        '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default btn-xs ' + disable_buttons + '">' + lang_uninstall + '</a>' +
-        '</div>'
-    ;
+        '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>';
+    if (app.can_uninstall)
+        buttons += '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default btn-xs ' + disable_buttons + '">' + lang_uninstall + '</a>';
+    buttons += '</div>';
 
     if (!app.installed) {
         if ((app.display_mask & 1) == 1)
