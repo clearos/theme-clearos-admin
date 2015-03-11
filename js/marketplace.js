@@ -269,7 +269,7 @@ function get_marketplace_data(basename) {
                 if (json.license_info != undefined && json.license_info.evaluation != undefined && json.license_info.evaluation == true) {
                     if (json.license_info.eval_limitations != undefined) {
                         $('#sidebar_additional_info_row').after(
-                            _c_row(
+                            _sidebar_pair(
                                 lang_marketplace_eval_limitations,
                                 '<a id=\'eval-limit-anchor\' href=\'javascript: void(0)\'>' + lang_yes + '</a>' +
                                 '<div class=\'theme-rhs-tooltip\'>' + json.license_info.eval_limitations + '</div>'
@@ -285,13 +285,13 @@ function get_marketplace_data(basename) {
                         });
                     }
                     $('#sidebar_additional_info_row').after(
-                        _c_row(
+                        _sidebar_pair(
                             lang_marketplace_trial_ends,
                             $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire))
                         )
                     );
                     $('#sidebar_additional_info_row').after(
-                        _c_row(
+                        _sidebar_pair(
                             lang_status,
                             '<span style=\'color: red\'>' + lang_marketplace_evaluation + '</span>'
                         )
@@ -300,7 +300,7 @@ function get_marketplace_data(basename) {
                     // Redemption period
                     if (json.license_info != undefined && json.license_info.redemption != undefined && json.license_info.redemption == true) {
                         $('#sidebar_additional_info_row').after(
-                            _c_row(
+                            _sidebar_pair(
                                 lang_status,
                                 '<span style=\'color: red\'>' + lang_marketplace_redemption + '</span>'
                             )
@@ -310,7 +310,7 @@ function get_marketplace_data(basename) {
                     // No Subscription
                     if (json.license_info != undefined && json.license_info.no_subscription != undefined && json.license_info.no_subscription == true) {
                         $('#sidebar_additional_info_row').after(
-                            _c_row(
+                            _sidebar_pair(
                                 lang_status,
                                 '<span style=\'color: red\'>' + lang_marketplace_expired_no_subscription + '</span>'
                             )
@@ -328,14 +328,14 @@ function get_marketplace_data(basename) {
                             bill_cycle = lang_marketplace_billing_cycle_3_years;
 
                         $('#sidebar_additional_info_row').after(
-                            _c_row(
+                            _sidebar_pair(
                                 lang_marketplace_billing_cycle,
                                 bill_cycle
                             )
                         );
                         if (json.license_info.expire != undefined) {
                             $('#sidebar_additional_info_row').after(
-                                _c_row(
+                                _sidebar_pair(
                                     lang_marketplace_renewal_date,
                                     $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire))
                                 )
@@ -348,7 +348,7 @@ function get_marketplace_data(basename) {
                 if (json.supported != undefined && !json.hide_support_policy) {
                     // TODO - there are some clearcenter references here
                     $('#sidebar_additional_info_row').after(
-                        _c_row(
+                        _sidebar_pair(
                             lang_marketplace_support_policy,
                             get_support_policy(json)
                         )
@@ -358,7 +358,7 @@ function get_marketplace_data(basename) {
                 // Version updates
                 if (!json.up2date) {
                     $('#sidebar_additional_info_row').after(
-                        _c_row(
+                        _sidebar_pair(
                             lang_marketplace_upgrade,
                             json.latest_version
                         )
@@ -689,7 +689,7 @@ function clearos_marketplace_app_list(type, list, limit, total, options) {
         $('#paginate_next').before('<a href="/app/marketplace/search/index/' + index + '" class="btn btn-secondary">' + lang_marketplace_displaying + ' ' +
             (1 + (parseInt(index) * limit)) + ' - ' + upper + ' ' + lang_of + ' ' + total + '</a>');
 
-        if ((Math.ceil(total / limit) - 1) > 1) {
+        if ((Math.ceil(total / limit)) > 1) {
             var prev = Math.max((index - 1), 0); 
             var next = Math.min((index + 1), (Math.ceil(total / limit) - 1)); 
             $('#paginate_prev').attr('href', '/app/marketplace/search/index/' + prev);
@@ -706,10 +706,10 @@ function clearos_marketplace_app_list(type, list, limit, total, options) {
 //-------------------------------------------------------
 
 /**
- * FIXME
+ * Returns HTML for adding key/value pairs to the sidebar widget.
  */
 
-function _c_row(field, value) {
+function _sidebar_pair(field, value) {
     return '<div class=\'row\'>' +
                 '<div class=\'col-lg-6 theme-field\'>' + field + '</div>' +
                 '<div class=\'col-lg-6\'>' + value + '</div>' +
@@ -730,6 +730,25 @@ function _get_app_full(app, options)
         learn_more_target = ' target="_blank"';
     }
 
+    buttons = '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>' +
+              '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>'
+    ;
+    if (!app.installed) {
+        if ((app.display_mask & 1) == 1)
+            buttons = '<div class=\'theme-text-alert\' style=\'font-size:.9em; display: inline;\'>Requires Business Edition</div>';
+        else if (options.search_only)
+            buttons = '<a href="/app/marketplace/view/' + app.basename + '" class="btn btn-primary btn-xs">' + lang_install + '</a>';
+        else
+            buttons = '<input type="submit" name="install" value="' +
+                (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) +
+                '" id="' + app.basename + '" class="btn btn-primary marketplace-app-event" data-appname="' +
+                app.name + '"/>' +
+                '<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>'
+            ;
+    } else if (options.wizard) {
+        buttons = '<a href="#" class="btn btn-warning disabled">' + lang_installed + '</a>';
+    }
+
     return '\
         <div class="col-md-6 marketplace-list-layout">\
             <div class="app_box" id="box-' + app.basename + '">\
@@ -748,13 +767,7 @@ function _get_app_full(app, options)
             <div class="app_footer">' +
                 ((app.display_mask & 1) == 1 ? '<div class="pull-left marketplace-app-not-available">Requires Business Edition</div>' : '') + 
                 
-                '<div class="btn-group">' +
-                (app.installed ?
-                    '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>' +
-                    '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>'
-                    : ((app.display_mask & 1) == 1) ? '' : '<input type="submit" name="install" value="' + (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) + '" id="' + app.basename + '" class="btn btn-primary  marketplace-app-event" data-appname="' + app.pricing.description + '"/>' +
-                    '<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>'
-                ) +
+                '<div class="btn-group">' + buttons +
                 '<a href="/app/marketplace/view/' + app.basename + '"' + learn_more_target + ' class="btn btn-default ">' + lang_marketplace_learn_more + '</a>\
                 </div>\
             </div>\
@@ -795,7 +808,8 @@ function _get_app_tile(app, options)
         else if (options.search_only)
             buttons = '<a href="/app/marketplace/view/' + app.basename + '" class="btn btn-primary btn-xs">' + lang_install + '</a>';
         else
-            buttons = '<input type="submit" name="install" value="' +
+            buttons = '<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>' +
+                '<input type="submit" name="install" value="' +
                 (app.incart ? lang_marketplace_remove : lang_marketplace_select_for_install) +
                 '" id="' + app.basename + '" class="btn btn-primary btn-xs marketplace-app-event" data-appname="' +
                 app.name + '"/>'
@@ -815,9 +829,8 @@ function _get_app_tile(app, options)
               <div class="app_price">' + theme_price(UNIT, app.pricing) + '</div>\
               <div class="app_rating">' + theme_star_rating(app.rating) + '</div>\
             </div>\
-            <div class="app_footer">\
-              '+ buttons +'<input type="checkbox" name="cart" id="select-' + app.basename + '" class="theme-hidden"' + (app.incart ? ' CHECKED' : '') + '/>\
-              <a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-default btn-xs pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>\
+            <div class="app_footer">' + buttons +
+              '<a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-default btn-xs pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>\
             </div>\
             </div>\
           </div>\
