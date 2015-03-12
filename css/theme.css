@@ -2000,6 +2000,9 @@ h4.block-title {
 .support-box-container path, .support-box-container polygon, .support-box-container ellipse {
   fill: white;
 }
+.support-calendar {
+  margin: 0px 60px;
+}
 
 /* ----------------------- */
 /* Dashboard               */
