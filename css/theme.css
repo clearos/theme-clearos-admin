@@ -1959,6 +1959,9 @@ h4.block-title {
 .support-additional-info a {
   color: #3d85c6;
 }
+.support-no-additional-info {
+  padding-top: 20px;
+}
 .support-upgrade-required {
   line-height: 50px;
   background-color: red;
