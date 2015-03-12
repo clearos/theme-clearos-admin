@@ -1276,7 +1276,7 @@ function _get_breadcrumb_links($links)
             $external_tip = '';
         }
 
-        $id = 'bcrumb-' . rand(0 , 100);
+        $id = 'bcrumb-' . rand(0 , 1000);
         if (isset($link['id']))
             $id = $link['id'];
 
