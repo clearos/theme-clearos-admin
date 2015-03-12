@@ -1959,6 +1959,9 @@ h4.block-title {
 .support-additional-info a {
   color: #3d85c6;
 }
+.support-no-additional-info {
+  padding-top: 20px;
+}
 .support-upgrade-required {
   line-height: 50px;
   background-color: red;
@@ -1973,10 +1976,9 @@ h4.block-title {
   margin-top: -10px;
   margin: auto;
 }
-.support-upgrade-days-remaining {
+#support-upgrade-days-remaining {
   font-weight: 700;
-  text-align: center;
-  padding: 20px;
+  padding: 5px;
   font-size: 1.2em;
 }
 .support-item {
