@@ -1673,7 +1673,11 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     foreach ($headers as $index => $header) {
         $responsive_class = '';
-        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+        if ($index == 0 && isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='never'";
+        else if (isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='" . $options['responsive'][$index - 1] . "'";
+        else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
         $empty_row .= '<td>&nbsp; </td>';
@@ -2004,7 +2008,11 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
 
     foreach ($headers as $index => $header) {
         $responsive_class = '';
-        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+        if ($index == 0 && isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='never'";
+        else if (isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='" . $options['responsive'][$index - 1] . "'";
+        else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
     }
@@ -2993,6 +3001,35 @@ function theme_tips_and_hints($tooltips)
     }
 
     return theme_modal_info('app-tips-content', lang('base_tips_and_hints'), $tips);
+}
+
+/**
+ * Get an icon.
+ *
+ * @param string $name     name of icon
+ * @param array  $options  options
+ *
+ * @return string HTML
+ */
+
+function theme_icon($name, $options = NULL)
+{
+    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
+
+    $class = array();
+    if ((isset($options['class']))) {
+        // Additional classes
+        if (is_array($options['class']))
+            $class = $options['class'];
+        else
+            $class = explode(' ', $options['class']);
+    }
+    if ($name == 'speedometer')
+        $icon = 'tachometer';
+    else
+        $icon = 'gear';
+
+    return "<i $id class='fa fa-$icon " . implode(' ' , $class) . "'></i>";
 }
 
 ///////////////////////////////////////////////////////////////////////////////
