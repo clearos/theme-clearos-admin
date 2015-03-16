@@ -2931,17 +2931,12 @@ function theme_summary_box($data)
         $data['tooltip'] = '';
 
     if ($data['show_marketplace']) {
-        $marketplace_html = "
-            <div class='marketplace-links'>" .
-                theme_button_set(
-                    array(
-                        anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details')),
-                        (isset($data['delete_dependency']) ? anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')) : NULL),
-                        anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'))
-                    )
-                ) . "
-            </div>
-        ";
+        $buttons = array();
+        $buttons[] = anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details'));
+        if (isset($data['delete_dependency']))
+            $buttons[] = anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall'));
+        $buttons[] = anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'));
+        $marketplace_html = "<div class='marketplace-links'>" . theme_button_set($buttons) . "</div>";
 
         if (isset($data['show_recommended_apps']))
             $marketplace_html .=  "<div id='sidebar-recommended-apps'></div>";
