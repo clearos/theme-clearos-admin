@@ -2577,7 +2577,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
                     <h4>$title</h4>
                   </div>
                   <div class='modal-body'>
-                    <p>$message</p>
+                    <div>$message</div>
                   </div>
                   <div class='modal-footer'>
                     " . _theme_button_set($buttons) . "
