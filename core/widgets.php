@@ -1137,12 +1137,12 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
     // if (isset($options) && $options['ip_extras'])
     //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
 
-    if ($errmsg)
-        echo "<div class='theme-validation-error'>$errmsg</div>";
-
     echo theme_field_button_set(
         array(form_submit_custom('submit', lang('base_login'), 'high'))
     );
+
+    if ($errmsg)
+        echo "<div class='theme-validation-error'>$errmsg</div>";
 
     echo form_close();
     echo "  </div>";
