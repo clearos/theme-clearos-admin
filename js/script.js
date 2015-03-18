@@ -55,41 +55,5 @@
 		*/
 
 
-
-		/*
-			Left sidebar Start
-		*/
-
-		jQuery('.left_nav a').click(function(){
-			if(!jQuery(this).parent().hasClass("active")){
-				jQuery(this).parent().siblings('li').removeClass('active').find('.sub_menu').slideUp('slow').find('li').removeClass('active');
-				jQuery(this).parent().addClass('active').find('>ul.sub_menu').slideDown('slow');
-			}else{
-
-				jQuery(this).parent().removeClass('active').find('.sub_menu').slideUp('slow').find('li').removeClass('active');
-			}
-		});
-
-		// open first menu by-default 
-		if(!jQuery('.left_nav li').hasClass("active")){
-			jQuery('.left_nav li:first a:first').trigger('click');
-		}else{	
-			
-			jQuery('.left_nav li.active').find('>ul.sub_menu').slideDown('slow');
-
-		}
-
-		var asidewidth = jQuery(".marketPlaceSection aside").width();
-		jQuery(".left_nav").css('width', asidewidth);
-		
-		/*
-			Left sidebar End
-		*/
-		jQuery(".navbar-toggle").click(function(){
-		  jQuery(".small_menu").toggleClass('hide');
-
-		});
-
-		
 	});	
 })(jQuery);	
