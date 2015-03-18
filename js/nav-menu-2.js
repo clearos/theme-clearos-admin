@@ -1,5 +1,5 @@
 /**
- * Menu javascript helper.
+ * Menu type 2 javascript helper.
  *
  * @category  Theme
  * @package   ClearOS

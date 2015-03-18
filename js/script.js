@@ -1,15 +1,13 @@
-(function($){
+(function($) {
 
 	"use strict";
 	
-	$(document).ready(function() {
+    $(document).ready(function() {
 
 		/*
 			Magic Line Start
 		*/
 		var $el,$current_index, leftPos, newWidth;
-
-
 
 		/* Add Magic arrow markup via JavaScript, because it ain't gonna work without */
         /* But don't do this on wizard mode */
@@ -72,7 +70,6 @@
 			}
 		});
 
-
 		// open first menu by-default 
 		if(!jQuery('.left_nav li').hasClass("active")){
 			jQuery('.left_nav li:first a:first').trigger('click');
@@ -82,8 +79,6 @@
 
 		}
 
-		
-				
 		var asidewidth = jQuery(".marketPlaceSection aside").width();
 		jQuery(".left_nav").css('width', asidewidth);
 		
@@ -97,11 +92,4 @@
 
 		
 	});	
-	jQuery(window).load(function(){
-		window.setTimeout(function(){
-			jQuery('.support-box-container').find('.support-upgrade-required-banner').each(function(){
-				jQuery(this).parents('.support-box-container').addClass('upgradable');
-			});
-		},1000);
-	});
 })(jQuery);	
