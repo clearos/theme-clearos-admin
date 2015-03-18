@@ -1119,22 +1119,33 @@ table.dataTable tr.child span.dtr-title {
   margin-right: 10px;
 }
 table.dataTable.responsive.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody th:first-child:before {
-  background-color: #686868;
-  content: '\f065';
+  color: #686868;
+  content: '\f142';
   font-family: 'FontAwesome';
+  border: none;
+  background-color: transparent;
   box-shadow: none;
-  line-height: 16px;
-  border: 2px solid #686868;
-  border-radius: 4px;
+  width: 4px;
+  line-height: inherit !important;
 }
-table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
-  background-color: #686868;
-  content: '\f066';
+/* Prevents icon for responsive datatables if grouping is being used */
+table.dataTable.responsive.dtr-inline.collapsed tbody tr td[colspan]:not([colspan="1"]):first-child:before,
+table.dataTable.responsive.dtr-inline.collapsed tbody tr th[colspan]:not([colspan="1"]):first-child:before {
+  content: '' !important;
+}
+
+table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before,
+table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
+  color: #686868;
+  content: '\f142';
   font-family: 'FontAwesome';
   box-shadow: none;
-  line-height: 16px;
-  border: 2px solid #686868;
-  border-radius: 4px;
+  border: none;
+  background-color: transparent;
+}
+table.dataTable.dtr-inline.collapsed tbody td:first-child,
+table.dataTable.dtr-inline.collapsed tbody th:first-child {
+  padding-left: 12px !important;
 }
 /* Buttons in tables a little smaller for vertical alignment */
 table a.btn {

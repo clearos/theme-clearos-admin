@@ -1137,12 +1137,12 @@ function theme_login_form($redirect, $languages, $lang, $errmsg, $options = NULL
     // if (isset($options) && $options['ip_extras'])
     //     echo field_view('', "<span style='color: #666666'>" . $options['ip_extras'] . "</span>");
 
-    if ($errmsg)
-        echo "<div class='theme-validation-error'>$errmsg</div>";
-
     echo theme_field_button_set(
         array(form_submit_custom('submit', lang('base_login'), 'high'))
     );
+
+    if ($errmsg)
+        echo "<div class='theme-validation-error'>$errmsg</div>";
 
     echo form_close();
     echo "  </div>";
@@ -1673,7 +1673,11 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     foreach ($headers as $index => $header) {
         $responsive_class = '';
-        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+        if ($index == 0 && isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='never'";
+        else if (isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='" . $options['responsive'][$index - 1] . "'";
+        else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
         $empty_row .= '<td>&nbsp; </td>';
@@ -2004,7 +2008,11 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
 
     foreach ($headers as $index => $header) {
         $responsive_class = '';
-        if (isset($options['responsive']) && isset($options['responsive'][$index]))
+        if ($index == 0 && isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='never'";
+        else if (isset($options['grouping']) && $options['grouping'])
+            $responsive_class = " class='" . $options['responsive'][$index - 1] . "'";
+        else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
     }
@@ -2923,17 +2931,12 @@ function theme_summary_box($data)
         $data['tooltip'] = '';
 
     if ($data['show_marketplace']) {
-        $marketplace_html = "
-            <div class='marketplace-links'>" .
-                theme_button_set(
-                    array(
-                        anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details')),
-                        (isset($data['delete_dependency']) ? anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall')) : NULL),
-                        anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'))
-                    )
-                ) . "
-            </div>
-        ";
+        $buttons = array();
+        $buttons[] = anchor_custom('/app/marketplace/view/' . $data['basename'], lang('base_details'));
+        if (isset($data['delete_dependency']))
+            $buttons[] = anchor_custom('/app/marketplace/uninstall/' . $data['basename'], lang('base_uninstall'));
+        $buttons[] = anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'));
+        $marketplace_html = "<div class='marketplace-links'>" . theme_button_set($buttons) . "</div>";
 
         if (isset($data['show_recommended_apps']))
             $marketplace_html .=  "<div id='sidebar-recommended-apps'></div>";
@@ -2993,6 +2996,35 @@ function theme_tips_and_hints($tooltips)
     }
 
     return theme_modal_info('app-tips-content', lang('base_tips_and_hints'), $tips);
+}
+
+/**
+ * Get an icon.
+ *
+ * @param string $name     name of icon
+ * @param array  $options  options
+ *
+ * @return string HTML
+ */
+
+function theme_icon($name, $options = NULL)
+{
+    $id = (isset($options['id'])) ? " id='" . $options['id'] . "'" : "";
+
+    $class = array();
+    if ((isset($options['class']))) {
+        // Additional classes
+        if (is_array($options['class']))
+            $class = $options['class'];
+        else
+            $class = explode(' ', $options['class']);
+    }
+    if ($name == 'speedometer')
+        $icon = 'tachometer';
+    else
+        $icon = 'gear';
+
+    return "<i $id class='fa fa-$icon " . implode(' ' , $class) . "'></i>";
 }
 
 ///////////////////////////////////////////////////////////////////////////////

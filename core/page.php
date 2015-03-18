@@ -8,7 +8,8 @@
  * @copyright 2014-2015 ClearFoundation
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link      http://www.clearfoundation.com/docs/developer/theming/ 
- */
+ *
+ **/
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -137,7 +138,7 @@ function _configuration_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content' style='overflow: hidden;'>".
+        "<div class='main-content form-horizontal' style='overflow: hidden;'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -162,7 +163,7 @@ function _wide_configuration_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content form-horizontal'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -187,7 +188,7 @@ function _report_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content form-horizontal'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -212,7 +213,7 @@ function _report_overview_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content form-horizontal'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -237,7 +238,7 @@ function _dashboard_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content form-horizontal'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -262,7 +263,7 @@ function _spotlight_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>". 
+        "<div class='main-content form-horizontal'>". 
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -315,17 +316,17 @@ function _splash_page($page)
             <!-- Page Container -->
             <div class='theme-page-splash-container container'>
                 <div class='row'>
-                    <div class='col-lg-1'></div>
-                    <div class='col-lg-7'>
+                    <div class='col-md-1'></div>
+                    <div class='col-md-7'>
                         <div class='theme-content-splash-container'>
                             " . _get_message() . "
                             " . $page['app_view'] . "
                         </div>
                     </div>
-                    <div class='col-lg-3' style='text-align: center;'>
+                    <div class='col-md-3' style='text-align: center;'>
                         <div class='ci-ClearOS'></div>
                     </div>
-                    <div class='col-lg-1'></div>
+                    <div class='col-md-1'></div>
                 </div>
             </div>
         </body>
@@ -349,7 +350,7 @@ function _exception_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>".
+        "<div class='main-content form-horizontal'>".
         _get_left_menu($page) .
         _get_main_content($page) .
         "</div>" .
@@ -374,16 +375,16 @@ function _wizard_page($page)
     $layout =
         "<div class='main-wrapper $page_class'>" .
         _get_header($page) .
-        "<div class='main-content'>" .
+        "<div class='main-content form-horizontal'>" .
         _get_wizard_menu($page) .
         "<section class='content-container'>"
     ;
 
     // For Wizard pages with help boxes, split page up into 8/4 col
     if ($page['page_inline_help'])
-        $layout .= "<div class='col-lg-8 theme-content'>";
+        $layout .= "<div class='col-md-8 theme-content'>";
     else
-        $layout .= "<div class='col-lg-12 theme-content'>";
+        $layout .= "<div class='col-md-12 theme-content'>";
 
     // Add intro, as req'd
     if ($page['page_wizard_intro']) {
@@ -399,7 +400,7 @@ function _wizard_page($page)
     if ($page['page_inline_help']) {
         // Close out 8 column main view
         $layout .= "</div>";
-        $layout .= "<div class='col-lg-4 theme-inline-help'>";
+        $layout .= "<div class='col-md-4 theme-inline-help'>";
         $layout .= $page['page_inline_help'];
         $layout .= "</div>";
     } else {
@@ -435,7 +436,7 @@ function _console_page($page)
             <div class='page-title'><h1>$page[title]</h1>
                 <div class='clearfix'></div>
             </div>
-            <div class='main-content'>".
+            <div class='main-content form-horizontal'>".
                 _get_main_content($page) . "
             </div>
         </div>"
@@ -498,11 +499,11 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-lg-8 theme-content'>
+                    <div class='col-md-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
-                    <div class='col-lg-4'>
+                    <div class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_summary'] . "
@@ -522,12 +523,12 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-lg-8 theme-content'>
+                    <div class='col-md-8 theme-content'>
                     " . _get_message() . "
                     " . $page['page_report_chart'] . "
                     " . $page['page_report_table'] . "
                     </div>
-                    <div class='col-lg-4'>
+                    <div class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_report_helper'] . "
@@ -569,11 +570,11 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-lg-8 theme-content'>
+                    <div class='col-md-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
-                    <div class='col-lg-4'>
+                    <div class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_summary'] . "
@@ -619,11 +620,7 @@ function _get_header($page, $menus = array())
 
     if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
         // TODO - Translate
-        $alert_text = "
-                        <ul class='dropdown-menu'>
-                            <li class='header'>You have " . count($page['devel_alerts']) . " notification" . (count($page['devel_alerts']) >  1 ? "s" : "") . "</li>
-        ";
-         $alert_text = '';
+        $alert_text = '';
         if (isset($page['devel_alerts']['framework']))
             $alert_text .= "
                 <li>
@@ -699,10 +696,7 @@ function _get_header($page, $menus = array())
              <header class='mainheader'>
              <div class='navbar-header'>
               <button data-target='.bs-navbar-collapse' data-toggle='collapse' type='button' class='navbar-toggle'>
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
+                <i class='fa fa-bars'></i>
               </button>
             </div>
             
@@ -732,25 +726,9 @@ function _get_header($page, $menus = array())
                     <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
                         <a href='#' class='ci-ClearOS'>&nbsp;</a>
                     </div> 
-                    <div class='small_menu hide'>
-                        <ul>
-                        " . (! isset($framework->session->userdata['wizard']) ? "
-                                " . $main_menu['dashboard'] . "
-                                " . $main_menu['marketplace'] . "
-                                " . $main_menu['support'] . "
-                                <li class='my-account dropdown " . ((isset($page['my_account']) && $page['my_account']) ? "active" : "") . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> <span class='theme-alert-header'>" . ((count($page['devel_alerts'])) > 0 ? count($page['devel_alerts']) : '') . "</span><span data-toggle='tooltip' data-placement='top' title='" . $page['username']."'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' :$page['username']) . "</span></a>
-                                    <ul class='dropdown-menu' role='menu'>
-                                      " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
-                                      <li class='divider'></li>
-                                      <li><a role='menuitem' href='/app/user_profile'>My Profile</a></li>
-                                      <li><a role='menuitem' href='/app/dashboard/settings'>Setting</a></li>
-                                      <li class='divider'></li>
-                                      <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
-                                    </ul>
-                                  </li>
-                                    " : "") . "
-                            </ul>
-                    </div>
+
+
+                    <div class='small_menu'></div>
                     <div class='clearfix'></div>
             </header>
             <div class='page-title'><h1 id='theme-clearos-os-name'>$os_name</h1><div class='sitepath'>$title</div>
@@ -805,13 +783,11 @@ function _get_wizard_menu($page)
 {
      $framework =& get_instance();
 
-    $menu_data				= 	$page['wizard_menu'];
-    $current_subcategory 	= 	NULL;
-	$category_list			=	array();
-	foreach ($menu_data as $step_no => $menu) {
-		$category_list[$menu['subcategory']][]	=	$step_no;	
-	}
-	
+    $menu_data = $page['wizard_menu'];
+    $current_subcategory = NULL;
+    $category_list = array();
+    foreach ($menu_data as $step_no => $menu)
+        $category_list[$menu['subcategory']][] = $step_no;
     foreach ($menu_data as $step_no => $menu) {
         
         // Determine sub-category icon to use
@@ -835,9 +811,9 @@ function _get_wizard_menu($page)
             $disabled = 'theme-link-disabled';
         $active         =   '';
         $sub_active         =   '';
-		if(isset($category_list[$menu['subcategory']]) && in_array($page['wizard_current'],$category_list[$menu['subcategory']])){
-			$sub_active         =   'active';
-		}
+        if(isset($category_list[$menu['subcategory']]) && in_array($page['wizard_current'],$category_list[$menu['subcategory']])){
+            $sub_active         =   'active';
+        }
      
         if ($step_no == $page['wizard_current'])
             $active = 'active';
@@ -921,12 +897,47 @@ function _get_left_menu($page)
 
 function _get_left_menu_1($page)
 {
+    $my_account = '';
+    $framework =& get_instance();
+    $my_account_collection = array();
+
+    if (! isset($framework->session->userdata['wizard'])) {
+        foreach ($page['menus'] as $route => $details) {
+            if ($details['subcategory'] == lang('base_subcategory_my_account')) {
+                $my_account .= "<li class='dev_menu'><a role='menuitem' href='$route'>" . $details['title'] . "</a></li>\n";
+                $my_account_collection[] = basename($route);
+            }
+        }
+    }
+
     $menu_data = $page['menus'];
     $main_apps = '';
     $spotlights = '';
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
     $current_category = '';
     $current_subcategory = '';
+    if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
+        // TODO - Translate
+        $alert_text = '';
+        if (isset($page['devel_alerts']['framework']))
+            $alert_text .= "
+                <li class='dev_menu'>
+                    <a href='#'><i class='fa fa-gears warning'></i> Framework is in development mode</a>
+                </li>
+            ";
+        if (isset($page['devel_alerts']['app']))
+            $alert_text .= "
+                <li class='dev_menu'>
+                    <a href='#'><i class='fa fa-cubes warning'></i> This app is using development code</a>
+                </li>
+            ";
+        if (isset($page['devel_alerts']['theme']))
+            $alert_text .= "
+                <li class='dev_menu'>
+                    <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
+                </li>
+            ";
+    }
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -987,7 +998,17 @@ function _get_left_menu_1($page)
         if ($page_meta['category'] != $current_category) {
             $current_category = $page_meta['category'];
             $main_apps .= "<li class='". ($page_meta['category'] == $page['current_category'] ? " active" : "") . "'>";
-            $main_apps .= "<a href='javascript:void(0);'><i class='coi-".strtolower($page_meta['category'])."'></i>";
+            $main_apps .= (((count($page['devel_alerts'])) > 0 && strtolower($page_meta['category']) == 'system') ? 
+            "<div class='bubbleDrop'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'>" .
+            ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "</a>
+            <ul class='dropdown-menu' role='menu'>
+                 " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
+              <li class='divider'></li>
+              $my_account
+              <li class='divider'></li>
+              <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
+            </ul></div>
+            " : '') . "<a href='javascript:void(0);'><i class='coi-" . strtolower($page_meta['category']) . "'></i>";
             $main_apps .= $page_meta['category'];
             $main_apps .= "</a>";
             $main_apps .= "<ul class='sub_menu'>";
@@ -1000,7 +1021,7 @@ function _get_left_menu_1($page)
             $current_subcategory = $page_meta['subcategory'];
 
             $main_apps .= "<li class='". ($page_meta['subcategory'] == $page['current_subcategory'] ? "active" : "") . "'>";
-            $main_apps .= "<a href='#'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
+            $main_apps .= "<a href='javascript:void(0);'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
             $main_apps .= "<ul class='nav nav-third-level'>";
         }
 
