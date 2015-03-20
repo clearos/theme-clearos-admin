@@ -2348,8 +2348,8 @@ input[type="radio"].form-control{width: auto;}
 /* Login Box Css         */
 /* ----------------------*/
 
-.login_box{ width: 666px; margin: 0 auto; background: #fff; border-radius: 5px; position: relative;}
-.login_box .login_left{ width: 49.6%; float: left; border-radius: 5px 0 0 0; border-top: 4px #686868 solid; min-height: 314px;
+.login_box{ width: 666px; margin: 0 auto; background: #fff; border-radius: 5px; position: relative; overflow: hidden;}
+.login_box .login_left{ width: 49.6%; float: left; border-radius: 5px 0 0 0; border-top: 4px #686868 solid; min-height: 345px;
   background: #ffffff; /* Old browsers */
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
 background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI4NiUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjdmN2Y3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -2413,6 +2413,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   top: 100%;
   background:#fff; 
 }
+
+/*.small_menu ul{ margin: 0; padding:0; list-style:none; width:auto;}
+.small_menu ul li{ border-top:1px #ddd solid; padding: 0 15px;}
+.small_menu ul li a{  font-size:18px; color:#686868; display:block; padding:10px 0; text-decoration:none;}
+.small_menu ul li a i{ padding-right:10px;}
+.small_menu ul li a:hover, .small_menu ul li a:hover i{color:#999999;}
+
+.small_menu ul li.dashboard a:hover, .small_menu ul li.dashboard a:hover i{color:#999999;}
+.small_menu ul li.marketplace a:hover, .small_menu ul li.marketplace a:hover i{color:#999999;}
+.small_menu ul li.support a:hover, .small_menu ul li.support a:hover i{color:#3d85c6;}
+.small_menu ul li.my-account a:hover, .small_menu ul li.my-account a:hover i{color:#999;}*/
 
 /* ---------------------------------*/
 /* Additional Current Style Fixes   */

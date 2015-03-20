@@ -1959,6 +1959,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', '" . $dom_id_var . "-row-' + iDataIndex)
         },
+        'stateSave': true,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
         'aLengthMenu': [$row_options],
@@ -2137,6 +2138,7 @@ $(document).ready(function() {
         },
                 \"bJQueryUI\": true,
                 \"bPaginate\": false,
+                \"stateSave\": true,
                 \"bFilter\": false,
                 $group_javascript
                 \"aaSortingFixed\": [ $first_column_fixed_sort ],
