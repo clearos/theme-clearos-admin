@@ -1,7 +1,7 @@
 a,
-.main-content aside ul.left_nav > li > a:hover,
-.main-content aside ul.left_nav > li > a:focus,
-.main-content aside ul.left_nav > li.active > a,
+ul.left_nav > li > a:hover,
+ul.left_nav > li > a:focus,
+ul.left_nav > li.active > a,
 .sub_menu li.active > a,
 .sub_menu li:hover > a,
 .sub_menu li > ul li.active a,
@@ -54,7 +54,7 @@ a:hover, a:focus, .btn-link:hover {
   border-bottom: 1px solid #7A7474;
 }
 
-.main-content aside ul.left_nav > li > a i {
+ul.left_nav > li > a i {
   background-image: url(../img/cube_sprite_home.png);
 }
 
