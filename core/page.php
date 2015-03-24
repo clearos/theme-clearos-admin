@@ -703,7 +703,7 @@ function _get_header($page, $menus = array())
                 <ul class='full_menu'>
                 " . (! isset($framework->session->userdata['wizard']) ? "
                         <li class='ClearOS " . $active_header['home'] . "'>
-                            <a href='/app/base/system_info' class='ci-ClearOS'>&nbsp;</a>
+                            <a href='#' class='ci-ClearOS'>&nbsp;</a>
                         </li>
                         " . $main_menu['dashboard'] . "
                         " . $main_menu['marketplace'] . "
