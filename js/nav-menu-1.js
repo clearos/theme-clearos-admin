@@ -63,7 +63,7 @@ $(document).ready(function() {
     } else {	
         jQuery('.left_nav li.active').find('>ul.sub_menu').slideDown('slow');
     }
-
+	jQuery(".sub_menu li.active > ul").slideDown('slow');
     var asidewidth = jQuery(".marketPlaceSection aside").width();
     jQuery(".left_nav").css('width', asidewidth);
     
