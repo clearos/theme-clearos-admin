@@ -439,10 +439,13 @@ function _console_page($page)
         </div>
     ";
 
-
     $layout =
         "<div class='main-wrapper $page_class'>
-            <div class='page-title'><h1>$page[title]</h1>
+            <div class='page-title'>
+                <h1>$page[title]</h1>
+                <p style='text-align: right; padding-top: 25px; padding-right: 25px'>" .
+                anchor_custom('/app/base/session/logout', lang('base_logout'), 'high') . "
+                </p>
                 <div class='clearfix'></div>
             </div>
             <div class='main-content form-horizontal'>".
