@@ -438,12 +438,17 @@ function _console_page($page)
     //
     // TODO: Review the hacks below - shrinking vertical space as much as possible
 
+    if ($page['current_basename'] != 'graphical_console')
+        $logout = anchor_custom('/app/base/session/logout', lang('base_logout'), 'high') . " ";
+    else
+        $logout = '';
+
     $layout =
         "<div class='main-wrapper $page_class' style='margin-top: -20px'>
             <div class='page-title'>
                 <h1 style='font-size: 18px; padding: 14px 0'>$page[title]</h1>
                 <p style='text-align: right; padding-top: 5px; padding-right: 5px'>" .
-                    anchor_custom('/app/base/session/logout', lang('base_logout'), 'high') . " " .
+                    $logout . " " .
                     anchor_custom('/app/graphical_console/shutdown', lang('base_exit_to_text_console'), 'high') . "
                 </p>
                 <div class='clearfix'></div>
