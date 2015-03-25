@@ -431,27 +431,26 @@ function _console_page($page)
 {
     $page_class = _get_page_class($page['current_basename']);
 
-    $command_line = "
-        <div id='theme-footer-console-container' style='padding: 10px'>" .
-            lang('base_looking_for_a_command_line?') . " &nbsp; "
-            . anchor_custom('/app/graphical_console/shutdown', lang('base_go_to_the_command_line'), 'high') .
-            "
-        </div>
-    ";
+    // The text and widget sizes are a lot bigger in ClearOS 7, so it makes
+    // it harder to put everything on one screen.  There's really no need for
+    // scrollbars on the console -- the ability to quickly see the network
+    // IP addresses and link status is nice.
+    //
+    // TODO: Review the hacks below - shrinking vertical space as much as possible
 
     $layout =
-        "<div class='main-wrapper $page_class'>
+        "<div class='main-wrapper $page_class' style='margin-top: -20px'>
             <div class='page-title'>
-                <h1>$page[title]</h1>
-                <p style='text-align: right; padding-top: 25px; padding-right: 25px'>" .
-                anchor_custom('/app/base/session/logout', lang('base_logout'), 'high') . "
+                <h1 style='font-size: 18px; padding: 14px 0'>$page[title]</h1>
+                <p style='text-align: right; padding-top: 5px; padding-right: 5px'>" .
+                    anchor_custom('/app/base/session/logout', lang('base_logout'), 'high') . " " .
+                    anchor_custom('/app/graphical_console/shutdown', lang('base_exit_to_text_console'), 'high') . "
                 </p>
                 <div class='clearfix'></div>
             </div>
             <div class='main-content form-horizontal'>".
                 _get_main_content($page) . "
                 <div class='clearfix'></div>
-                $command_line
             </div>
         </div>"
     ;
@@ -554,13 +553,18 @@ function _get_main_content($page)
         ";
     } else if ($page['type'] == MY_Page::TYPE_CONSOLE) {
         return "
-            <section class='content-container'>
-                <section class='content clearfix'>
-                    <div class='theme-content'>
-                    " . _get_message() . "
-                    " . $page['app_view'] . "
+            <section class='console-container'>
+                <div class='row content clearfix'>
+                    <div class='col-md-9 theme-content'>
+                        " . _get_message() . "
+                        " . $page['app_view'] . "
                     </div>
-                </section>
+                    <div class='col-md-3 theme-inline-help'>
+                        <div class='theme-sidebar-top box'>
+                            $page[page_inline_help]
+                        </div>
+                    </div>
+                </div>
             </section>
         ";
     } else if ($page['type'] == MY_Page::TYPE_WIDE_CONFIGURATION) {

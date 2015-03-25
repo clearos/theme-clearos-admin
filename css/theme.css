@@ -518,6 +518,13 @@ section.content-container {
   float: left;
   width: 80%;
 }
+section.console-container {
+  padding: 5px 5px 0px 5px;
+  min-height: 500px;
+  vertical-align: top;
+  float: left;
+  width: 100%;
+}
 
 /* ============================================= */
 /* Stickey Header Css                            */
