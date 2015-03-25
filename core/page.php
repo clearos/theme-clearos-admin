@@ -431,6 +431,15 @@ function _console_page($page)
 {
     $page_class = _get_page_class($page['current_basename']);
 
+    $command_line = "
+        <div id='theme-footer-console-container' style='padding: 10px'>" .
+            lang('base_looking_for_a_command_line?') . " &nbsp; "
+            . anchor_custom('/app/graphical_console/shutdown', lang('base_go_to_the_command_line'), 'high') .
+            "
+        </div>
+    ";
+
+
     $layout =
         "<div class='main-wrapper $page_class'>
             <div class='page-title'><h1>$page[title]</h1>
@@ -438,6 +447,8 @@ function _console_page($page)
             </div>
             <div class='main-content form-horizontal'>".
                 _get_main_content($page) . "
+                <div class='clearfix'></div>
+                $command_line
             </div>
         </div>"
     ;
