@@ -804,7 +804,7 @@ function _get_footer($page)
 
 function _get_wizard_menu($page)
 {
-     $framework =& get_instance();
+    $framework =& get_instance();
 
     $menu_data = $page['wizard_menu'];
     $current_subcategory = NULL;
@@ -881,7 +881,6 @@ function _get_wizard_menu($page)
             </aside>
         ";
     } else {
-
         return "
             <aside class='theme-menu-1'>
                 <ul class='left_nav'>
