@@ -1826,7 +1826,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     // This is a pretty big hack job...pretty tough to expose all the functionality datatables have
     $sorting_type = '';
     if (isset($options['sorting-type'])) {
-        $sorting_type = "\"aoColumns\": [\n";
+        $sorting_type = "\"columnDefs\": [\n";
 
         foreach ($options['sorting-type'] as $s_type) {
             if ($s_type == NULL) {
@@ -1846,7 +1846,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
                 else
                     $datatables_type = 'html';
 
-                $sorting_type .= "              {\"sType\": \"" . $datatables_type . "\"},\n";
+                $sorting_type .= "              {\"type\": \"" . $datatables_type . "\"},\n";
             }
         }
 
