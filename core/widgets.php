@@ -2115,7 +2115,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
     <h3 class='box-title'>$title</h3>
   </div>
   <div class='box-body'>
-    <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'responsive') . "table-striped' id='$dom_id'>
+    <table cellspacing='0' cellpadding='0' width='100%' border='0' class='table " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'responsive') . " table-striped' id='$dom_id'>
      <thead>
       <tr>$header_html
       </tr>
