@@ -1336,6 +1336,10 @@ function _get_breadcrumb_links($links)
             $icon = 'fa fa-magic';
         else if ($type == 'cancel')
             $icon = 'fa fa-ban';
+        else if ($type == 'power')
+            $icon = 'fa fa-power-off';
+        else if ($type == 'restart')
+            $icon = 'fa fa-power-off';
         else if ($type == 'qsf')
             $icon = 'fa fa-file-code-o';
         else if ($type == 'wizard_next')
