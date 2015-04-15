@@ -1340,6 +1340,8 @@ function _get_breadcrumb_links($links)
             $icon = 'fa fa-power-off';
         else if ($type == 'restart')
             $icon = 'fa fa-power-off';
+        else if ($type == 'terminal')
+            $icon = 'fa fa-terminal';
         else if ($type == 'qsf')
             $icon = 'fa fa-file-code-o';
         else if ($type == 'wizard_next')
