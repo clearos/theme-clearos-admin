@@ -766,6 +766,7 @@ header:hover #magic-arrow {
   text-align: center;
   margin: 10px 5px 10px 10px;
   max-height: 32px;
+  margin-bottom: 25px;
 }
 .theme-menu-2-category {
   padding: 2px 4px 0px 4px;
