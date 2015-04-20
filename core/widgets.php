@@ -266,16 +266,9 @@ function _theme_button_set($buttons, $options = NULL, $type = NULL)
         $button_html .= $button . "\n";
 
     if ($type === 'field') {
-        return "
-            
-                <div class='btn-group$class'$id>$button_html</div>
-            
-			
-        ";
+        return "<div class='btn-group$class'$id>$button_html</div>";
     } else {
-        return "
-            <div class='btn-group$class'$id>$button_html</div>
-        ";
+        return "<div class='btn-group$class'$id>$button_html</div>";
     }
 }
 
