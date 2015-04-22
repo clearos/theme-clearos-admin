@@ -991,6 +991,10 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
   font-size: 1.6em;
   line-height: 20px;
 }
+.dataTables_paginate.paging_simple_numbers ul.pagination {
+  float: right;
+  margin: 0px;
+}
 
 /* ----------------------- */
 /* Radio buttons and sets  */

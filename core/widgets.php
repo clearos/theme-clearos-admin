@@ -1789,8 +1789,17 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             $paginate = TRUE;
     }
 
+    // Server side processing
+    // ----------------------
+    $server_side = '';
+    if (isset($options['ajax'])) {
+        $server_side = "'processing': true,\n\t\t'serverSide': true,\n\t\t'ajax': '" . $options['ajax'] . "',";
+        $paginate = TRUE;
+        $filter = TRUE;
+    }
+
     // Filter
-    //-------
+    // ------
 
     $filter = FALSE;
     if ((count($items) > 10) || (isset($options['filter']) && $options['filter']))
@@ -1940,18 +1949,20 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             { $sorting_cols },
             { 'bVisible': $first_column_visible, 'aTargets': [ 0 ] }
         ],
-        'oLanguage': {
-            'sLengthMenu': 'Show _MENU_ Rows',
-            'sSearch': '',
-            'oPaginate': {
-                'sPrevious': '',
-                'sNext': ''
+        'sDom': '<\"row\"<\"col-xs-9\"l><\"col-xs-3\"f>r>t<\"row\"<\"col-xs-4\"i><\"col-xs-8\"p>>',
+        'language': {
+            'lengthMenu': 'Show _MENU_ Rows',
+            'search': '',
+            'paginate': {
+                'previous': '<i class=\"fa fa-angle-left\"></i>',
+                'next': '<i class=\"fa fa-angle-right\"></i>'
             },
             " . $empty_table . "
         },
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', '" . $dom_id_var . "-row-' + iDataIndex)
         },
+        $server_side
         'stateSave': true,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
@@ -1968,6 +1979,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     })$row_reorder;
   }
   $(document).ready(function() {
+    $.fn.dataTable.ext.pager.numbers_length = 4;
     get_table_$dom_id_var();
   });
 </script>
