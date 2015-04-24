@@ -544,12 +544,14 @@ function clearos_is_authenticated() {
                 clearos_modal_infobox_open('sdn-login-dialog');
                 // If user closes modal box, redirect to non-edit mode
                 $('#sdn-login-dialog').on('hidden.bs.modal', function() {
-                    if (auth_options.no_redirect_on_cancel)
+                    if (auth_options.no_redirect_on_cancel) {
                         return;
-                    else if (auth_options.use_full_path_on_redirect)
+                    } else if (auth_options.use_full_path_on_redirect) {
                         window.location = my_location.fullpath;
-                    else if (!my_location.default_controller && auth_options.use_full_path_on_redirect)
                         return;
+                    } else if (!my_location.default_controller && auth_options.use_full_path_on_redirect) {
+                        return;
+                    }
                     if (auth_options.action_type == 'login' && !auth_options.reload_after_auth)
                         return;
                     window.location = '/app/' + my_location.basename;
