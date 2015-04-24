@@ -1949,10 +1949,11 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             { $sorting_cols },
             { 'bVisible': $first_column_visible, 'aTargets': [ 0 ] }
         ],
-        'sDom': '<\"row\"<\"col-xs-9\"l><\"col-xs-3\"f>r>t<\"row\"<\"col-xs-4\"i><\"col-xs-8\"p>>',
+        'sDom': '<\"row\"<\"col-xs-7\"l><\"col-xs-5\"f>r>t<\"row\"<\"col-xs-4\"i><\"col-xs-8\"p>>',
         'language': {
-            'lengthMenu': 'Show _MENU_ Rows',
+            'lengthMenu': '" . lang('base_show') . " _MENU_ " . lang('base_rows') . "',
             'search': '',
+            'searchPlaceholder': '" . lang('base_search') . "',
             'paginate': {
                 'previous': '<i class=\"fa fa-angle-left\"></i>',
                 'next': '<i class=\"fa fa-angle-right\"></i>'

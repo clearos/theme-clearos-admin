@@ -978,6 +978,16 @@ span.form-control.theme-control-no-border, input.form-control.theme-control-no-b
 span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 
 /* ----------------------- */
+/* Filter                  */
+/* ----------------------- */
+.dataTables_filter > label {
+  width: 100%;
+}
+.dataTables_filter > label > input.form-control {
+  width: 100%;
+}
+
+/* ----------------------- */
 /* Pagination              */
 /* ----------------------- */
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
