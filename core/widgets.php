@@ -1789,6 +1789,13 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             $paginate = TRUE;
     }
 
+    // Filter
+    // ------
+
+    $filter = FALSE;
+    if ((count($items) > 10) || (isset($options['filter']) && $options['filter']))
+        $filter = TRUE;
+
     // Server side processing
     // ----------------------
     $server_side = '';
@@ -1797,13 +1804,6 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         $paginate = TRUE;
         $filter = TRUE;
     }
-
-    // Filter
-    // ------
-
-    $filter = FALSE;
-    if ((count($items) > 10) || (isset($options['filter']) && $options['filter']))
-        $filter = TRUE;
 
     // Empty table
     if (isset($options['empty_table_message']))
