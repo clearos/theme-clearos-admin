@@ -3026,16 +3026,22 @@ function theme_icon($name, $options = NULL)
         else
             $class = explode(' ', $options['class']);
     }
+    // These map to Font-Awesome icon set found at
+    // http://fortawesome.github.io/Font-Awesome/icons/
     if ($name == 'speedometer')
         $icon = 'tachometer';
     else if ($name == 'info')
-        $icon = 'info';
+        $icon = 'info-circle';
     else if ($name == 'warning')
-        $icon = 'warning-sign';
+        $icon = 'warning';
     else if ($name == 'critical')
+        $icon = 'exclamation-circle';
+    else if ($name == 'flag')
         $icon = 'flag';
-    else
+    else if ($name == 'settings')
         $icon = 'gear';
+    else
+        $icon = 'question-circle';
 
     return "<i $id class='fa fa-$icon " . implode(' ' , $class) . "'></i>";
 }
