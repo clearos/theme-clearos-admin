@@ -93,13 +93,13 @@ a.highlight-link:hover {
   width: 100%;
 }
 .theme-text-bad-status, .theme-text-alert {
-  color: red;
+  color: #dd4b39;
 }
 .theme-text-warning-status, .theme-text-warning {
-  color: yellow;
+  color: #f39c12;
 }
 .theme-text-good-status, .theme-text-ok {
-  color: green;
+  color: #00a65a;
 }
 .theme-copyright {
   padding: 50px;

@@ -3028,6 +3028,12 @@ function theme_icon($name, $options = NULL)
     }
     if ($name == 'speedometer')
         $icon = 'tachometer';
+    else if ($name == 'info')
+        $icon = 'info';
+    else if ($name == 'warning')
+        $icon = 'warning-sign';
+    else if ($name == 'critical')
+        $icon = 'flag';
     else
         $icon = 'gear';
 
