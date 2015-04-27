@@ -1763,7 +1763,12 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         if ($default_rows >= 100)
             $default_rows = 100;
 
-        $row_options = '[10, 25, 50, 100, -1], [10, 25, 50, 100, "' . lang('base_all') . '"]';
+        // If we're using server side processing (eg. expecting large tables) disable 'all' option in number of rows to show.
+        // It can/will crush UI experience if there's hundreds of thousands of records
+        if (isset($options['ajax']))
+            $row_options = '[10, 25, 50, 100], [10, 25, 50, 100]';
+        else
+            $row_options = '[10, 25, 50, 100, -1], [10, 25, 50, 100, "' . lang('base_all') . '"]';
     }
 
     // Page specified...don't guess.
