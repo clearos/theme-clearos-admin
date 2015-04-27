@@ -11,40 +11,43 @@
 
 $(document).ready(function() {
 
-    var menu_category = $('input[name=options]:checked', '#category-select').attr('id');
-    // Hacks below keep style the same even though we're hiding li elements
-    $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
-    $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
-    $('.category').hide();
-    $('.' + menu_category).show();
-    $('#' + menu_category).parent().addClass('active');
-
-    $('#category-select label.btn').on('click', function (e) {
-        menu_category = $(this).find('input[name=options]:first').attr('id');
+    jQuery(".navbar-toggle").hide();
+    if (jQuery(".theme-wizard-active").length == 0) {
+        var menu_category = $('input[name=options]:checked', '#category-select').attr('id');
         // Hacks below keep style the same even though we're hiding li elements
         $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
         $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
         $('.category').hide();
         $('.' + menu_category).show();
-        if ($(this).find('input[name=options]:first').attr('checked')) {
-            if ($('.sidebar-menu-2').find('li.category.' + menu_category + '.active').length > 0)
-                $('.' + menu_category).removeClass('active');
-            else
-                $('.' + menu_category).addClass('active');
-        }
-        $('#category-select').find('input[name=options]').attr('checked', false);
-        $(this).find('input[name=options]:first').attr('checked', true);
-        $('.left-side').find('div#menu-no-access').remove();
-        if ($('.' + menu_category).length == 0) {
-            var options = {
-                id: 'menu-no-access'
-            };
-            $('.sidebar').after(theme_infobox('info', lang_menu_no_access, '', options));
-        }
-    });
+        $('#' + menu_category).parent().addClass('active');
 
-    $('li.category > a').on('click', function (e) {
-        e.preventDefault();
-        $(this).parent().toggleClass('active');
-    });
+        $('#category-select label.btn').on('click', function (e) {
+            menu_category = $(this).find('input[name=options]:first').attr('id');
+            // Hacks below keep style the same even though we're hiding li elements
+            $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
+            $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
+            $('.category').hide();
+            $('.' + menu_category).show();
+            if ($(this).find('input[name=options]:first').attr('checked')) {
+                if ($('.sidebar-menu-2').find('li.category.' + menu_category + '.active').length > 0)
+                    $('.' + menu_category).removeClass('active');
+                else
+                    $('.' + menu_category).addClass('active');
+            }
+            $('#category-select').find('input[name=options]').attr('checked', false);
+            $(this).find('input[name=options]:first').attr('checked', true);
+            $('.left-side').find('div#menu-no-access').remove();
+            if ($('.' + menu_category).length == 0) {
+                var options = {
+                    id: 'menu-no-access'
+                };
+                $('.sidebar').after(theme_infobox('info', lang_menu_no_access, '', options));
+            }
+        });
+
+        $('li.category > a').on('click', function (e) {
+            e.preventDefault();
+            $(this).parent().toggleClass('active');
+        });
+    }
 });

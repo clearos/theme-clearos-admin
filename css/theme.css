@@ -848,6 +848,11 @@ header:hover #magic-arrow {
 .theme-menu-2-category.active path {
   fill: #f0f0f0;
 }
+@media (max-width: 800px) {
+  #category-select .btn-group > .btn, .btn-group-vertical > .btn {
+     width: 45px;
+  }
+}
 /* ============================================= */
 /* W I D G E T S                                 */
 /* ============================================= */
@@ -2481,7 +2486,7 @@ ul.full_menu li.my-account a span.theme-alert-header {
   background: #dd0000;
   border-radius: 50%;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   height: 26px;
   line-height: 26px;
@@ -2749,7 +2754,7 @@ li.treeview.active ul.sub_menu {
   background: #dd0000;
   border-radius: 50%;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
   height: 24px;
   line-height: 24px;

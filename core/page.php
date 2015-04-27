@@ -647,22 +647,39 @@ function _get_header($page, $menus = array())
         if (isset($page['devel_alerts']['framework']))
             $alert_text .= "
                 <li>
-                    <a href='#'><i class='fa fa-gears warning'></i> Framework is in development mode</a>
+                    <a href='#'><i class='fa fa-gears theme-text-warning'></i> Framework is in development mode</a>
                 </li>
             ";
         if (isset($page['devel_alerts']['app']))
             $alert_text .= "
                 <li>
-                    <a href='#'><i class='fa fa-cubes warning'></i> This app is using development code</a>
+                    <a href='#'><i class='fa fa-cubes theme-text-warning'></i> This app is using development code</a>
                 </li>
             ";
         if (isset($page['devel_alerts']['theme']))
             $alert_text .= "
                 <li>
-                    <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
+                    <a href='#'><i class='fa fa-image theme-text-warning'></i> Theme is in development mode</a>
                 </li>
             ";
     }
+    if (isset($page['alerts']) && count($page['alerts']['events']) > 0) {
+        foreach ($page['alerts']['events'] as $alert) {
+            $alert_text .= "
+                <li>
+                    <a href='#'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . $alert['desc'] . "</a>
+                </li>
+            ";
+        }
+        // If we are showing 10 alerts (the limit), add a 'View all' option to let admin know there are (maybe) more
+        if ($page['alerts']['total'] > 10) {
+            $alert_text .= "
+                <li>
+                    <a href='/app/events'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . lang('base_view_all_events') . "</a>
+                </li>
+            ";
+        }
+    };
 
     $title = $page['title']; 
     if (isset($framework->session->userdata['wizard'])) {
@@ -731,9 +748,9 @@ function _get_header($page, $menus = array())
                         " . $main_menu['dashboard'] . "
                         " . $main_menu['marketplace'] . "
                         " . $main_menu['support'] . "
-                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
+                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ($page['alerts']['total'] > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
                             <ul class='dropdown-menu' role='menu'>
-                                 " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
+                                 " . ($page['alerts']['total'] > 0 ?  $alert_text : '') . "
                               <li class='divider'></li>
                               $my_account
                               <li class='divider'></li>
@@ -960,6 +977,24 @@ function _get_left_menu_1($page)
                 </li>
             ";
     }
+    if (isset($page['alerts']) && count($page['alerts']['events']) > 0) {
+        foreach ($page['alerts']['events'] as $alert) {
+            $alert_text .= "
+                <li>
+                    <a href='#'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . $alert['desc'] . "</a>
+                </li>
+            ";
+        }
+        // If we are showing 10 alerts (the limit), add a 'View all' option to let admin know there are (maybe) more
+        if ($page['alerts']['total'] > 10) {
+            $alert_text .= "
+                <li>
+                    <a href='/app/events'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . lang('base_view_all_events') . "</a>
+                </li>
+            ";
+        }
+    };
+
 
     foreach ($menu_data as $url => $page_meta) {
 
@@ -1022,7 +1057,7 @@ function _get_left_menu_1($page)
             $main_apps .= "<li class='". ($page_meta['category'] == $page['current_category'] ? " active" : "") . "'>";
             $main_apps .= (((count($page['devel_alerts'])) > 0 && strtolower($page_meta['category']) == 'system') ? 
             "<div class='bubbleDrop'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'>" .
-            ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . count($page['devel_alerts']) . "</span>" : '') . "</a>
+            ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "</a>
             <ul class='dropdown-menu' role='menu'>
                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
               <li class='divider'></li>
