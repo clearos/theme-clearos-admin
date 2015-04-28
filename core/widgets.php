@@ -346,10 +346,20 @@ function theme_field_checkbox($name, $value, $label, $error, $input_id, $options
 
     $select_html = ($value) ? ' checked' : '';
 
+    $add_classes = '';
+    if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $add_classes = implode(' ', $options['class']);
+        else
+            $add_classes = explode(' ', $options['class']);
+    }
+
     return "
         <div id='$field_id_html' class='form-group theme-field-checkboxes'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'><input type='checkbox' name='$name' id='$input_id' class='form-control theme-control-no-border' $select_html value='1'></div>
+            <div class='col-sm-7 theme-field-right'>
+                <input type='checkbox' name='$name' id='$input_id' class='form-control theme-control-no-border $add_classes' $select_html value='1'>
+            </div>
         </div>
     ";
 }
@@ -402,18 +412,24 @@ function theme_field_dropdown($name, $value, $label, $error, $values, $input_id,
     $field_id_html = (isset($options['field_id'])) ? $options['field_id'] : $input_id . '_field';
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
     $error_id_html = (isset($options['error_id'])) ? $options['error_id'] : $input_id . '_error';
-    $add_classes = (isset($options['class'])) ? $add_classes = ' ' . implode(' ', $options['class']) : '';
+    $add_classes = '';
+    if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $add_classes = implode(' ', $options['class']);
+        else
+            $add_classes = explode(' ', $options['class']);
+    }
 
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
     if (isset($options['no-field']))
-        return form_dropdown($name, $values, $value, "class='form-control theme-no-field theme-dropdown$add_classes'$input_id_html") . " $error_html";
+        return form_dropdown($name, $values, $value, "class='form-control theme-no-field theme-dropdown $add_classes'$input_id_html") . " $error_html";
     else
         return "
             <div id='$field_id_html' class='form-group theme-field-dropdown'>
                 <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
                 <div class='col-sm-7 theme-field-right'>" .
-                    form_dropdown($name, $values, $value, "class='form-control theme-dropdown$add_classes'$input_id_html") . " $error_html
+                    form_dropdown($name, $values, $value, "class='form-control theme-dropdown $add_classes'$input_id_html") . " $error_html
                 </div>
             </div>
         ";
@@ -515,14 +531,20 @@ function theme_field_multiselect_dropdown($name, $value, $label, $error, $values
     $field_id_html = (isset($options['field_id'])) ? $options['field_id'] : $input_id . '_field';
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
     $error_id_html = (isset($options['error_id'])) ? $options['error_id'] : $input_id . '_error';
-    $add_classes = (isset($options['class'])) ? $add_classes = ' ' . explode(' ', $options['class']) : '';
+    $add_classes = '';
+    if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $add_classes = implode(' ', $options['class']);
+        else
+            $add_classes = explode(' ', $options['class']);
+    }
 
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
     return "
         <div id='$field_id_html' class='form-group theme-multiselect-dropdown'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'>" . form_multiselect($name, $values, $value, "class='form-control theme-dropdown$add_classes'$input_id_html") . " $error_html</div>
+            <div class='col-sm-7 theme-field-right'>" . form_multiselect($name, $values, $value, "class='form-control theme-dropdown $add_classes'$input_id_html") . " $error_html</div>
         </div>
     ";
 }
@@ -576,10 +598,20 @@ function theme_field_textarea($name, $value, $label, $error, $input_id, $options
 
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
+    $add_classes = '';
+    if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $add_classes = implode(' ', $options['class']);
+        else
+            $add_classes = explode(' ', $options['class']);
+    }
+
     return "
         <div id='$field_id_html' class='form-group theme-field-textarea" . $hide_field . "'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right theme-field-textarea-box'> <textarea name='$name' id='$input_id' class='form-control'>$value</textarea>$error_html</div>
+            <div class='col-sm-7 theme-field-right theme-field-textarea-box'>
+              <textarea name='$name' id='$input_id' class='form-control $add_classes'>$value</textarea>$error_html
+            </div>
         </div>
     ";
 }
@@ -609,14 +641,21 @@ function theme_field_toggle_enable_disable($name, $selected, $label, $error, $va
     $field_id_html = (isset($options['field_id'])) ? $options['field_id'] : $input_id . '_field';
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
     $error_id_html = (isset($options['error_id'])) ? $options['error_id'] : $input_id . '_error';
-    $add_classes = (isset($options['class'])) ? $add_classes = ' ' . explode(' ', $options['class']) : '';
+    if (isset($options['class'])) {
+        if (is_array($options['class']))
+            $add_classes = implode(' ', $options['class']);
+        else
+            $add_classes = explode(' ', $options['class']);
+    }
 
     $error_html = (empty($error)) ? "" : "<span class='theme-validation-error' id='$error_id_html'>$error</span>";
 
     return "
         <div id='$field_id_html' class='form-group theme-field-toggle'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right'>" . form_dropdown($name, $values, $selected, "class='form-control theme-dropdown$add_classes'$input_id_html") . " $error_html </div>
+            <div class='col-sm-7 theme-field-right'>" .
+            form_dropdown($name, $values, $selected, "class='form-control theme-dropdown $add_classes'$input_id_html") . " $error_html
+            </div>
         </div>
     ";
 }
