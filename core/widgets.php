@@ -1958,6 +1958,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         'language': {
             'lengthMenu': '" . lang('base_show') . " _MENU_ " . lang('base_rows') . "',
             'search': '',
+            'sProcessing': '',
             'searchPlaceholder': '" . lang('base_search') . "',
             'paginate': {
                 'previous': '<i class=\"fa fa-angle-left\"></i>',
