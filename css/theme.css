@@ -771,6 +771,15 @@ header:hover #magic-arrow {
 .theme-menu-2-category {
   padding: 2px 4px 0px 4px;
 }
+.menu-2-sub-category {
+  display: none;
+}
+.menu-2-sub-category a {
+  display: block;
+}
+.menu-2-sub-category.active, ul.menu-2-sub-category ul.sub_menu.active {
+  display: block;
+}
 .theme-menu-2-list div.btn-group {
   background: #fafafa;
 }
@@ -802,7 +811,9 @@ header:hover #magic-arrow {
 }
 .sidebar .sidebar-menu-2 > li > a > .fa,
 .sidebar .sidebar-menu-2 > li > a > .glyphicon,
-.sidebar .sidebar-menu-2 > li > a > .ion {
+.sidebar .sidebar-menu-2 > li > a > .ion,
+.left_nav .menu-2-sub-category > a > .fa
+{
   width: 20px;
 }
 .sidebar .sidebar-menu-2 .treeview-menu {
@@ -848,6 +859,23 @@ header:hover #magic-arrow {
 .theme-menu-2-category.active path {
   fill: #f0f0f0;
 }
+li.treeview ul.sub_menu {
+ display:none!important;
+} 
+
+li.treeview.active ul.sub_menu {
+ display:block!important;
+} 
+.small_menu .menu-2-sub-category {
+  padding-left: 15px;
+}
+
+.small_menu.sidebar-menu-2 li.menu-2-category a {
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
 @media (max-width: 800px) {
   #category-select .btn-group > .btn, .btn-group-vertical > .btn {
      width: 45px;
@@ -2711,14 +2739,6 @@ div.my-account > a:hover {text-decoration: none; color: #999;}
 
 .main-content aside ul.left_nav > li.treeview > a{padding-left: 20px;}
 .main-content aside ul.left_nav > li.treeview > a small{margin-right: 5px;}
-
-li.treeview ul.sub_menu {
- display:none!important;
-} 
-
-li.treeview.active ul.sub_menu {
- display:block!important;
-} 
 
 .clearos-svg.clearfoundation path,
 .clearos-svg.clearfoundation circle,
