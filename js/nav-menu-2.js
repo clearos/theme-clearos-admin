@@ -66,7 +66,7 @@ $(document).ready(function() {
     if (jQuery(".theme-wizard-active").length == 0) {
         var menu_category = $('input[name=options]:checked', '#category-select').attr('id');
         // Hacks below keep style the same even though we're hiding li elements
-        $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
+        $('li.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
         $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
         $('.category').hide();
         $('.' + menu_category).show();
@@ -75,7 +75,7 @@ $(document).ready(function() {
         $('#category-select label.btn').on('click', function (e) {
             menu_category = $(this).find('input[name=options]:first').attr('id');
             // Hacks below keep style the same even though we're hiding li elements
-            $('.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
+            $('li.' + menu_category).filter(':first').css('border-top', '1px solid #dbdbdb');
             $('.' + menu_category + ' a').filter(':first').css('border-top', '1px solid #fff');
             $('.category').hide();
             $('.' + menu_category).show();
