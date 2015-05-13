@@ -1497,8 +1497,8 @@ function theme_chart_container($title, $chart_id, $options)
     return "
         <div class='box theme-clear'$id_html>
           <div class='box-header'>
+            <div class='theme-box-tools pull-right'>$action</div>
             <h3 class='box-title'>$title</h3>
-            <div class='theme-summary-table-action'>$action</div>
           </div>
           <div class='box-body'><div class='theme-chart-container $size " . implode(' ', $class) . "' id='$chart_id' $override_size $data></div></div>
           <div class='box-footer'>$footer_content</div>
@@ -1642,8 +1642,8 @@ function theme_action_table($title, $anchors, $items, $options = NULL)
 
 <div class='box'>
   <div class='box-header'>
+    <div class='theme-box-tools pull-right'>$add_html</div>
     <h3 class='box-title'>$title</h3>
-    <div class='theme-summary-table-action'>$add_html</div>
   </div>
   <div class='box-body'>
     <table class='table table-striped' id='$dom_id'>
