@@ -1908,9 +1908,9 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     $col_widths = '';
     if (isset($options['col-widths'])) {
-        $col_widths .= "\"aoColumns\": [\n";
+        $col_widths .= "\"columns\": [\n";
         foreach ($options['col-widths'] as $width)
-                    $col_widths .= "{sWidth: '$width'},\n";
+            $col_widths .= "{ 'width': " . ($width == NULL ? "null" : "'$width'") . "},\n";
         $col_widths .= "],\n";
     }
 
@@ -1989,7 +1989,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 <script type='text/javascript'>
   function get_table_$dom_id_var() {
     return $('#" . $dom_id_selector . "').dataTable({
-        'aoColumnDefs': [
+        'columnDefs': [
             { $sorting_cols },
             { 'bVisible': $first_column_visible, 'aTargets': [ 0 ] }
         ],
@@ -2009,6 +2009,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             $(nRow).attr('id', '" . $dom_id_var . "-row-' + iDataIndex)
         },
         $server_side
+        $col_widths
         'stateSave': true,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
@@ -2017,11 +2018,9 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         'bInfo': " . ($paginate ? 'true' : 'false') . ",
         'bFilter': " . ($filter ? 'true' : 'false') . ",
         'bSort': " . ($sort ? 'true' : 'false') . ",
-        " . $sorting_type .
-            (isset($col_widths) ? "\"bAutoWidth\": false," : "") .
-            $col_widths . "
-            $group_javascript
-            \"aaSorting\": [ $first_column_fixed_sort ]
+        $sorting_type
+        $group_javascript
+        'order': [ $first_column_fixed_sort ]
     })$row_reorder;
   }
   $(document).ready(function() {
