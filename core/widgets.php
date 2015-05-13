@@ -1741,7 +1741,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     if (isset($options['id']))
         $dom_id = $options['id'];
     else
-        $dom_id = 'tbl_id_' . rand(0, 1000);
+        $dom_id = 'tbl_' . preg_replace('/[^a-z0-9\-_:\.]/','', strtolower($title));
 
     // Item parsing
     //-------------
