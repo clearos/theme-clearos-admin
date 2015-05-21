@@ -12,8 +12,8 @@
 $(document).ready(function() {
 
     //jQuery(".navbar-toggle").hide();
-    jQuery(".theme-menu-2 > div.sidebar form.sidebar-form").remove();
     if (jQuery(window).width() < 801) {
+        jQuery(".theme-menu-2 > div.sidebar form.sidebar-form").remove();
         var category = {
             'cloud': '',
             'network': '',
