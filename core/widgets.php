@@ -726,6 +726,13 @@ function theme_field_view($label, $text, $name = NULL, $value = NULL, $input_id 
                 </div>
             </div>
         ";
+    } else if (isset($options['no_label']) && $options['no_label']) {
+        return "
+            <div id='$field_id_html' class='form-group theme-fieldview" . $hide_field . "'>
+                <div class='col-sm-12 theme-field-right'><span class='form-control$is_bool' id='$text_id_html'>" . preg_replace("/\n/", "<br>", $text) . "</span>$input_html</div>
+                <label class='control-label' for='$input_id' id='$label_id_html'></label>
+            </div>
+        ";
     } else {
         return "
             <div id='$field_id_html' class='form-group theme-fieldview" . $hide_field . "'>
