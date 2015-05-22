@@ -606,14 +606,25 @@ function theme_field_textarea($name, $value, $label, $error, $input_id, $options
             $add_classes = explode(' ', $options['class']);
     }
 
-    return "
-        <div id='$field_id_html' class='form-group theme-field-textarea" . $hide_field . "'>
-            <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
-            <div class='col-sm-7 theme-field-right theme-field-textarea-box'>
-              <textarea name='$name' id='$input_id' class='form-control $add_classes'>$value</textarea>$error_html
+    if (isset($options['no_label'])) {
+        return "
+            <div id='$field_id_html' class='form-group theme-field-textarea" . $hide_field . "'>
+                <div class='col-sm-12 theme-field-right theme-field-textarea-box'>
+                  <textarea name='$name' id='$input_id' class='form-control $add_classes'>$value</textarea>$error_html
+                </div>
+                <label class='control-label' for='$input_id' id='$label_id_html'></label>
             </div>
-        </div>
-    ";
+        ";
+    } else {
+        return "
+            <div id='$field_id_html' class='form-group theme-field-textarea" . $hide_field . "'>
+                <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
+                <div class='col-sm-7 theme-field-right theme-field-textarea-box'>
+                  <textarea name='$name' id='$input_id' class='form-control $add_classes'>$value</textarea>$error_html
+                </div>
+            </div>
+        ";
+    }
 }
 
 /**
