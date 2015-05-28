@@ -272,6 +272,8 @@ a.highlight-link:hover {
 }
 .main-wrapper header > ul > li.placeholder {
   border-top-color: #999999;
+  background: #ffffff;
+  border-bottom: 2px solid #999999;
 }
 .main-wrapper header > ul > li.ClearOS > a.ci-ClearOS:before {
   margin-left: 35px;

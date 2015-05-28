@@ -87,6 +87,10 @@ ul.left_nav > li > a i {
   border-top-color: #999999;
   border-bottom: 2px solid #c2510f;
 }
+.main-wrapper header > ul > li.placeholder {
+  border-top-color: #999999;
+  border-bottom: 2px solid #c2510f;
+}
 .main-wrapper header > ul > li.ClearOS.active > a:after, .main-wrapper header > ul > li.ClearOS.open > a:after {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
