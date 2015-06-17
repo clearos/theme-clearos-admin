@@ -1718,6 +1718,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     // Tabs are just for clean indentation HTML output
     $header_html = (isset($options['row-enable-disable']) ? '<th></th>' : '');
+    $footer_html = $header_html;
     $empty_row = (isset($options['row-enable-disable']) ? '<td></td>' : '');
     $no_container = (isset($options['no_container']) ? TRUE : FALSE);
 
@@ -1730,6 +1731,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
+        $footer_html .= "\n\t\t" . "<th></th>";
         $empty_row .= '<td>&nbsp; </td>';
     }
 
@@ -1744,6 +1746,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
+        $footer_html .= "\n\t\t" . "<th></th>";
         $empty_row .= "<td>&nbsp; </td>";
     }
 
@@ -2001,6 +2004,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
       <tbody>
         $item_html
       </tbody>
+      <tfoot>$footer_html</tfoot>
     </table>
   </div>
 </div>
