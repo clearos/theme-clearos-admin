@@ -1818,7 +1818,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
 
     // Show a reasonable number of entries
     if ((count($items) > 100) || (isset($options['paginate_large']) && $options['paginate_large'])) {
-        $row_options = '[10, 25, 50, 100, 200, 250, 500, -1], [10, 25, 50, 100, 200, 250, 500, "' . lang('base_all') . '"]';
+        $row_options = '[5, 10, 25, 50, 100, 200, 250, 500, -1], [5, 10, 25, 50, 100, 200, 250, 500, "' . lang('base_all') . '"]';
     } else {
         if ($default_rows >= 100)
             $default_rows = 100;
@@ -2091,6 +2091,14 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
     }
 
+    // Empty table
+    if (isset($options['empty_table_message']))
+        $empty_table = "
+            \"sEmptyTable\": \"" . $options['empty_table_message'] . "\",
+        ";
+    else
+        $empty_table = '';
+
     // Action column?
     $action_col = TRUE;
     if (isset($options['no_action']) && $options['no_action'])
@@ -2206,6 +2214,9 @@ $(document).ready(function() {
                         { \"bSortable\": false, \"aTargets\": [ " . ($action_col ? "-1" : "") . " ] },
                         { \"bVisible\": $first_column_visible, \"aTargets\": [ 0 ] }
                 ],
+        'language': {
+            " . $empty_table . "
+        },
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
             $(nRow).attr('id', '" . $dom_id . "-row-' + iDataIndex)
         },
