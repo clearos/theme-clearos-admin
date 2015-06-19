@@ -2588,6 +2588,8 @@ function theme_modal_info($id, $title, $message, $options = NULL)
     $on_close = '';
     if (isset($options['redirect_on_close']))
         $on_close = "window.location = '" . $options['redirect_on_close'] . "';";
+    elseif (isset($options['call_back']))
+        $on_close = $options['call_back'];
 
     return "
             <div id='$id' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='$id' aria-hidden='true' style='z-index: 9999;'>

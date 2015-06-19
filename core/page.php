@@ -802,7 +802,28 @@ function _get_footer($page)
     if ($page['os_name'] == "ClearOS Community")
         $vendor = "ClearFoundation";
 
+    $modals = '';
+    if (isset($page['subscription_notice']) && !empty($page['subscription_notice'])) {
+        $modals = theme_modal_info(
+            'sdn_subscription_notice',
+            $page['subscription_notice']['title'],
+            $page['subscription_notice']['message'],
+            array(
+                'type' => 'warning',
+                'call_back' => 'acknowledge_subscription_notice(' . $page['subscription_notice']['id'] . ');'
+            )
+        );
+        $modals .= "
+            <script type='text/javascript'>
+                $(document).ready(function() {
+                    clearos_modal_infobox_open('sdn_subscription_notice');
+                });
+            </script>
+        ";
+    }
     return "
+      <!-- Modal Dialogs -->
+      $modals
       <!-- Footer -->
       <div class='clearfix'></div>
       <footer>Copyright &copy; 2009 - 2015 $vendor</footer>
