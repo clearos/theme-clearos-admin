@@ -803,21 +803,34 @@ function _get_footer($page)
         $vendor = "ClearFoundation";
 
     $modals = '';
-    if (isset($page['subscription_notice']) && !empty($page['subscription_notice'])) {
+    if (isset($page['sdn_notice']) && is_array($page['sdn_notice'])) {
         $modals = theme_modal_info(
-            'sdn_subscription_notice',
-            $page['subscription_notice']['title'],
-            $page['subscription_notice']['message'],
+            'sdn_notice',
+            $page['sdn_notice']['title'],
+            $page['sdn_notice']['message'],
             array(
-                'type' => 'warning',
-                'call_back' => 'acknowledge_subscription_notice(' . $page['subscription_notice']['id'] . ');'
+                'type' => $page['sdn_notice']['type'],
+                'call_back' => 'acknowledge_sdn_notice(' . $page['sdn_notice']['id'] . ');'
             )
         );
         $modals .= "
             <script type='text/javascript'>
                 $(document).ready(function() {
-                    clearos_modal_infobox_open('sdn_subscription_notice');
+                    clearos_modal_infobox_open('sdn_notice');
                 });
+
+                function acknowledge_sdn_notice(id) {
+                    $.ajax({
+                        url: '/app/registration/ajax/acknowledge_sdn_notice/' + id,
+                        method: 'GET',
+                        dataType: 'json',
+                        success : function(json) {
+                        },
+                        error: function (xhr, text_status, error_thrown) {
+                        }
+                    });
+                }
+
             </script>
         ";
     }
