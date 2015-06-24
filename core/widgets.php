@@ -1893,7 +1893,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     // This is a pretty big hack job...pretty tough to expose all the functionality datatables have
     $sorting_type = '';
     if (isset($options['sorting-type'])) {
-        $sorting_type = "\"columnDefs\": [\n";
+        $sorting_type = "\"columns\": [\n";
 
         foreach ($options['sorting-type'] as $s_type) {
             if ($s_type == NULL) {
