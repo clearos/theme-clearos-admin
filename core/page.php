@@ -48,20 +48,6 @@
 
 function theme_page($page)
 {
-    // The following is just some logic for showing some alerts in the
-    // header when a developer is in development mode.
-
-    if ($_SERVER['SERVER_PORT'] == 1501 && !preg_match('/.*hide_devel$/', $_SERVER['REQUEST_URI'])) {
-        if (!preg_match('/^\/usr\/clearos/', __FILE__))
-            $page['devel_alerts']['theme'] = TRUE;
-    }
-
-    if ($page['devel_app_source'] != 'Live')
-        $page['devel_alerts']['app'] = TRUE;
-
-    if ($page['devel_framework_source'] != 'Live')
-        $page['devel_alerts']['framework'] = TRUE;
-
     // Legacy support for 'report' instead of MY_Page::TYPE_REPORTS
     //-------------------------------------------------------------
 
@@ -641,33 +627,14 @@ function _get_header($page, $menus = array())
     else
         $os_name = preg_replace('/ClearOS\s*/', '', $page['os_name']);
 
-    if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
-        // TODO - Translate
-        $alert_text = '';
-        if (isset($page['devel_alerts']['framework']))
-            $alert_text .= "
-                <li>
-                    <a href='#'><i class='fa fa-gears theme-text-warning'></i> Framework is in development mode</a>
-                </li>
-            ";
-        if (isset($page['devel_alerts']['app']))
-            $alert_text .= "
-                <li>
-                    <a href='#'><i class='fa fa-cubes theme-text-warning'></i> This app is using development code</a>
-                </li>
-            ";
-        if (isset($page['devel_alerts']['theme']))
-            $alert_text .= "
-                <li>
-                    <a href='#'><i class='fa fa-image theme-text-warning'></i> Theme is in development mode</a>
-                </li>
-            ";
-    }
     if (isset($page['alerts']) && count($page['alerts']['events']) > 0) {
         foreach ($page['alerts']['events'] as $alert) {
+            $i = theme_icon('critical', array('class' => 'theme-text-alert'));
+            if ($alert['flags'] & 2)
+                $i = theme_icon('warning', array('class' => 'theme-text-warning'));
             $alert_text .= "
                 <li>
-                    <a href='#'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . $alert['desc'] . "</a>
+                    <a href='#'>$i " . $alert['desc'] . "</a>
                 </li>
             ";
         }
@@ -732,48 +699,51 @@ function _get_header($page, $menus = array())
             </li> 
         ";
 
-    return "
-             <header class='mainheader'>
-             <div class='navbar-header'>
-              <button data-target='.bs-navbar-collapse' data-toggle='collapse' type='button' class='navbar-toggle'>
-                <i class='fa fa-bars'></i>
-              </button>
-            </div>
+    return "<header class='mainheader'>
+              <div class='navbar-header'>
+                <button data-target='.bs-navbar-collapse' data-toggle='collapse' type='button' class='navbar-toggle'>
+                  <i class='fa fa-bars'></i>
+                </button>
+              </div>
             
-                <ul class='full_menu'>
+              <ul class='full_menu'>
                 " . (! isset($framework->session->userdata['wizard']) ? "
-                        <li class='ClearOS " . $active_header['home'] . "'>
-                            <a href='#' class='ci-ClearOS'>&nbsp;</a>
-                        </li>
-                        " . $main_menu['dashboard'] . "
-                        " . $main_menu['marketplace'] . "
-                        " . $main_menu['support'] . "
-                        <li class='my-account dropdown " . $active_header['my-account'] . "'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'><i class='ci-my-account'></i> " . ($page['alerts']['total'] > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "<span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span></a>
-                            <ul class='dropdown-menu' role='menu'>
-                                 " . ($page['alerts']['total'] > 0 ?  $alert_text : '') . "
-                              <li class='divider'></li>
-                              $my_account
-                              <li class='divider'></li>
-                              <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
-                            </ul>
-                        </li>
-                        " : "
-                        <li class='ClearOS theme-wizard-active'>
-                            <a href='#' class='ci-ClearOS'>&nbsp;</a>
-                        </li> 
-                        ") . "
-                    </ul>
-                    <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
-                        <a href='#' class='ci-ClearOS'>&nbsp;</a>
-                    </div> 
-
-
-                    <div class='small_menu'></div>
-                    <div class='clearfix'></div>
+                <li class='ClearOS " . $active_header['home'] . "'>
+                  <a href='#' class='ci-ClearOS'>&nbsp;</a>
+                </li>
+                " . $main_menu['dashboard'] . "
+                " . $main_menu['marketplace'] . "
+                " . $main_menu['support'] . "
+                <li class='my-account dropdown " . $active_header['my-account'] . "'>
+                  <a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'>
+                    <i class='ci-my-account'></i> " .
+                    ($page['alerts']['total'] > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "
+                    <span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . 
+                    ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span>
+                  </a>
+                  <ul class='dropdown-menu' role='menu'>
+                    " . ($page['alerts']['total'] > 0 ?  $alert_text : '') . "
+                    <li class='divider'></li>
+                      $my_account
+                    <li class='divider'></li>
+                    <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
+                  </ul>
+                </li>
+                " : "
+                <li class='ClearOS theme-wizard-active'>
+                  <a href='#' class='ci-ClearOS'>&nbsp;</a>
+                </li> 
+                ") . "
+              </ul>
+              <div class='ClearOS logo1 " . (($page['current_basename'] == '') ? "active" : "") . "'>
+                <a href='#' class='ci-ClearOS'>&nbsp;</a>
+              </div> 
+              <div class='small_menu'></div>
+              <div class='clearfix'></div>
             </header>
-            <div class='page-title'><h1 id='theme-clearos-os-name'>$os_name</h1><div class='sitepath'>$title</div>
-            " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
-            </div>"
+          <div class='page-title'><h1 id='theme-clearos-os-name'>$os_name</h1><div class='sitepath'>$title</div>
+          " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
+          </div>"
         ;
 }
 
@@ -989,33 +959,14 @@ function _get_left_menu_1($page)
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
     $current_category = '';
     $current_subcategory = '';
-    if (isset($page['devel_alerts']) && count($page['devel_alerts']) > 0) {
-        // TODO - Translate
-        $alert_text = '';
-        if (isset($page['devel_alerts']['framework']))
-            $alert_text .= "
-                <li class='dev_menu'>
-                    <a href='#'><i class='fa fa-gears warning'></i> Framework is in development mode</a>
-                </li>
-            ";
-        if (isset($page['devel_alerts']['app']))
-            $alert_text .= "
-                <li class='dev_menu'>
-                    <a href='#'><i class='fa fa-cubes warning'></i> This app is using development code</a>
-                </li>
-            ";
-        if (isset($page['devel_alerts']['theme']))
-            $alert_text .= "
-                <li class='dev_menu'>
-                    <a href='#'><i class='fa fa-image warning'></i> Theme is in development mode</a>
-                </li>
-            ";
-    }
     if (isset($page['alerts']) && count($page['alerts']['events']) > 0) {
         foreach ($page['alerts']['events'] as $alert) {
+            $i = theme_icon('critical', array('class' => 'theme-text-alert'));
+            if ($alert['flags'] & 2)
+                $i = theme_icon('warning', array('class' => 'theme-text-warning'));
             $alert_text .= "
                 <li>
-                    <a href='#'><i class='fa fa-exclamation-circle theme-text-alert'></i> " . $alert['desc'] . "</a>
+                    <a href='#'>$i " . $alert['desc'] . "</a>
                 </li>
             ";
         }
