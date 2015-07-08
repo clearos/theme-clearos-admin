@@ -517,12 +517,15 @@ function get_option_key(obj, keys) {
  * @param string $format     format information
  * @param array  $series     converted series data
  * @param array  $labels     labels for series data
- * @param object $custom     custom options
+ * @param object $options    options
  *
  * Format information is passed via the $format variable.  Information includes:
  * - format.xaxis_label = Label for the x-axis
  * - format.yaxis_label = Label for the y-axis
  * - format.data_points = Number of data points to include in the chart
+ * 
+ * Supported $options:
+ * - FIXME: document these and make generic (i.e. no flot-specific stuff)
  */
 
 function theme_chart(
@@ -534,8 +537,7 @@ function theme_chart(
     series_labels,
     series_units,
     series_title,
-    custom
-)
+    options
 {
     //-------------------------
     // O V E R V I E W
@@ -557,8 +559,8 @@ function theme_chart(
     data_set = Array();
     ticks = Array();
 
-    if (typeof custom === 'undefined')
-        custom = new Object();
+    if (typeof options === 'undefined')
+        options = new Object();
 
     // Pie chart data set
     if (chart_type == 'pie') {
@@ -571,7 +573,7 @@ function theme_chart(
             data_set[i] = {
                 label: label,
                 data: data[i][1],
-                color: get_option_key(custom, 'series.color.' + i) != null ? get_option_key(custom, 'series.color.' + i) : i
+                color: get_option_key(options, 'series.color.' + i) != null ? get_option_key(options, 'series.color.' + i) : i
             }
         }
 
@@ -607,13 +609,13 @@ function theme_chart(
     // charts.  A few bits of data from above (e.g. "ticks" in bar charts)
     // come from the data set manipulation above.
 
-    var options = Array();
+    var chart_options = Array();
 
     // Bar
     //----
 
     if (chart_type == 'bar') {
-        options = {
+        chart_options = {
             series: {
                 bars: {
                     show: true
@@ -636,13 +638,13 @@ function theme_chart(
     //----
 
     } else if (chart_type == 'pie') {
-        options = {
+        chart_options = {
             series: {
                 pie: {
                     show: true,
-                    innerRadius: (get_option_key(custom, 'pie.inner_radius') != null ? custom.pie.inner_radius : 0.0),
+                    innerRadius: (get_option_key(options, 'pie.inner_radius') != null ? options.pie.inner_radius : 0.0),
                     label: {
-                        show: (get_option_key(custom, 'pie.label.show') != null ? true: true),
+                        show: (get_option_key(options, 'pie.label.show') != null ? true: true),
                         radius: .5,
                         color: '#ffffff'
                     }
@@ -655,16 +657,16 @@ function theme_chart(
             },
         };
 
-        if (get_option_key(custom, 'pie.label_format') != null)
-            options.series.pie.label['formatter'] = window[custom.pie.label_format];
-        if (get_option_key(custom, 'pie.legend.show') != null)
-            options['legend']['show'] = custom.pie.legend.show;
+        if (get_option_key(options, 'pie.label_format') != null)
+            chart_options.series.pie.label['formatter'] = window[options.pie.label_format];
+        if (get_option_key(options, 'pie.legend.show') != null)
+            chart_options['legend']['show'] = options.pie.legend.show;
 
     // Timeline
     //---------
 
     } else if (chart_type == 'timeline') {
-        options = {
+        chart_options = {
             series: {
                 lines: { show: true },
                 points: { show: true },
@@ -685,7 +687,7 @@ function theme_chart(
 
     } else if (chart_type == 'timeline_stack') {
 
-        options = {
+        chart_options = {
             series: {
                 stack: true,
                 lines: {
@@ -709,17 +711,17 @@ function theme_chart(
     // See $format information in function doc above.
 
     if (format.yaxis_label) {
-        if (typeof options['yaxis'] == 'undefined')
-            options['yaxis'] = Array();
+        if (typeof chart_options['yaxis'] == 'undefined')
+            chart_options['yaxis'] = Array();
 
-        options['yaxis']['axisLabel'] = format.yaxis_label;
+        chart_options['yaxis']['axisLabel'] = format.yaxis_label;
     }
 
     if (format.xaxis_label) {
-        if (typeof options['xaxis'] == 'undefined')
-            options['xaxis'] = Array();
+        if (typeof chart_options['xaxis'] == 'undefined')
+            chart_options['xaxis'] = Array();
 
-        options['xaxis']['axisLabel'] = format.xaxis_label;
+        chart_options['xaxis']['axisLabel'] = format.xaxis_label;
     }
 
     //-----------------
@@ -729,8 +731,8 @@ function theme_chart(
     // Interactive data points
     //------------------------
 
-    options['tooltip'] = 'true';
-    options['tooltipOpts'] = {
+    chart_options['tooltip'] = 'true';
+    chart_options['tooltipOpts'] = {
         content: '%p.0%, %s',
         shifts: {
           x: 20,
@@ -767,7 +769,7 @@ function theme_chart(
     // Show plot
     //----------
 
-    $.plot("#" + chart_id, data_set, options);
+    $.plot("#" + chart_id, data_set, chart_options);
 }
 
 function getPosition(element) {
