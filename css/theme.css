@@ -1121,6 +1121,13 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 .theme-chart-container .legend td.legendLabel {
   padding-left: 5px;
 }
+.pieLabel {
+  color: white;
+}
+.legendLabel {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 /* ----------------------- */
 /* Daemons                 */
