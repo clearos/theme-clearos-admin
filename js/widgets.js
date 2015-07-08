@@ -564,8 +564,10 @@ function theme_chart(
     if (chart_type == 'pie') {
         for (i = 0; i < data.length; i++) {
             label = data[i][0];
+
             if (data[i][2] == 'format_ip')
                 label = clearos_human_readable(data[i][0], 'ip');
+
             data_set[i] = {
                 label: label,
                 data: data[i][1],
@@ -576,10 +578,12 @@ function theme_chart(
     // Bar chart data set
     } else if (chart_type == 'bar') {
         var data_points = Array();
+
         for (i = 0; i < data.length; i++) {
             ticks[i] = [ i, data[i][0] ];
             data_points[i] = [i, data[i][1]]
         }
+
         data_set[0] = {
             label: series_labels[0],
             data: data_points
