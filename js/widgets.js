@@ -538,6 +538,7 @@ function theme_chart(
     series_units,
     series_title,
     options
+)
 {
     //-------------------------
     // O V E R V I E W
