@@ -743,6 +743,12 @@ function theme_chart(
                     },
                 }
             },
+            legend: {
+                    show: true,
+                    labelFormatter: function (label, series) {
+                        return '<span style="font-weight: bold">' + label + '</span`>';
+                    },
+            },
             grid: {
                 hoverable: false,
                 clickable: false,
