@@ -638,6 +638,20 @@ function theme_chart(
             data: bar_data
         }
 
+    // Horizontal bar chart data set
+    } else if (chart_type == 'horizontal_bar') {
+        var bar_data = Array();
+
+        for (i = 0; i < data_points; i++) {
+            ticks[i] = [ i, data[i][0] ];
+            bar_data[i] = [data[i][1], i]
+        }
+
+        data_set[0] = {
+            label: series_titles[0],
+            data: bar_data
+        }
+
     // Normal data set
     } else {
         for (i = 0; i < series.length; i++) {
@@ -676,9 +690,45 @@ function theme_chart(
                 hoverable: true,
                 clickable: true,
             },
+            bars: {
+                lineWidth: 1,
+            },
             xaxis: {
               ticks: ticks
             }
+        };
+
+    // Horizontal Bar
+    //---------------
+
+    } else if (chart_type == 'horizontal_bar') {
+        chart_options = {
+            series: {
+                bars: {
+                    show: true
+                },
+                lines: {
+                    show: false,
+                    fill: true,
+                },
+            },
+            grid: {
+                hoverable: true,
+                clickable: true,
+            },
+            bars: {
+                lineWidth: 1,
+                horizontal: true,
+                barWidth: 0.8,
+                align: "center",
+                fillColor: { colors: [{ opacity: 0.5 }, { opacity: 1}] },
+            },
+            yaxis: {
+                ticks: ticks,
+            },
+            xaxis: {
+                minTickSize: 1,
+            },
         };
 
     // Pie
