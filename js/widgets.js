@@ -599,13 +599,6 @@ function theme_chart(
     var baseline_data_points = (options.baseline_data_points) ? options.baseline_data_points : 200;
     var data_points = (data.length > baseline_data_points) ? baseline_data_points : data.length;
 
-    for (j = 1; j < series_number; j++) {
-        if (typeof series[j-1] == 'undefined')
-            continue;
-            series[j-1].sort(function(a, b) {return b[1] - a[1]});
-            series[j-1] = series[j-1].slice(0, data_points);
-    }
-
     // Chart specific configuration and data manipulation
     //---------------------------------------------------
 
