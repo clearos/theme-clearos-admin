@@ -732,25 +732,22 @@ function theme_chart(
             series: {
                 pie: {
                     show: true,
-                    innerRadius: (get_option_key(options, 'pie.inner_radius') != null ? options.pie.inner_radius : 0.0),
+                    radius: 1,
+                    innerRadius: 0.1,
                     label: {
-                        show: (get_option_key(options, 'pie.label.show') != null ? true: true),
-                        radius: .5,
-                        color: '#ffffff'
-                    }
+                        show: true,
+                        radius: 0.75,
+                        formatter: function (label, series) {
+                            return '<div style="border:1px solid #ccc; border-radius: 5px; font-size:8pt; text-align:center; padding:5px; color:white; background-color: rgba(0,0,0,0.2)">' + label + ' - ' + series.data[0][1] + '</div>';
+                        },
+                    },
                 }
             },
-            legend: {},
             grid: {
                 hoverable: false,
                 clickable: false,
             },
         };
-
-        if (get_option_key(options, 'pie.label_format') != null)
-            chart_options.series.pie.label['formatter'] = window[options.pie.label_format];
-        if (get_option_key(options, 'pie.legend.show') != null)
-            chart_options['legend']['show'] = options.pie.legend.show;
 
     // Timeline
     //---------
