@@ -511,32 +511,28 @@ function get_option_key(obj, keys) {
 /**
  * Chart creator.
  *
- * @param string $chart_id   chart ID
- * @param string $chart_type chart type
- * @param string $data       standard data set
- * @param string $format     format information
- * @param array  $series     converted series data
- * @param array  $labels     labels for series data
- * @param object $options    options
+ * @param string $chart_id    chart ID
+ * @param string $chart_type  chart type
+ * @param string $data        standard data set
+ * @param array  $data_titles data titles
+ * @param array  $data_types  data types
+ * @param array  $data_units  data units
+ * @param object $options     options
  *
- * Format information is passed via the $format variable.  Information includes:
- * - format.xaxis_label = Label for the x-axis
- * - format.yaxis_label = Label for the y-axis
- * - format.data_points = Number of data points to include in the chart
- * 
  * Supported $options:
- * - FIXME: document these and make generic (i.e. no flot-specific stuff)
+ * - options.xaxis_label = Label for the x-axis
+ * - options.yaxis_label = Label for the y-axis
+ * - options.baseline_data_points = Number of data points to include in the chart
+ * - FIXME: document the undocumented and make generic (i.e. no flot-specific stuff)
  */
 
 function theme_chart(
     chart_id,
     chart_type,
     data,
-    format,
-    series,
-    series_labels,
-    series_units,
-    series_title,
+    data_titles,
+    data_types,
+    data_units,
     options
 )
 {
@@ -563,6 +559,56 @@ function theme_chart(
     if (typeof options === 'undefined')
         options = new Object();
 
+    // Create series data
+    //-------------------
+
+    var series = new Array();
+
+    for (i = 0; i < data.length; i++) {
+        series_number = data[i].length;
+        x_item = clearos_human_readable(data[i][0], data_types[0]);
+
+        for (j = 1; j < series_number; j++) {
+            // Create new series array
+            if (typeof series[j-1] == 'undefined')
+                series[j-1] = new Array();
+
+            // Convert timestamp (TODO: review)
+            if ((j == 1) && (data_types[j-1] == 'timestamp'))
+                x_item = new Date(x_item.replace(' ', 'T')).getTime();
+
+            // Add data item
+            series[j-1].push([x_item, data[i][j]]);
+        }
+    }
+
+    // Series title
+    //---------------------------------------------------
+    // The first item in the data set is the x-axis, series labels are the rest.
+    // Consider the load average data:
+    // date | 1-minute | 5-minute | 15-minute
+
+    series_titles = data_titles;
+    series_titles.shift();
+
+    // Data points to include
+    //-----------------------
+    // The app developer can limit the number of data points to display,
+    // e.g. charting the top 10 domains in the web proxy report.
+
+    var baseline_data_points = (options.baseline_data_points) ? options.baseline_data_points : 200;
+    var data_points = (data.length > baseline_data_points) ? baseline_data_points : data.length;
+
+    for (j = 1; j < series_number; j++) {
+        if (typeof series[j-1] == 'undefined')
+            continue;
+            series[j-1].sort(function(a, b) {return b[1] - a[1]});
+            series[j-1] = series[j-1].slice(0, data_points);
+    }
+
+    // Chart specific configuration and data manipulation
+    //---------------------------------------------------
+
     // Pie chart data set
     if (chart_type == 'pie') {
         for (i = 0; i < data.length; i++) {
@@ -580,23 +626,23 @@ function theme_chart(
 
     // Bar chart data set
     } else if (chart_type == 'bar') {
-        var data_points = Array();
+        var bar_data = Array();
 
-        for (i = 0; i < data.length; i++) {
+        for (i = 0; i < data_points; i++) {
             ticks[i] = [ i, data[i][0] ];
-            data_points[i] = [i, data[i][1]]
+            bar_data[i] = [i, data[i][1]]
         }
 
         data_set[0] = {
-            label: series_labels[0],
-            data: data_points
+            label: series_titles[0],
+            data: bar_data
         }
 
     // Normal data set
     } else {
         for (i = 0; i < series.length; i++) {
             data_set[i] = {
-                label: series_labels[i],
+                label: series_titles[i],
                 data: series[i]
             }
         }
@@ -707,22 +753,21 @@ function theme_chart(
     }
 
     //-------------------------------
-    // R E Q U E S T E D  F O R M A T
+    // Axis labels
     //-------------------------------
-    // See $format information in function doc above.
 
-    if (format.yaxis_label) {
+    if (options.yaxis_label) {
         if (typeof chart_options['yaxis'] == 'undefined')
             chart_options['yaxis'] = Array();
 
-        chart_options['yaxis']['axisLabel'] = format.yaxis_label;
+        chart_options['yaxis']['axisLabel'] = options.yaxis_label;
     }
 
-    if (format.xaxis_label) {
+    if (options.xaxis_label) {
         if (typeof chart_options['xaxis'] == 'undefined')
             chart_options['xaxis'] = Array();
 
-        chart_options['xaxis']['axisLabel'] = format.xaxis_label;
+        chart_options['xaxis']['axisLabel'] = options.xaxis_label;
     }
 
     //-----------------
@@ -741,10 +786,12 @@ function theme_chart(
         },
         defaultTheme: false 
     };
+
     $("#" + chart_id).bind("plothover", function (event, pos, item) {
         if (item) {
             if (!item)
                 return;
+
             if (chart_type == 'pie') {
                 var percent = parseFloat(item.series.percent).toFixed(2);
             } else {
