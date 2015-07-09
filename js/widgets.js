@@ -722,6 +722,11 @@ function theme_chart(
             xaxis: {
                 minTickSize: 1,
             },
+            legend: {
+                show: true,
+                labelBoxBorderColor: '#FFF',
+                backgroundColor: '#DDD',
+            }
         };
 
     // Pie
@@ -773,6 +778,11 @@ function theme_chart(
                 mode: "time",
                 timeformat: "%m/%d %H:%M"
             },
+            legend: {
+                show: true,
+                labelBoxBorderColor: '#FFF',
+                backgroundColor: '#DDD',
+            }
         };
 
     // Timeline stack
@@ -795,6 +805,11 @@ function theme_chart(
                 mode: "time",
                 timeformat: "%m/%d %H:%M"
             },
+            legend: {
+                show: true,
+                labelBoxBorderColor: '#FFF',
+                backgroundColor: '#DDD',
+            }
         };
     }
 
