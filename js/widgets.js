@@ -472,7 +472,7 @@ function theme_summary_table(table_id, data, data_type, urls, highlight, sort, r
                 hidden_item = '';
 
             // Change item in table to a URL if specified
-            var item = clearos_human_readable(data[i][j], data_type[j]);
+            var item = _report_friendly_format(data[i][j], data_type[j]);
 
             if (urls[j])
                 item = '<a href="' + urls[j] + item + '">' + item + '</a>';
@@ -519,11 +519,11 @@ function get_option_key(obj, keys) {
  * @param array  $data_units  data units
  * @param object $options     options
  *
- * Supported $options:
+ * Supported $options: (see "Defaults" section below for details)
  * - options.xaxis_label = Label for the x-axis
  * - options.yaxis_label = Label for the y-axis
- * - options.baseline_data_points = Number of data points to include in the chart
- * - FIXME: document the undocumented and make generic (i.e. no flot-specific stuff)
+ * - options.series_threshold
+ * - options.series_label_threshold
  */
 
 function theme_chart(
@@ -545,42 +545,24 @@ function theme_chart(
     // development more complex.
 
     //-------------------------
-    // F L O T  D A T A S E T S
+    // D E F A U L T S
     //-------------------------
-
-    // This section is non-intuitive.  We basically have to take the standard
-    // data format (FIXME: add link to doc) and convert it to the format
-    // used in flot - https://github.com/flot/flot/blob/master/API.md#data-format
-    // The code below looks crazy, but it's really just shuffling data around.
-
-    data_set = Array();
-    ticks = Array();
 
     if (typeof options === 'undefined')
         options = new Object();
 
-    // Create series data
-    //-------------------
+    // The app developer can limit the number of data points to display,
+    // e.g. charting the top 10 domains in the web proxy report.
+    if (typeof options['series_threshold'] == 'undefined')
+        options['series_threshold'] = 2000; /* TODO: unlimited? */
 
-    var series = new Array();
+    // Only label an item in the series above this threshold
+    if (typeof options['series_label_threshold'] == 'undefined')
+        options['series_label_threshold'] = 0.03;
 
-    for (i = 0; i < data.length; i++) {
-        series_number = data[i].length;
-        x_item = clearos_human_readable(data[i][0], data_types[0]);
-
-        for (j = 1; j < series_number; j++) {
-            // Create new series array
-            if (typeof series[j-1] == 'undefined')
-                series[j-1] = new Array();
-
-            // Convert timestamp (TODO: review)
-            if ((j == 1) && (data_types[j-1] == 'timestamp'))
-                x_item = new Date(x_item.replace(' ', 'T')).getTime();
-
-            // Add data item
-            series[j-1].push([x_item, data[i][j]]);
-        }
-    }
+    // Usually just for pie charts, see "data manipulation" section below
+    if (typeof options['series_sum_above_threshold'] == 'undefined')
+        options['series_sum_above_threshold'] = false;
 
     // Series title
     //---------------------------------------------------
@@ -591,28 +573,72 @@ function theme_chart(
     series_titles = data_titles;
     series_titles.shift();
 
-    // Data points to include
-    //-----------------------
-    // The app developer can limit the number of data points to display,
-    // e.g. charting the top 10 domains in the web proxy report.
+    //----------------------------------
+    // D A T A  M A N I P U L A T I O N
+    //----------------------------------
 
-    var baseline_data_points = (options.baseline_data_points) ? options.baseline_data_points : 200;
-    var data_points = (data.length > baseline_data_points) ? baseline_data_points : data.length;
+    // This is where we massage the data set.  For one, data is converted
+    // into flot-friendly formats, e.g.
+    //
+    // - IP addresses
+    // - Timestamps in various formats
+    //
+    // In addition, the app developer can send a full data set to the chart
+    // function and then set data set thresholds.  
+    //
+    // Example 1: the pie chart that shows the CPU process hogs shows the 
+    // top 7 hogs, but then summarizes the rest of the process into the
+    // "other" category.
+    //
+    // Example 2: the "top domains" list in the web proxy can be thousands
+    // of data points, but the app developer can limit it to the top 20.
 
-    // Chart specific configuration and data manipulation
-    //---------------------------------------------------
+    var chart_data = new Array();  /* holds massaged data */
+    var max_data_points = (data.length > options['series_threshold']) ? options['series_threshold'] : data.length;
+
+    for (i = 0; i < data.length; i++) {
+        number_of_row_items = data[i].length;
+
+        if ((i >= max_data_points) && !options['series_sum_above_threshold']) 
+            break;
+
+        for (j = 0; j < number_of_row_items; j++) {
+
+            item = _report_friendly_format(data[i][j], data_types[j]);
+
+            if (i >= max_data_points) {
+                chart_data[max_data_points-1][j] = chart_data[max_data_points-1][j] + item;
+                chart_data[max_data_points-1][0] = '- other -';
+            } else {
+                if (typeof chart_data[i] == 'undefined')
+                    chart_data[i] = new Array();
+
+                chart_data[i][j] = item;
+            }
+        }
+    }
+
+    //---------------
+    // D A T A  S E T
+    //---------------
+
+    // This section is non-intuitive.  We basically have to take the standard
+    // data format and convert it to the formats and series data that is
+    // used in flot - https://github.com/flot/flot/blob/master/API.md#data-format
+    //
+    // The code below looks crazy, but it's really just shuffling data around.
+    //  Every flot chart has a slight different data_set (the second parameter
+    //  passed into $.plot("#" + chart_id, data_set, chart_options);
+
+    data_set = Array();
+    ticks = Array();
 
     // Pie chart data set
     if (chart_type == 'pie') {
-        for (i = 0; i < data.length; i++) {
-            label = data[i][0];
-
-            if (data[i][2] == 'format_ip')
-                label = clearos_human_readable(data[i][0], 'ip');
-
+        for (i = 0; i < chart_data.length; i++) {
             data_set[i] = {
-                label: label,
-                data: data[i][1],
+                label: chart_data[i][0],
+                data: chart_data[i][1],
                 color: get_option_key(options, 'series.color.' + i) != null ? get_option_key(options, 'series.color.' + i) : i
             }
         }
@@ -621,9 +647,9 @@ function theme_chart(
     } else if (chart_type == 'bar') {
         var bar_data = Array();
 
-        for (i = 0; i < data_points; i++) {
-            ticks[i] = [ i, data[i][0] ];
-            bar_data[i] = [i, data[i][1]]
+        for (i = 0; i < chart_data.length; i++) {
+            ticks[i] = [i, chart_data[i][0] ];
+            bar_data[i] = [i, chart_data[i][1]]
         }
 
         data_set[0] = {
@@ -635,8 +661,8 @@ function theme_chart(
     } else if (chart_type == 'horizontal_bar') {
         var bar_data = Array();
 
-        for (i = 0; i < data_points; i++) {
-            ticks[i] = [ i, data[i][0] ];
+        for (i = 0; i < chart_data.length; i++) {
+            ticks[i] = [ i, chart_data[i][0] ];
             bar_data[i] = [data[i][1], i]
         }
 
@@ -645,8 +671,28 @@ function theme_chart(
             data: bar_data
         }
 
-    // Normal data set
+    // Timeline series data set
     } else {
+        series = new Array();
+        // Timeline series is a different beast. TODO: document
+        for (i = 0; i < chart_data.length; i++) {
+            number_of_row_items = chart_data[i].length;
+            x_item = chart_data[i][0];
+
+            for (j = 1; j < number_of_row_items; j++) {
+                // Create new series array
+                if (typeof series[j-1] == 'undefined')
+                    series[j-1] = new Array();
+
+                // Convert timestamp (TODO: review)
+                if ((j == 1) && (data_types[j-1] == 'timestamp'))
+                    x_item = new Date(x_item.replace(' ', 'T')).getTime();
+
+                // Add data item
+                series[j-1].push([x_item, chart_data[i][j]]);
+            }
+        }
+
         for (i = 0; i < series.length; i++) {
             data_set[i] = {
                 label: series_titles[i],
@@ -742,6 +788,7 @@ function theme_chart(
                     label: {
                         show: true,
                         radius: 0.75,
+                        threshold: options['series_label_threshold'],
                         formatter: function (label, series) {
                             return '<div style="border:1px solid #ccc; border-radius: 5px; font-size:8pt; text-align:center; padding:5px; color:white; background-color: rgba(0,0,0,0.2)">' + label + ' - ' + series.data[0][1] + '</div>';
                         },
@@ -891,4 +938,24 @@ function getPosition(element) {
         element = element.offsetParent;
     }
     return { x: xPosition, y: yPosition };
+}
+
+/**
+ * Converts various data types into a human readable format.  For example:
+ * - IP addresses are converted to a human readable formats
+ */
+
+function _report_friendly_format(value, type) {
+    if (type == 'ip') {
+        var ip = value%256;
+
+        for (var i = 3; i > 0; i--) {
+            value = Math.floor(value/256);
+            ip = value%256 + '.' + ip;
+        }
+
+        return ip;
+    } else {
+        return value;
+    }
 }
