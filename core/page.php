@@ -634,7 +634,7 @@ function _get_header($page, $menus = array())
                 $i = theme_icon('warning', array('class' => 'theme-text-warning'));
             $alert_text .= "
                 <li>
-                    <a href='#'>$i " . $alert['desc'] . "</a>
+                    <a href='/app/events'>$i " . $alert['desc'] . "</a>
                 </li>
             ";
         }
@@ -966,7 +966,7 @@ function _get_left_menu_1($page)
                 $i = theme_icon('warning', array('class' => 'theme-text-warning'));
             $alert_text .= "
                 <li>
-                    <a href='#'>$i " . $alert['desc'] . "</a>
+                    <a href='/app/events'>$i " . $alert['desc'] . "</a>
                 </li>
             ";
         }
