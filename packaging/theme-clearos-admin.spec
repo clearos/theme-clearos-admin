@@ -1,13 +1,13 @@
 Name: theme-clearos-admin
 Group: Applications/Themes
-Version: 7.1.1
+Version: 7.1.2
 Release: 1%{dist}
 Summary: ClearOS 7 base theme
 License: ClearCenter license
 Packager: ClearCenter
 Vendor: ClearCenter
 Source: %{name}-%{version}.tar.gz
-Requires: clearos-framework >= 7.1.1
+Requires: clearos-framework >= 7.1.2
 Buildarch: noarch
 
 %description
