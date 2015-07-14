@@ -560,6 +560,10 @@ function theme_chart(
     if (typeof options['series_label_threshold'] == 'undefined')
         options['series_label_threshold'] = 0.03;
 
+    // Show labels by default
+    if (typeof options['series_label_show'] == 'undefined')
+        options['series_label_show'] = true;
+
     // Usually just for pie charts, see "data manipulation" section below
     if (typeof options['series_sum_above_threshold'] == 'undefined')
         options['series_sum_above_threshold'] = false;
@@ -779,24 +783,45 @@ function theme_chart(
     //----
 
     } else if (chart_type == 'pie') {
+        // To disable labels, set options['series_label_show'] to false
+        // To modify default label format, define options['series_label_format'] as array and set:
+        // ['label'] = true/false (show/hide label)
+        // ['value'] = true/false (show/hide value)
+        // ['unit'] = string display a unit of measure
+        
         chart_options = {
             series: {
                 pie: {
-                    show: true,
+                    show: options['series_label_show'],
                     radius: 1,
                     innerRadius: 0.1,
                     label: {
-                        show: true,
+                        show: options['series_label_show'],
                         radius: 0.75,
                         threshold: options['series_label_threshold'],
                         formatter: function (label, series) {
-                            return '<div style="border:1px solid #ccc; border-radius: 5px; font-size:8pt; text-align:center; padding:5px; color:white; background-color: rgba(0,0,0,0.2)">' + label + ' - ' + series.data[0][1] + '</div>';
+                            var label_format = '<div class="theme-chart-label-format">' + label + ' - ' + series.data[0][1] + '</div>';
+                            if (options['series_label_format'] != 'undefined') {
+                                label_format = '<div class="theme-chart-label-format">';
+                                if (options['series_label_format']['label'])
+                                    label_format += label;
+                                if (options['series_label_format']['value']) {
+                                    if (options['series_label_format']['label'])
+                                        label_format += ' - ';
+                                    label_format += series.data[0][1];
+                                }
+                                if (options['series_label_format']['unit'])
+                                    label_format += ' ' + options['series_label_format']['unit'];
+                                label_format += '</div>';
+                            }
+                            return label_format;
                         },
                     },
                 }
             },
             legend: {
                     show: true,
+                    backgroundOpacity: 0,
                     labelFormatter: function (label, series) {
                         return '<span style="font-weight: bold">' + label + '</span`>';
                     },
