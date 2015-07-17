@@ -1731,7 +1731,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         else if (isset($options['responsive']) && isset($options['responsive'][$index]))
             $responsive_class = " class='" . $options['responsive'][$index] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>$header</th>";
-        $footer_html .= "\n\t\t" . "<th></th>";
+        $footer_html .= "\n\t\t" . "<th><span style='display:none'>&nbsp;</span></th>";
         $empty_row .= '<td>&nbsp; </td>';
     }
 
@@ -1746,7 +1746,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
         $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
-        $footer_html .= "\n\t\t" . "<th></th>";
+        $footer_html .= "\n\t\t" . "<th><span style='display:none'>&nbsp;</span></th>";
         $empty_row .= "<td>&nbsp; </td>";
     }
 
