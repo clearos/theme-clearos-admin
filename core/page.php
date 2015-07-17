@@ -1105,7 +1105,8 @@ function _get_left_menu_1($page)
             </div>
         " . form_close();
     } else {
-        $search_html = '';
+        // Left nav is inserted into sidebar-form
+        $search_html = form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . form_close();
     }
 
     return "
