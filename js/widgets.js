@@ -801,7 +801,7 @@ function theme_chart(
                         threshold: options['series_label_threshold'],
                         formatter: function (label, series) {
                             var label_format = '<div class="theme-chart-label-format">' + label + ' - ' + series.data[0][1] + '</div>';
-                            if (options['series_label_format'] != 'undefined') {
+                            if (typeof options['series_label_format'] != 'undefined') {
                                 label_format = '<div class="theme-chart-label-format">';
                                 if (options['series_label_format']['label'])
                                     label_format += label;
