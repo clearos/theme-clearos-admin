@@ -664,12 +664,32 @@ header:hover #magic-arrow {
 }
 .sub_menu {
   position: relative;
+  padding: 0;
+  margin: 0 0 0 24px;
+  list-style: none;
+  max-height: 0;
+  opacity: 0;
+  border-left: 1px solid #ddd;
+  -webkit-transition: all .2s ease 0.50s;
+     -moz-transition: all .2s ease 0.50s;
+      -ms-transition: all .2s ease 0.50s;
+       -o-transition: all .2s ease 0.50s;
+          transition: all .2s ease 0.50s;
+}
+
+li.active > .sub_menu, li:hover > .sub_menu {
   padding: 6px 0;
   margin: 3px 0 15px 24px;
-  list-style: none;
-  display: none;
-  border-left: 1px solid #ddd;
+  max-height: 1000px;
+  opacity: 1;
+  -webkit-transition: all .2s ease 0.5s;
+     -moz-transition: all .2s ease 0.5s;
+      -ms-transition: all .2s ease 0.5s;
+       -o-transition: all .2s ease 0.5s;
+          transition: all .2s ease 0.5s;
 }
+
+
 .sub_menu:before {
   position: absolute;
   left: -7px;
@@ -702,7 +722,7 @@ header:hover #magic-arrow {
   padding: 5px 0 5px 15px;
   font-size: 12px;
 }
-.sub_menu li.active {
+.sub_menu li.active, .sub_menu li:hover {
   border-left-color: #999999;
 }
 .sub_menu li.active > a,
@@ -712,11 +732,31 @@ header:hover #magic-arrow {
 }
 .sub_menu li > ul {
   position: relative;
-  padding: 6px 0;
-  margin: 3px 0 15px 24px;
+  padding: 0;
+  margin: 0 0 0 24px;
   list-style: none;
   border-left: 1px solid #ddd;
+  max-height: 0;
+  opacity: 0;
+  -webkit-transition: all .2s ease 0.50s;
+     -moz-transition: all .2s ease 0.50s;
+      -ms-transition: all .2s ease 0.50s;
+       -o-transition: all .2s ease 0.50s;
+          transition: all .2s ease 0.50s;
 }
+
+.sub_menu li.active > ul, .sub_menu li:hover > ul{
+  max-height: 1000px;
+  padding: 6px 0;
+  -webkit-transition: all .2s ease 0.5s;
+     -moz-transition: all .2s ease 0.5s;
+      -ms-transition: all .2s ease 0.5s;
+       -o-transition: all .2s ease 0.5s;
+          transition: all .2s ease 0.5s;
+  margin: 3px 0 15px 24px;
+  opacity: 1;
+}
+
 .sub_menu li > ul:before {
   position: absolute;
   left: -7px;
@@ -749,14 +789,13 @@ header:hover #magic-arrow {
   padding: 5px 0 5px 15px;
   font-size: 12px;
 }
-.sub_menu li > ul li.active {
-  border-left-color: #999999;
-}
+
 .sub_menu li > ul li.active a,
 .sub_menu li > ul li:hover a {
   color: #999999;
   text-decoration: none;
 }
+
 
 /* Type 2 (compact)
 /* ============================================= */
@@ -2813,4 +2852,4 @@ div.my-account > a:hover {text-decoration: none; color: #999;}
 
 .navbar-toggle .fa-bars{color:#7a7474; font-size: 18px;}
 
-.nav-third-level{display:none;}
+.nav-third-level{max-height: 0; opacity: 0;}
