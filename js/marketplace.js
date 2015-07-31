@@ -737,7 +737,7 @@ function _get_app_full(app, options)
         buttons += '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-default ' + disable_buttons + '">' + lang_uninstall + '</a>';
     if (!app.installed) {
         if ((app.display_mask & 1) == 1)
-            buttons = '<div class=\'theme-text-alert\' style=\'font-size:.9em; display: inline;\'>Requires Business Edition</div>';
+            buttons = '';
         else if (options.search_only)
             buttons = '<a href="/app/marketplace/view/' + app.basename + '" class="btn btn-primary btn-xs">' + lang_install + '</a>';
         else
