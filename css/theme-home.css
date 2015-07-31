@@ -109,3 +109,6 @@ ul.left_nav > li > a i {
 .clearos-svg.clearfoundation rect {
   fill: #7A7474 !important;
 }
+.login_box .login_right input[type="submit"] {
+  color: #ffffff;
+}

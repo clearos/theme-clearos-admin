@@ -2485,7 +2485,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .login_box .login_right input{ border: 1px #b7b7b7 solid; background: #e5e5e5; height: 29px; width: 100%; font-size: 12px; color: #706f6d;}
 .login_box .login_right select{ border: 1px #b7b7b7 solid; background: #e5e5e5; height: 29px; width: 100%; font-size: 12px; color: #706f6d;}
 .login_box .login_right input[type="checkbox"]{ height: auto; width: auto;}
-.login_box .login_right input[type="submit"]{ background: #e2e2e2; padding: 10px 23px; font-size: 14px; font-weight: 400; margin: 10px 10px 10px 0; color: #fff; width: auto; line-height: inherit; height: auto; border-radius: 3px; box-shadow: inset 0 1px 0 #e8e8e8;}
+.login_box .login_right input[type="submit"]{ background: #e2e2e2; padding: 10px 23px; font-size: 14px; font-weight: 400; margin: 10px 10px 10px 0; color: #6b6b6b; width: auto; line-height: inherit; height: auto; border-radius: 3px; box-shadow: inset 0 1px 0 #e8e8e8;}
 .login_box .theme-infobox{position: absolute; left: 0; right: 0; bottom: 100%; margin-top: 10px;}
 .login_box .theme-validation-error{display: inline-block; vertical-align: middle; zoom: 1; /* Fix for IE7 */ *display: inline; /* Fix for IE7 */}
 
