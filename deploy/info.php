@@ -36,6 +36,16 @@ $package['settings'] = array(
         'required' => TRUE,
         'default' => 1,
     ),
+    'show_recommended_apps' => array(
+        'lang_tag' => 'base_show_recommended_apps',
+        'type' => 'dropdown',
+        'options' => array(
+            0 => lang('base_no'),
+            1 => lang('base_yes'),
+        ),
+        'required' => TRUE,
+        'default' => 1,
+    ),
     'marketplace' => array(
         'apps_per_page' => array(
             4 => 4,

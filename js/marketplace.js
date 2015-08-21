@@ -4,7 +4,7 @@
  * @category  Theme
  * @package   ClearOS
  * @author    ClearFoundation <developer@clearfoundation.com>
- * @copyright 2014 ClearFoundation
+ * @copyright 2014-2015 ClearFoundation
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link      http://www.clearfoundation.com/docs/developer/theming/
  */
@@ -32,6 +32,18 @@ $(document).ready(function() {
 $(document).on('click', '.sidebar-review-app', function(e) {
     e.preventDefault();
     add_review();
+});
+// Listens for app status refresh
+$(document).on('click', '.app_refresh_status', function(e) {
+    e.preventDefault();
+    var my_location = _get_location_info();
+    // Remove any row entries that were added dynamically
+    $(".theme-rhs-dynamic").remove();
+    var options = {id: 'clearos-rhs-update', center: true, classes: 'theme-biggest-text'};
+    // Add spinner feedback
+    $('#sidebar_additional_info_row').after(clearos_loading(options));
+    // Force update
+    get_marketplace_data(my_location.basename, 1);
 });
 
 function theme_sdn_account_setup(landing_url, username, device_id) {
@@ -117,7 +129,7 @@ function handle_marketplace_on_page_ready()
 {
     var my_location = _get_location_info();
 
-    get_marketplace_data(my_location.basename);
+    get_marketplace_data(my_location.basename, 0);
 
     // Insert login dialog
     // TODO find a proper dom to hitch this to
@@ -241,10 +253,12 @@ function theme_price(UNIT, price) {
     return html;
 }
 
-function get_marketplace_data(basename) {
+function get_marketplace_data(basename, realtime) {
 
+    // We append this object in case we need to redraw RHS widget and remove these elements
+    var options = {row_class: 'theme-rhs-dynamic'};
     $.ajax({
-        url: '/app/marketplace/ajax/get_app_details/' + basename,
+        url: '/app/marketplace/ajax/get_app_details/' + basename + '/' + realtime,
         method: 'GET',
         dataType: 'json',
         success : function(json) {
@@ -266,13 +280,32 @@ function get_marketplace_data(basename) {
                 // We add rows in the reverse order to keep this section under the Version/Vendor
 
                 // Evaluation
-                if (json.license_info != undefined && json.license_info.evaluation != undefined && json.license_info.evaluation == true) {
+                if (json.license_info != undefined && json.license_info.expired == true) {
+                    $('#sidebar_additional_info_row').after(
+                        _sidebar_pair(
+                            lang_status +
+                            '<a href=\'#\' class=\'app_refresh_status\'><i class=\'fa fa-refresh theme-text-icon-spacing\'></i></a>',
+                            '<span class=\'theme-text-alert\' id=\'app_refresh_status_value\'>' +
+                            (json.license_info.evaluation ? lang_marketplace_trial_ended : lang_marketplace_subscription_expired) +
+                            '</span>',
+                            options
+                        )
+                        +
+                        _sidebar_pair(
+                            lang_marketplace_activate,
+                            '<a id=\'eval-limit-anchor\' href=\'' + json.license_info.sdn_url_buy + '\' target=\'_blank\'>' +
+                            lang_marketplace_purchase + '<i class=\'fa fa-external-link theme-text-icon-spacing\'></i></a>',
+                            options
+                        )
+                    );
+                } else if (json.license_info != undefined && json.license_info.evaluation != undefined && json.license_info.evaluation == true) {
                     if (json.license_info.eval_limitations != undefined) {
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
                                 lang_marketplace_eval_limitations,
                                 '<a id=\'eval-limit-anchor\' href=\'javascript: void(0)\'>' + lang_yes + '</a>' +
-                                '<div class=\'theme-rhs-tooltip\'>' + json.license_info.eval_limitations + '</div>'
+                                '<div class=\'theme-rhs-tooltip\'>' + json.license_info.eval_limitations + '</div>',
+                                options
                             )
                         );
                         $('#eval-limit-anchor').tooltip({
@@ -287,13 +320,15 @@ function get_marketplace_data(basename) {
                     $('#sidebar_additional_info_row').after(
                         _sidebar_pair(
                             lang_marketplace_trial_ends,
-                            $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire))
+                            $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire)),
+                            options
                         )
                     );
                     $('#sidebar_additional_info_row').after(
                         _sidebar_pair(
                             lang_status,
-                            '<span style=\'color: red\'>' + lang_marketplace_evaluation + '</span>'
+                            '<span class=\'theme-text-alert\'>' + lang_marketplace_evaluation + '</span>',
+                            options
                         )
                     );
                 } else {
@@ -302,7 +337,8 @@ function get_marketplace_data(basename) {
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
                                 lang_status,
-                                '<span style=\'color: red\'>' + lang_marketplace_redemption + '</span>'
+                                '<span class=\'theme-text-alert\'>' + lang_marketplace_redemption + '</span>',
+                                options
                             )
                         );
                     }
@@ -312,7 +348,8 @@ function get_marketplace_data(basename) {
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
                                 lang_status,
-                                '<span style=\'color: red\'>' + lang_marketplace_expired_no_subscription + '</span>'
+                                '<span class=\'theme-text-alert\'>' + lang_marketplace_expired_no_subscription + '</span>',
+                                options
                             )
                         );
                     }
@@ -330,14 +367,16 @@ function get_marketplace_data(basename) {
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
                                 lang_marketplace_billing_cycle,
-                                bill_cycle
+                                bill_cycle,
+                                options
                             )
                         );
                         if (json.license_info.expire != undefined) {
                             $('#sidebar_additional_info_row').after(
                                 _sidebar_pair(
                                     lang_marketplace_renewal_date,
-                                    $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire))
+                                    $.datepicker.formatDate('M d, yy', new Date(json.license_info.expire)),
+                                    options
                                 )
                             );
                         }
@@ -350,7 +389,8 @@ function get_marketplace_data(basename) {
                     $('#sidebar_additional_info_row').after(
                         _sidebar_pair(
                             lang_marketplace_support_policy,
-                            get_support_policy(json)
+                            get_support_policy(json),
+                            options
                         )
                     );
                 }
@@ -360,7 +400,8 @@ function get_marketplace_data(basename) {
                     $('#sidebar_additional_info_row').after(
                         _sidebar_pair(
                             lang_marketplace_upgrade,
-                            json.latest_version
+                            json.latest_version,
+                            options
                         )
                     );
                 }
@@ -382,6 +423,8 @@ function get_marketplace_data(basename) {
                 }
                 $('#sidebar-recommended-apps').html(comp_apps);
             }
+            // Remove any whirly that may have been added to indicate dynamic status update
+            $("#clearos-rhs-update").remove();
         },
         error: function (xhr, text_status, error_thrown) {
             // No connection to Internet...let's bail
@@ -711,10 +754,21 @@ function clearos_marketplace_app_list(type, list, limit, total, options) {
  * Returns HTML for adding key/value pairs to the sidebar widget.
  */
 
-function _sidebar_pair(field, value) {
-    return '<div class=\'row\'>' +
-                '<div class=\'col-lg-6 theme-field\'>' + field + '</div>' +
-                '<div class=\'col-lg-6\'>' + value + '</div>' +
+function _sidebar_pair(field, value, options) {
+    row_class = '';
+    field_class = '';
+    value_class = '';
+    if (options != undefined) {
+        if (options.row_class != undefined)
+            row_class = ' ' + options.row_class;
+        if (options.field_class != undefined)
+            field_class = ' ' + options.field_class;
+        if (options.value_class != undefined)
+            value_class = ' ' + options.value_class;
+    }
+    return '<div class=\'row' + row_class + '\'>' +
+                '<div class=\'col-lg-6 theme-field' + field_class + '\'>' + field + '</div>' +
+                '<div class=\'col-lg-6' + value_class + '\'>' + value + '</div>' +
            '</div>'
     ;
 }

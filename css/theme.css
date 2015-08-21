@@ -86,6 +86,12 @@ a.highlight-link:hover {
 .theme-smaller-text {
   font-size: .75em;
 }
+.theme-bigger-text {
+  font-size: 1.25em;
+}
+.theme-biggest-text {
+  font-size: 2em;
+}
 .theme-hidden, .cos7-hidden {
   display: none;
 }

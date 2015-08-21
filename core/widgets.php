@@ -3026,7 +3026,7 @@ function theme_summary_box($data)
         $buttons[] = anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'));
         $marketplace_html = "<div class='marketplace-links'>" . theme_button_set($buttons) . "</div>";
 
-        if (isset($data['show_recommended_apps']))
+        if (isset($data['show_recommended_apps']) && $data['show_recommended_apps'])
             $marketplace_html .=  "<div id='sidebar-recommended-apps'></div>";
 
     } else {
