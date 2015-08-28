@@ -31,7 +31,7 @@ function theme_anchor(url, text, options)
     data_type = '';
     button_group_start = '<div class="btn-group">';
     button_group_end = '</div>';
-    external_link = '';
+    target = '';
 
     // TODO - Rethink 'data-' passing
     if (typeof options != 'undefined') {
@@ -55,9 +55,12 @@ function theme_anchor(url, text, options)
             data_ref = ' data-ref="' + options.data_ref + '"';
         if (typeof options.data_type != 'undefined')
             data_type = ' data-type="' + options.data_type + '"';
+        if (typeof options.target != 'undefined')
+            target = ' target="' + options.target + '"';
     }
 
-    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + text + '</a>' + button_group_end;
+    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' +
+            text + '</a>' + button_group_end;
 }
 
 /**
@@ -77,7 +80,7 @@ function theme_anchors(links, options)
         button_class = 'btn btn-sm btn-primary';
         data_ref = '';
         data_type = '';
-        external_link = '';
+        target = '';
         if (typeof links[index].options != 'undefined') {
             if (links[index].options.id)
                 id = links[index].options.id;
@@ -95,10 +98,12 @@ function theme_anchors(links, options)
                 button_class += ' ' + links[index].options.classes;
             if (typeof links[index].options.data_ref != 'undefined')
                 data_ref = ' data-ref="' + links[index].options.data_ref + '"';
-            if (typeof options.data_type != 'undefined')
-                data_type = ' data-type="' + options.data_type + '"';
+            if (typeof links[index].options.target != 'undefined')
+                target = ' target="' + links[index].options.target + '"';
+            if (typeof links[index].options.data_type != 'undefined')
+                data_type = ' data-type="' + links[index].options.data_type + '"';
         }
-        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + links[index].text + '</a>';
+        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' + links[index].text + '</a>';
     });
     return button_group_start + html + button_group_end;
 }
@@ -152,6 +157,55 @@ function theme_dialog_box(id, title, message, options)
 function theme_dialog_close(obj)
 {
     obj.close();
+}
+
+/**
+ * Add key/value pair to DOM.
+ * 
+ * @param string key     key
+ * @param string value   value
+ * @param object options options
+ */
+
+function theme_key_value_pair(key, value, options)
+{
+    var row_dom_id = 'row-' + Math.floor(Math.random() * 1000);
+    var key_dom_id = 'key-' + Math.floor(Math.random() * 1000);
+    var value_dom_id = 'value-' + Math.floor(Math.random() * 1000);
+    var row_classes = '';
+    var key_classes = '';
+    var value_classes = '';
+    var key_col = 6;
+    var value_col = 6;
+
+    if (typeof options != 'undefined') {
+        if (typeof options.row != 'undefined') {
+            if (options.row.id != 'undefined')
+                row_dom_id = options.row.id;
+            if (options.row.classes != 'undefined')
+                row_classes = options.row.classes;
+        }
+        if (typeof options.key != 'undefined') {
+            if (options.key.id != 'undefined')
+                key_dom_id = options.key.id;
+            if (options.key.width != 'undefined')
+                key_col = options.key.width;
+            if (options.key.classes != 'undefined')
+                key_classes = options.key.classes;
+        }
+        if (typeof options.value != 'undefined') {
+            if (options.value.id != 'undefined')
+                value_dom_id = options.value.id;
+            if (options.value.width != 'undefined')
+                value_col = options.value.width;
+            if (options.value.classes != 'undefined')
+                value_classes = options.value.classes;
+        }
+    }
+    return '<div class="row ' + row_classes + '" id="' + row_dom_id + '">' +
+        '  <div class="col-lg-' + key_col + ' ' + key_classes + ' theme-field" id="' + key_dom_id + '">' + key + '</div>' +
+        '  <div class="col-lg-' + value_col + ' ' + value_classes + '" id="' + value_dom_id + '">' + value + '</div>' +
+        '</div>';
 }
 
 /**
