@@ -112,6 +112,12 @@ ul.left_nav > li > a i {
 .login_box .login_right input[type="submit"] {
   color: #ffffff;
 }
+.main-content .content-container .paginate_button a {
+  color: #7a7474;
+}
+.main-content .content-container .paginate_button.active a {
+  color: #ffffff;
+}
 .main-content .content-container a {
   color: #3d85c6;
 }
