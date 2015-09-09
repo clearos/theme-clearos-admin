@@ -122,11 +122,16 @@ ul.left_nav > li > a i {
   background-color: #9a9a9a!important;
   border-color: #9f9f9f !important;
 }
+a.btn.btn-secondary {
+  color: #333333!important;
+}
 .btn-secondary {
   background-color: #b0b0b0;
   border-color: #b0b0b0;
+  color: #333333;
 }
 .btn-secondary:hover {
   background-color: #d0d0d0;
   border-color: #d0d0d0;
+  color: #333333;
 }
