@@ -183,6 +183,7 @@ function handle_marketplace_on_page_ready()
     });
 
     $('#sdn_login_cancel').on('click', function (e) {
+        auth_options.use_full_path_on_redirect = null;
         $('#sdn-login-dialog').modal('hide');
     });
 
