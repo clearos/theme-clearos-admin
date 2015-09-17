@@ -47,7 +47,7 @@ function theme_anchor(url, text, options)
         } else if (options.buttons == 'extra-small') {
             button_class = 'btn btn-xs btn-primary';
         } else if (options.buttons) {
-            button_class = 'btn btn-sm btn-primary';
+            button_class = 'btn btn-primary';
         }
         if (typeof options.classes != 'undefined')
             button_class += ' ' + options.classes;
