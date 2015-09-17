@@ -472,16 +472,13 @@ function theme_related_app(type, list)
     html += '</div>';
     $('#app_' + type).append(html);
 
-    // Make sure only to call this 'dotdotdot' once
-    if (type == 'other_by_devel') {
-        $('#app_' + type).append('\
-            <script type="text/javascript">\
-                $(".marketplace-app-info-description").dotdotdot({\
-                    ellipsis: "..."\
-                });\
-            </script>\
-        ');
-    }
+    $('#app_' + type).append('\
+        <script type="text/javascript">\
+            $("#app_' + type + ' .marketplace-app-info-description").dotdotdot({\
+                ellipsis: "..."\
+            });\
+        </script>\
+    ');
 }
 
 /**
