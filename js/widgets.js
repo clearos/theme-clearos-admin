@@ -619,6 +619,10 @@ function theme_chart(
     if (typeof options['series_sum_above_threshold'] == 'undefined')
         options['series_sum_above_threshold'] = false;
 
+    // Label precision (eg. decimal places)
+    if (typeof options['series_label_precision'] == 'undefined')
+        options['series_label_precision'] = 1;
+
     // Series title
     //---------------------------------------------------
     // The first item in the data set is the x-axis, series labels are the rest.
@@ -663,7 +667,7 @@ function theme_chart(
 
             if (i >= max_data_points) {
                 chart_data[max_data_points-1][j] = chart_data[max_data_points-1][j] + item;
-                chart_data[max_data_points-1][0] = '- other -';
+                chart_data[max_data_points-1][0] = 'Others';
             } else {
                 if (typeof chart_data[i] == 'undefined')
                     chart_data[i] = new Array();
@@ -851,7 +855,9 @@ function theme_chart(
                         radius: 0.75,
                         threshold: options['series_label_threshold'],
                         formatter: function (label, series) {
-                            var label_format = '<div class="theme-chart-label-format">' + label + ' - ' + series.data[0][1] + '</div>';
+                            var label_format = '<div class="theme-chart-label-format">' +
+                                label + ' - ' + (series.data[0][1]).toFixed(options['series_label_precision']) +
+                                '</div>';
                             if (typeof options['series_label_format'] != 'undefined') {
                                 label_format = '<div class="theme-chart-label-format">';
                                 if (options['series_label_format']['label'])
@@ -859,7 +865,7 @@ function theme_chart(
                                 if (options['series_label_format']['value']) {
                                     if (options['series_label_format']['label'])
                                         label_format += ' - ';
-                                    label_format += series.data[0][1];
+                                    label_format += (series.data[0][1]).toFixed(options['series_label_precision']);
                                 }
                                 if (options['series_label_format']['unit'])
                                     label_format += ' ' + options['series_label_format']['unit'];
