@@ -845,7 +845,7 @@ function _get_app_tile(app, options)
     if (options.wizard) {
         disable_buttons = ' disabled';
         learn_more_target = ' target="_blank"';
-        learn_more_url = app.url_redirect + '/marketplace/type/?basename=' + app.basename;
+        learn_more_url = app.url_redirect + '/marketplace/apps/' + app.category.toLowerCase() + '/' + app.basename;
     } else {
         learn_more_url = '/app/marketplace/view/' + app.basename;
     }
