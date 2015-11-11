@@ -81,6 +81,7 @@ function theme_anchors(links, options)
         data_ref = '';
         data_type = '';
         target = '';
+        text = links[index].text;
         if (typeof links[index].options != 'undefined') {
             if (links[index].options.id)
                 id = links[index].options.id;
@@ -91,6 +92,10 @@ function theme_anchors(links, options)
                 button_class = '';
             } else if (links[index].options.buttons == 'extra-small') {
                 button_class = 'btn btn-xs btn-primary';
+            } else if (links[index].options.buttons == 'normal') {
+                button_class = 'btn btn-primary';
+            } else if (links[index].options.buttons == 'secondary') {
+                button_class = 'btn btn-secondary';
             } else if (links[index].options.buttons) {
                 button_class = 'btn btn-sm btn-primary';
             }
@@ -103,7 +108,7 @@ function theme_anchors(links, options)
             if (typeof links[index].options.data_type != 'undefined')
                 data_type = ' data-type="' + links[index].options.data_type + '"';
         }
-        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' + links[index].text + '</a>';
+        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' + text + '</a>';
     });
     return button_group_start + html + button_group_end;
 }
