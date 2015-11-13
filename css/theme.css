@@ -1570,6 +1570,9 @@ form .box-body > .btn-group{
   text-align: center;
   width: 100%;
 }
+.marketplace-app-no-pay-required {
+  text-decoration: line-through;
+}
 .marketplace-app {
   width: 48%;
   margin: 10px;
