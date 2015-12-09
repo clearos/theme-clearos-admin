@@ -809,6 +809,9 @@ li.active > .sub_menu, li:hover > .sub_menu {
 .theme-menu-2 {
   float: left;
 }
+.theme-menu-2-list form#category-select > div.btn-group {
+  width: 100%;
+}
 .theme-menu-2-list {
   text-align: center;
   margin: 10px 5px 10px 10px;
@@ -895,7 +898,6 @@ li.active > .sub_menu, li:hover > .sub_menu {
 }
 .theme-menu-2-category.btn.btn-default:hover {
   background-color: #ffffff !important;
-}
 }
 .theme-menu-2-category.btn.btn-default {
   background-color: #fafafa !important;
