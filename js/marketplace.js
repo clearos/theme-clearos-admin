@@ -17,6 +17,7 @@ var auth_options = new Object();
 var sdn_org = '';
 var internet_connection = false;
 var lang = new Object();
+var my_location = _get_location_info();
 
 // Document ready handler
 $(document).ready(function() {
@@ -26,8 +27,20 @@ $(document).ready(function() {
       selector: '[data-toggle=tooltip]'
     });
     handle_marketplace_on_page_ready();
+    if (typeof(Storage) !== 'undefined') {
+        if (localStorage.getItem("rhs-" + my_location.basename) != undefined && localStorage.getItem("rhs-" + my_location.basename) == 'off')
+            theme_hide_rhs(true);
+    }
+    // Do not show toggle if dashboard type page.
+    if ($('#theme-layout-content').length == 0)
+        $('#rhs-widget-toggle').hide();
 });
 
+// Listens RHS toggle
+$(document).on('click', '#rhs-widget-toggle', function(e) {
+    e.preventDefault();
+    theme_hide_rhs($('#theme-layout-content').hasClass('col-md-8'));
+});
 // Listens for app rating click
 $(document).on('click', '.sidebar-review-app', function(e) {
     e.preventDefault();
@@ -36,7 +49,6 @@ $(document).on('click', '.sidebar-review-app', function(e) {
 // Listens for app status refresh
 $(document).on('click', '.app_refresh_status', function(e) {
     e.preventDefault();
-    var my_location = _get_location_info();
     // Remove any row entries that were added dynamically
     $(".theme-rhs-dynamic").remove();
     var options = {id: 'clearos-rhs-update', center: true, classes: 'theme-biggest-text'};
@@ -45,6 +57,26 @@ $(document).on('click', '.app_refresh_status', function(e) {
     // Force update
     get_marketplace_data(my_location.basename, 1);
 });
+
+function theme_hide_rhs(hidden) {
+    if (hidden) {
+        $('#theme-layout-content').removeClass('col-md-8');
+        $('#theme-layout-content').addClass('col-md-12');
+        $('#theme-layout-rhs').hide();
+        $('#rhs-widget-toggle > i').removeClass('fa-toggle-on');
+        $('#rhs-widget-toggle > i').addClass('fa-toggle-off');
+        if (typeof(Storage) !== 'undefined')
+            localStorage.setItem('rhs-' + my_location.basename, 'off');
+    } else {
+        $('#theme-layout-content').removeClass('col-md-12');
+        $('#theme-layout-content').addClass('col-md-8');
+        $('#rhs-widget-toggle > i').removeClass('fa-toggle-off');
+        $('#rhs-widget-toggle > i').addClass('fa-toggle-on');
+        $('#theme-layout-rhs').show();
+        if (typeof(Storage) !== 'undefined')
+            localStorage.setItem('rhs-' + my_location.basename, 'on');
+    }
+}
 
 function theme_sdn_account_setup(landing_url, username, device_id) {
 

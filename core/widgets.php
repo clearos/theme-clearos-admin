@@ -1735,6 +1735,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         $empty_row .= '<td>&nbsp; </td>';
     }
 
+
     // Action column?
     $action_col = TRUE;
     if (isset($options['no_action']) && $options['no_action'])
@@ -1997,7 +1998,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     <h3 class='box-title'>$title</h3>
   </div>
   <div class='box-body'>
-    <table class='table " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'responsive') . " table-striped $size_class' id='$dom_id'>
+    <table class='table table-striped $size_class " . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? '' : 'my-responsive') . "' id='$dom_id'>
       <thead>
         <tr>$header_html</tr>
       </thead>
@@ -2009,13 +2010,20 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
   </div>
 </div>
 <script type='text/javascript'>
+  var responsive_layout = '" . (isset($options['responsive']) && $options['responsive'] == 'disabled' ? 'false' : 'true') . "';
   function get_table_$dom_id_var() {
+    // Remove responsiveness??
+    if (typeof(Storage) !== 'undefined') {
+        if (localStorage.getItem('rhs-' + my_location.basename) != undefined && localStorage.getItem('rhs-' + my_location.basename) == 'off')
+            responsive_layout = 'false';
+    }
     return $('#" . $dom_id_selector . "').dataTable({
         'columnDefs': [
             { $sorting_cols },
             { 'bVisible': $first_column_visible, 'aTargets': [ 0 ] }
         ],
         'sDom': '<\"row\"<\"col-xs-7\"l><\"col-xs-5\"f>r>t<\"row\"<\"col-xs-4\"i><\"col-xs-8\"p>>',
+        'responsive': (responsive_layout == 'false' ? fale : true),
         'language': {
             'lengthMenu': '" . lang('base_show') . " _MENU_ " . lang('base_rows') . "',
             'search': '',
@@ -2647,7 +2655,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
     $confirm_id = "modal-confirm-$unique";
     $close_id = "modal-close-$unique";
     $buttons = array(
-        anchor_custom(($form_id == NULL && !is_array($confirm) ? $confirm : "#"), lang('base_confirm'), 'high', array('id' => $confirm_id)),
+        anchor_custom(($form_id == null && !is_array($confirm) ? $confirm : "#"), lang('base_confirm'), 'high', array('id' => $confirm_id)),
         anchor_cancel('#', 'low', array('id' => $close_id))
     );
 
@@ -2674,7 +2682,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
               </div>
             </div>
             <script type='text/javascript'>
-                " . ($trigger == NULL ? "" : "
+                " . ($trigger == null ? "" : "
                 $('" . (array_key_exists('id', $trigger) ? "#" . $trigger['id'] : "." . $trigger['class']) . "').click(function(e) {
                     e.preventDefault();
                     $('#" . $id . "').modal({backdrop: 'static'});
@@ -2683,7 +2691,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
                     e.preventDefault();
                     $('#" . $id . "').modal('hide');
                 });
-                " . ($stay_open_on_confirm ? "" : ($form_id != NULL ? "
+                " . ($stay_open_on_confirm ? "" : ($form_id != null ? "
                 $('#$confirm_id').click(function() {
                     $('#" . $id . "').modal('hide');
                     $('#$form_id').submit();
@@ -2710,14 +2718,14 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
  *
  * @return HTML for anchor
  */
-function theme_modal_input($title, $message, $trigger, $input_id, $id = NULL, $options)
+function theme_modal_input($title, $message, $trigger, $input_id, $id = null, $options)
 {
 
-    if ($id == NULL)
+    if ($id == null)
         $id = 'modal-input-' . rand(0,50);
 
     $buttons = array(
-        theme_form_submit('submit', lang('base_submit'), 'high', NULL, array('id' => 'modal-input-submit')),
+        theme_form_submit('submit', lang('base_submit'), 'high', null, array('id' => 'modal-input-submit')),
         anchor_cancel('#', 'low', array('id' => 'modal-input-close'))
     );
 
@@ -2767,7 +2775,7 @@ function theme_modal_input($title, $message, $trigger, $input_id, $id = NULL, $o
 }
 
 
-function theme_confirm($title, $confirm_uri, $cancel_uri, $message, $options = NULL)
+function theme_confirm($title, $confirm_uri, $cancel_uri, $message, $options = null)
 {
     $message = "
         <p>$message</p>
@@ -2843,7 +2851,7 @@ function theme_container($content, $options = array())
  * - $category - category
  * - $subcategory - subcategory
  * - $description - description
- * - $user_guide_url - URL to the User Guide
+ * - $user_guide_url - URL to the user guide
  * - $support_url - URL to support
  */
 
@@ -2894,7 +2902,7 @@ function theme_help_box($data)
     return 
         "<div class='theme-help-box-container hidden-xs'>
              <div class='theme-help-box-content'>
-                 <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => TRUE)) . "</div>
+                 <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => true)) . "</div>
                  <div class='theme-help-box-description'>" . $data['description'] . "</div>
              </div>
         </div>";
@@ -2939,7 +2947,7 @@ function theme_inline_help_box($data)
  *
  */
 
-function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL)
+function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = null)
 {
     $options['id'] = isset($options['id']) ? $options['id'] : 'paginate';
 
@@ -2961,12 +2969,12 @@ function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL
     $buttons[] = anchor_custom(
         $url . '/0',
         "&laquo;", 'high',
-        array('id' => 'paginate_first', 'no_escape_html' => TRUE, 'class' => 'theme-paginate-button')
+        array('id' => 'paginate_first', 'no_escape_html' => true, 'class' => 'theme-paginate-button')
     );
     $buttons[] = anchor_custom(
         $url . '/' . ($active > 0 ? $active - 1 : 0),
         "&lsaquo;", 'high',
-        array('id' => 'paginate_prev', 'no_escape_html' => TRUE, 'class' => 'theme-paginate-button')
+        array('id' => 'paginate_prev', 'no_escape_html' => true, 'class' => 'theme-paginate-button')
     );
 
     for ($index = $offset; $index < $max + $offset; $index++)
@@ -2978,12 +2986,12 @@ function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL
     $buttons[] = anchor_custom(
         $url . '/' . ($pages > $active ? $active + 1 : $pages),
         "&rsaquo;", 'high',
-        array('id' => 'paginate_next', "no_escape_html" => TRUE, 'class' => 'theme-paginate-button')
+        array('id' => 'paginate_next', "no_escape_html" => true, 'class' => 'theme-paginate-button')
     );
     $buttons[] = anchor_custom(
         $url . '/' . $pages,
         "&raquo;", 'high',
-        array('id' => 'paginate_last', "no_escape_html" => TRUE, 'class' => 'theme-paginate-button')
+        array('id' => 'paginate_last', "no_escape_html" => true, 'class' => 'theme-paginate-button')
     );
 
     return theme_button_set($buttons, $options);
@@ -3003,7 +3011,7 @@ function theme_paginate($url, $pages = 0, $active = 0, $max = 5, $options = NULL
  * - $release - release number (e.g. 31.1, so version-release is 4.7-31.1)
  * - $vendor - vendor
  *
- * If this application is included in the Marketplace, the following
+ * If this application is included in the marketplace, the following
  * information is also available.
  *
  * - $subscription_expiration - subscription expiration (if applicable)

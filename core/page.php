@@ -503,11 +503,11 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-md-8 theme-content'>
+                    <div id='theme-layout-content' class='col-md-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
-                    <div class='col-md-4'>
+                    <div id='theme-layout-rhs' class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_summary'] . "
@@ -527,12 +527,12 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-md-8 theme-content'>
+                    <div id='theme-layout-content' class='col-md-8 theme-content'>
                     " . _get_message() . "
                     " . $page['page_report_chart'] . "
                     " . $page['page_report_table'] . "
                     </div>
-                    <div class='col-md-4'>
+                    <div id='theme-layout-rhs' class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_report_helper'] . "
@@ -579,11 +579,11 @@ function _get_main_content($page)
                     " . _get_content_header($page) . "
                 </div>
                 <div class='row content clearfix'>
-                    <div class='col-md-8 theme-content'>
+                    <div id='theme-layout-content' class='col-md-8 theme-content'>
                 " . _get_message() . "
                 " . $page['app_view'] . "
                     </div>
-                    <div class='col-md-4'>
+                    <div id='theme-layout-rhs' class='col-md-4'>
                         <div id='theme-sidebar-container'>
                             <div class='theme-sidebar-top box'>
                             " . $page['page_summary'] . "
@@ -1313,6 +1313,11 @@ function _get_breadcrumb_links($links)
     $link_html = '';
     $button_grp = '';
 
+    // Tack on info widget show/hide
+    $links['rhs-toggle'] = array(
+        'url' => '#',
+        'id' => 'rhs-widget-toggle'
+    );
     // Use buttons, images/icons or font
     foreach ($links as $type => $link) {
         $text_right = (isset($link['display_tag']) && $link['display_tag']) ? "<span style='padding: 5px'>" . $link['tag'] . "</span>" : '';
@@ -1375,6 +1380,8 @@ function _get_breadcrumb_links($links)
             $icon = 'fa fa-book';
         else if ($type == 'app-tip')
             $icon = 'fa fa-lightbulb-o';
+        else if ($type == 'rhs-toggle')
+            $icon = 'fa fa-toggle-on';
 
         if ($type == 'wizard_next' || $type == 'wizard_previous')
             $disabled = ' disabled';
