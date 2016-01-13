@@ -1235,7 +1235,7 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 table.dataTable tr.child span.dtr-title {
   margin-right: 10px;
 }
-table.dataTable.responsive.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.responsive.dtr-inline.collapsed tbody th:first-child:before {
+table.dataTable.my-responsive.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.my-responsive.dtr-inline.collapsed tbody th:first-child:before {
   color: #686868;
   content: '\f142';
   font-family: 'FontAwesome';
@@ -1246,13 +1246,13 @@ table.dataTable.responsive.dtr-inline.collapsed tbody td:first-child:before, tab
   line-height: inherit !important;
 }
 /* Prevents icon for responsive datatables if grouping is being used */
-table.dataTable.responsive.dtr-inline.collapsed tbody tr td[colspan]:not([colspan="1"]):first-child:before,
-table.dataTable.responsive.dtr-inline.collapsed tbody tr th[colspan]:not([colspan="1"]):first-child:before {
+table.dataTable.my-responsive.dtr-inline.collapsed tbody tr td[colspan]:not([colspan="1"]):first-child:before,
+table.dataTable.my-responsive.dtr-inline.collapsed tbody tr th[colspan]:not([colspan="1"]):first-child:before {
   content: '' !important;
 }
 
-table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before,
-table.dataTable.responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
+table.dataTable.my-responsive.dtr-inline.collapsed tbody tr.parent td:first-child:before,
+table.dataTable.my-responsive.dtr-inline.collapsed tbody tr.parent th:first-child:before {
   color: #686868;
   content: '\f142';
   font-family: 'FontAwesome';

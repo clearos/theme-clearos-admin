@@ -41,7 +41,7 @@ function theme_page_javascript($custom_settings)
     $theme_url = clearos_theme_url('ClearOS-Admin');
 
     // The version is used to avoid upgrade/caching issues.  Bump when required.
-    $version = '7.0.0';
+    $version = '7.0.2';
 
     // Detault menu is 1
     if (empty($custom_settings['menu']))
