@@ -667,26 +667,16 @@ header:hover #magic-arrow {
   padding: 0;
   margin: 0 0 0 24px;
   list-style: none;
-  max-height: 0;
-  opacity: 0;
+  display:none;
   border-left: 1px solid #ddd;
-  -webkit-transition: all .2s ease 0.50s;
-     -moz-transition: all .2s ease 0.50s;
-      -ms-transition: all .2s ease 0.50s;
-       -o-transition: all .2s ease 0.50s;
-          transition: all .2s ease 0.50s;
+
 }
 
 li.active > .sub_menu, li:hover > .sub_menu {
-  padding: 6px 0;
-  margin: 3px 0 15px 24px;
-  max-height: 1000px;
+  padding: 0 0;
+  /* margin: 3px 0 15px 24px; */
   opacity: 1;
-  -webkit-transition: all .2s ease 0.5s;
-     -moz-transition: all .2s ease 0.5s;
-      -ms-transition: all .2s ease 0.5s;
-       -o-transition: all .2s ease 0.5s;
-          transition: all .2s ease 0.5s;
+
 }
 
 
@@ -732,28 +722,16 @@ li.active > .sub_menu, li:hover > .sub_menu {
 }
 .sub_menu li > ul {
   position: relative;
-  padding: 0;
+  padding: 6px 0;
   margin: 0 0 0 24px;
   list-style: none;
   border-left: 1px solid #ddd;
-  max-height: 0;
-  opacity: 0;
-  -webkit-transition: all .2s ease 0.50s;
-     -moz-transition: all .2s ease 0.50s;
-      -ms-transition: all .2s ease 0.50s;
-       -o-transition: all .2s ease 0.50s;
-          transition: all .2s ease 0.50s;
+  display:none;
 }
 
 .sub_menu li.active > ul, .sub_menu li:hover > ul{
-  max-height: 1000px;
-  padding: 6px 0;
-  -webkit-transition: all .2s ease 0.5s;
-     -moz-transition: all .2s ease 0.5s;
-      -ms-transition: all .2s ease 0.5s;
-       -o-transition: all .2s ease 0.5s;
-          transition: all .2s ease 0.5s;
-  margin: 3px 0 15px 24px;
+  /* padding: 6px 0;
+  margin: 3px 0 15px 24px; */
   opacity: 1;
 }
 
@@ -2849,7 +2827,10 @@ div.my-account > a:hover {text-decoration: none; color: #999;}
   position: absolute;
   top: 0;
 }
-
 .navbar-toggle .fa-bars{color:#7a7474; font-size: 18px;}
-
-.nav-third-level{max-height: 0; opacity: 0;}
+li.active ul.sub_menu {
+  display: block;
+}
+li.active  li.active ul.nav-third-level, li.active ul.sub_menu {
+  display: block;
+}
