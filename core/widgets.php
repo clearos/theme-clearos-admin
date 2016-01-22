@@ -1745,7 +1745,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         $responsive_class = '';
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
-        $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
+        $header_html .= "\n\t\t" . "<th$responsive_class>" . (isset($options['action_header']) ? $options['action_header'] : lang('base_action')) . "</th>";
         $footer_html .= "\n\t\t" . "<th><span style='display:none'>&nbsp;</span></th>";
         $empty_row .= "<td>&nbsp; </td>";
     }
@@ -2109,7 +2109,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
         $responsive_class = '';
         if (isset($options['responsive']) && isset($options['responsive'][$columns]))
             $responsive_class = " class='" . $options['responsive'][$columns] . "'";
-        $header_html .= "\n\t\t" . "<th$responsive_class>" . lang('base_action') . "</th>";
+        $header_html .= "\n\t\t" . "<th$responsive_class>" . (isset($options['action_header']) ? $options['action_header'] : lang('base_action')) . "</th>";
     }
 
     // Add button
@@ -2175,7 +2175,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
             $item_html .= "\t\t" . "<td>$value</td>\n";
 
         if (isset($options['read_only']) && $options['read_only']) {
-            $type = ($item['state']) ? "<span class='ui-icon ui-icon-check'>&nbsp; </span>" : '';
+            $type = ($item['state']) ? "<i class='fa fa-check-circle'></i>" : '';
             $item_html .= "\t\t<td>$type</td>";
         } else {
             $select_html = ($item['state']) ? 'checked' : '';
@@ -3026,7 +3026,7 @@ function theme_summary_box($data)
         $buttons[] = anchor_custom('#', lang('base_rate_app'), 'high', array('id' => 'app-' . $data['basename'], 'class' => 'sidebar-review-app'));
         $marketplace_html = "<div class='marketplace-links'>" . theme_button_set($buttons) . "</div>";
 
-        if (isset($data['show_recommended_apps']))
+        if (isset($data['show_recommended_apps']) && $data['show_recommended_apps'])
             $marketplace_html .=  "<div id='sidebar-recommended-apps'></div>";
 
     } else {

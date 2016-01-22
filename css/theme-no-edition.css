@@ -1,0 +1,11 @@
+.btn-primary, .btn-primary.disabled {
+  background-color: #e1852e !important;
+  border-color: #d7781f;
+  color: #ffffff !important;
+}
+.btn-link, a {
+  color: #e1852e !important;
+}
+.btn-primary:hover {
+  background-color: #d7781f !important;
+}

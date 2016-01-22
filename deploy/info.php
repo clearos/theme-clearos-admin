@@ -7,7 +7,7 @@ $package['name'] = 'theme-clearos-admin';
 $package['title'] = 'ClearOS Admin Theme';
 $package['description'] = 'The ClearOS Admin Theme';
 
-$package['version'] = '1.2';
+$package['version'] = '1.5';
 $package['release'] = '0.0';
 
 $package['vendor'] = 'ClearFoundation';
@@ -28,6 +28,16 @@ $package['settings'] = array(
     ),
     'hide_app_description' => array(
         'lang_tag' => 'base_hide_app_description',
+        'type' => 'dropdown',
+        'options' => array(
+            0 => lang('base_no'),
+            1 => lang('base_yes'),
+        ),
+        'required' => TRUE,
+        'default' => 1,
+    ),
+    'show_recommended_apps' => array(
+        'lang_tag' => 'base_show_recommended_apps',
         'type' => 'dropdown',
         'options' => array(
             0 => lang('base_no'),

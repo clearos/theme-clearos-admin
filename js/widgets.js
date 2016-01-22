@@ -31,7 +31,7 @@ function theme_anchor(url, text, options)
     data_type = '';
     button_group_start = '<div class="btn-group">';
     button_group_end = '</div>';
-    external_link = '';
+    target = '';
 
     // TODO - Rethink 'data-' passing
     if (typeof options != 'undefined') {
@@ -47,7 +47,7 @@ function theme_anchor(url, text, options)
         } else if (options.buttons == 'extra-small') {
             button_class = 'btn btn-xs btn-primary';
         } else if (options.buttons) {
-            button_class = 'btn btn-sm btn-primary';
+            button_class = 'btn btn-primary';
         }
         if (typeof options.classes != 'undefined')
             button_class += ' ' + options.classes;
@@ -55,9 +55,12 @@ function theme_anchor(url, text, options)
             data_ref = ' data-ref="' + options.data_ref + '"';
         if (typeof options.data_type != 'undefined')
             data_type = ' data-type="' + options.data_type + '"';
+        if (typeof options.target != 'undefined')
+            target = ' target="' + options.target + '"';
     }
 
-    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + text + '</a>' + button_group_end;
+    return button_group_start + '<a href="' + url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' +
+            text + '</a>' + button_group_end;
 }
 
 /**
@@ -77,7 +80,8 @@ function theme_anchors(links, options)
         button_class = 'btn btn-sm btn-primary';
         data_ref = '';
         data_type = '';
-        external_link = '';
+        target = '';
+        text = links[index].text;
         if (typeof links[index].options != 'undefined') {
             if (links[index].options.id)
                 id = links[index].options.id;
@@ -88,6 +92,10 @@ function theme_anchors(links, options)
                 button_class = '';
             } else if (links[index].options.buttons == 'extra-small') {
                 button_class = 'btn btn-xs btn-primary';
+            } else if (links[index].options.buttons == 'normal') {
+                button_class = 'btn btn-primary';
+            } else if (links[index].options.buttons == 'secondary') {
+                button_class = 'btn btn-secondary';
             } else if (links[index].options.buttons) {
                 button_class = 'btn btn-sm btn-primary';
             }
@@ -95,10 +103,12 @@ function theme_anchors(links, options)
                 button_class += ' ' + links[index].options.classes;
             if (typeof links[index].options.data_ref != 'undefined')
                 data_ref = ' data-ref="' + links[index].options.data_ref + '"';
-            if (typeof options.data_type != 'undefined')
-                data_type = ' data-type="' + options.data_type + '"';
+            if (typeof links[index].options.target != 'undefined')
+                target = ' target="' + links[index].options.target + '"';
+            if (typeof links[index].options.data_type != 'undefined')
+                data_type = ' data-type="' + links[index].options.data_type + '"';
         }
-        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + '>' + links[index].text + '</a>';
+        html += '<a href="' + links[index].url + '" id="' + id + '" class="' + button_class + '"' + data_ref + data_type + target + '>' + text + '</a>';
     });
     return button_group_start + html + button_group_end;
 }
@@ -152,6 +162,55 @@ function theme_dialog_box(id, title, message, options)
 function theme_dialog_close(obj)
 {
     obj.close();
+}
+
+/**
+ * Add key/value pair to DOM.
+ * 
+ * @param string key     key
+ * @param string value   value
+ * @param object options options
+ */
+
+function theme_key_value_pair(key, value, options)
+{
+    var row_dom_id = 'row-' + Math.floor(Math.random() * 1000);
+    var key_dom_id = 'key-' + Math.floor(Math.random() * 1000);
+    var value_dom_id = 'value-' + Math.floor(Math.random() * 1000);
+    var row_classes = '';
+    var key_classes = '';
+    var value_classes = '';
+    var key_col = 6;
+    var value_col = 6;
+
+    if (typeof options != 'undefined') {
+        if (typeof options.row != 'undefined') {
+            if (options.row.id != 'undefined')
+                row_dom_id = options.row.id;
+            if (options.row.classes != 'undefined')
+                row_classes = options.row.classes;
+        }
+        if (typeof options.key != 'undefined') {
+            if (options.key.id != 'undefined')
+                key_dom_id = options.key.id;
+            if (options.key.width != 'undefined')
+                key_col = options.key.width;
+            if (options.key.classes != 'undefined')
+                key_classes = options.key.classes;
+        }
+        if (typeof options.value != 'undefined') {
+            if (options.value.id != 'undefined')
+                value_dom_id = options.value.id;
+            if (options.value.width != 'undefined')
+                value_col = options.value.width;
+            if (options.value.classes != 'undefined')
+                value_classes = options.value.classes;
+        }
+    }
+    return '<div class="row ' + row_classes + '" id="' + row_dom_id + '">' +
+        '  <div class="col-lg-' + key_col + ' ' + key_classes + ' theme-field" id="' + key_dom_id + '">' + key + '</div>' +
+        '  <div class="col-lg-' + value_col + ' ' + value_classes + '" id="' + value_dom_id + '">' + value + '</div>' +
+        '</div>';
 }
 
 /**
@@ -418,16 +477,13 @@ function theme_related_app(type, list)
     html += '</div>';
     $('#app_' + type).append(html);
 
-    // Make sure only to call this 'dotdotdot' once
-    if (type == 'other_by_devel') {
-        $('#app_' + type).append('\
-            <script type="text/javascript">\
-                $(".marketplace-app-info-description").dotdotdot({\
-                    ellipsis: "..."\
-                });\
-            </script>\
-        ');
-    }
+    $('#app_' + type).append('\
+        <script type="text/javascript">\
+            $("#app_' + type + ' .marketplace-app-info-description").dotdotdot({\
+                ellipsis: "..."\
+            });\
+        </script>\
+    ');
 }
 
 /**
@@ -568,6 +624,10 @@ function theme_chart(
     if (typeof options['series_sum_above_threshold'] == 'undefined')
         options['series_sum_above_threshold'] = false;
 
+    // Label precision (eg. decimal places)
+    if (typeof options['series_label_precision'] == 'undefined')
+        options['series_label_precision'] = 1;
+
     // Series title
     //---------------------------------------------------
     // The first item in the data set is the x-axis, series labels are the rest.
@@ -612,7 +672,7 @@ function theme_chart(
 
             if (i >= max_data_points) {
                 chart_data[max_data_points-1][j] = chart_data[max_data_points-1][j] + item;
-                chart_data[max_data_points-1][0] = '- other -';
+                chart_data[max_data_points-1][0] = 'Others';
             } else {
                 if (typeof chart_data[i] == 'undefined')
                     chart_data[i] = new Array();
@@ -800,7 +860,9 @@ function theme_chart(
                         radius: 0.75,
                         threshold: options['series_label_threshold'],
                         formatter: function (label, series) {
-                            var label_format = '<div class="theme-chart-label-format">' + label + ' - ' + series.data[0][1] + '</div>';
+                            var label_format = '<div class="theme-chart-label-format">' +
+                                label + ' - ' + (series.data[0][1]).toFixed(options['series_label_precision']) +
+                                '</div>';
                             if (typeof options['series_label_format'] != 'undefined') {
                                 label_format = '<div class="theme-chart-label-format">';
                                 if (options['series_label_format']['label'])
@@ -808,7 +870,7 @@ function theme_chart(
                                 if (options['series_label_format']['value']) {
                                     if (options['series_label_format']['label'])
                                         label_format += ' - ';
-                                    label_format += series.data[0][1];
+                                    label_format += (series.data[0][1]).toFixed(options['series_label_precision']);
                                 }
                                 if (options['series_label_format']['unit'])
                                     label_format += ' ' + options['series_label_format']['unit'];
