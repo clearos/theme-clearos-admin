@@ -28,16 +28,11 @@ $(document).ready(function() {
                 jQuery(".small_menu").append("<ul class='left_nav'>"+left_nav+"</ul>");
                 jQuery('.left_nav li a').click(function() {
                     if(!jQuery(this).parent().hasClass("active")) {
-                        jQuery(this).parent().find('li').removeClass('active');
-                        jQuery(this).parent().find('>ul').slideDown('slow').addClass('active');
+                        jQuery(this).parent().siblings('li').removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
+                        jQuery(this).parent().addClass('active').find('>ul').slideDown('slow');
                     } else {
-                        //jQuery(this).parent().removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
+                        jQuery(this).parent().removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
                     }
-                });
-				jQuery('.left_nav li a').dblclick(function() {
-                    jQuery(this).parent().find('>ul').slideUp('slow').find('li').removeClass('active',function(){
-						jQuery(this).parent().removeClass('active');
-					});
                 });
             } else {
                 var left_nav = jQuery(".left_nav").html();
@@ -45,25 +40,20 @@ $(document).ready(function() {
                 jQuery(".sidebar-form").after("<ul class='left_nav'>"+left_nav+"</ul>");
                 jQuery('.left_nav li a').click(function(){
                     if(!jQuery(this).parent().hasClass("active")) {
-                        jQuery(this).parent().find('li').removeClass('active');
-                         jQuery(this).parent().find('>ul').slideDown('slow').addClass('active');
+                        jQuery(this).parent().siblings('li').removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
+                        jQuery(this).parent().addClass('active').find('>ul').slideDown('slow');
                     } else {
-                        // jQuery(this).parent().removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
+                        jQuery(this).parent().removeClass('active').find('>ul').slideUp('slow').find('li').removeClass('active');
                     }
-					jQuery('.left_nav li a').dblclick(function() {
-						jQuery(this).parent().find('>ul').slideUp('slow').find('li').removeClass('active',function(){
-							jQuery(this).parent().removeClass('active');
-						});
-					});
                 });
             }
 
     }
     
     jQuery(window).resize(function(){
-        left_menu_js();
+        //left_menu_js();
     });
-    left_menu_js();
+    //left_menu_js();
 
     /*
         Left sidebar Start
