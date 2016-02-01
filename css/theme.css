@@ -439,14 +439,14 @@ ul.left_nav > li {
   margin-bottom: 5px;
   border: 1px solid transparent;
 }
-ul.left_nav > li > a {
+ul.left_nav > li > a, ul.navbar-nav > li > a {
   display: block;
   font-size: 15px;
   color: #686868;
   padding: 12px 15px 8px 50px;
   font-weight: bold;
 }
-ul.left_nav > li > a i {
+ul.left_nav > li > a i, ul.navbar-nav > li > a i {
   content: ' ';
   position: absolute;
   width: 50px;
@@ -459,22 +459,22 @@ ul.left_nav > li > a i {
   background-image: url(../img/cube_sprite.png);
   background-repeat: no-repeat;
 }
-ul.left_nav > li > a i.coi-cloud {
+ul.left_nav > li > a i.coi-cloud, ul.nav.navbar-nav > li > a i.coi-cloud {
   background-position: 0 0;
 }
-ul.left_nav > li > a i.coi-network {
+ul.left_nav > li > a i.coi-network, ul.nav.navbar-nav > li > a i.coi-network {
   background-position: 0 -200px;
 }
-ul.left_nav > li > a i.coi-gateway {
+ul.left_nav > li > a i.coi-gateway, ul.nav.navbar-nav > li > a i.coi-gateway {
   background-position: 0 -100px;
 }
-ul.left_nav > li > a i.coi-server {
+ul.left_nav > li > a i.coi-server, ul.nav.navbar-nav > li > a i.coi-server {
   background-position: 0 -400px;
 }
-ul.left_nav > li > a i.coi-system {
+ul.left_nav > li > a i.coi-system, ul.nav.navbar-nav > li > a i.coi-system {
   background-position: 0 -500px;
 }
-ul.left_nav > li > a i.coi-reports {
+ul.left_nav > li > a i.coi-reports, ul.nav.navbar-nav > li > a i.coi-reports {
   background-position: 0 -300px;
 }
 ul.left_nav > li > a:hover {
@@ -928,6 +928,97 @@ li.treeview.active ul.sub_menu {
 @media (max-width: 800px) {
   #category-select .btn-group > .btn, .btn-group-vertical > .btn {
      width: 45px;
+  }
+}
+
+/* Type 3 (Bootstra)
+/* =================*/
+
+.theme-menu-3 {
+  float: left;
+}
+.theme-menu-3.navbar {
+  width:20%;margin-bottom:0;z-index:999; border: none;
+}
+.theme-menu-3 .navbar-collapse{padding:0px;}
+.theme-menu-3 .navbar-nav {
+  width: 100%;
+}
+.theme-menu-3 .dropdown {
+  position: static;
+}
+.theme-menu-3 .nav .dropdown.open .dropdown-menu{
+  position:static;
+  top:0;
+  left:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  margin:0;
+  width: 100%;
+}
+.theme-menu-3 {
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(67%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.03)));
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
+  background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 67%, rgba(0, 0, 0, 0.03) 100%);
+  background-color: transparent;
+}
+.theme-menu-3 .dropdown-menu {
+  border-radius: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-clip: none;
+  background-color: transparent;
+}
+.theme-menu-3 ul.navbar-nav > li {
+  clear: both;
+  padding: 4px 0;
+  position: relative;
+  width: 100%;
+}
+.theme-menu-3 ul.navbar-nav > li > a i {
+  width: 40px;
+  height: 32px;
+  margin-top:-6px;
+}
+.theme-menu-3 ul.navbar-nav > li > ul > li > a {
+  font-size: 14px;
+}
+.theme-menu-3 ul.navbar-nav > li > ul > li > ul > li > div {
+  margin-left:34px;
+  line-height: 28px;
+}
+.theme-menu-3 ul.navbar-nav > li > ul > li > ul > li > div > a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.theme-menu-3 a.theme-menu-3-link.active {
+  font-weight: 800;
+}
+
+.theme-menu-3 .dropdown .dropdown-menu, .theme-menu-3-subcategory {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.theme-menu-3 .theme-menu-3-subcategory.down {
+    -ms-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+@media (max-width: 800px) {
+  .theme-menu-3 {
+    display:none;
+  }
+  .small_menu ul.theme-nav-3.nav.navbar-nav {
+        margin:0px;
   }
 }
 /* ============================================= */
@@ -2864,3 +2955,4 @@ div.my-account > a:hover {text-decoration: none; color: #999;}
 .navbar-toggle .fa-bars{color:#7a7474; font-size: 18px;}
 
 .nav-third-level{max-height: 0; opacity: 0;}
+

@@ -22,6 +22,7 @@ $package['settings'] = array(
         'options' => array(
             1 => 'Expanding Sidebar',
             2 => 'Category Headers',
+            3 => 'Vertical Boostrap',
         ),
         'required' => TRUE,
         'default' => 0,

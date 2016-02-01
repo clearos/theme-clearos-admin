@@ -891,7 +891,17 @@ function _get_wizard_menu($page)
     $steps .= "\t\t</ul>\n";
     $steps .= "</li>\n";
 
-    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2) {
+    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 3) {
+        return "
+            <aside class='theme-menu-2'>
+                <div class='sidebar'>
+                    <ul class='sidebar-menu-2'>
+                        $steps
+                    </ul>
+                </div>
+            </aside>
+        ";
+    } else if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2) {
         return "
             <aside class='theme-menu-2'>
                 <div class='sidebar'>
@@ -924,7 +934,9 @@ function _get_left_menu($page)
 {
 
     // Default is Menu 1 (long sidebar)
-    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2)
+    if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 3)
+        return _get_left_menu_3($page);
+    else if (isset($page['theme_ClearOS-Admin']['menu']) && $page['theme_ClearOS-Admin']['menu'] == 2)
         return _get_left_menu_2($page);
     else
         return _get_left_menu_1($page);
@@ -1297,6 +1309,106 @@ $main_apps
         </ul>
     </div>
 </aside>
+";
+}
+
+/**
+ * Returns left panel menu, type 3.
+ *
+ * @param array $page page data
+ *
+ * @return string menu HTML output
+ */
+
+function _get_left_menu_3($page)
+{
+
+    $categories = array();
+    $menu_data = $page['menus'];
+    $menu = '';
+    foreach ($menu_data as $url => $page_meta) {
+        if (!array_key_exists($page_meta['category'], $categories))
+            $categories[$page_meta['category']] = array();
+        $categories[$page_meta['category']][] = $page_meta['subcategory'];
+        $categories[$page_meta['category']] = array_values(array_unique($categories[$page_meta['category']]));
+    }
+
+    foreach ($categories as $category => $subcategories) {
+        $menu .= "  <li class='dropdown" . ($category == $page['current_category'] ? ' open' : '') . "'>\n";
+        $menu .= "    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>\n";
+        $menu .= "      <i class='coi-" . strtolower($category) . "'></i> <div class='menu-description'>$category</div>\n";
+        $menu .= "    </a>\n";
+        $menu .= "    <ul class='dropdown-menu category'>\n";
+
+        foreach ($subcategories as $subcategory) {
+            $menu .= "      <li class='dropdown" . ($subcategory == $page['current_subcategory'] ? ' open' : '') . "'>\n";
+            $menu .= "        <a href='#' class='dropdown-toggle' data-toggle='dropdown'>\n";
+            $menu .= "          <span class='menu-description'><i class='fa fa-angle-double-right theme-menu-3-subcategory" . ($subcategory == $page['current_subcategory'] ? ' down' : '') . "'></i> $subcategory</span>\n";
+            $menu .= "        </a>\n";
+            $menu .= "        <ul class='dropdown-menu subcategory'>\n";
+
+            foreach ($menu_data as $url => $page_meta) {
+                if ($page_meta['category'] != $category)
+                    continue;
+                if ($page_meta['subcategory'] != $subcategory)
+                    continue;
+                $menu .= "          <li><div><a class='theme-menu-3-link" . (basename($url) == $page['current_basename'] ? " active" : "") . "' href='$url'>" . $page_meta['title'] . "</a></div></li>\n";
+            }
+            $menu .= "      </ul>\n";
+            $menu .= "    </li>\n";
+        }
+        $menu .= "    </ul>\n";
+        $menu .= "  </li>\n";
+    }
+    /*
+    foreach ($menu_data as $url => $page_meta) {
+        if ($page_meta['subcategory'] === lang('base_subcategory_my_account')) {
+            continue;
+        }
+
+    }
+
+    // If we're on a spotlight page (dashboard etc.) pick one
+    if (!array_filter($active_category))
+        $active_category['cloud'] = ' checked';
+
+    $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
+
+    $no_of_categories = 6;
+    $percent_width = round(100 / $no_of_categories, 0, PHP_ROUND_HALF_UP);
+
+    */
+    $framework =& get_instance();
+    $username = $framework->session->userdata('username');
+
+    // Search form
+    //-------------
+
+    if ($username === 'root') {
+        $search_html =
+            form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . "
+            <div class='input-group'>
+                <input type='text' name='g_search' id='g_search' class='form-control theme-sidebar-search' placeholder='" . lang('base_search') . "' />
+                <span class='input-group-btn'>
+                    <button type='submit' name='btn_search' class='btn btn-flat'><i class='fa fa-search'></i></button>
+                </span>
+            </div>
+            " . form_close();
+    } else {
+        $search_html = "";
+    }
+
+    return "
+<nav class='theme-menu-3 navbar navbar-default' role='navigation'>
+    <div class='navbar-header'>
+        $search_html
+    </div>
+    <div class='collapse navbar-collapse navbar-ex1-collapse'>
+        <ul class='theme-nav-3 nav navbar-nav'>
+            $menu
+        </ul>
+    </div>
+</nav>
 ";
 }
 
