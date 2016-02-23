@@ -851,13 +851,14 @@ function _get_wizard_menu($page)
         
 
         $disabled = '';
-        if ($step_no > $page['wizard_current'])
+        if ($step_no != $page['wizard_current'])
             $disabled = 'theme-link-disabled';
-        $active         =   '';
-        $sub_active         =   '';
-        if(isset($category_list[$menu['subcategory']]) && in_array($page['wizard_current'],$category_list[$menu['subcategory']])){
-            $sub_active         =   'active';
-        }
+
+        $active = '';
+        $sub_active = '';
+
+        if (isset($category_list[$menu['subcategory']]) && in_array($page['wizard_current'],$category_list[$menu['subcategory']]))
+            $sub_active = 'active';
      
         if ($step_no == $page['wizard_current'])
             $active = 'active';
@@ -867,7 +868,7 @@ function _get_wizard_menu($page)
             $current_subcategory = $menu['subcategory'];
             $steps .= "<li class='treeview  $sub_active'>\n";
             $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
-            $steps .= "\t<ul class='sub_menu' style='display: block;'>\n";
+            $steps .= "\t<ul class='sub_menu'>\n";
             $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         } else if ($current_subcategory == $menu['subcategory']) { 
             
@@ -879,9 +880,9 @@ function _get_wizard_menu($page)
             $steps .= "\t</ul>\n";
             $steps .= "</li>\n";
             $steps .= "<li class='treeview $sub_active'>\n";
-            $steps .= "\t<a href='#'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
+            $steps .= "\t<a href='#' class='" . (isset($framework->session->userdata['wizard']) ? "theme-link-disabled" : "") . "'><small class='$sub_class'></small><span>" . $menu['subcategory'] . "</span></a>\n";
             $steps .= "\t<ul class='sub_menu'>\n";
-            $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != '' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
+            $steps .= "\t\t<li class='$disabled $active'><a href='" . ($disabled != 'theme-link-disabled' ? '#' : $menu['nav']) . "'>" . $menu['title'] . "</a></li>\n";
         }
     }
 
@@ -1041,7 +1042,7 @@ function _get_left_menu_1($page)
             $current_category = $page_meta['category'];
             $main_apps .= "<li class='". ($page_meta['category'] == $page['current_category'] ? " active" : "") . "'>";
             $main_apps .= (((count($page['devel_alerts'])) > 0 && strtolower($page_meta['category']) == 'system') ? 
-            "<div class='bubbleDrop'><a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'>" .
+            "<div class='bubbleDrop'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" .
             ((count($page['devel_alerts'])) > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "</a>
             <ul class='dropdown-menu' role='menu'>
                  " . ((count($page['devel_alerts'])) > 0 ?  $alert_text : '') . "
@@ -1050,7 +1051,7 @@ function _get_left_menu_1($page)
               <li class='divider'></li>
               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
             </ul></div>
-            " : '') . "<a href='javascript:void(0);'><i class='coi-" . strtolower($page_meta['category']) . "'></i>";
+            " : '') . "<a href='#'><i class='coi-" . strtolower($page_meta['category']) . "'></i>";
             $main_apps .= $page_meta['category'];
             $main_apps .= "</a>";
             $main_apps .= "<ul class='sub_menu'>";
@@ -1063,7 +1064,7 @@ function _get_left_menu_1($page)
             $current_subcategory = $page_meta['subcategory'];
 
             $main_apps .= "<li class='". ($page_meta['subcategory'] == $page['current_subcategory'] ? "active" : "") . "'>";
-            $main_apps .= "<a href='javascript:void(0);'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
+            $main_apps .= "<a href='#'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
             $main_apps .= "<ul class='nav nav-third-level'>";
         }
 
@@ -1093,6 +1094,7 @@ function _get_left_menu_1($page)
 
     // Search form
     //-------------
+    // Not used in menu 1
 
     if ($username === 'root') {
         $search_html =
@@ -1103,7 +1105,7 @@ function _get_left_menu_1($page)
                     <button type='submit' name='btn_search' class='btn btn-flat'><i class='fa fa-search'></i></button>
                 </span>
             </div>
-        " . form_close();
+            " . form_close();
     } else {
         // Left nav is inserted into sidebar-form
         $search_html = form_open('base/search', NULL, NULL, array('class' => 'sidebar-form')) . form_close();
@@ -1111,7 +1113,6 @@ function _get_left_menu_1($page)
 
     return "
         <aside class='theme-menu-1'>
-            $search_html
             <ul class='left_nav'>
                 $spotlights
                 $main_apps
