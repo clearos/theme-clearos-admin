@@ -1051,7 +1051,7 @@ function _get_left_menu_1($page)
               <li class='divider'></li>
               <li><a role='menuitem' href='/app/base/session/logout'>Sign out</a></li>
             </ul></div>
-            " : '') . "<a href='#'><i class='coi-" . strtolower($page_meta['category']) . "'></i>";
+            " : '') . "<a href='#' class='nav-toggle'><i class='coi-" . strtolower($page_meta['category']) . "'></i>";
             $main_apps .= $page_meta['category'];
             $main_apps .= "</a>";
             $main_apps .= "<ul class='sub_menu'>";
@@ -1064,7 +1064,7 @@ function _get_left_menu_1($page)
             $current_subcategory = $page_meta['subcategory'];
 
             $main_apps .= "<li class='". ($page_meta['subcategory'] == $page['current_subcategory'] ? "active" : "") . "'>";
-            $main_apps .= "<a href='#'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
+            $main_apps .= "<a href='#' class='nav-toggle'><span class='menu-item'>" . $page_meta['subcategory'] . "</span></a>";
             $main_apps .= "<ul class='nav nav-third-level'>";
         }
 

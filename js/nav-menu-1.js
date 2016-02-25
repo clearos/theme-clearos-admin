@@ -31,7 +31,7 @@ $(document).ready(function() {
             jQuery('.left_nav li.active').find('>ul').slideDown('fast').addClass('active');
             if (jQuery(".theme-wizard-active").length != 0)
                 return;
-            jQuery('.left_nav li a').click(function(e) {
+            jQuery('.left_nav li a.nav-toggle').click(function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 if(!jQuery(this).parent().hasClass("active")) {
@@ -56,7 +56,7 @@ $(document).ready(function() {
             jQuery('.left_nav li.active').find('>ul').slideDown('fast').addClass('active');
             if (jQuery(".theme-wizard-active").length != 0)
                 return;
-            jQuery('.left_nav li a').click(function(e){
+            jQuery('.left_nav li a.nav-toggle').click(function(e){
                 e.preventDefault();
                 e.stopPropagation();
                 if (!jQuery(this).parent().hasClass("active")) {
