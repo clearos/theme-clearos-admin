@@ -808,6 +808,7 @@ li.active > .sub_menu, li:hover > .sub_menu {
 }
 .theme-menu-2-category {
   padding: 2px 4px 0px 4px;
+  height: 38px;
 }
 .theme-menu-2 li.treeview ul.sub_menu {
   display: none!important;
