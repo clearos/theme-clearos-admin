@@ -5,7 +5,7 @@
  * @category  Theme
  * @package   ClearOS
  * @author    ClearFoundation <developer@clearfoundation.com>
- * @copyright 2014-2015 ClearFoundation
+ * @copyright 2014-2016 ClearFoundation
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link      http://www.clearfoundation.com/docs/developer/theming/ 
  *
@@ -809,7 +809,7 @@ function _get_footer($page)
       $modals
       <!-- Footer -->
       <div class='clearfix'></div>
-      <footer>Copyright &copy; 2009 - 2015 $vendor</footer>
+      <footer>Copyright &copy; 2009 - 2016 $vendor</footer>
     <!-- Close main-wrapper -->
     </div>
     ";
