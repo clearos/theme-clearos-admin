@@ -1968,7 +1968,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
                     var nGroup = document.createElement( 'tr' );
                     var nCell = document.createElement( 'td' );
                     nCell.colSpan = iColspan;
-                    nCell.className = \"group\";
+                    nCell.className = \"clearos-list-grouping\";
                     nCell.innerHTML = sGroup;
                     nGroup.appendChild( nCell );
                     nTrs[i].parentNode.insertBefore( nGroup, nTrs[i] );
@@ -2032,7 +2032,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         },
         $server_side
         $col_widths
-        'stateSave': true,
+        'stateSave': false,
         'stateDuration': 60 * 60 * 24 * 365,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
@@ -2099,6 +2099,11 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
     else
         $empty_table = '';
 
+    // Search
+    $filter = 'false';
+    if (isset($options['filter']) && $options['filter'])
+        $filter = 'true';
+
     // Action column?
     $action_col = TRUE;
     if (isset($options['no_action']) && $options['no_action'])
@@ -2148,7 +2153,7 @@ function theme_list_table($title, $anchors, $headers, $items, $options = NULL)
                     var nGroup = document.createElement( 'tr' );
                     var nCell = document.createElement( 'td' );
                     nCell.colSpan = iColspan;
-                    nCell.className = \"group\";
+                    nCell.className = \"clearos-list-grouping\";
                     nCell.innerHTML = sGroup;
                     nGroup.appendChild( nCell );
                     nTrs[i].parentNode.insertBefore( nGroup, nTrs[i] );
@@ -2214,7 +2219,11 @@ $(document).ready(function() {
                         { \"bSortable\": false, \"aTargets\": [ " . ($action_col ? "-1" : "") . " ] },
                         { \"bVisible\": $first_column_visible, \"aTargets\": [ 0 ] }
                 ],
+        'sDom': '<\"row\"<\"col-xs-7\"l><\"col-xs-5\"f>r>t<\"row\"<\"col-xs-8\"i><\"col-xs-4\"p>>',
         'language': {
+            'search': '',
+            'sProcessing': '',
+            'searchPlaceholder': '" . lang('base_search') . "',
             " . $empty_table . "
         },
         'fnCreatedRow': function (nRow, aData, iDataIndex) {
@@ -2223,7 +2232,7 @@ $(document).ready(function() {
                 \"bJQueryUI\": true,
                 \"bPaginate\": false,
                 \"stateSave\": true,
-                \"bFilter\": false,
+                \"bFilter\": $filter,
                 $group_javascript
                 \"aaSortingFixed\": [ $first_column_fixed_sort ],
                 \"sPaginationType\": \"full_numbers\"
