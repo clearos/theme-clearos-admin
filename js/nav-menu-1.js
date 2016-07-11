@@ -74,10 +74,6 @@ $(document).ready(function() {
 
     }
     
-    jQuery(window).resize(function(){
-        left_menu_js();
-    });
-
     left_menu_js();
 
     var asidewidth = jQuery(".marketPlaceSection aside").width();
