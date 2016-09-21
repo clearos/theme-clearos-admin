@@ -310,19 +310,10 @@ function get_marketplace_data(basename, realtime) {
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
                                 lang_marketplace_eval_limitations,
-                                '<a id=\'eval-limit-anchor\' href=\'javascript: void(0)\'>' + lang_yes + '</a>' +
-                                '<div class=\'theme-rhs-tooltip\'>' + json.license_info.eval_limitations + '</div>',
+                                '<a id=\'eval-limit-anchor\' data-toggle=\'tooltip\' data-container=\'body\' href=\'javascript: void(0)\' title=\'' + json.license_info.eval_limitations + '\'>' + lang_yes + '</a>',
                                 options
                             )
                         );
-                        $('#eval-limit-anchor').tooltip({
-                            offset: [-140, -315],
-                            position: 'center left',
-                            effect: 'slide',
-                            direction: 'left',
-                            slideOffset: 110,
-                            opacity: 0.95
-                        });
                     }
                     $('#sidebar_additional_info_row').after(
                         _sidebar_pair(
