@@ -1901,15 +1901,15 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             } else {
                 // Map int/string/ip to datables values
                 if ($s_type == 'int')
-                    $datatables_type = 'numeric';
+                    $datatables_type = 'num';
                 else if ($s_type == 'float')
-                    $datatables_type = 'numeric';
+                    $datatables_type = 'num';
                 else if ($s_type == 'date')
                     $datatables_type = 'date';
                 else if ($s_type == 'string')
                     $datatables_type = 'string';
                 else if ($s_type == 'title-numeric')
-                    $datatables_type = 'title-numeric';
+                    $datatables_type = 'string';
                 else
                     $datatables_type = 'html';
 
