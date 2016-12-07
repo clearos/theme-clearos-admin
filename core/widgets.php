@@ -2346,7 +2346,7 @@ function theme_box_open($title, $options)
 {
     $id_html = (isset($options['id'])) ? $options['id'] : 'options_' . rand(0, 1000);
     $classes = (isset($options['class'])) ? $options['class'] : '';
-    $anchors = (isset($options['anchors'])) ? "<div class='pull-right' style='margin-top: -14px;'>" . $options['anchors'] . "</div>": '';
+    $anchors = (isset($options['anchors'])) ? "<div class='theme-box-tools pull-right'>" . $options['anchors'] . "</div>": '';
     return "
         <div class='box $classes' id='$id_html'>
             " . ($title != NULL ? "
