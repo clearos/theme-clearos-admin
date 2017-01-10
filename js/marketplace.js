@@ -797,8 +797,8 @@ function _sidebar_pair(field, value, options) {
             value_class = ' ' + options.value_class;
     }
     return '<div class=\'row' + row_class + '\'>' +
-                '<div class=\'col-lg-6 theme-field' + field_class + '\'>' + field + '</div>' +
-                '<div class=\'col-lg-6' + value_class + '\'>' + value + '</div>' +
+                '<div class=\'col-xs-6 theme-field' + field_class + '\'>' + field + '</div>' +
+                '<div class=\'col-xs-6' + value_class + '\'>' + value + '</div>' +
            '</div>'
     ;
 }

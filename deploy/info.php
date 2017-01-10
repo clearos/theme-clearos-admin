@@ -7,7 +7,7 @@ $package['name'] = 'theme-clearos-admin';
 $package['title'] = 'ClearOS Admin Theme';
 $package['description'] = 'The ClearOS Admin Theme';
 
-$package['version'] = '1.7';
+$package['version'] = '1.8';
 $package['release'] = '0.0';
 
 $package['vendor'] = 'ClearFoundation';

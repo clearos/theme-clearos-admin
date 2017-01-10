@@ -243,8 +243,8 @@ function theme_add_sidebar_pair(key, value, options)
     }
     $('#sidebar_additional_info_row').after(
         '<div class="row" id="' + row_dom_id + '">' +
-        '  <div class="col-lg-6 theme-field" id="' + key_dom_id + '">' + key + '</div>' +
-        '  <div class="col-lg-6" id="' + value_dom_id + '">' + value + '</div>' +
+        '  <div class="col-xs-6 theme-field" id="' + key_dom_id + '">' + key + '</div>' +
+        '  <div class="col-xs-6" id="' + value_dom_id + '">' + value + '</div>' +
         '</div>'
     );
 }

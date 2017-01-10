@@ -3054,24 +3054,24 @@ function theme_summary_box($data)
         <div class='box-header'><h3 class='box-title'>" . $data['name'] . "</h3></div>
         <div class='box-body theme-clear' id='theme_app_sidebar'>
             <div class='row'>
-                <div class='col-lg-6 theme-field'>" . lang('base_vendor') . "</div>
-                <div class='col-lg-6'>" . $data['vendor'] . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_vendor') . "</div>
+                <div class='col-xs-6'>" . $data['vendor'] . "</div>
             </div>
             <div class='row'>
-                <div class='col-lg-6 theme-field'>" . lang('base_version') . "</div>
-                <div class='col-lg-6'>" . $data['version'] . '-' . $data['release'] . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_version') . "</div>
+                <div class='col-xs-6'>" . $data['version'] . '-' . $data['release'] . "</div>
             </div>
             <div id='sidebar_daemon_status' class='row theme-hidden'>
-                <div class='col-lg-6 theme-field'>" . lang('base_status') . "</div>
-                <div class='col-lg-6' id='clearos_daemon_status'>" . theme_loading('small') . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_status') . "</div>
+                <div class='col-xs-6' id='clearos_daemon_status'>" . theme_loading('small') . "</div>
             </div>
             <div id='sidebar_daemon_action' class='row theme-hidden'>
-                <div class='col-lg-6 theme-field'>" . lang('base_action') . "</div>
-                <div class='col-lg-6' id='sidebar_daemon_action_controls'>" . anchor_custom('#', '---', 'high', array('id' => 'clearos_daemon_action')) . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_action') . "</div>
+                <div class='col-xs-6' id='sidebar_daemon_action_controls'>" . anchor_custom('#', '---', 'high', array('id' => 'clearos_daemon_action')) . "</div>
             </div>
             <div id='sidebar_additional_info_row' class='row theme-hidden'>
-                <div class='col-lg-6 theme-field'>" . lang('base_additional_info') . "</div>
-                <div class='col-lg-6' id='sidebar_additional_info'>" . theme_loading('small') . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_additional_info') . "</div>
+                <div class='col-xs-6' id='sidebar_additional_info'>" . theme_loading('small') . "</div>
             </div>
             $marketplace_html
         </div>
