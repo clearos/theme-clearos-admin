@@ -1,10 +1,14 @@
 Name: theme-clearos-admin
 Group: Applications/Themes
 <<<<<<< HEAD
+<<<<<<< HEAD
 Version: 7.3.2
 =======
 Version: 7.1.14
 >>>>>>> Suggested fix to RHS widget, granny-size text and usability with tables
+=======
+Version: 7.1.14
+>>>>>>> 317722162ef269df25f3f91f9ef8217fd3486e34
 Release: 1%{dist}
 Summary: ClearOS 7 base theme
 License: ClearCenter license
