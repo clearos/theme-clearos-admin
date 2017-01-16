@@ -659,6 +659,9 @@ function clearos_is_authenticated() {
                 // Code 11 is an email mismatch for lost password
                 $('#sdn-login-dialog-message-bar').html(theme_infobox('warning', lang_warning, lang_sdn_email_mismatch));
                 $('#sdn-login-dialog-message-bar').show(200);
+            } else if (data.code == 3 && auth_options.callback == 'display_review_form') {
+                // Open dialog
+                $('#sidebar_additional_info').fadeOut(300).fadeIn(300);
             } else if (data.code > 0) {
                 $('#sdn-login-dialog-message-bar').html(theme_infobox('warning', lang_warning, lang_sdn_password_invalid));
                 $('#sdn-login-dialog-message-bar').show(200);
