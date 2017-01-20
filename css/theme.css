@@ -1136,6 +1136,18 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 }
 
 /* ----------------------- */
+/* Multi-factor auth form  */
+/* ----------------------- */
+
+.theme-mf-auth-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-top: 5%;
+}
+
+/* ----------------------- */
 /* Sidebar widget FIXME - discuss */
 /* ----------------------- */
 
