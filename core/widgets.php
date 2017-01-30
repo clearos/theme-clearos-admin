@@ -2023,7 +2023,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
             { 'bVisible': $first_column_visible, 'aTargets': [ 0 ] }
         ],
         'sDom': '<\"row\"<\"col-xs-7\"l><\"col-xs-5\"f>r>t<\"row\"<\"col-xs-4\"i><\"col-xs-8\"p>>',
-        'responsive': (responsive_layout == 'false' ? fale : true),
+        'responsive': (responsive_layout == 'false' ? false : true),
         'language': {
             'lengthMenu': '" . lang('base_show') . " _MENU_ " . lang('base_rows') . "',
             'search': '',
@@ -3076,7 +3076,6 @@ function theme_summary_box($data)
             $marketplace_html
         </div>
         " . theme_marketplace_review($data['basename']) . "
-        " . theme_tips_and_hints($data['tooltip']) . "
         <div class='box-footer'></div>"
     );
 
