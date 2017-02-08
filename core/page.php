@@ -73,8 +73,8 @@ function theme_page($page)
         return _splash_page($page);
     else if ($page['type'] == MY_Page::TYPE_LOGIN)
         return _login_page($page);
-    else if ($page['type'] == MY_Page::TYPE_MF_AUTH)
-        return _mf_auth_page($page);
+    else if ($page['type'] == MY_Page::TYPE_2FACTOR_AUTH)
+        return _2factor_auth_page($page);
     else if ($page['type'] == MY_Page::TYPE_WIZARD)
         return _wizard_page($page);
     else if ($page['type'] == MY_Page::TYPE_EXCEPTION)
@@ -281,14 +281,14 @@ function _login_page($page)
 }
 
 /**
- * Returns the multi-factor authentication type page.
+ * Returns the two-factor authentication type page.
  *
  * @param array $page page data
  *
  * @return string HTML output
  */
 
-function _mf_auth_page($page)
+function _2factor_auth_page($page)
 {
     return "
 <!-- Page Container -->
