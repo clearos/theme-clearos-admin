@@ -1136,10 +1136,10 @@ span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
 }
 
 /* ----------------------- */
-/* Multi-factor auth form  */
+/* 2FA auth form  */
 /* ----------------------- */
 
-.theme-mf-auth-container {
+.theme-2fa-container {
   width: 80%;
   margin-left: auto;
   margin-right: auto;

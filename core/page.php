@@ -292,7 +292,7 @@ function _2factor_auth_page($page)
 {
     return "
 <!-- Page Container -->
-<div class='theme-mf-auth-container container'>
+<div class='theme-2fa-container container'>
     " . $page['app_view'] . "
 </div>
 ";
