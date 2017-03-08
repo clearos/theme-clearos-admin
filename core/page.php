@@ -5,7 +5,7 @@
  * @category  Theme
  * @package   ClearOS
  * @author    ClearFoundation <developer@clearfoundation.com>
- * @copyright 2014-2016 ClearFoundation
+ * @copyright 2014-2017 ClearFoundation
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link      http://www.clearfoundation.com/docs/developer/theming/ 
  *
@@ -762,7 +762,7 @@ function _get_header($page, $menus = array())
               <div class='clearfix'></div>
             </header>
           <div class='page-title'><h1 id='theme-clearos-os-name'>$os_name</h1><div class='sitepath'>$title</div>
-          " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links']) : "") . "<div class='clearfix'></div>
+          " . (isset($page['breadcrumb_links']) ? _get_breadcrumb_links($page['breadcrumb_links'], isset($framework->session->userdata['wizard'])) : "") . "<div class='clearfix'></div>
           </div>"
         ;
 }
@@ -1324,21 +1324,23 @@ $main_apps
 /**
  * Returns breadcrumb.
  *
- * @param array $links link data
+ * @param array   $links link  data
+ * @param boolean $wizard_mode in wizard mode?
  *
  * @return string menu HTML output
  */
 
-function _get_breadcrumb_links($links)
+function _get_breadcrumb_links($links, $wizard_mode)
 {
     $link_html = '';
     $button_grp = '';
 
     // Tack on info widget show/hide
-    $links['rhs-toggle'] = array(
-        'url' => '#',
-        'id' => 'rhs-widget-toggle'
-    );
+    if (!$wizard_mode)
+        $links['rhs-toggle'] = array(
+            'url' => '#',
+            'id' => 'rhs-widget-toggle'
+        );
     // Use buttons, images/icons or font
     foreach ($links as $type => $link) {
         $text_right = (isset($link['display_tag']) && $link['display_tag']) ? "<span style='padding: 5px'>" . $link['tag'] . "</span>" : '';
