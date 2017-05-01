@@ -829,7 +829,7 @@ function _get_footer($page)
       $modals " . theme_tips_and_hints($page['tooltips']) . "
       <!-- Footer -->
       <div class='clearfix'></div>
-      <footer>Copyright &copy; 2009 - 2016 $vendor</footer>
+      <footer>Copyright &copy; 2009 - 2017 $vendor</footer>
     <!-- Close main-wrapper -->
     </div>
     ";
