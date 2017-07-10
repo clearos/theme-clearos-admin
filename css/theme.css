@@ -1051,7 +1051,12 @@ span.form-control.theme-control-no-border, input.form-control.theme-control-no-b
   font-size: 11px;
 }
 
-span.form-control { background: #eee; box-shadow: none; cursor: not-allowed;}
+span.form-control {
+  background: #eee;
+  box-shadow: none;
+  cursor: not-allowed;
+  word-wrap: break-word;
+}
 
 /* ----------------------- */
 /* Filter                  */
