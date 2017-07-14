@@ -1252,6 +1252,11 @@ span.form-control {
 table.dataTable tr.child span.dtr-title {
   margin-right: 10px;
 }
+
+table.dataTable tr.child ul li {
+  white-space: normal !important;
+}
+
 table.dataTable.my-responsive.dtr-inline.collapsed tbody td:first-child:before, table.dataTable.my-responsive.dtr-inline.collapsed tbody th:first-child:before {
   color: #686868;
   content: '\f142';
