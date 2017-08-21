@@ -394,6 +394,10 @@ function get_marketplace_data(basename, realtime) {
                             bill_cycle = lang_marketplace_billing_cycle_2_years;
                         else if (json.license_info.unit == 3000)
                             bill_cycle = lang_marketplace_billing_cycle_3_years;
+                        else if (json.license_info.unit == 4000)
+                            bill_cycle = lang_marketplace_billing_cycle_4_years;
+                        else if (json.license_info.unit == 5000)
+                            bill_cycle = lang_marketplace_billing_cycle_5_years;
 
                         $('#sidebar_additional_info_row').after(
                             _sidebar_pair(
