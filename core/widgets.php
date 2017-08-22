@@ -3087,7 +3087,7 @@ function theme_summary_box($data)
         <div class='box-body theme-clear' id='theme_app_sidebar'>
             <div class='row'>
                 <div class='col-xs-6 theme-field'>" . lang('base_maintainer') . "</div>
-                <div class='col-xs-6'>" . $data['packager'] . "</div>
+                <div class='col-xs-6'>" . $data['vendor'] . "</div>
             </div>
             <div class='row'>
                 <div class='col-xs-6 theme-field'>" . lang('base_app_version') . "</div>
