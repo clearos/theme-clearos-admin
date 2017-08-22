@@ -2655,7 +2655,7 @@ function theme_modal_confirm($title, $message, $confirm, $trigger, $form_id = NU
     if ($id == NULL)
         $id = 'modal-confirm-container' . $unique;
     else
-        $unique = $id; 
+        $unique = $id;
     $stay_open_on_confirm = FALSE;
     if (isset($options['stay_open_on_confirm']))
         $stay_open_on_confirm = TRUE;
@@ -2908,7 +2908,7 @@ function theme_help_box($data)
             $data['action']['js']
         );
 
-    return 
+    return
         "<div class='theme-help-box-container hidden-xs'>
              <div class='theme-help-box-content'>
                  <div class='theme-help-box-icon'>" . theme_app_logo($data['basename'], array('no_container' => true)) . "</div>
@@ -3050,17 +3050,51 @@ function theme_summary_box($data)
         $marketplace_html = '';
     }
 
+    $vendor = "";
+    $pkg_data = "";
+    if (isset($data['powered_by'])) {
+        if ($data['powered_by']['vendor'] != NULL)
+            $vendor = "
+                    <div class='row'>
+                        <div class='col-xs-6 theme-field'>" . lang('base_vendor') . "</div>
+                        <div class='col-xs-6'>" .
+                        (isset($data['powered_by']['vendor']['url']) ? "<a href='" . $data['powered_by']['vendor']['url'] . "' target='_blank'>" : "") .
+                        $data['powered_by']['vendor']['name'] .
+                        (isset($data['powered_by']['vendor']['url']) ? "</a>" : "") .
+                        "</div>
+                    </div>
+            ";
+
+        if (isset($data['powered_by']['packages'])) {
+            $first = true;
+            foreach ($data['powered_by']['packages'] as $pkg) {
+                $pkg_data .= "
+                    <div class='row'>
+                        <div class='col-xs-6 theme-field'>" . ($first ? lang('base_powered_by') : "") . "</div>
+                        <div class='col-xs-6'>" .
+                        (isset($pkg['url']) ? "<a href='" . $pkg['url'] . "' target='_blank'>" : "") .
+                        $pkg['name'] . " <span class='theme-powered-by-version'>" . $pkg['version'] . "</span>" .
+                        (isset($pkg['url']) ? "</a>" : "") . "
+                        </div>
+                    </div>
+                ";
+                $first = false;
+            }
+        }
+    }
     $html = theme_container("
         <div class='box-header'><h3 class='box-title'>" . $data['name'] . "</h3></div>
         <div class='box-body theme-clear' id='theme_app_sidebar'>
             <div class='row'>
-                <div class='col-xs-6 theme-field'>" . lang('base_vendor') . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_maintainer') . "</div>
                 <div class='col-xs-6'>" . $data['vendor'] . "</div>
             </div>
             <div class='row'>
-                <div class='col-xs-6 theme-field'>" . lang('base_version') . "</div>
+                <div class='col-xs-6 theme-field'>" . lang('base_app_version') . "</div>
                 <div class='col-xs-6'>" . $data['version'] . '-' . $data['release'] . "</div>
-            </div>
+            </div>" .
+            $vendor .
+            $pkg_data . "
             <div id='sidebar_daemon_status' class='row theme-hidden'>
                 <div class='col-xs-6 theme-field'>" . lang('base_status') . "</div>
                 <div class='col-xs-6' id='clearos_daemon_status'>" . theme_loading('small') . "</div>
@@ -3207,7 +3241,7 @@ function theme_image($name, $basename, $options = NULL)
         // Now check for theme override
         if (file_exists(clearos_theme_path('ClearOS-Admin') . "/img/$name"))
             $src = clearos_theme_url('ClearOS-Admin') . "/img/$name";
-            
+
         return "<img src='" . $src . "' $id class='" . implode(' ' , $class) . "' $override_size>";
     }
 }

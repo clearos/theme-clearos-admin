@@ -668,7 +668,7 @@ function theme_chart(
 
         for (j = 0; j < number_of_row_items; j++) {
 
-            item = _report_friendly_format(data[i][j], data_types[j]);
+            var item = _report_friendly_format(data[i][j], data_types[j]);
 
             if (i >= max_data_points) {
                 chart_data[max_data_points-1][j] = chart_data[max_data_points-1][j] + item;
