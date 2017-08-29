@@ -824,7 +824,7 @@ function _get_app_full(app, options)
         learn_more_target = ' target="_blank"';
     }
 
-    buttons = '<a href="/app/' + app.basename + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>';
+    buttons = '<a href="/' + app.url_config + '" class="btn btn-primary ' + disable_buttons + '">' + lang_configure + '</a>';
     if (app.can_uninstall)
         buttons += '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-secondary ' + disable_buttons + '">' + lang_uninstall + '</a>';
     if (!app.installed) {
@@ -891,7 +891,7 @@ function _get_app_tile(app, options)
         col = 12 / options.columns;
 
     var buttons = '<div class="btn-group">' +
-        '<a href="/app/' + app.basename + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>';
+        '<a href="/' + app.url_config + '" data-toggle="tooltip" data-container="body" class="btn btn-success btn-xs ' + disable_buttons + '" title="' + lang_configure + '"><i class="fa fa-gears"></i></a>';
     if (app.can_uninstall)
         buttons += '<a href="/app/marketplace/uninstall/' + app.basename + '" class="btn btn-secondary btn-xs ' + disable_buttons + '">' + lang_uninstall + '</a>';
     buttons += '</div>';
