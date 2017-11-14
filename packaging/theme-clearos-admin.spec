@@ -1,6 +1,6 @@
 Name: theme-clearos-admin
 Group: Applications/Themes
-Version: 7.4.3
+Version: 7.4.4
 Release: 1%{dist}
 Summary: ClearOS 7 base theme
 License: ClearCenter license
