@@ -343,6 +343,7 @@ function theme_field_checkbox($name, $value, $label, $error, $input_id, $options
 {
     $field_id_html = (isset($options['field_id'])) ? $options['field_id'] : $input_id . '_field';
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
+    $hide_field = (isset($options['hide_field'])) ? ' theme-hidden' : '';
 
     $select_html = ($value) ? ' checked' : '';
 
@@ -355,7 +356,7 @@ function theme_field_checkbox($name, $value, $label, $error, $input_id, $options
     }
 
     return "
-        <div id='$field_id_html' class='form-group theme-field-checkboxes'>
+        <div id='$field_id_html' class='form-group theme-field-checkboxes $hide_field'>
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
             <div class='col-sm-7 theme-field-right'>
                 <input type='checkbox' name='$name' id='$input_id' class='form-control theme-control-no-border $add_classes' $select_html value='1'>
@@ -1866,7 +1867,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
     // ----------------------
     $server_side = '';
     if (isset($options['ajax'])) {
-        $server_side = "'processing': true,\n\t\t'serverSide': true,\n\t\t'ajax': '" . $options['ajax'] . "',";
+        $server_side = "'processing': true,\n\t\t'serverSide': true,\n\t\t'ajax': '" . $options['ajax'] . "', 'autoWidth': false,";
         $paginate = TRUE;
         $filter = TRUE;
     }
