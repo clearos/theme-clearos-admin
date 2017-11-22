@@ -3423,7 +3423,7 @@ function theme_marketplace_review($basename)
                 <h2>" . lang('marketplace_write_a_review') . "</h2>
               </div>\n
               <div class='modal-body'>" .
-                form_open('marketplace/view/' . $basename, 'id=app-review-form') .
+                form_open('marketplace/view/' . $basename, array('id' => 'app-review-form')) .
                 theme_row_open() .
                 theme_column_open(3) . lang('marketplace_app') . theme_column_close() .
                 theme_column_open(9) . "<span id='review-app-name'></span>" . theme_column_close() .
