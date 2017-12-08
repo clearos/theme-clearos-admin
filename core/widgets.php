@@ -653,6 +653,8 @@ function theme_field_toggle_enable_disable($name, $selected, $label, $error, $va
     $field_id_html = (isset($options['field_id'])) ? $options['field_id'] : $input_id . '_field';
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
     $error_id_html = (isset($options['error_id'])) ? $options['error_id'] : $input_id . '_error';
+    $add_classes = '';
+
     if (isset($options['class'])) {
         if (is_array($options['class']))
             $add_classes = implode(' ', $options['class']);

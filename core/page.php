@@ -629,6 +629,7 @@ function _get_header($page, $menus = array())
     $theme_url = clearos_theme_url('ClearOS-Admin');
 
     $my_account = '';
+    $alert_text = '';
     $framework =& get_instance();
     $my_account_collection = array();
 
@@ -737,12 +738,12 @@ function _get_header($page, $menus = array())
                 <li class='my-account dropdown " . $active_header['my-account'] . "'>
                   <a href='javascript:void(0);' class='dropdown-toggle' data-toggle='dropdown'>
                     <i class='ci-my-account'></i> " .
-                    ($page['alerts']['total'] > 0 ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "
+                    ((!empty($page['alerts']) && ($page['alerts']['total'] > 0)) ? "<span class='theme-alert-header'>" . $page['alerts']['total'] . "</span>" : '') . "
                     <span data-toggle='tooltip' data-placement='top' title='" . $page['username'] . "'>" . 
                     ((strlen($page['username']) > 10 ) ? substr($page['username'],0,10) . '...' : $page['username']) .  "</span>
                   </a>
                   <ul class='dropdown-menu' role='menu'>
-                    " . ($page['alerts']['total'] > 0 ?  $alert_text : '') . "
+                    " . ((!empty($page['alerts']) && ($page['alerts']['total'] > 0)) ?  $alert_text : '') . "
                     <li class='divider'></li>
                       $my_account
                     <li class='divider'></li>
@@ -974,12 +975,18 @@ function _get_left_menu_1($page)
         }
     }
 
+
+    if (empty($page['devel_alerts']))
+        $page['devel_alerts'] = [];
+
     $menu_data = $page['menus'];
     $main_apps = '';
     $spotlights = '';
     $img_path = clearos_theme_path('ClearOS-Admin') . '/img/';
     $current_category = '';
     $current_subcategory = '';
+    $alert_text = '';
+
     if (isset($page['alerts']) && count($page['alerts']['events']) > 0) {
         foreach ($page['alerts']['events'] as $alert) {
             $i = theme_icon('critical', array('class' => 'theme-text-alert'));
@@ -1367,6 +1374,9 @@ function _get_breadcrumb_links($links, $wizard_mode)
             $target = '';
             $external_tip = '';
         }
+
+        if (!isset($link['tag']))
+            $link['tag'] = '';
 
         $id = 'bcrumb-' . rand(0 , 1000);
         if (isset($link['id']))
