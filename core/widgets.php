@@ -771,6 +771,7 @@ function _theme_field_common($name, $value, $label, $error, $input_id, $options 
     $label_id_html = (isset($options['label_id'])) ? $options['label_id'] : $input_id . '_label';
     $error_id_html = (isset($options['error_id'])) ? $options['error_id'] : $input_id . '_error';
     $hide_field = (isset($options['hide_field'])) ? ' theme-hidden' : '';
+    $placeholder = (isset($options['placeholder'])) ? " placeholder='" . $options['placeholder'] . "'" : '';
     $style = '';
 
     if (isset($options['width']))
@@ -788,7 +789,7 @@ function _theme_field_common($name, $value, $label, $error, $input_id, $options 
             <label class='col-sm-5 control-label' for='$input_id' id='$label_id_html'>$label</label>
             <div class='col-sm-7 theme-field-right" . $div_class . "'>
                 <div" . ((isset($options['color-picker']) && $options['color-picker']) ? " class='input-group' " : "") . ">
-                    <input type='$type' name='$name' " . ($type == 'file' ? "" : "value='$value'") . " id='$input_id' $style class='form-control'> $error_html
+                    <input type='$type' name='$name' " . ($type == 'file' ? "" : "value='$value'") . " id='$input_id' $style class='form-control'" . $placeholder . "> $error_html
                 " . ((isset($options['color-picker']) && $options['color-picker']) ? "
                     <div class='input-group-addon'>
                         <i></i>
