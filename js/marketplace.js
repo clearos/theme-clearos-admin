@@ -843,6 +843,7 @@ function _get_app_full(app, options)
         buttons = '<a href="#" class="btn btn-warning disabled">' + lang_installed + '</a>';
     }
 
+    var min_requirements = _get_hw_min_requirements(app);
     return '\
         <div class="col-md-6 marketplace-list-layout">\
             <div class="app_box" id="box-' + app.basename + '">\
@@ -859,6 +860,7 @@ function _get_app_full(app, options)
                 <p>' + app.description.replace(/(\r\n|\n|\r)/g, '</p><p>') + '</p>\
             </div>\
             <div class="app_footer">' +
+                (min_requirements.length > 0 ? '<div class="pull-left"><i class="fa fa-warning fa-2x" data-toggle="tooltip" data-container="body" data-title="' + min_requirements + '"></i></div>' : '') + 
                 ((app.display_mask & 1) == 1 ? '<div class="pull-left marketplace-app-not-available">Requires Business Edition</div>' : '') + 
                 
                 '<div class="btn-group">' + buttons +
@@ -912,6 +914,7 @@ function _get_app_tile(app, options)
         buttons = '<a href="#" class="btn btn-warning btn-xs disabled">' + lang_installed + '</a>';
     }
 
+    var min_requirements = _get_hw_min_requirements(app);
     return '\
        <div class="col-md-' + col + ' marketplace-tile-layout">\
           <div class="app_box" id="box-' + app.basename + '">\
@@ -924,12 +927,38 @@ function _get_app_tile(app, options)
               <div class="app_rating">' + theme_star_rating(app.rating) + '</div>\
             </div>\
             <div class="app_footer">' + buttons +
-              '<a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-secondary btn-xs pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>\
+              '<a href="' + learn_more_url + '" data-toggle="tooltip" data-container="body" class="btn btn-secondary btn-xs pull-left" ' + learn_more_target + ' title="' + lang_marketplace_learn_more + '"><i class="fa fa-question"></i></a>' +
+              (min_requirements.length > 0 ? '<a href="#" data-toggle="tooltip" data-container="body" data-title="' + min_requirements + '" class="btn btn-secondary btn-xs pull-left" style="margin-left: 5px;">&nbsp;<i class="fa fa-exclamation"></i>&nbsp;</a>' : '') + '\
             </div>\
             </div>\
           </div>\
         </div>\
     ';
+}
+
+/**
+ * Returns hw min requirements.
+ */
+
+function _get_hw_min_requirements(app)
+{
+    var min = '';
+    if (app.notes.hw_requirements != null) {
+        $.each(app.notes.hw_requirements, function(index, hw) {
+            if (hw.type == 'memory')
+                min += (min.length > 0 ? ', ' : '') + hw.minimum + lang_gb + ' ' + lang_ram;
+            else if (hw.type == 'cpu_cores')
+                min += (min.length > 0 ? ', ' : '') + hw.minimum + ' ' + lang_cpu_cores;
+            else if (hw.type == 'cpu_clock')
+                min += (min.length > 0 ? ', ' : '') + hw.minimum + lang_ghz;
+            else if (hw.type == 'storage')
+                min += (min.length > 0 ? ', ' : '') + hw.minimum + lang_gb + ' ' + lang_disk;
+            else if (hw.type == 'virtualization')
+                min += (min.length > 0 ? ', ' : '') + lang_cpu_vt;
+        });
+        min = '<strong>' + lang_min_hardware_requirements + '</strong><div>' + min + '</div>';
+    }
+    return min;
 }
 
 /**
