@@ -5,7 +5,7 @@
  * @category  Theme
  * @package   ClearOS
  * @author    ClearFoundation <developer@clearfoundation.com>
- * @copyright 2014-2017 ClearFoundation
+ * @copyright 2014-2018 ClearFoundation
  * @license   http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link      http://www.clearfoundation.com/docs/developer/theming/ 
  *
@@ -830,7 +830,7 @@ function _get_footer($page)
       $modals " . theme_tips_and_hints($page['tooltips']) . "
       <!-- Footer -->
       <div class='clearfix'></div>
-      <footer>Copyright &copy; 2009 - 2017 $vendor</footer>
+      <footer>Copyright &copy; 2009 - 2018 $vendor</footer>
     <!-- Close main-wrapper -->
     </div>
     ";
