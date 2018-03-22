@@ -2044,7 +2044,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
         },
         $server_side
         $col_widths
-        'stateSave': false,
+        'stateSave': true,
         'stateDuration': 60 * 60 * 24 * 365,
         'bRetrieve': true,
         'iDisplayLength': $default_rows,
