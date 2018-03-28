@@ -1914,7 +1914,7 @@ function theme_summary_table($title, $anchors, $headers, $items, $options = NULL
                 else if ($s_type == 'string')
                     $datatables_type = 'string';
                 else if ($s_type == 'title-numeric')
-                    $datatables_type = 'string';
+                    $datatables_type = 'title-numeric';
                 else
                     $datatables_type = 'html';
 
